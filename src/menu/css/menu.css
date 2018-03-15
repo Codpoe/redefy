@@ -1,0 +1,12 @@
+@import '../../common/color.css';
+
+:root {
+    --default-menu-width: 180px;
+}
+
+.z-menu {
+    list-style: none;
+    width: var(--default-menu-width);
+    overflow-x: hidden;
+    transition: all 0.24s;
+}

@@ -1,0 +1,20 @@
+@import '../common/color.css';
+
+.my-tree-select .icon-x {
+    padding: 3px;
+    cursor: pointer;
+    transition: color 0.24s;
+    
+    &:hover {
+        color: var(--error-color);
+    }
+}
+
+.my-tree-select__indicator {
+    padding: 3px;
+    transition: all 0.24s;
+}
+
+.my-tree-select--active .my-tree-select__indicator {
+    transform: rotate(180deg);
+}

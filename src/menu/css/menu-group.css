@@ -1,0 +1,21 @@
+@import '../../common/color.css';
+
+:root {
+    --default-title-height: 36px;;
+}
+
+.z-menu-group {
+    width: 100%;
+    list-style: none;
+}
+
+.z-menu-group__title {
+    display: inline-block;
+    width: 100%;
+    padding: 17px 14px 6px 14px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    color: var(--secondary-text-color);
+}

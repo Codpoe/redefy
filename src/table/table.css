@@ -1,0 +1,116 @@
+@import '../common/color.css';
+
+:root {
+    --default-height: 50px;
+}
+
+.my-table-wrapper::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.my-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--primary-text-color);
+
+    & a {
+        font-size: inherit;
+        line-height: inherit;
+    }
+}
+
+.my-table__head {
+    background: var(--background-blue);
+    font-weight: bold;
+}
+
+.my-table__column,
+.my-table__cell {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.my-table__expand-row {
+    background: var(--background-white);
+}
+
+.my-table__body .my-table__row {
+    transition: all 0.24s;
+
+    &:hover {
+        background: var(--background-blue);
+    }
+}
+
+.my-table__column .icon {
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    transition: all 0.24s;
+}
+
+.my-table__column--ascend .icon-chevrons-up {
+    background: var(--border-light);
+    color: var(--primary-color);
+}
+
+.my-table__column--descend .icon-chevrons-down {
+    background: var(--border-light);
+    color: var(--primary-color);
+}
+
+.my-table__column--filtering .icon-filter {
+    background: var(--border-light);
+    color: var(--primary-color);
+}
+
+.my-table__checkbox {
+    padding-right: 0;
+}
+
+.my-table__cell--expandable {
+    display: inline-block;
+    user-select: none;
+    transition: transform 0.24s;
+    & .icon {
+        vertical-align: middle;
+        padding: 3px;
+        cursor: pointer;
+        transition: all 0.24s;
+    }
+}
+
+.my-table__cell--expanded {
+    transform: rotate(90deg);
+}
+
+.my-table__empty {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--secondary-text-color);
+
+    & .my-table__empty-content {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        & .icon {
+            margin-right: 8px;
+        }
+    }
+}

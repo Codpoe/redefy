@@ -1,0 +1,75 @@
+@import '../common/color.css';
+
+:root {
+    --switch-width: 36px;
+    --switch-height: 20px;
+    --indicator-size: 16px;
+}
+
+.z-switch {
+    display: inline-flex;
+    position: relative;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    border-radius: calc(var(--switch-height) / 2);
+    background: var(--primary-color);
+    vertical-align: middle;
+    overflow: hidden;
+
+    & input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+.z-switch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--switch-height) / 2);
+    background: var(--grey);
+    transition: all 0.24s;
+}
+
+.z-switch__indicator {
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: var(--indicator-size);
+    height: var(--indicator-size);
+    border-radius: calc(var(--indicator-size) / 2);
+    background: white;
+    transition: all 0.24s;
+}
+
+.z-switch--switched {
+    & .z-switch__indicator {
+        transform: translateX(var(--indicator-size));
+    }
+}
+
+.z-switch--switched::before {
+    transform: scale(0);
+}
+
+.z-switch--disabled {
+    background: var(--border-dark);
+
+    & input {
+        cursor: not-allowed;
+    }
+}
+
+.z-switch--disabled::before {
+    background: var(--grey-light);
+}

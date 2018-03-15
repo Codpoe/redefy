@@ -1,0 +1,54 @@
+{
+  "name": "my-view",
+  "version": "0.0.1",
+  "description": "react components for myself",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "keywords": [
+    "react",
+    "components"
+  ],
+  "author": "codpoe",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.5.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.0.1",
+    "style-loader": "^0.18.2",
+    "css-loader": "^0.28.4",
+    "postcss-loader": "^2.0.6",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-import": "^11.0.0",
+    "precss": "^2.0.0",
+    "url-loader": "^0.6.2",
+    "file-loader": "^0.11.2",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "jest": "^21.2.1",
+    "babel-jest": "^21.2.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/jest/config.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/jest"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/fileMock.js",
+      "\\.(css|less|sass|scss|pcss)$": "identity-obj-proxy"
+    }
+  }
+}

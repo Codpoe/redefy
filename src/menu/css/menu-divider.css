@@ -1,0 +1,7 @@
+@import '../../common/color.css';
+
+.z-menu-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--grey-extra-light);
+}

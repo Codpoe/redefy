@@ -1,0 +1,50 @@
+@import '../common/color.css';
+
+.my-cascader {
+    white-space: nowrap;
+}
+
+.my-cascader__level {
+    display: inline-block;
+    min-width: 130px;
+    min-height: 200px;
+    max-height: 240px;
+    vertical-align: top;
+    overflow: auto;
+}
+
+.my-cascader__children {
+    border-left: 1px solid var(--border-light);
+}
+
+.my-cascader__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 0.24s;
+
+    &:hover {
+        background: var(--background-blue-dark);
+    }
+
+    & .icon-chevron-right {
+        pointer-events: none;
+        margin-left: 8px;
+    }
+}
+
+.my-cascader__item--active {
+    background: var(--primary-color);
+    color: white;
+
+    &:hover {
+        background: var(--primary-light);
+        color: white;
+    }
+}

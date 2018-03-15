@@ -1,0 +1,109 @@
+@import '../common/color.css';
+
+:root {
+
+}
+
+.my-tree {
+    list-style-type: none;
+    font-size: 14px;
+    color: var(--primary-text-color);
+
+    & .my-tree-node__children {
+        list-style-type: none;
+    }
+}
+
+.my-tree-node__parent {
+    height: 32px;
+    transition: all 0.24s;
+
+    &:hover {
+        background: var(--background-blue-dark);
+    }
+}
+
+.my-tree-node__parent--active {
+    background: var(--primary-color);
+    color: white;
+
+    &:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+}
+
+.my-tree-node__indicator {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.24s;
+
+    & > .icon {
+        display: inline-block;
+        padding: 9px;
+    }
+}
+
+.my-tree-node__label {
+    width: calc(100% - 32px);
+    padding-left: 8px;
+    line-height: 32px;
+    vertical-align: middle;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.24s;
+}
+
+.my-tree-node__children {
+    position: relative;
+    display: none;
+    padding-left: 14px;
+}
+
+.my-tree-node__children::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: 1px;
+    height: 100%;
+    background: var(--border-color);
+}
+
+.my-tree-node--expanded {
+    & > .my-tree-node__parent .my-tree-node__indicator {
+        transform: rotate(90deg);
+    }
+
+    & > .my-tree-node__children {
+        display: block;
+    }
+}
+
+.my-tree-children--enter {
+    display: block;
+    transform: translate3d(-10px,0,0);
+    opacity: 0;
+}
+
+.my-tree-children--enter.my-tree-children--enter-active {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+    transition: all 0.24s;
+}
+
+.my-tree-children--exit {
+    display: block;
+    transform: translate3d(0,0,0);
+    opacity: 1;
+}
+
+.my-tree-children--exit.my-tree-children--exit-active {
+    transform: translate3d(-10px,0,0);
+    opacity: 0;
+    transition: all 0.24s;
+}

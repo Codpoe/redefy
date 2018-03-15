@@ -1,0 +1,51 @@
+@import '../common/color.css';
+
+:root {
+
+}
+
+.z-tooltip__content {
+    position: relative;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.7);
+    font-size: 12px;
+    line-height: 1.2;
+    color: white;
+    white-space: nowrap;
+}
+
+.z-tooltip__content::before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 8px;
+    height: 4px;
+    border-bottom: 4px solid rgba(0,0,0,0.7);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.z-tooltip__content--bottom::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.z-tooltip__content--top::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+}
+
+.z-tooltip__content--left::before {
+    top: 50%;
+    left: calc(100% - 2px);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.z-tooltip__content--right::before {
+    top: 50%;
+    right: calc(100% - 2px);
+    transform: translateY(-50%) rotate(-90deg);
+}

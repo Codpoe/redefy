@@ -1,0 +1,13 @@
+.z-radio-group {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.z-radio-group--vertical {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

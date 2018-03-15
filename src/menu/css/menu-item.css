@@ -1,0 +1,139 @@
+@import '../../common/color.css';
+
+:root {
+    --default-menu-item-height: 40px;
+}
+
+.z-menu-item {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: var(--default-menu-item-height);
+    padding: 0 14px;
+    font-size: 14px;
+    color: var(--primary-text-color);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.24s;
+
+    &:hover {
+        background:var(--background-blue-dark);
+        & a {
+            color: var(--primary-color);
+        }
+    }
+
+    &  a {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 14px;
+        font-size: 14px;
+        color: var(--primary-text-color);
+        white-space: nowrap;
+        text-decoration: none;
+        transition: all 0.24s;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.z-menu--full .z-menu-item {
+    padding: 0;
+}
+
+.z-menu--full a {
+    padding: 0;
+}
+
+.z-menu--link .z-menu-item {
+    padding: 0;
+}
+
+.z-menu-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0,-50%,0);
+    width: 2px;
+    height: 0;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: all 0.24s;
+}
+
+.z-menu-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate3d(0,-50%,0);
+    width: 2px;
+    height: 0;
+    background: var(--primary-color);
+    opacity: 0;
+    transition: all 0.24s;
+}
+
+.z-menu--horizontal {
+    & .z-menu-item {
+        width: auto;
+    }
+}
+
+.z-menu--horizontal.z-menu--flat .z-menu-item:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.z-menu--horizontal .z-menu-item::before {
+    top: 0;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+    width: 0;
+    height: 2px;
+}
+
+.z-menu--horizontal .z-menu-item::after {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+    width: 0;
+    height: 2px;
+}
+
+.z-menu-item--active {
+    color: var(--primary-color);
+    & a {
+        color: var(--primary-color);
+    }
+}
+
+.z-menu-item--active.z-menu-item--left::before {
+    height: 100%;
+    opacity: 1;
+}
+
+.z-menu-item--active.z-menu-item--right::after {
+    height: 100%;
+    opacity: 1;
+}
+
+.z-menu-item--active.z-menu-item--top::before {
+    width: 20px;
+    opacity: 1;
+}
+
+.z-menu-item--active.z-menu-item--bottom::after {
+    width: 20px;
+    opacity: 1;
+}

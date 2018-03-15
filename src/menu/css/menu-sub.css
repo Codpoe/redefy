@@ -1,0 +1,34 @@
+@import '../../common/color.css';
+
+.z-menu-sub {
+    
+}
+
+.z-menu-sub__title {
+    justify-content: space-between;
+}
+
+.z-menu-sub__indicator {
+    transition: all 0.24s;
+}
+
+.z-menu-sub__content {
+    list-style: none;
+    max-height: auto;
+    overflow: hidden;
+    transition: all 0.24s;
+}
+
+.z-menu-sub--open {
+    & .z-menu-sub__title {
+        box-shadow: 0 4px 4px 0 rgba(153, 153, 153, 0.1), 0 6px 2px -4px rgba(153, 153, 153, 0.12);
+    }
+
+    & .z-menu-sub__indicator {
+        transform: rotate(180deg);
+    }
+
+    & .z-menu-sub__content {
+        
+    }
+}

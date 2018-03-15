@@ -1,0 +1,63 @@
+@import '../common/color.css';
+
+:root {
+    --default-size: 24px;
+    --small-size: 18px;
+    --large-size: 32px;
+}
+
+.my-loader {
+    position: relative;
+    width: var(--default-size);
+    height: var(--default-size);
+}
+
+.my-loader__1,
+.my-loader__2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%, 0) scale(0);
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: loading-anim 1.2s infinite;
+}
+
+.my-loader__2 {
+    animation-delay: 0.4s;
+}
+
+.my-loader-wrapper {
+    position: relative;
+
+    & > .my-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%,0);
+    }
+}
+
+.my-loader--small {
+    width: var(--small-size);
+    height: var(--small-size);
+}
+
+.my-loader--large {
+    width: var(--large-size);
+    height: var(--large-size);
+}
+
+@keyframes loading-anim {
+    0% {
+        transform: translate3d(-50%,-50%,0) scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(-50%,-50%,0) scale(1);
+        opacity: 0;
+    }
+}

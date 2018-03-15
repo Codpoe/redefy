@@ -1,0 +1,49 @@
+.fullpage {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        list-style-type: none;
+        .page {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .indicator {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        width: 14px;
+        list-style-type: none;
+        .point {
+            width: 100%;
+            height: 14px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            margin-top: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            &:hover {
+                background: rgba(255,255,255,0.8);
+            }
+        }
+        .point--active {
+            background: rgba(255,255,255,0.8);
+        }
+    }
+}
+
+.fullpage--horizontal {
+    .wrapper {
+        display: inline-block;
+        overflow: visible;
+        .page {
+
+        }
+    }
+}
+

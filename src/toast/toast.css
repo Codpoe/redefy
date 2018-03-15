@@ -1,0 +1,61 @@
+@import '../common/color.css';
+
+.my-toast {
+    position: fixed;
+    bottom: 100%;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(153, 153, 153, 0.12), 0 3px 2px -1px rgba(153, 153, 153, 0.16), 0 0 2px 1px rgba(153, 153, 153, 0.1);
+    opacity: 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--primary-text-color);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.my-toast > .icon {
+    margin-right: 10px;
+}
+
+.my-toast  {
+    & > .icon-info {
+        color: var(--primary-color);
+    }
+    & > .icon-check-circle {
+        color: var(--success-color);
+    }
+    & > .icon-alert-circle {
+        color: var(--warning-color);
+    }
+    & > .icon-x-circle {
+        color: var(--error-color);
+    }
+}
+
+.toast-enter {
+}
+
+.toast-enter.toast-enter-active {
+    transform: translate3d(-50%,calc(100% + 20px),0);
+    opacity: 1;
+    transition: all 0.4s;
+}
+
+.toast-exit {
+    transform: translate3d(-50%,calc(100% + 20px),0);
+    opacity: 1;
+}
+
+.toast-exit.toast-exit-active {
+    transform: translate3d(-50%,0,0);
+    opacity: 0;
+    transition: all 0.4s;
+}

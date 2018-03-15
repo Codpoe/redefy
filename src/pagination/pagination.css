@@ -1,0 +1,65 @@
+@import '../common/color.css';
+
+:root {
+    --default-size: 24px;
+    --default-text-size: 14px;
+}
+
+.my-pagination {
+    list-style: none;
+    user-select: none;
+}
+
+.my-pagination__prev,
+.my-pagination__next,
+.my-pagination__item,
+.my-pagination__more {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--default-size);
+    height: var(--default-size);
+    padding: 0 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    vertical-align: middle;
+    font-size: var(--default-text-size);
+    color: var(--primary-text-color);
+}
+
+.my-pagination__prev,
+.my-pagination__next,
+.my-pagination__item {
+    cursor: pointer;
+
+    &:hover {
+        transition: all 0.24s;
+        border-color: var(--primary-color);
+    }
+}
+
+.my-pagination__prev,
+.my-pagination__more,
+.my-pagination__item:not(:last-of-type) {
+    margin-right: 8px;
+}
+
+.my-pagination__item--active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.my-pagination__prev--disabled,
+.my-pagination__next--disabled {
+    color: var(--secondary-text-color);
+    cursor: not-allowed;
+    
+    &:hover {
+        border-color: transparent;
+    }
+}
+
+.my-pagination__jumper {
+    display: inline-block;
+}

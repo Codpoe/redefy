@@ -1,0 +1,32 @@
+@import '../common/color.css';
+
+.my-select {
+    display: inline-block;
+}
+
+.my-select .icon-x {
+    padding: 3px;
+    cursor: pointer;
+    transition: color 0.24s;
+    
+    &:hover {
+        color: var(--error-color);
+    }
+}
+
+.my-select__indicator {
+    padding: 3px;
+    transition: all 0.24s;
+}
+
+.my-select--active .my-select__indicator {
+    transform: rotate(180deg);
+}
+
+.my-select__loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+}
