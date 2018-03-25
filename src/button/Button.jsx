@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Loader from '../loader/';
 import './button.css';
@@ -36,19 +37,21 @@ export default class Button extends Component {
 
         const Node = href ? 'a' : 'button';
 
+        const btnClass = classnames(className, 'my-button', {
+            [`my-button--${type}`]: true,
+            [`my-button--${size}`]: true,
+            'my-button--text': text,
+            'my-button--outline': outline,
+            'my-button--flat': flat,
+            'my-button--round': round,
+            'my-button--block': block,
+            'my-button--disabled': disabled,
+            'my-button--loading': loading
+        });
+
         return (
-            <Node className={`
-                ${className}
-                z-button
-                z-button--${type}
-                z-button--${size}
-                ${text ? 'z-button--text' : ''}
-                ${outline ? 'z-button--outline' : ''}
-                ${flat ? 'z-button--flat' : ''}
-                ${round ? 'z-button--round' : ''}
-                ${block ? 'z-button--block' : ''}
-                ${disabled ? 'z-button--disabled' : ''}
-                ${loading ? 'z-button--loading' : ''}`}
+            <Node
+                className={btnClass}
                 style={style}
                 href={href}
                 target={target}

@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: 'dist/',
+        publicPath: '/dist/',
         filename: '[name]/[name].bundle.js'
     },
     module: {
@@ -48,10 +48,8 @@ module.exports = {
         })
     ],
     devServer: {
-        host: '0.0.0.0',
-        // public: '192.168.43.217:8081',
         hot: true,
         historyApiFallback: true
     },
-    devtool: 'eval-source-map'
+    devtool: 'source-map'
 }
