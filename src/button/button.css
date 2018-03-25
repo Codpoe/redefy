@@ -240,35 +240,23 @@
  * disabled
  */
 .my-button--disabled {
-    background: var(--grey-extra-light);
-    border-color: var(--grey-light);
-    box-shadow: none;
-    color: var(--grey);
+    background: var(--grey-lightest);
+    border-color: var(--grey-lighter);
+    color: var(--grey-light);
     cursor: not-allowed;
     &:hover {
-        background: var(--grey-extra-light);
-        border-color: var(--grey-light);
-        box-shadow: none;
+        background: var(--grey-lightest);
+        border-color: var(--grey-lighter);
     }
 }
 
 .my-button--outline.my-button--disabled {
     background: transparent;
-    border-color: var(--grey-light);
+    border-color: var(--grey-lighter);
     color: var(--grey-light);
     &:hover {
         background: transparent;
-        border-color: var(--grey-light);
-        color: var(--grey-light);
-    }
-}
-
-.my-button--text.my-button--disabled {
-    background: transparent;
-    border-color: transparent;
-    color: var(--grey-light);
-    &:hover {
-        background: transparent;
+        border-color: var(--grey-lighter);
         color: var(--grey-light);
     }
 }
