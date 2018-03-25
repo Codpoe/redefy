@@ -25,12 +25,6 @@ export default (props) => {
             <Button type="warning" outline>边框按钮</Button>&nbsp;
             <Button type="error" outline>边框按钮</Button>
             <br /> <br />
-            <Button flat>默认按钮</Button>&nbsp;
-            <Button type="primary" flat>扁平按钮</Button>&nbsp;
-            <Button type="success" flat>扁平按钮</Button>&nbsp;
-            <Button type="warning" flat>扁平按钮</Button>&nbsp;
-            <Button type="error" flat>扁平按钮</Button>
-            <br /> <br />
             <Button round>圆形按钮</Button>&nbsp;
             <Button text round>圆形按钮</Button>&nbsp;
             <Button outline round>圆形按钮</Button>&nbsp;
@@ -38,8 +32,8 @@ export default (props) => {
             <br /> <br />
             <Button><i className="icon-upload"></i>&nbsp;带图标按钮</Button>&nbsp;
             <Button text><i className="icon-download"></i>&nbsp;带图标按钮</Button>&nbsp;
-            <Button flat><i className="icon-delete"></i>&nbsp;带图标按钮</Button>&nbsp;
-            <Button outline><i className="icon-sync"></i>&nbsp;带图标按钮</Button>
+            <Button flat><i className="icon-plus"></i>&nbsp;带图标按钮</Button>&nbsp;
+            <Button outline><i className="icon-minus"></i>&nbsp;带图标按钮</Button>
             <br /> <br />
             <Button size="large">大型按钮</Button>&nbsp;
             <Button size="normal">普通按钮</Button>&nbsp;
@@ -48,7 +42,6 @@ export default (props) => {
             <Button disabled>禁用按钮</Button>&nbsp;
             <Button text disabled>禁用按钮</Button>&nbsp;
             <Button outline disabled>禁用按钮</Button>&nbsp;
-            <Button flat disabled>禁用按钮</Button>
             <br /> <br />
             <Button href="http://t.tt" target="_blank" type="primary" round outline>内嵌 a 标签 -> Smartisan</Button>
             <br /> <br />
