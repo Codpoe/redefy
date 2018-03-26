@@ -222,6 +222,23 @@
 }
 
 /*
+ * circle
+ */
+.my-button--circle {
+    width: var(--default-height);
+    border-radius: 50%;
+    padding: 0;
+}
+
+.my-button--circle.my-button--large {
+    width: var(--large-height);
+}
+
+.my-button--circle.my-button--small {
+    width: var(--small-height);
+}
+
+/*
  * size
  */
 .my-button--large {
