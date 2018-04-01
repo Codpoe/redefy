@@ -8,6 +8,7 @@ import './button.css';
 export default class Button extends Component {
     constructor(props) {
         super(props);
+        
         this.handleClick = this.handleClick.bind(this);
     }
 
