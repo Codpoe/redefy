@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-export default (gap, children) => (
+const ButtonGroup = ({ children }) => (
     <div className="my-button-group">
         {children}
     </div>
-)
+);
+
+export default ButtonGroup;

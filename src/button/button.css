@@ -98,9 +98,9 @@
 }
 
 /*
- * outline
+ * hollow
  */
-.my-button--outline {
+.my-button--hollow {
     border-color: var(--border-color);
     background: transparent;
     &:hover {
@@ -108,11 +108,11 @@
     }
 }
 
-.my-button--outline:active {
+.my-button--hollow:active {
     background: var(--border-lighter);
 }
 
-.my-button--primary.my-button--outline {
+.my-button--primary.my-button--hollow {
     border-color: var(--primary-color);
     color: var(--primary-color);
     &:hover {
@@ -120,11 +120,11 @@
     }
 }
 
-.my-button--primary.my-button--outline:active {
+.my-button--primary.my-button--hollow:active {
     background: color(var(--primary-dark) alpha(20%));
 }
 
-.my-button--success.my-button--outline {
+.my-button--success.my-button--hollow {
     border-color: var(--success-color);
     color: var(--success-color);
     &:hover {
@@ -132,11 +132,11 @@
     }
 }
 
-.my-button--success.my-button--outline:active {
+.my-button--success.my-button--hollow:active {
     background: color(var(--success-color) alpha(20%));
 }
 
-.my-button--warning.my-button--outline {
+.my-button--warning.my-button--hollow {
     border-color: var(--warning-color);
     color: var(--warning-color);
     &:hover {
@@ -144,11 +144,11 @@
     }
 }
 
-.my-button--warning.my-button--outline:active {
+.my-button--warning.my-button--hollow:active {
     background: color(var(--warning-color) alpha(20%));
 }
 
-.my-button--error.my-button--outline {
+.my-button--error.my-button--hollow {
     border-color: var(--error-color);
     color: var(--error-color);
     &:hover {
@@ -156,7 +156,7 @@
     }
 }
 
-.my-button--error.my-button--outline:active {
+.my-button--error.my-button--hollow:active {
     background: color(var(--error-color) alpha(20%));
 }
 
@@ -267,7 +267,7 @@
     }
 }
 
-.my-button--outline.my-button--disabled {
+.my-button--hollow.my-button--disabled {
     background: transparent;
     border-color: var(--grey-lighter);
     color: var(--grey-light);
@@ -308,4 +308,19 @@
  */
 .my-button--block {
     width: 100%;
+}
+
+.my-button-group {
+    display: inline-flex;
+
+    & .my-button:nth-of-type(n+2) {
+        margin-left: -1px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    & .my-button:not(:last-of-type) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 }

@@ -41,7 +41,7 @@ class App extends Component {
                 <TableDemo />
                 <UploadDemo /> */}
             </div>
-        )
+        );
     }
 }
 
