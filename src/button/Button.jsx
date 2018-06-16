@@ -25,7 +25,6 @@ export default class Button extends Component {
             size,
             text,
             hollow,
-            flat,
             round,
             circle,
             block,
@@ -46,7 +45,6 @@ export default class Button extends Component {
             [`my-button--${size}`]: true,
             'my-button--text': text,
             'my-button--hollow': hollow,
-            'my-button--flat': flat,
             'my-button--round': round,
             'my-button--circle': circle,
             'my-button--block': block,
@@ -59,7 +57,7 @@ export default class Button extends Component {
                 className={btnClass}
                 style={style}
                 href={href}
-                target={target}
+                target={href ? target : undefined}
                 disabled={disabled}
                 onClick={this.handleClick}
             >
@@ -77,7 +75,6 @@ Button.propTypes = {
     size: PropTypes.oneOf(['normal', 'large', 'small', 'smaller']),
     text: PropTypes.bool,
     hollow: PropTypes.bool,
-    flat: PropTypes.bool,
     round: PropTypes.bool,
     circle: PropTypes.bool,
     block: PropTypes.bool,
@@ -97,13 +94,12 @@ Button.defaultProps = {
     size: 'normal',
     text: false,
     hollow: false,
-    flat: false,
     round: false,
     circle: false,
     block: false,
     disabled: false,
     loading: false,
-    href: '',
+    href: undefined,
     target: '_blank',
     loaderColor: 'white',
     className: '',

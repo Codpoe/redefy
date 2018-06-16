@@ -1,19 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        // sview: './src/sview.js',
-        index: './demo/index.js'
+        site: './site/index.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist/',
-        filename: '[name]/[name].bundle.js'
+        path: path.join(__dirname, 'site/dist'),
+        publicPath: '/site/dist/',
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
+            {
+                test: /\.md$/,
+                use: ['babel-loader', '@mdx-js/loader']
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -43,13 +47,23 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            title: 'x-view',
+            template: 'site/index.tpl',
+            filename: 'index.html',
+            inject: true
+        }),
         new ExtractTextPlugin({
-            filename: '[name]/[name].bundle.css'
+            filename: '[name].bundle.css'
         })
     ],
     devServer: {
-        hot: true,
-        historyApiFallback: true
+        port: 8008,
+        historyApiFallback: {
+            rewrites: [
+                { from: /./, to: '/site/dist/index.html' }
+            ]
+        }
     },
     devtool: 'source-map'
-}
+};

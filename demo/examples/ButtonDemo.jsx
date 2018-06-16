@@ -38,9 +38,9 @@ const ButtonDemo = () => {
             <br /> <br />
             <h3>全圆形 circle</h3>
             <br />
-            <Button circle><i className="icon icon-search"></i></Button>&nbsp;
+            <Button circle size="large"><i className="icon icon-search"></i></Button>&nbsp;
             <Button circle hollow type="primary"><i className="icon icon-search"></i></Button>&nbsp;
-            <Button circle type="primary"><i className="icon icon-search"></i></Button>
+            <Button circle type="primary" size="small"><i className="icon icon-search"></i></Button>
             <br /><br />
             <h3>带图标</h3>
             <br />
