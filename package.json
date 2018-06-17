@@ -27,6 +27,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-standalone": "^6.26.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "enzyme": "^3.2.0",
@@ -46,10 +47,10 @@
     "precss": "^2.0.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.6.2",
+    "raw-loader": "^0.5.1",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.5.0",
-    "@mdx-js/mdx": "^0.10.1",
-    "@mdx-js/loader": "^0.10.1"
+    "marked": "^0.4.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/jest/config.js",

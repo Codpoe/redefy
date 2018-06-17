@@ -1,3 +1,10 @@
 import Button from './button/';
+import Checkbox from './checkbox/';
 
-export default { Button };
+import './common/common.css';
+import './common/style.css';
+
+export default {
+    Button,
+    Checkbox
+};

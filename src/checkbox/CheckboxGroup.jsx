@@ -10,7 +10,7 @@ export default class CheckboxGroup extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange({ value: changedValue, checked }, ev) {
+    handleChange(checked, changedValue, ev) {
         const {
             value,
             onChange
@@ -34,7 +34,7 @@ export default class CheckboxGroup extends React.Component {
             });
         }
 
-        onChange && onChange({ value: groupValue }, ev);
+        onChange && onChange(groupValue, ev);
     }
 
     isPartOfArray(first, second) {
@@ -67,7 +67,7 @@ export default class CheckboxGroup extends React.Component {
                 >
                     {checkbox.props.children}
                 </Checkbox>
-            )
+            );
         });
 
         return (
@@ -77,7 +77,7 @@ export default class CheckboxGroup extends React.Component {
             >
                 {checkboxs}
             </span>
-        )
+        );
     }
 }
 
@@ -87,10 +87,10 @@ CheckboxGroup.propTypes = {
     onChange: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object
-}
+};
 
 CheckboxGroup.defaultProps = {
     disabled: false,
     className: '',
     style: {}
-}
+};

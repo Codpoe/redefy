@@ -15,10 +15,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.md$/,
-                use: ['babel-loader', '@mdx-js/loader']
-            },
-            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
@@ -43,6 +39,10 @@ module.exports = {
                 options: {
                     limit: 8192
                 }
+            },
+            {
+                test: /\.md$/,
+                loader: 'raw-loader'
             }
         ]
     },

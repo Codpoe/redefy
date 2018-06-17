@@ -1,9 +1,11 @@
-import Button from './zh-CN/button.md';
-import Icon from './zh-CN/icon.md';
-import Introduction from './zh-CN/introduction.md';
+import button from './zh-CN/button.md';
+import checkbox from './zh-CN/checkbox.md';
+import icon from './zh-CN/icon.md';
+import introduction from './zh-CN/introduction.md';
 
 export default {
-    Button,
-    Icon,
-    Introduction,
+    button,
+    checkbox,
+    icon,
+    introduction,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import '../common/color.css';
 import './checkbox.css';
@@ -13,13 +14,11 @@ export default class Checkbox extends React.Component {
 
     handleChange(ev) {
         const { value, checked, onChange } = this.props;
-        
-        onChange && onChange({ value, checked: !checked }, ev);
+        onChange && onChange(!checked, value, ev);
     }
 
     render() {
         const {
-            value,
             checked,
             disabled,
             children,
@@ -27,18 +26,20 @@ export default class Checkbox extends React.Component {
             style
         } = this.props;
 
+        const classes = classnames(className, 'x-checkbox', {
+            'x-checkbox--checked': checked,
+            'x-checkbox--disabled': disabled
+        });
+
         return (
             <span
-                className={`z-checkbox
-                    ${checked ? 'z-checkbox--checked' : ''}
-                    ${disabled ? 'z-checkbox--disabled' : ''}
-                    ${className}
-                `}
+                className={classes}
                 style={style}
             >
-
-                <span className="z-checkbox__indicator"></span>
-                <label className="z-checkbox__label">{children}</label>
+                <span className="x-checkbox__indicator">
+                    <div className="x-checkbox__line"></div>
+                </span>
+                <label className="x-checkbox__label">{children}</label>
                 <input
                     type="checkbox"
                     checked={checked}
@@ -46,7 +47,7 @@ export default class Checkbox extends React.Component {
                     onChange={this.handleChange}
                 />
             </span>
-        )
+        );
     }
 }
 
@@ -57,11 +58,12 @@ Checkbox.propTypes = {
     onChange: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object
-}
+};
 
 Checkbox.defaultProps = {
+    value: undefined,
     checked: false,
     disabled: false,
     className: '',
     style: {}
-}
+};

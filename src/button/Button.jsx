@@ -40,7 +40,7 @@ export default class Button extends Component {
 
         const Node = href ? 'a' : 'button';
 
-        const btnClass = classnames(className, 'my-button', {
+        const classes = classnames(className, 'my-button', {
             [`my-button--${type}`]: true,
             [`my-button--${size}`]: true,
             'my-button--text': text,
@@ -54,7 +54,7 @@ export default class Button extends Component {
 
         return (
             <Node
-                className={btnClass}
+                className={classes}
                 style={style}
                 href={href}
                 target={href ? target : undefined}

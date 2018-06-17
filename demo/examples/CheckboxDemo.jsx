@@ -8,7 +8,7 @@ export default class CheckboxDemo extends React.Component {
         this.state = {
             checked: false,
             checkedList: ['苹果', '香蕉']
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleGroupChange = this.handleGroupChange.bind(this);
     }
