@@ -310,6 +310,9 @@
     width: 100%;
 }
 
+/*
+ * group
+ */
 .my-button-group {
     display: inline-flex;
 
