@@ -1,26 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Redirect, Link } from '@reach/router';
+import { Redirect, Link, redirectTo } from '@reach/router';
 import marked from 'marked';
 import { transform } from 'babel-standalone';
 
 import Xview from '../../src/';
 import docConfig from '../doc.config.js';
-import allDocs from '../../docs/';
 
 class Doc extends React.Component {
     constructor(props) {
         super(props);
         this.components = {};
+        this.state = {
+            md: ''
+        };
     }
 
     componentDidMount() {
-        this.renderComponents();
+        // 动态获取文档
+        this.fetchMd(this.props.name);
     }
 
     // 切换组件时，重新渲染
-    componentDidUpdate() {
-        this.renderComponents();
+    componentDidUpdate(prevProps, prevState) {
+        const { name: prevName } = prevProps;
+        const { name } = this.props;
+        const { md } = this.state;
+        
+        // 动态获取文档
+        if (prevName !== name) {
+            this.fetchMd(name);
+        }
+
+        // 如果已存在文档，则渲染组件
+        if (md) {
+            this.renderComponents();
+        }
+    }
+
+    // 动态获取文档
+    fetchMd(name) {
+        return import(`../../docs/zh-CN/${name}.md`)
+            .then(md => {
+                this.setState({ md });
+            })
+            .catch(err => {
+                this.props.navigate('/docs/introduction');
+            });
     }
     
     renderNavGroup({ groupName, list }) {
@@ -63,6 +89,7 @@ class Doc extends React.Component {
         // };
     }
 
+    // 从 MD 文档中找出所有的 React 组件，并创建组件的挂载节点
     md2Html(md) {
         this.components = {};
 
@@ -72,6 +99,7 @@ class Doc extends React.Component {
         }));
     }
 
+    // 渲染 MD 文档中的 React 组件
     renderComponents() {
         const argNames = ['React', 'ReactDOM'];
         const args = [React, ReactDOM];
@@ -97,13 +125,11 @@ class Doc extends React.Component {
 
     render() {
         const { name } = this.props;
+        const { md } = this.state;
 
         if (!name) {
             return <Redirect to="docs/introduction" noThrow />;
         }
-
-        // const html = marked(allDocs[name], { renderer: this.renderer });
-        const html = this.md2Html(allDocs[name]);
 
         return (
             <div className="doc">
@@ -112,7 +138,7 @@ class Doc extends React.Component {
                 </div>
                 <div
                     className="doc__content"
-                    dangerouslySetInnerHTML={{ __html: html }}
+                    dangerouslySetInnerHTML={{ __html: this.md2Html(md) }}
                 />
             </div>
         );

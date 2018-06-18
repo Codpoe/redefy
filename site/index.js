@@ -3,13 +3,6 @@ import { render } from 'react-dom';
 import { Router, Redirect } from '@reach/router';
 
 import Doc from './components/Doc';
-import docConfig from './doc.config.js';
-
-let allConfig = [];
-
-docConfig.forEach(({ list }) => {
-    allConfig.concat(list);
-});
 
 const App = () => (
     <div className="app">
