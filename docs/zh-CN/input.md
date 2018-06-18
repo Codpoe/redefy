@@ -195,3 +195,97 @@ render() {
 }
 ```
 :::
+
+## 多行输入 textarea
+
+### 基础用法
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: ''
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '200px' }}>
+            <Input
+                type="textarea"
+                value={inputValue}
+                placeholder="输入提示"                
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
+### minRows & maxRows
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: ''
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '200px' }}>
+            <Input
+                type="textarea"
+                autoResize={{ minRows: 2, maxRows: 4 }}
+                value={inputValue}
+                placeholder="输入提示"                
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
+### 禁止自适应
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: ''
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '200px' }}>
+            <Input
+                type="textarea"
+                autoResize={false}
+                value={inputValue}
+                placeholder="输入提示"                
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::

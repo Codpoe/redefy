@@ -132,7 +132,6 @@
  */
 .x-textarea {
     height: auto;
-    width: 360px;
 
     & .x-input__content {
         padding: 4px 10px;
