@@ -2,8 +2,8 @@
 
 :root {
     --default-height: 32px;
-    --large-height: 40px;
-    --small-height: 24px;
+    --large-height: 38px;
+    --small-height: 26px;
 }
 
 .my-button {

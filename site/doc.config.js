@@ -22,6 +22,10 @@ export default [
             {
                 title: 'Icon 图标',
                 doc: 'icon'
+            },
+            {
+                title: 'Input 输入框',
+                doc: 'input'
             }
         ]
     }

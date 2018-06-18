@@ -7,6 +7,8 @@ import { transform } from 'babel-standalone';
 import Xview from '../../src/';
 import docConfig from '../doc.config.js';
 
+import '../style/doc.css';
+
 class Doc extends React.Component {
     constructor(props) {
         super(props);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import './input.css';
 
@@ -47,9 +48,9 @@ export default class Input extends React.Component {
     }
 
     handleChange(ev) {
-        const { type, autoSize, onChange } = this.props;
+        const { onChange } = this.props;
         this.resize();
-        onChange && onChange({ value: ev.target.value }, ev);
+        onChange && onChange(ev.target.value, ev);
     }
 
     handleFocus(ev) {
@@ -106,7 +107,6 @@ export default class Input extends React.Component {
             boxSizing,
             borderSize,
             paddingSize,
-            fontSize,
             lineHeight,
             styleStr
         } = this.getNodeStyle(node);
@@ -169,7 +169,7 @@ export default class Input extends React.Component {
                 .map(name => (`${name}: ${style.getPropertyValue(name)}`))
                 .join(';')
                 + ';'
-        }
+        };
     }
 
     render() {
@@ -179,7 +179,6 @@ export default class Input extends React.Component {
             value,
             placeholder,
             size,
-            outline,
             round,
             prefix,
             suffix,
@@ -188,8 +187,6 @@ export default class Input extends React.Component {
             keepFocused,
             disabled,
             onChange,
-            onFocus,
-            onBlur,
             onMouseEnter,
             onMouseLeave,
             className,
@@ -201,21 +198,22 @@ export default class Input extends React.Component {
             textareaStyle
         } = this.state;
 
+        let classes = '';
+
         if (type === 'textarea') {
+            classes = classnames(className, 'x-input x-textarea', {
+                'x-input--focused': keepFocused || focused,
+                'x-input--disabled': disabled
+            });
+
             return (
                 <div
-                    className={`
-                        z-input z-textarea
-                        ${outline ? 'z-input--outline' : ''}
-                        ${(keepFocused || focused) ? 'z-input--focused' : ''}
-                        ${disabled ? 'z-input--disabled' : ''}
-                        ${className}
-                    `}
+                    className={classes}
                     style={style}
                 >
                     <textarea
-                        ref={el => {this.textareaRef = el}}    
-                        className="z-input__content"
+                        ref={el => {this.textareaRef = el;}}    
+                        className="x-input__content"
                         style={textareaStyle}
                         rows="2"
                         name={name}
@@ -229,34 +227,33 @@ export default class Input extends React.Component {
                         onBlur={this.handleBlur}
                     />
                 </div>
-            )
+            );
         }
+
+        classes = classnames(className, 'x-input', {
+            [`x-input--${size}`]: true,
+            'x-input--round': round,
+            'x-input--focused': keepFocused || focused,
+            'x-input--pre-str': typeof prefix === 'string',
+            'x-input--suf-str': typeof suffix === 'string',
+            'x-input--disabled': disabled
+        });
 
         return (
             <div
-                className={`
-                    z-input
-                    z-input--${size}
-                    ${outline ? 'z-input--outline' : ''}
-                    ${round ? 'z-input--round' : ''}
-                    ${(keepFocused || focused) ? 'z-input--focused' : ''}
-                    ${typeof prefix === 'string' ? 'z-input--pre-str' : ''}
-                    ${typeof prefix === 'string' ? 'z-input--suf-str' : ''}
-                    ${disabled ? 'z-input--disabled' : ''}
-                    ${className}
-                `}
+                className={classes}
                 style={style}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             >
                 {prefix &&
-                    <div className={`z-input__prefix
-                        ${this.isStrOrIcon(prefix) ? 'z-input__prefix--str' : ''}`}
+                    <div className={`x-input__prefix
+                        ${this.isStrOrIcon(prefix) ? 'x-input__prefix--str' : ''}`}
                     >
                         {prefix}
                     </div>}
                 <input
-                    className="z-input__content"
+                    className="x-input__content"
                     type={type}
                     name={name}
                     value={value}
@@ -269,13 +266,13 @@ export default class Input extends React.Component {
                     onBlur={this.handleBlur}
                 />
                 {suffix &&
-                    <div className={`z-input__suffix
-                        ${this.isStrOrIcon(suffix) ? 'z-input__suffix--str' : ''}`}
+                    <div className={`x-input__suffix
+                        ${this.isStrOrIcon(suffix) ? 'x-input__suffix--str' : ''}`}
                     >
                         {suffix}
                     </div>}
             </div>
-        )
+        );
     }
 }
 
@@ -285,7 +282,6 @@ Input.propTypes = {
     value: PropTypes.any,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large', 'small']),
-    outline: PropTypes.bool,
     round: PropTypes.bool,
     prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     suffix: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -299,16 +295,15 @@ Input.propTypes = {
     onBlur: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object
-}
+};
 
 Input.defaultProps = {
     type: 'text',
     size: 'normal',
-    outline: false,
     round: false,
     autoFocus: false,
     keepFocused: false,
     disabled: false,
     autoResize: true,
     readOnly: false
-}
+};
