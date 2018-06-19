@@ -8,11 +8,9 @@ import './checkbox.css';
 export default class Checkbox extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(ev) {
+    handleChange = (ev) => {
         const { value, checked, onChange } = this.props;
         onChange && onChange(!checked, value, ev);
     }

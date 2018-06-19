@@ -26,6 +26,10 @@ export default [
             {
                 title: 'Input 输入框',
                 doc: 'input'
+            },
+            {
+                title: 'Radio 单选框',
+                doc: 'radio'
             }
         ]
     }

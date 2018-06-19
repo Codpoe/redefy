@@ -4,13 +4,12 @@
     --radio-size: 16px;
 }
 
-.z-radio {
+.x-radio {
     display: inline-flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    padding-right: 24px;
     vertical-align: middle;
 
     & input {
@@ -22,85 +21,91 @@
     }
 }
 
-.z-radio__indicator {
+.x-radio__indicator {
     position: relative;
     width: var(--radio-size);
     height: var(--radio-size);
     margin-right: 8px;
-    border: 2px solid var(--border-dark);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
-    transition: all 0.24s;
+    transition: all 0.2s;
     overflow: hidden;
 
     &::before {
         content: '';
-        box-sizing: border-box;
         position: absolute;
-        top: -2px;
-        left: -2px;
-        width: var(--radio-size);
-        height: var(--radio-size);
-        border: 2px solid var(--border-dark);
+        top: 50%;
+        left: 50%;
+        margin: -5px -5px;
+        width: 10px;
+        height: 10px;
+        background: var(--primary-color);
         border-radius: 50%;
-        transition: all 0.24s;
+        transform: scale(0);
+        transition: all 0.2s;
     }
 }
 
-.z-radio__label {
+.x-radio__label {
     font-weight: normal;
     font-size: 14px;
     color: var(--primary-text-color);
     line-height: 1;
 }
 
-.z-radio:hover {
-    & .z-radio__indicator {
+.x-radio:hover {
+    & .x-radio__indicator {
         border-color: var(--primary-color);
     }
 
-    & .z-radio__indicator::before {
+    & .x-radio__indicator::before {
         border-color: var(--primary-color);
     }
 }
 
-.z-radio--checked {
-    & .z-radio__indicator {
+.x-radio--checked {
+    & .x-radio__indicator {
         border-color: var(--primary-color);
+        box-shadow: 0 0 8px var(--primary-color);
     }
-    & .z-radio__indicator::before {
-        border-color: var(--primary-color);
-        border-width: 8px;
-        transform: scale(0.5);
+    & .x-radio__indicator::before {
+        transform: scale(1);
     }
 }
 
-.z-radio--disabled {
+.x-radio--disabled {
     & input {
         cursor: not-allowed;
     }
-    & .z-radio__label {
+    & .x-radio__label {
         color: var(--grey-light);
     }
-    & .z-radio__indicator {
-        border-color: var(--grey-light);
+    & .x-radio__indicator {
+        border-color: var(--grey-lighter);
     }
 }
 
-.z-radio--disabled:hover {
-    & .z-radio__indicator {
-        border-color: var(--grey-light);
+.x-radio--disabled:hover {
+    & .x-radio__indicator {
+        border-color: var(--grey-lighter);
     }
 }
 
-.z-radio--disabled:hover .z-radio__indicator::before {
+.x-radio--disabled:hover .x-radio__indicator::before {
     border-color: var(--grey-light);
 }
 
-.z-radio--disabled.z-radio--checked {
-    & .z-radio__indicator {
-        border-color: var(--grey-light);
+.x-radio--disabled.x-radio--checked {
+    & .x-radio__indicator {
+        border-color: var(--grey-lighter);
+        background-color: var(--grey-lightest);
+        box-shadow: none;
     }
-    & .z-radio__indicator::before {
-        border-color: var(--grey-light);
+    & .x-radio__indicator::before {
+        background-color: var(--grey-light);
     }
+}
+
+.x-radio+.x-radio {
+    margin-left: 24px;
 }

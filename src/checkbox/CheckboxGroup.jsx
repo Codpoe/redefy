@@ -7,10 +7,9 @@ import './checkbox-group.css';
 export default class CheckboxGroup extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(checked, changedValue, ev) {
+    handleChange = (checked, changedValue, ev) => {
         const {
             value,
             onChange
@@ -60,9 +59,7 @@ export default class CheckboxGroup extends React.Component {
                 <Checkbox
                     {...checkbox.props}
                     checked={this.isPartOfArray(value, checkbox.props.value)}
-                    disabled={checkbox.props.disabled === undefined
-                        ? disabled
-                        : checkbox.props.disabled}
+                    disabled={checkbox.props.disabled || disabled}
                     onChange={this.handleChange}
                 >
                     {checkbox.props.children}

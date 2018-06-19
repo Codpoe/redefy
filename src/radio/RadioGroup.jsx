@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Radio from './Radio.jsx';
 import './radio-group.css';
@@ -12,7 +13,6 @@ export default class RadioGroup extends Component {
     render() {
         const {
             value,
-            vertical,
             disabled,
             onChange,
             children,
@@ -20,44 +20,42 @@ export default class RadioGroup extends Component {
             style
         } = this.props;
 
+        const classes = classnames(className, 'x-radio-group');
+
         const radios = React.Children.map(children, radio => {
             return (
                 <Radio
                     {...radio.props}
                     checked={radio.props.value === value}
-                    disabled={radio.props.disabled === undefined
-                        ? disabled
-                        : radio.props.disabled}
+                    disabled={radio.props.disabled || disabled}
                     onChange={onChange}
                 >
                     {radio.props.children}
                 </Radio>
-            )
-        })
+            );
+        });
 
         return (
             <span
-                className={`
-                    z-radio-group
-                    ${vertical ? 'z-radio-group--vertical' : ''}
-                    ${className}
-                `}
+                className={classes}
                 style={style}
             >
-                {radios}    
+                {radios}
             </span>
-        )
+        );
     }
 }
 
 RadioGroup.propTypes = {
     value: PropTypes.any,
-    vertical: PropTypes.bool,
     disabled: PropTypes.bool,
+    className: PropTypes.string,
+    style: PropTypes.object,
     onChange: PropTypes.func
-}
+};
 
 RadioGroup.defaultProps = {
-    vertical: false,
-    disabled: false
-}
+    disabled: false,
+    className: '',
+    style: {}
+};

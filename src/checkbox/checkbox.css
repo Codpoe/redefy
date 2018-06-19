@@ -38,8 +38,8 @@
     border: 1px solid var(--border-color);
     border-radius: 2px;
     overflow: hidden;
-    transition: background-color 0.1s, border-color 0.2s;
-    transition-delay: 0.2s, 0s;
+    transition: background-color 0.1s, border-color 0.2s, box-shadow 0.1s;
+    transition-delay: 0.2s, 0s, 0.2s;
 }
 
 .x-checkbox__line {
@@ -92,6 +92,7 @@
     & .x-checkbox__indicator {
         border-color: var(--primary-color);
         background: var(--primary-color);
+        box-shadow: 0 0 8px var(--primary-color);
         transition-delay: 0s;
     }
 }
@@ -132,6 +133,9 @@
 }
 
 .x-checkbox--disabled.x-checkbox--checked {
+    & .x-checkbox__indicator {
+        box-shadow: none;
+    }
     & .x-checkbox__line::before,
     & .x-checkbox__line::after {
         background-color: var(--grey-light);
