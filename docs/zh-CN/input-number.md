@@ -94,3 +94,34 @@ render() {
 }
 ```
 :::
+
+## 禁用状态
+
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: 1
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '100px' }}>
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                disabled
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::

@@ -35,14 +35,6 @@
     }
 }
 
-.x-input-number__icon-wrapper--minus {
-    border: 4px 0 0 4px;
-}
-
-.x-input-number__icon-wrapper--plus {
-    border: 0 4px 4px 0;
-}
-
 .x-input-number__icon-wrapper--disabled {
     background-color: var(--grey-lightest);
     color: var(--grey-light);
@@ -51,4 +43,11 @@
     &:hover {
         color: var(--grey-light);
     }
+}
+
+.x-input-number--disabled {
+    background-color: var(--grey-lightest);
+    border-color: var(--grey-lighter);
+    color: var(--grey-light);
+    cursor: not-allowed;
 }

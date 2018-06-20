@@ -50,19 +50,29 @@ export default class InputNumber extends React.Component {
     }
 
     handleMinus = () => {
-        const { value, step, min, onChange } = this.props;
+        const { value, step, min, disabled, onChange } = this.props;
+
+        if (disabled) {
+            return;
+        }
+
         onChange && onChange(Math.max(Number(value) - step, min));
     }
 
     handlePlus = () => {
-        const { value, step, max, onChange } = this.props;
+        const { value, step, max, disabled, onChange } = this.props;
+
+        if (disabled) {
+            return;
+        }
+
         onChange && onChange(Math.min(Number(value) + step, max));
     }
 
     renderMinus() {
-        const { value, min } = this.props;
+        const { value, min, disabled } = this.props;
         const classes = classnames('x-input-number__icon-wrapper', {
-            'x-input-number__icon-wrapper--disabled': value <= min
+            'x-input-number__icon-wrapper--disabled': disabled || value <= min
         });
         return (
             <div
@@ -75,9 +85,9 @@ export default class InputNumber extends React.Component {
     }
 
     renderPlus() {
-        const { value, max } = this.props;
+        const { value, max, disabled } = this.props;
         const classes = classnames('x-input-number__icon-wrapper', {
-            'x-input-number__icon-wrapper--disabled': value >= max
+            'x-input-number__icon-wrapper--disabled': disabled || value >= max
         });
         return (
             <div

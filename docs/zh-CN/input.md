@@ -76,7 +76,7 @@ render() {
 constructor(props) {
     super(props);
     this.state = {
-        inputValue: ''
+        inputValue: '内容'
     };
 }
 
