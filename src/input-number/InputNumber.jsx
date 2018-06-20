@@ -50,9 +50,9 @@ export default class InputNumber extends React.Component {
     }
 
     handleMinus = () => {
-        const { value, step, min, disabled, onChange } = this.props;
+        const { value, step, min, disabled, readOnly, onChange } = this.props;
 
-        if (disabled) {
+        if (disabled || readOnly) {
             return;
         }
 
@@ -60,9 +60,9 @@ export default class InputNumber extends React.Component {
     }
 
     handlePlus = () => {
-        const { value, step, max, disabled, onChange } = this.props;
+        const { value, step, max, disabled, readOnly, onChange } = this.props;
 
-        if (disabled) {
+        if (disabled || readOnly) {
             return;
         }
 
@@ -108,6 +108,7 @@ export default class InputNumber extends React.Component {
             size,
             disabled,
             readOnly,
+            editable,
             autoFocus,
             className,
             style
@@ -123,7 +124,7 @@ export default class InputNumber extends React.Component {
                     value={value}
                     size={size}
                     disabled={disabled}
-                    readOnly={readOnly}
+                    readOnly={readOnly || !editable}
                     prefix={this.renderMinus()}
                     suffix={this.renderPlus()}
                     onChange={this.handleChange}
@@ -142,6 +143,7 @@ InputNumber.propTypes = {
     size: PropTypes.oneOf(['small', 'normal', 'large']),
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
+    editable: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
     onChange: PropTypes.func,
@@ -156,6 +158,7 @@ InputNumber.defaultProps = {
     size: 'normal',
     disabled: false,
     readOnly: false,
+    editable: true,
     className: '',
     style: {}
 };

@@ -95,6 +95,48 @@ render() {
 ```
 :::
 
+## 尺寸
+
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: ''
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '100px' }}>
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                size="large"
+                onChange={this.handleChange}
+            />
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                onChange={this.handleChange}
+            />
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                size="small"
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
 ## 禁用状态
 
 :::demo
@@ -118,6 +160,68 @@ render() {
                 value={inputValue}
                 placeholder="输入提示"
                 disabled
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
+## 只读 readOnly
+
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: '4'
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '100px' }}>
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                readOnly
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
+## 可编辑 editable
+
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: '4'
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '100px' }}>
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                editable={false}
                 onChange={this.handleChange}
             />
         </div>
