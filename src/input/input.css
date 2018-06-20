@@ -28,6 +28,7 @@
         position: relative;
         outline: none;
         border: none;
+        min-width: 0;
         flex: 1;
         padding: 0 10px;
         background: transparent;
@@ -43,6 +44,10 @@
 
     & .x-input__content:-webkit-autofill {
         transition: background-color 5000s ease-in;
+    }
+
+    & .x-input__content:-moz-ui-invalid {
+        box-shadow: none; 
     }
 }
 

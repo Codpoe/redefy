@@ -264,6 +264,7 @@ export default class Input extends React.Component {
                     onChange={this.handleChange}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
+                    style={{ width: 'auto' }}
                 />
                 {suffix &&
                     <div className={`x-input__suffix

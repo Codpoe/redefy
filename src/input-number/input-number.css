@@ -1,0 +1,54 @@
+@import '../common/color.css';
+
+.x-input-number {
+    min-width: 82px;
+
+    & .x-input {
+        overflow: hidden;
+    }
+
+    & .x-input__content {
+        padding: 0;
+        text-align: center;
+        -moz-appearance: textfield;
+    }
+
+    & .x-input__content::-webkit-outet-spin-button,
+    & .x-input__content::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.x-input-number__icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    color: var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.x-input-number__icon-wrapper--minus {
+    border: 4px 0 0 4px;
+}
+
+.x-input-number__icon-wrapper--plus {
+    border: 0 4px 4px 0;
+}
+
+.x-input-number__icon-wrapper--disabled {
+    background-color: var(--grey-lightest);
+    color: var(--grey-light);
+    cursor: not-allowed;
+
+    &:hover {
+        color: var(--grey-light);
+    }
+}

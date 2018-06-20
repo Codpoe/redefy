@@ -28,6 +28,10 @@ export default [
                 doc: 'input'
             },
             {
+                title: 'InputNumber 数字输入框',
+                doc: 'input-number'
+            },
+            {
                 title: 'Radio 单选框',
                 doc: 'radio'
             }
