@@ -106,6 +106,7 @@ export default class InputNumber extends React.Component {
             min,
             max,
             size,
+            round,
             disabled,
             readOnly,
             editable,
@@ -123,6 +124,7 @@ export default class InputNumber extends React.Component {
                 <Input
                     value={value}
                     size={size}
+                    round={round}
                     disabled={disabled}
                     readOnly={readOnly || !editable}
                     prefix={this.renderMinus()}
@@ -141,6 +143,7 @@ InputNumber.propTypes = {
     min: PropTypes.number,
     max: PropTypes.number,
     size: PropTypes.oneOf(['small', 'normal', 'large']),
+    round: PropTypes.bool,
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     editable: PropTypes.bool,
@@ -156,6 +159,7 @@ InputNumber.defaultProps = {
     min: -Infinity,
     max: Infinity,
     size: 'normal',
+    round: false,
     disabled: false,
     readOnly: false,
     editable: true,

@@ -137,6 +137,39 @@ render() {
 ```
 :::
 
+## 两边圆形
+
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: 6
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+    const { inputValue } = this.state;
+    return (
+        <div style={{ width: '100px' }}>
+            <InputNumber
+                value={inputValue}
+                placeholder="输入提示"
+                round
+                min={1}
+                max={10}
+                onChange={this.handleChange}
+            />
+        </div>
+    )
+}
+```
+:::
+
 ## 禁用状态
 
 :::demo

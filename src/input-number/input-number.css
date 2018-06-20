@@ -4,6 +4,7 @@
     min-width: 82px;
 
     & .x-input {
+        padding: 0;
         overflow: hidden;
     }
 
