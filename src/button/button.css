@@ -1,3 +1,5 @@
+@import '../common/color.css';
+
 :root {
     --default-height: 32px;
     --large-height: 38px;
@@ -40,14 +42,14 @@
     background: var(--primary-color);
     color: white;
     &:hover {
-        border-color: color(var(--primary-color) tint(15%));
-        background: color(var(--primary-color) tint(15%));
+        border-color: color-mod(var(--primary-color) tint(15%));
+        background: color-mod(var(--primary-color) tint(15%));
     }
 }
 
 .my-button--primary:active {
-    border-color: color(var(--primary-color) shade(10%));
-    background: color(var(--primary-color) shade(10%));
+    border-color: color-mod(var(--primary-color) shade(10%));
+    background: color-mod(var(--primary-color) shade(10%));
 }
 
 .my-button--success {
@@ -55,14 +57,14 @@
     background: var(--success-color);
     color: white;
     &:hover {
-        border-color: color(var(--success-light) tint(15%));
-        background: color(var(--success-light) tint(15%));
+        border-color: color-mod(var(--success-light) tint(15%));
+        background: color-mod(var(--success-light) tint(15%));
     }
 }
 
 .my-button--success:active {
-    border-color: color(var(--success-light) shade(10%));
-    background: color(var(--success-light) shade(10%));
+    border-color: color-mod(var(--success-light) shade(10%));
+    background: color-mod(var(--success-light) shade(10%));
 }
 
 .my-button--warning {
@@ -70,14 +72,14 @@
     background: var(--warning-color);
     color: white;
     &:hover {
-        border-color: color(var(--warning-light) tint(15%));
-        background: color(var(--warning-light) tint(15%));
+        border-color: color-mod(var(--warning-light) tint(15%));
+        background: color-mod(var(--warning-light) tint(15%));
     }
 }
 
 .my-button--warning:active {
-    border-color: color(var(--warning-light) shade(10%));
-    background: color(var(--warning-light) shade(10%));
+    border-color: color-mod(var(--warning-light) shade(10%));
+    background: color-mod(var(--warning-light) shade(10%));
 }
 
 .my-button--error {
@@ -85,14 +87,14 @@
     background: var(--error-color);
     color: white;
     &:hover {
-        border-color: color(var(--error-light) tint(15%));
-        background: color(var(--error-light) tint(15%));
+        border-color: color-mod(var(--error-light) tint(15%));
+        background: color-mod(var(--error-light) tint(15%));
     }
 }
 
 .my-button--error:active {
-    border-color: color(var(--error-dark) shade(10%));
-    background: color(var(--error-dark) shade(10%));
+    border-color: color-mod(var(--error-dark) shade(10%));
+    background: color-mod(var(--error-dark) shade(10%));
 }
 
 /*
@@ -114,48 +116,48 @@
     border-color: var(--primary-color);
     color: var(--primary-color);
     &:hover {
-        background: color(var(--primary-color) alpha(10%));
+        background: color-mod(var(--primary-color) alpha(10%));
     }
 }
 
 .my-button--primary.my-button--hollow:active {
-    background: color(var(--primary-dark) alpha(20%));
+    background: color-mod(var(--primary-dark) alpha(20%));
 }
 
 .my-button--success.my-button--hollow {
     border-color: var(--success-color);
     color: var(--success-color);
     &:hover {
-        background: color(var(--success-color) alpha(10%));
+        background: color-mod(var(--success-color) alpha(10%));
     }
 }
 
 .my-button--success.my-button--hollow:active {
-    background: color(var(--success-color) alpha(20%));
+    background: color-mod(var(--success-color) alpha(20%));
 }
 
 .my-button--warning.my-button--hollow {
     border-color: var(--warning-color);
     color: var(--warning-color);
     &:hover {
-        background: color(var(--warning-color) alpha(10%));
+        background: color-mod(var(--warning-color) alpha(10%));
     }
 }
 
 .my-button--warning.my-button--hollow:active {
-    background: color(var(--warning-color) alpha(20%));
+    background: color-mod(var(--warning-color) alpha(20%));
 }
 
 .my-button--error.my-button--hollow {
     border-color: var(--error-color);
     color: var(--error-color);
     &:hover {
-        background: color(var(--error-color) alpha(10%));
+        background: color-mod(var(--error-color) alpha(10%));
     }
 }
 
 .my-button--error.my-button--hollow:active {
-    background: color(var(--error-color) alpha(20%));
+    background: color-mod(var(--error-color) alpha(20%));
 }
 
 /*
@@ -167,56 +169,56 @@
     &:hover {
         border-color: transparent;
         background: transparent;
-        color: color(var(--primary-color) tint(15%));
+        color: color-mod(var(--primary-color) tint(15%));
     }
 }
 
 .my-button--text:active {
-    color: color(var(--primary-color) shade(10%));
+    color: color-mod(var(--primary-color) shade(10%));
 }
 
 .my-button--primary.my-button--text {
     color: var(--primary-color);
     &:hover {
-        color: color(var(--primary-color) tint(15%));
+        color: color-mod(var(--primary-color) tint(15%));
     }
 }
 
 .my-button--primary.my-button--text:active {
-    color: color(var(--primary-color) shade(10%));
+    color: color-mod(var(--primary-color) shade(10%));
 }
 
 .my-button--success.my-button--text {
     color: var(--success-color);
     &:hover {
-        color: color(var(--success-color) tint(15%));
+        color: color-mod(var(--success-color) tint(15%));
     }
 }
 
 .my-button--success.my-button--text:active {
-    color: color(var(--success-color) shade(10%));
+    color: color-mod(var(--success-color) shade(10%));
 }
 
 .my-button--warning.my-button--text {
     color: var(--warning-color);
     &:hover {
-        color: color(var(--warning-color) tint(15%));
+        color: color-mod(var(--warning-color) tint(15%));
     }
 }
 
 .my-button--warning.my-button--text:active {
-    color: color(var(--warning-color) shade(10%));
+    color: color-mod(var(--warning-color) shade(10%));
 }
 
 .my-button--error.my-button--text {
     color: var(--error-color);
     &:hover {
-        color: color(var(--error-color) tint(15%));
+        color: color-mod(var(--error-color) tint(15%));
     }
 }
 
 .my-button--error.my-button--text:active {
-    color: color(var(--error-color) shade(10%));
+    color: color-mod(var(--error-color) shade(10%));
 }
 
 /*

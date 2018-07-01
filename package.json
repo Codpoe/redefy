@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "webpack-dev-server --config build/webpack.dev.js --inline --hot",
+    "build": "webpack --progress --hide-modules"
   },
   "keywords": [
     "react",

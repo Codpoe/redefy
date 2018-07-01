@@ -1,3 +1,9 @@
+:::import
+```js
+import Button from '../../src/button/';
+```
+:::
+
 # Button 按钮
 
 按钮用于传递用户触摸时会触发的操作
