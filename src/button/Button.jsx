@@ -40,16 +40,16 @@ export default class Button extends Component {
 
         const Node = href ? 'a' : 'button';
 
-        const classes = classnames(className, 'my-button', {
-            [`my-button--${type}`]: true,
-            [`my-button--${size}`]: true,
-            'my-button--text': text,
-            'my-button--hollow': hollow,
-            'my-button--round': round,
-            'my-button--circle': circle,
-            'my-button--block': block,
-            'my-button--disabled': disabled,
-            'my-button--loading': loading
+        const classes = classnames(className, 'x-button', {
+            [`x-button--${type}`]: true,
+            [`x-button--${size}`]: true,
+            'x-button--text': text,
+            'x-button--hollow': hollow,
+            'x-button--round': round,
+            'x-button--circle': circle,
+            'x-button--block': block,
+            'x-button--disabled': disabled,
+            'x-button--loading': loading
         });
 
         return (

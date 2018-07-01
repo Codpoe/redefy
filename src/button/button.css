@@ -6,7 +6,7 @@
     --small-height: 26px;
 }
 
-.my-button {
+.x-button {
     outline: none;
     border: none;
     display: inline-flex;
@@ -33,11 +33,11 @@
     }
 }
 
-.my-button:active {
+.x-button:active {
     background: var(--border-lighter);
 }
 
-.my-button--primary {
+.x-button--primary {
     border-color: var(--primary-color);
     background: var(--primary-color);
     color: white;
@@ -47,12 +47,12 @@
     }
 }
 
-.my-button--primary:active {
+.x-button--primary:active {
     border-color: color-mod(var(--primary-color) shade(10%));
     background: color-mod(var(--primary-color) shade(10%));
 }
 
-.my-button--success {
+.x-button--success {
     border-color: var(--success-color);
     background: var(--success-color);
     color: white;
@@ -62,12 +62,12 @@
     }
 }
 
-.my-button--success:active {
+.x-button--success:active {
     border-color: color-mod(var(--success-light) shade(10%));
     background: color-mod(var(--success-light) shade(10%));
 }
 
-.my-button--warning {
+.x-button--warning {
     border-color: var(--warning-color);
     background: var(--warning-color);
     color: white;
@@ -77,12 +77,12 @@
     }
 }
 
-.my-button--warning:active {
+.x-button--warning:active {
     border-color: color-mod(var(--warning-light) shade(10%));
     background: color-mod(var(--warning-light) shade(10%));
 }
 
-.my-button--error {
+.x-button--error {
     border-color: var(--error-color);
     background: var(--error-color);
     color: white;
@@ -92,7 +92,7 @@
     }
 }
 
-.my-button--error:active {
+.x-button--error:active {
     border-color: color-mod(var(--error-dark) shade(10%));
     background: color-mod(var(--error-dark) shade(10%));
 }
@@ -100,7 +100,7 @@
 /*
  * hollow
  */
-.my-button--hollow {
+.x-button--hollow {
     border-color: var(--border-color);
     background: transparent;
     &:hover {
@@ -108,11 +108,11 @@
     }
 }
 
-.my-button--hollow:active {
+.x-button--hollow:active {
     background: var(--border-lighter);
 }
 
-.my-button--primary.my-button--hollow {
+.x-button--primary.x-button--hollow {
     border-color: var(--primary-color);
     color: var(--primary-color);
     &:hover {
@@ -120,11 +120,11 @@
     }
 }
 
-.my-button--primary.my-button--hollow:active {
+.x-button--primary.x-button--hollow:active {
     background: color-mod(var(--primary-dark) alpha(20%));
 }
 
-.my-button--success.my-button--hollow {
+.x-button--success.x-button--hollow {
     border-color: var(--success-color);
     color: var(--success-color);
     &:hover {
@@ -132,11 +132,11 @@
     }
 }
 
-.my-button--success.my-button--hollow:active {
+.x-button--success.x-button--hollow:active {
     background: color-mod(var(--success-color) alpha(20%));
 }
 
-.my-button--warning.my-button--hollow {
+.x-button--warning.x-button--hollow {
     border-color: var(--warning-color);
     color: var(--warning-color);
     &:hover {
@@ -144,11 +144,11 @@
     }
 }
 
-.my-button--warning.my-button--hollow:active {
+.x-button--warning.x-button--hollow:active {
     background: color-mod(var(--warning-color) alpha(20%));
 }
 
-.my-button--error.my-button--hollow {
+.x-button--error.x-button--hollow {
     border-color: var(--error-color);
     color: var(--error-color);
     &:hover {
@@ -156,14 +156,14 @@
     }
 }
 
-.my-button--error.my-button--hollow:active {
+.x-button--error.x-button--hollow:active {
     background: color-mod(var(--error-color) alpha(20%));
 }
 
 /*
  * text
  */
-.my-button--text {
+.x-button--text {
     border-color: transparent;
     background: transparent;
     &:hover {
@@ -173,81 +173,81 @@
     }
 }
 
-.my-button--text:active {
+.x-button--text:active {
     color: color-mod(var(--primary-color) shade(10%));
 }
 
-.my-button--primary.my-button--text {
+.x-button--primary.x-button--text {
     color: var(--primary-color);
     &:hover {
         color: color-mod(var(--primary-color) tint(15%));
     }
 }
 
-.my-button--primary.my-button--text:active {
+.x-button--primary.x-button--text:active {
     color: color-mod(var(--primary-color) shade(10%));
 }
 
-.my-button--success.my-button--text {
+.x-button--success.x-button--text {
     color: var(--success-color);
     &:hover {
         color: color-mod(var(--success-color) tint(15%));
     }
 }
 
-.my-button--success.my-button--text:active {
+.x-button--success.x-button--text:active {
     color: color-mod(var(--success-color) shade(10%));
 }
 
-.my-button--warning.my-button--text {
+.x-button--warning.x-button--text {
     color: var(--warning-color);
     &:hover {
         color: color-mod(var(--warning-color) tint(15%));
     }
 }
 
-.my-button--warning.my-button--text:active {
+.x-button--warning.x-button--text:active {
     color: color-mod(var(--warning-color) shade(10%));
 }
 
-.my-button--error.my-button--text {
+.x-button--error.x-button--text {
     color: var(--error-color);
     &:hover {
         color: color-mod(var(--error-color) tint(15%));
     }
 }
 
-.my-button--error.my-button--text:active {
+.x-button--error.x-button--text:active {
     color: color-mod(var(--error-color) shade(10%));
 }
 
 /*
  * circle
  */
-.my-button--circle {
+.x-button--circle {
     width: var(--default-height);
     border-radius: 50%;
     padding: 0;
 }
 
-.my-button--circle.my-button--large {
+.x-button--circle.x-button--large {
     width: var(--large-height);
 }
 
-.my-button--circle.my-button--small {
+.x-button--circle.x-button--small {
     width: var(--small-height);
 }
 
 /*
  * size
  */
-.my-button--large {
+.x-button--large {
     height: var(--large-height);
     font-size: 14px;
     padding: 8px 16px;
 }
 
-.my-button--small {
+.x-button--small {
     height: var(--small-height);
     padding: 2px 10px;
     font-size: 12px;
@@ -256,7 +256,7 @@
 /*
  * disabled
  */
-.my-button--disabled {
+.x-button--disabled {
     background: var(--grey-lightest);
     border-color: var(--grey-lighter);
     color: var(--grey-light);
@@ -267,7 +267,7 @@
     }
 }
 
-.my-button--hollow.my-button--disabled {
+.x-button--hollow.x-button--disabled {
     background: transparent;
     border-color: var(--grey-lighter);
     color: var(--grey-light);
@@ -278,7 +278,7 @@
     }
 }
 
-.my-button--text.my-button--disabled {
+.x-button--text.x-button--disabled {
     background: transparent;
     border-color: transparent;
     color: var(--grey-light);
@@ -291,38 +291,38 @@
 /*
  * round
  */
-.my-button--round {
+.x-button--round {
     border-radius: calc(var(--default-height) / 2);
 }
 
-.my-button--round.my-button--large {
+.x-button--round.x-button--large {
     border-radius: calc(var(--large-height) / 2);
 }
 
-.my-button--round.my-button--small {
+.x-button--round.x-button--small {
     border-radius: calc(var(--small-height) / 2);
 }
 
 /*
  * block
  */
-.my-button--block {
+.x-button--block {
     width: 100%;
 }
 
 /*
  * group
  */
-.my-button-group {
+.x-button-group {
     display: inline-flex;
 
-    & .my-button:nth-of-type(n+2) {
+    & .x-button:nth-of-type(n+2) {
         margin-left: -1px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
 
-    & .my-button:not(:last-of-type) {
+    & .x-button:not(:last-of-type) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
