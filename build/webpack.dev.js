@@ -42,7 +42,7 @@ module.exports = {
             },
             {
                 test: /\.md$/,
-                loader: 'raw-loader'
+                loader: ['babel-loader', '@codpoe/react-markdown-loader']
             }
         ]
     },

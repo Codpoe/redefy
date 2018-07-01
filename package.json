@@ -51,7 +51,8 @@
     "raw-loader": "^0.5.1",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.5.0",
-    "marked": "^0.4.0"
+    "marked": "^0.4.0",
+    "@codpoe/react-markdown-loader": "^0.0.1"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/jest/config.js",

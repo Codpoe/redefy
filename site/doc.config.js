@@ -34,6 +34,10 @@ export default [
             {
                 title: 'Radio 单选框',
                 doc: 'radio'
+            },
+            {
+                title: 'Test 测试',
+                doc: 'test'
             }
         ]
     }
