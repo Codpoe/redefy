@@ -1,3 +1,7 @@
 .doc {
     padding: 32px;
 }
+
+.md__demo code span {
+    display: inline;
+}
