@@ -24,10 +24,10 @@
 
     --border-color: #C5D9E8;
     --border-dark: #A3C0D8;
-    --border-split: color(var(--border-color) tint(20%));
-    --border-light: color(var(--border-color) tint(30%));
-    --border-lighter: color(var(--border-color) tint(50%));
-    --border-lightest: color(var(--border-color) tint(80%));
+    --border-split: color-mod(var(--border-color) tint(20%));
+    --border-light: color-mod(var(--border-color) tint(30%));
+    --border-lighter: color-mod(var(--border-color) tint(50%));
+    --border-lightest: color-mod(var(--border-color) tint(80%));
 
     --background-blue: #ECF5FD;
     --background-blue-light: #F2F8FE;

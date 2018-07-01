@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Link, redirectTo } from '@reach/router';
 
-import Xview from '../../src/';
 import docConfig from '../doc.config.js';
 
+import '../../src/common/common.css';
 import '../style/doc.css';
 
 class Docs extends React.Component {

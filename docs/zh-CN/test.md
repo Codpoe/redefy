@@ -1,18 +1,24 @@
 :::react import
 ```js
-import { Checkbox } from '../../src/';
+import Checkbox from '../../src/checkbox/';
 ```
 :::
 
 # Test
 
-:::react demo
+:::demo
 ```jsx
+if (a) {
+    a = 1;
+    if (b) {
+        return 1;
+    }
+}
 render() {
     console.log(Checkbox);
     return (
         <div>
-            <Checkbox checked>Xview</Checkbox>
+            <Checkbox checked={true}>Xview</Checkbox>
         </div>
     );
 }

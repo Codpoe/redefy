@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import '../common/color.css';
 import './checkbox.css';
 
 export default class Checkbox extends React.Component {

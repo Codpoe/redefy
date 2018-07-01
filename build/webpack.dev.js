@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
     entry: {
         site: './site/index.js'
     },
@@ -21,24 +21,22 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader'
-                        },
-                        {
-                            loader: 'postcss-loader'
-                        }
-                    ]
-                })
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
-                test: /\.(eot|svg|ttf|woff)$/,
+                test: /\.(jpg|jpeg|png)$/,
                 loader: 'url-loader',
                 options: {
                     limit: 8192
                 }
+            },
+            {
+                test: /\.(eot|svg|ttf|woff)$/,
+                loader: 'file-loader',
             },
             {
                 test: /\.md$/,
@@ -52,9 +50,6 @@ module.exports = {
             template: 'site/index.tpl',
             filename: 'index.html',
             inject: true
-        }),
-        new ExtractTextPlugin({
-            filename: '[name].bundle.css'
         })
     ],
     devServer: {
