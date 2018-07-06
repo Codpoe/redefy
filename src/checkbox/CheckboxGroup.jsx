@@ -69,7 +69,7 @@ export default class CheckboxGroup extends React.Component {
 
         return (
             <span
-                className={`z-checkbox-group ${className}`}
+                className={`x-checkbox-group ${className}`}
                 style={style}
             >
                 {checkboxs}

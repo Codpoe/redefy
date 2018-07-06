@@ -1,5 +1,10 @@
-# Radio 单选框
+:::import
+```js
+import Radio from '../../src/radio/';
+```
+:::
 
+# Radio 单选框
 ## 基础用法
 
 :::demo

@@ -1,5 +1,10 @@
-# Checkbox 多选框
+:::import
+```js
+import Checkbox from '../../src/checkbox/';
+```
+:::
 
+# Checkbox 多选框
 ## 基础用法
 :::demo
 ```js

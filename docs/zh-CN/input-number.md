@@ -1,5 +1,10 @@
-# InputNumber
+:::import
+```js
+import InputNumber from '../../src/input-number/';
+```
+:::
 
+# InputNumber
 ## 基础用法
 
 :::demo

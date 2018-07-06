@@ -1,5 +1,11 @@
-# Input 输入框
+:::import
+```js
+import Input from '../../src/input/';
+import Button from '../../src/button/';
+```
+:::
 
+# Input 输入框
 ## 基础用法
 
 :::demo
