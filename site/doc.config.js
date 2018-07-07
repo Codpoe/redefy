@@ -36,6 +36,10 @@ export default [
                 doc: 'radio'
             },
             {
+                title: 'Switch 开关',
+                doc: 'switch'
+            },
+            {
                 title: 'Test 测试',
                 doc: 'test'
             }

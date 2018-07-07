@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import './switch.css';
 
@@ -18,33 +19,39 @@ export default class Switch extends React.Component {
         const {
             checked,
             disabled,
-            onChange,
-            children
+            className,
+            style
         } = this.props;
 
+        const classes = classnames(className, 'x-switch', {
+            'x-switch--switched': checked,
+            'x-switch--disabled': disabled
+        });
+
         return (
-            <span className={`z-switch
-                ${checked ? 'z-switch--switched' : ''}
-                ${disabled ? 'z-switch--disabled': ''}`}
-            >
-                <span className="z-switch__indicator"></span>
+            <span className={classes} style={style}>
+                {/* <span className="x-switch__indicator"></span> */}
                 <input
                     type="checkbox"
                     checked={checked}
                     disabled={disabled}
                     onChange={this.handleChange} />
             </span>
-        )
+        );
     }
 }
 
 Switch.propTypes = {
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    className: PropTypes.string,
+    style: PropTypes.object,
     onChange: PropTypes.func
-}
+};
 
 Switch.defaultProps = {
     checked: false,
-    disabled: false
-}
+    disabled: false,
+    className: '',
+    style: {}
+};
