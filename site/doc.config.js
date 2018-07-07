@@ -32,6 +32,10 @@ export default [
                 doc: 'input-number'
             },
             {
+                title: 'Pop 弹弹弹',
+                doc: 'pop'
+            },
+            {
                 title: 'Radio 单选框',
                 doc: 'radio'
             },

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Popup from './Popup.jsx';
+import Pop from './Pop.jsx';
 
 export default class PopupSelf extends React.Component {
     constructor(props) {
@@ -26,12 +26,12 @@ export default class PopupSelf extends React.Component {
         } = this.state;
 
         return (
-            <Popup {...this.props}
+            <Pop {...this.props}
                 active={active}
                 onChange={this.handleChange}
             >
-            </Popup>
-        )
+            </Pop>
+        );
     }
 }
 
@@ -51,5 +51,5 @@ PopupSelf.defaultProps = {
     trigger: 'hover',
     hideOnClick: false,
     position: 'bottom-left'
-}
+};
 

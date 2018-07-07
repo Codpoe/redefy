@@ -1,69 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import classnames from 'classnames';
 
-import './popup.css';
+import './pop.css';
 
-export default class Popup extends React.Component {
+export default class Pop extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             active: false
         };
-
-        this.handleOuterClick = this.handleOuterClick.bind(this);
-        this.handleContentClick = this.handleContentClick.bind(this);
-        this.handleMouseOver = this.handleMouseOver.bind(this);
-        this.handleMouseOut = this.handleMouseOut.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.bodyClickListener = this.bodyClickListener.bind(this);
     }
 
     getChildContext() {
         return {
-            popup: this
+            pop: this
         };
     }
 
-    handleOuterClick(ev) {
+    static getDerivedStateFromProps({ active, controlled }, { active: _active }) {
+        if (controlled) {
+            return { active };
+        }
+        return null;
+    }
+
+    handleOuterClick = () => {
         const { trigger, disabled, onChange } = this.props;
         const { active } = this.state;
 
-        if (disabled) {
+        if (disabled || trigger !== 'click' || active) {
             return;
         }
 
-        if (trigger !== 'click') {
-            return;
-        }
-
-        if (active) {
-            return;
-        }
-
-        this.setState({
-            active: true
-        });
-        onChange && onChange({ active: true });
+        this.updateActive(true);
         document.addEventListener('click', this.bodyClickListener);
     }
 
-    handleContentClick(ev) {
+    handleContentClick = (ev) => {
         ev.stopPropagation();
         ev.nativeEvent.stopImmediatePropagation();
     }
 
-    handleMouseOver(ev) {
+    handleMouseOver = () => {
         const { trigger, onChange } = this.props;
         const { active } = this.state;
         
-        if (trigger !== 'hover') {
-            return;
-        }
-
-        if (active) {
+        if (trigger !== 'hover' || active) {
             return;
         }
 
@@ -73,15 +58,11 @@ export default class Popup extends React.Component {
         onChange && onChange({ active: true });
     }
 
-    handleMouseOut(ev) {
+    handleMouseOut = () => {
         const { trigger, onChange } = this.props;
         const { active } = this.state;
         
-        if (trigger !== 'hover') {
-            return;
-        }
-
-        if (!active) {
+        if (trigger !== 'hover' || !active) {
             return;
         }
 
@@ -91,14 +72,10 @@ export default class Popup extends React.Component {
         onChange && onChange({ active: false });
     }
 
-    handleFocus(ev) {
+    handleFocus = () => {
         const { trigger, disabled, onChange } = this.props;
         
-        if (disabled) {
-            return;
-        }
-
-        if (trigger !== 'focus') {
+        if (disabled || trigger !== 'focus') {
             return;
         }
 
@@ -108,7 +85,7 @@ export default class Popup extends React.Component {
         onChange && onChange({ active: true });
     }
 
-    handleBlur(ev) {
+    handleBlur = () => {
         const { trigger, onChange } = this.props;
 
         if (trigger !== 'focus') {
@@ -121,7 +98,7 @@ export default class Popup extends React.Component {
         onChange && onChange({ active: false });
     }
 
-    bodyClickListener(ev) {
+    bodyClickListener = (ev) => {
         const { onChange } = this.props;
 
         this.setState({
@@ -131,7 +108,7 @@ export default class Popup extends React.Component {
         document.removeEventListener('click', this.bodyClickListener);
     }
 
-    hide() {
+    hide = () => {
         const { hideOnClick, onChange } = this.props;
 
         this.setState({
@@ -141,14 +118,23 @@ export default class Popup extends React.Component {
         document.removeEventListener('click', this.bodyClickListener);
     }
 
+    updateActive(active) {
+        const { controlled, onChange } = this.props;
+        if (controlled) {
+            onChange && onChange(active);
+        } else {
+            this.setState({ active });
+        }
+    }
+
     render() {
         const {
             position,
-            trigger,
-            hideOnClick,
             content,
-            popupWidth,
-            popupHeight,
+            popHeight,
+            controlled,
+            className,
+            style,
             children
         } = this.props;
 
@@ -156,16 +142,19 @@ export default class Popup extends React.Component {
             active
         } = this.state;
 
+        const classes = classnames(className, 'x-pop', {
+            'x-pop--active': active
+        });
+
         return (
             <div
-                className={`my-popup
-                    ${active ? 'my-popup--active' : ''}
-                `}
+                className={classes}
+                style={style}
                 onMouseOver={this.handleMouseOver}
                 onMouseLeave={this.handleMouseOut}
             >
                 <span
-                    className="my-popup__outer"
+                    className="x-pop__outer"
                     onClick={this.handleOuterClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
@@ -179,16 +168,13 @@ export default class Popup extends React.Component {
                     timeout={{ exit: 400 }}
                 >
                     <div
-                        className={`my-popup__wrapper
-                        my-popup__wrapper--${position}`}
+                        className={`x-pop__wrapper x-pop__wrapper--${position}`}
                         onClick={this.handleContentClick}
-                        style={{ minWidth: popupWidth }}
                     >
                         <div
-                            className="my-popup__content"
+                            className="x-pop__content"
                             style={{
-                                minWidth: popupWidth,
-                                maxHeight: popupHeight
+                                maxHeight: `${popHeight}px`
                             }}
                         >
                             {content}
@@ -196,15 +182,15 @@ export default class Popup extends React.Component {
                     </div>
                 </CSSTransition>    
             </div>
-        )
+        );
     }
 }
 
-Popup.childContextTypes = {
-    popup: PropTypes.any
+Pop.childContextTypes = {
+    pop: PropTypes.any
 };
 
-Popup.propTypes = {
+Pop.propTypes = {
     content: PropTypes.any,
     trigger: PropTypes.oneOf(['hover', 'click', 'focus']),
     hideOnClick: PropTypes.bool,
@@ -214,14 +200,21 @@ Popup.propTypes = {
         'left-top', 'left-center', 'left-bottom',
         'right-top', 'right-center', 'right-bottom'
     ]),
-    popupWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    popHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     disabled: PropTypes.bool,
+    controlled: PropTypes.bool,
+    className: PropTypes.string,
+    style: PropTypes.object,
     onChange: PropTypes.func
 };
 
-Popup.defaultProps = {
+Pop.defaultProps = {
     trigger: 'hover',
     hideOnClick: false,
     position: 'bottom-left',
-    disabled: false
-}
+    popHeight: '200',
+    disabled: false,
+    controlled: true,
+    className: '',
+    style: {}
+};
