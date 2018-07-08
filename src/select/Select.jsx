@@ -1,47 +1,74 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Input from '../input/';
-import Popup from '../popup/';
-import Menu from '../menu/Menu.jsx';
+import Pop from '../pop/';
 import Loader from '../loader/';
 import SelectOption from './SelectOption.jsx';
+import SelectContext from './select-context';
 import './select.css';
+
+const findLabelByValue = (options, value) => {
+    for (const option of options) {
+        if (option.props.value === value) {
+            return option.props.label || option.props.children;
+        }
+        if (option.type.name === 'SelectGroup') {
+            let label = findLabelByValue(option.children, value);
+            if (label) {
+                return label;
+            }
+        }
+    }
+    return '';
+}
 
 export default class Select extends React.Component {
     constructor(props) {
         super(props);
 
-        const label = this.findLabelByValue(props.children, props.value);
-
         this.state = {
             active: false,
-            label,
-            inputValue: label,
             showClearIcon: false,
             rerenderOptions: true
         };
-        this.handleSelect = this.handleSelect.bind(this);
-        this.handlePopupChange = this.handlePopupChange.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        const { value, children } = nextProps;
-        if (this.props.value !== value) {
-            const label = this.findLabelByValue(children, value);
+    static getDerivedStateFromProps({ children, value }) {
+        const label = findLabelByValue(children, value);
+        return {
+            label,
+            inputValue: label
+        };
+    }
+
+    handleSelect = (value, label) => {
+        const { multi, onSelect } = this.props;
+        
+        if (!multi) {
             this.setState({
-                inputValue: label,
-                label
+                active: false
+            });
+        }
+        onSelect && onSelect(value, label);
+    }
+
+    handlePopChange = (active) => {
+        const { label } = this.state;
+
+        this.setState({
+            active
+        });
+
+        if (!active) {
+            this.setState({
+                inputValue: label
             });
         }
     }
 
-    handleSelect({ value, label }) {
-        const { onSelect } = this.props;
-        onSelect && onSelect(value, label);
-    }
-
-    handleInputChange = ({ value }) => {
+    handleInputChange = (value) => {
         this.setState({
             inputValue: value
         });
@@ -63,52 +90,11 @@ export default class Select extends React.Component {
         });
     }
 
-    handlePopupChange({ active }) {
-        const { label } = this.state;
-
-        this.setState({
-            active
-        });
-
-        if (!active) {
-            this.setState({
-                inputValue: label,
-                rerenderOptions: false
-            });
-        } else {
-            this.setState({
-                rerenderOptions: true
-            });
-        }
-    }
-
     handleClear = (ev) => {
         const { onSelect } = this.props;
 
         ev.stopPropagation();
-
-        this.setState({
-            rerenderOptions: false
-        });
         onSelect && onSelect('', '');
-    }
-
-    findLabelByValue(options, value) {
-        for (const option of options) {
-            if (option.props.value === value) {
-                return option.props.label || option.props.children;
-            }
-
-            // to do
-            if (option.type.name === 'SelectGroup') {
-                let label = findLabelByValue(React.Children.toArray(option.children));
-                if (label) {
-                    return label;
-                }
-            }
-        }
-
-        return '';
     }
 
     defaultFilter = (option, index) => {
@@ -121,33 +107,41 @@ export default class Select extends React.Component {
     renderOptions() {
         const { value, filterable, children } = this.props;
         const { rerenderOptions } = this.state;
-
-
-        if (rerenderOptions) {
-            if (!filterable) {
-                this.options = children;
-            } else if (typeof filterable === 'boolean') {
-                this.options = children.filter(this.defaultFilter);
-            } else if (typeof filterable === 'function') {
-                this.options = children.filter(filterable);
-            }
-        }    
+        let options;   
 
         return (
-            <Menu
-                value={value}
-                onSelect={this.handleSelect}
-                menuWidth="100%"
+            <SelectContext.Provider
+                value={{
+                    value,
+                    onSelect: this.handleSelect
+                }}
             >
-                {this.options}
-            </Menu>
+                <ul className="x-select__list">
+                    {children}
+                </ul>
+            </SelectContext.Provider>
         );
     }
 
     renderLoading() {
         return (
-            <div className="my-select__loader-wrapper">
+            <div className="x-select__loader-wrapper">
                 <Loader />
+            </div>
+        )
+    }
+
+    renderIcon() {
+        const { inputValue, showClearIcon } = this.state;
+        const show = inputValue && showClearIcon;
+        return (
+            <div
+                className="x-select__icon-wrapper"
+                onClick={show ? this.handleClear : null}
+            >
+                {show
+                    ? (<i className="icon icon-x"></i>)
+                    : (<i className="icon icon-chevron-down"></i>)}
             </div>
         )
     }
@@ -156,9 +150,9 @@ export default class Select extends React.Component {
         const {
             name,
             value,
+            label,
             placeholder,
             multi,
-            outline,
             round,
             filterable,
             loading,
@@ -166,8 +160,7 @@ export default class Select extends React.Component {
             onSelect,
             children,
             className,
-            style,
-            popupHeight
+            style
         } = this.props;
 
         const {
@@ -176,32 +169,34 @@ export default class Select extends React.Component {
             showClearIcon
         } = this.state;
 
-        let popupContent;
+        let popContent;
 
         if (loading) {
-            popupContent = this.renderLoading();
+            popContent = this.renderLoading();
         } else {
-            popupContent = this.renderOptions();
+            popContent = this.renderOptions();
         }
+
+        const classes = classnames(className, 'x-select', {
+            'x-select--active': active
+        });
 
         return (
             <div
-                className={`my-select
-                ${active ? 'my-select--active' : ''}`}>
-                <Popup
-                    content={popupContent}
+                className={classes}
+                style={style}
+            >
+                <Pop
+                    content={popContent}
                     trigger="click"
-                    hideOnClick={true}
-                    popupWidth="100%"
-                    popupHeight={popupHeight}
-                    onChange={this.handlePopupChange}
+                    active={active}
+                    className="x-select__pop"
+                    onChange={this.handlePopChange}
                 >
                     <Input
-                        className={className}
-                        style={style}
+                        className="x-select__input"
                         value={inputValue}
                         placeholder={placeholder}
-                        outline={outline}
                         round={round}
                         disabled={disabled}
                         keepFocused={active}
@@ -209,12 +204,9 @@ export default class Select extends React.Component {
                         onMouseEnter={this.handleInputMouseEnter}
                         onMouseLeave={this.handleInputMouseLeave}
                         onChange={this.handleInputChange}
-                        suffix={(inputValue && showClearIcon)
-                            ? (<i className="icon icon-x" onClick={this.handleClear}></i>)
-                            : (<i className="icon icon-chevron-down my-select__indicator"></i>)
-                        }
+                        suffix={this.renderIcon()}
                     />
-                </Popup>    
+                </Pop>    
             </div>
         )
     }
@@ -223,8 +215,8 @@ export default class Select extends React.Component {
 Select.propTypes = {
     name: PropTypes.string,
     value: PropTypes.any,
+    label: PropTypes.string,
     placeholder: PropTypes.string,
-    outline: PropTypes.bool,
     round: PropTypes.bool,
     filterable: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     loading: PropTypes.bool,
@@ -235,7 +227,7 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
-    outline: false,
+    label: '',
     round: false,
     filterable: false,
     loading: false,

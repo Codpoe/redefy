@@ -1,9 +1,5 @@
 @import '../common/color.css';
 
-:root {
-
-}
-
 .x-pop {
     position: relative;
     display: inline-block;
@@ -11,10 +7,6 @@
     line-height: 1;
     color: var(--primary-text-color);
     transition: all 0.24s;
-}
-
-.x-pop__outer {
-    display: inline-block;
 }
 
 .x-pop__wrapper {

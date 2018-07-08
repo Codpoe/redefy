@@ -40,6 +40,10 @@ export default [
                 doc: 'radio'
             },
             {
+                title: 'Select 选择器',
+                doc: 'select'
+            },
+            {
                 title: 'Switch 开关',
                 doc: 'switch'
             },

@@ -1,29 +1,46 @@
 @import '../common/color.css';
 
-.my-select {
+.x-select {
     display: inline-block;
+    width: 100%;
 }
 
-.my-select .icon-x {
-    padding: 3px;
+.x-select__pop {
+    width: 100%;
+}
+
+.x-select__icon-wrapper {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
     cursor: pointer;
-    transition: color 0.24s;
-    
-    &:hover {
-        color: var(--error-color);
+
+    & .icon-x {
+        transition: all 0.24s;    
+    }
+
+    & .icon-chevron-down {
+        transition: all 0.24s;
     }
 }
 
-.my-select__indicator {
-    padding: 3px;
-    transition: all 0.24s;
+.x-select__icon-wrapper:hover .icon-x {
+    color: var(--error-color);
 }
 
-.my-select--active .my-select__indicator {
+.x-select--active .icon-chevron-down {
     transform: rotate(180deg);
 }
 
-.my-select__loader-wrapper {
+.x-select__list {
+    list-style-type: none;
+    padding: 4px 0;
+}
+
+.x-select__loader-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;

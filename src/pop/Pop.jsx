@@ -27,6 +27,14 @@ export default class Pop extends React.Component {
         return null;
     }
 
+    componentDidUpdate() {
+        if (this.state.active) {
+            document.addEventListener('click', this.bodyClickListener);
+        } else {
+            document.removeEventListener('click', this.bodyClickListener);
+        }
+    }
+
     handleOuterClick = () => {
         const { trigger, disabled } = this.props;
         const { active } = this.state;
@@ -36,7 +44,6 @@ export default class Pop extends React.Component {
         }
 
         this.updateActive(true);
-        document.addEventListener('click', this.bodyClickListener);
     }
 
     handleContentClick = (ev) => {
@@ -88,7 +95,6 @@ export default class Pop extends React.Component {
 
     bodyClickListener = (ev) => {
         this.updateActive(false);
-        document.removeEventListener('click', this.bodyClickListener);
     }
 
     hide = () => {
@@ -109,6 +115,7 @@ export default class Pop extends React.Component {
      */
     updateActive(active) {
         const { controlled, onChange } = this.props;
+        
         if (controlled) {
             onChange && onChange(active);
         } else {
@@ -142,14 +149,14 @@ export default class Pop extends React.Component {
                 onMouseOver={this.handleMouseOver}
                 onMouseLeave={this.handleMouseOut}
             >
-                <span
+                <div
                     className="x-pop__outer"
                     onClick={this.handleOuterClick}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                 >
                     {children}
-                </span>
+                </div>
 
                 <CSSTransition
                     classNames={`${position}-`}
