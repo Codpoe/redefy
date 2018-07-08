@@ -122,55 +122,6 @@
 }
 
 /*
-.x-pop--active {
-    & .x-pop__content {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    & .x-pop__content--bottom-left,
-    & .x-pop__content--bottom-right {
-        transform: translateY(-6px);
-    }
-
-    & .x-pop__content--bottom-center {
-        transform: translate3d(-50%, -6px, 0);
-    }
-
-    & .x-pop__content--top-left,
-    & .x-pop__content--top-right {
-        transform: translateY(6px);
-    }
-
-    & .x-pop__content--top-center {
-        transform: translate3d(-50%, 6px, 0);
-    }
-
-    & .x-pop__content--left-top,
-    & .x-pop__content--left-bottom {
-        transform: translateX(6px);
-    }
-
-    & .x-pop__content--left-center {
-        transform: translate3d(6px, -50%, 0);
-    }
-
-    & .x-pop__content--right-top,
-    & .x-pop__content--right-bottom {
-        transform: translateX(-6px);
-    }
-
-    & .x-pop__content--right-center {
-        transform: translate3d(-6px, -50%, 0);
-    }
-}
-*/
-
-
-
-
-/*
  * bottom-left
  */
 .bottom-left--enter,
@@ -191,6 +142,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,0,0);
+    pointer-events: none;
 }
 
 .bottom-left--exit.bottom-left--exit-active,
@@ -218,6 +170,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(-50%,0,0);
+    pointer-events: none;
 }
 
 .bottom-center--exit.bottom-center--exit-active {
@@ -247,6 +200,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,0,0);
+    pointer-events: none;
 }
 
 .top-left--exit.top-left--exit-active,
@@ -274,6 +228,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(-50%,0,0);
+    pointer-events: none;
 }
 
 .top-center--exit.top-center--exit-active {
@@ -303,6 +258,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,0,0);
+    pointer-events: none;
 }
 
 .left-top--exit.left-top--exit-active,
@@ -330,6 +286,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,-50%,0);
+    pointer-events: none;
 }
 
 .left-center--exit.left-center--exit-active {
@@ -359,6 +316,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,0,0);
+    pointer-events: none;
 }
 
 .right-top--exit.right-top--exit-active,
@@ -386,6 +344,7 @@
     display: block;
     opacity: 1;
     transform: translate3d(0,-50%,0);
+    pointer-events: none;
 }
 
 .right-center--exit.right-center--exit-active {

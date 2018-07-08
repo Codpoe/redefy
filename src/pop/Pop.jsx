@@ -28,7 +28,7 @@ export default class Pop extends React.Component {
     }
 
     handleOuterClick = () => {
-        const { trigger, disabled, onChange } = this.props;
+        const { trigger, disabled } = this.props;
         const { active } = this.state;
 
         if (disabled || trigger !== 'click' || active) {
@@ -45,66 +45,49 @@ export default class Pop extends React.Component {
     }
 
     handleMouseOver = () => {
-        const { trigger, onChange } = this.props;
+        const { trigger, disabled } = this.props;
         const { active } = this.state;
         
-        if (trigger !== 'hover' || active) {
+        if (disabled || trigger !== 'hover' || active) {
             return;
         }
 
-        this.setState({
-            active: true
-        });
-        onChange && onChange({ active: true });
+        this.updateActive(true);
     }
 
     handleMouseOut = () => {
-        const { trigger, onChange } = this.props;
+        const { trigger } = this.props;
         const { active } = this.state;
         
         if (trigger !== 'hover' || !active) {
             return;
         }
 
-        this.setState({
-            active: false
-        });
-        onChange && onChange({ active: false });
+        this.updateActive(false);
     }
 
     handleFocus = () => {
-        const { trigger, disabled, onChange } = this.props;
+        const { trigger, disabled } = this.props;
         
         if (disabled || trigger !== 'focus') {
             return;
         }
 
-        this.setState({
-            active: true
-        });
-        onChange && onChange({ active: true });
+        this.updateActive(true);
     }
 
     handleBlur = () => {
-        const { trigger, onChange } = this.props;
+        const { trigger } = this.props;
 
         if (trigger !== 'focus') {
             return;
         }
 
-        this.setState({
-            active: false
-        });
-        onChange && onChange({ active: false });
+        this.updateActive(false);
     }
 
     bodyClickListener = (ev) => {
-        const { onChange } = this.props;
-
-        this.setState({
-            active: false
-        });
-        onChange && onChange({ active: false });
+        this.updateActive(false);
         document.removeEventListener('click', this.bodyClickListener);
     }
 
@@ -118,6 +101,12 @@ export default class Pop extends React.Component {
         document.removeEventListener('click', this.bodyClickListener);
     }
 
+    /**
+     * 更新 active
+     * 1. 如果是受控的，则触发 change 事件，由外部更新 active
+     * 2. 如果不是受控的，则直接在组件内部调用 setState 更新 active
+     * @param {Boolean} active 是否弹弹弹
+     */
     updateActive(active) {
         const { controlled, onChange } = this.props;
         if (controlled) {
