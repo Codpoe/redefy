@@ -48,6 +48,10 @@ export default [
                 doc: 'switch'
             },
             {
+                title: 'Tag 标签',
+                doc: 'tag'
+            },
+            {
                 title: 'Test 测试',
                 doc: 'test'
             }

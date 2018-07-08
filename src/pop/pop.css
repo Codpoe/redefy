@@ -119,13 +119,14 @@
 .bottom-left--enter,
 .bottom-right--enter {
     display: block;
-    transform: translate3d(0,-4px,0);
+    transform: translate3d(0,-4px,0) scale3d(1,0.9,1);
+    transform-origin: top;
 }
 
 .bottom-left--enter.bottom-left--enter-active,
 .bottom-right--enter.bottom-right--enter-active {
     opacity: 1;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0) scale3d(1,1,1);
     transition: all 0.4s;
 }
 
@@ -133,14 +134,15 @@
 .bottom-right--exit {
     display: block;
     opacity: 1;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0) scale3d(1,1,1);
+    transform-origin: top;
     pointer-events: none;
 }
 
 .bottom-left--exit.bottom-left--exit-active,
 .bottom-right--exit.bottom-right--exit-active {
     opacity: 0;
-    transform: translate3d(0,-4px,0);
+    transform: translate3d(0,-4px,0) scale3d(1,0.9,1);
     transition: all 0.4s;
 }
 

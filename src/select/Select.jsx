@@ -131,6 +131,15 @@ export default class Select extends React.Component {
         )
     }
 
+    renderSelected() {
+        const { value, multi } = this.props;
+        let selectedContent;
+
+        if (multi) {
+            selectedContent = value.map(item => (''))
+        }
+    }
+
     renderIcon() {
         const { inputValue, showClearIcon } = this.state;
         const show = inputValue && showClearIcon;
@@ -152,6 +161,7 @@ export default class Select extends React.Component {
             value,
             label,
             placeholder,
+            size,
             multi,
             round,
             filterable,
@@ -193,10 +203,17 @@ export default class Select extends React.Component {
                     className="x-select__pop"
                     onChange={this.handlePopChange}
                 >
+                    <div className="x-select__selection">
+                        <span className="x-select__selected">
+
+                        </span>
+
+                    </div>
                     <Input
                         className="x-select__input"
                         value={inputValue}
                         placeholder={placeholder}
+                        size={size}
                         round={round}
                         disabled={disabled}
                         keepFocused={active}
@@ -217,6 +234,7 @@ Select.propTypes = {
     value: PropTypes.any,
     label: PropTypes.string,
     placeholder: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'normal', 'large']),
     round: PropTypes.bool,
     filterable: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     loading: PropTypes.bool,
@@ -228,10 +246,11 @@ Select.propTypes = {
 
 Select.defaultProps = {
     label: '',
+    size: 'normal',
     round: false,
     filterable: false,
     loading: false,
-    clearable: true,
+    clearable: false,
     disabled: false,
     multi: false
 }
