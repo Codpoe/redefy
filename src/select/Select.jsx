@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import Input from '../input/';
 import Pop from '../pop/';
+import Tag from '../tag/';
 import Loader from '../loader/';
 import SelectOption from './SelectOption.jsx';
 import SelectContext from './select-context';
@@ -36,26 +37,49 @@ export default class Select extends React.Component {
     }
 
     static getDerivedStateFromProps({ children, value }) {
-        const label = findLabelByValue(children, value);
+        let selection;
+
+        if (Array.isArray(value)) {
+            selection = value.map(item => findLabelByValue(children, item));
+        } else {
+            selection = findLabelByValue(children, value);
+        }
+
         return {
-            label,
-            inputValue: label
+            selection
         };
     }
 
-    handleSelect = (value, label) => {
-        const { multi, onSelect } = this.props;
+    handleSelect = (optionValue, optionLabel) => {
+        const { value, multiple, onSelect } = this.props;
+        const { selection } = this.state;
+        let resValue;
+        let resLabel;
         
-        if (!multi) {
+        if (multiple) {
+            const index = value.indexOf(optionValue);
+            resValue = value.slice();
+            resLabel = selection.slice();
+            if (index === -1) {
+                resValue.push(optionValue);
+                resLabel.push(optionLabel);
+            } else {
+                resValue.splice(index, 1);
+                resLabel.splice(index, 1);
+            }
+        } else {
+            resValue = optionValue;
+            resLabel = optionLabel;
             this.setState({
                 active: false
             });
         }
-        onSelect && onSelect(value, label);
+
+        onSelect && onSelect(resValue, resLabel);
     }
 
     handlePopChange = (active) => {
-        const { label } = this.state;
+        const { selection } = this.state;
 
         this.setState({
             active
@@ -63,21 +87,21 @@ export default class Select extends React.Component {
 
         if (!active) {
             this.setState({
-                inputValue: label
+                selection
             });
         }
     }
 
     handleInputChange = (value) => {
         this.setState({
-            inputValue: value
+            selection: value
         });
     }
 
     handleInputMouseEnter = () => {
-        const { value, clearable } = this.props;
+        const { value, clearable, multiple } = this.props;
 
-        clearable && value && this.setState({
+        clearable && (multiple ? value.length > 0 : value) && this.setState({
             showClearIcon: true
         });
     }
@@ -91,10 +115,30 @@ export default class Select extends React.Component {
     }
 
     handleClear = (ev) => {
-        const { onSelect } = this.props;
+        const { multiple, onSelect } = this.props;
+        let res;
+        
+        ev.stopPropagation();
+        if (multiple) {
+            res = [];
+        } else {
+            res = '';
+        }
+        onSelect && onSelect(res, res);
+    }
+
+    handleClearItem(index, ev) {
+        const { value, onSelect } = this.props;
+        const { selection } = this.state;
+        const resValue = value.slice();
+        const resLabel = selection.slice();
 
         ev.stopPropagation();
-        onSelect && onSelect('', '');
+        ev.nativeEvent.stopImmediatePropagation();
+
+        resValue.splice(index, 1);
+        resLabel.splice(index, 1);
+        onSelect && onSelect(resValue, resLabel);
     }
 
     defaultFilter = (option, index) => {
@@ -104,8 +148,49 @@ export default class Select extends React.Component {
         return label.indexOf(inputValue) !== -1;
     }
 
+    renderSelection() {
+        const {
+            value,
+            placeholder,
+            size,
+            round,
+            disabled,
+            filterable,
+            multiple
+        } = this.props;
+        const {
+            active,
+            selection
+        } = this.state;
+
+        if (multiple) {
+            return selection.map((item, index) => (
+                <Tag
+                    key={item}
+                    className="x-select__tag"
+                    color="#ECECEC"
+                    round
+                    closable
+                    onClose={this.handleClearItem.bind(this, index)}
+                >
+                    {item}
+                </Tag>
+            ));
+        }
+        return (
+            <input
+                className="x-select__input"
+                type="text"
+                value={selection}
+                readOnly={!filterable}
+                disabled={disabled}
+                onChange={this.handleInputChange}
+            />
+        )
+    }
+
     renderOptions() {
-        const { value, filterable, children } = this.props;
+        const { value, multiple, filterable, children } = this.props;
         const { rerenderOptions } = this.state;
         let options;   
 
@@ -113,6 +198,7 @@ export default class Select extends React.Component {
             <SelectContext.Provider
                 value={{
                     value,
+                    multiple,
                     onSelect: this.handleSelect
                 }}
             >
@@ -131,24 +217,14 @@ export default class Select extends React.Component {
         )
     }
 
-    renderSelected() {
-        const { value, multi } = this.props;
-        let selectedContent;
-
-        if (multi) {
-            selectedContent = value.map(item => (''))
-        }
-    }
-
     renderIcon() {
-        const { inputValue, showClearIcon } = this.state;
-        const show = inputValue && showClearIcon;
+        const { showClearIcon } = this.state;
         return (
             <div
                 className="x-select__icon-wrapper"
-                onClick={show ? this.handleClear : null}
+                onClick={showClearIcon ? this.handleClear : null}
             >
-                {show
+                {showClearIcon
                     ? (<i className="icon icon-x"></i>)
                     : (<i className="icon icon-chevron-down"></i>)}
             </div>
@@ -162,7 +238,7 @@ export default class Select extends React.Component {
             label,
             placeholder,
             size,
-            multi,
+            multiple,
             round,
             filterable,
             loading,
@@ -203,13 +279,18 @@ export default class Select extends React.Component {
                     className="x-select__pop"
                     onChange={this.handlePopChange}
                 >
-                    <div className="x-select__selection">
-                        <span className="x-select__selected">
-
-                        </span>
-
+                    <div
+                        className="x-select__trigger"
+                        onMouseEnter={this.handleInputMouseEnter}
+                        onMouseLeave={this.handleInputMouseLeave}
+                    >
+                        <div className="x-select__selection">
+                            {this.renderSelection()}
+                        </div>
+                        {this.renderIcon()}
                     </div>
-                    <Input
+
+                    {/* <Input
                         className="x-select__input"
                         value={inputValue}
                         placeholder={placeholder}
@@ -222,7 +303,7 @@ export default class Select extends React.Component {
                         onMouseLeave={this.handleInputMouseLeave}
                         onChange={this.handleInputChange}
                         suffix={this.renderIcon()}
-                    />
+                    /> */}
                 </Pop>    
             </div>
         )
@@ -231,7 +312,7 @@ export default class Select extends React.Component {
 
 Select.propTypes = {
     name: PropTypes.string,
-    value: PropTypes.any,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     label: PropTypes.string,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['small', 'normal', 'large']),
@@ -240,7 +321,7 @@ Select.propTypes = {
     loading: PropTypes.bool,
     clearable: PropTypes.bool,
     disabled: PropTypes.bool,
-    multi: PropTypes.bool,
+    multiple: PropTypes.bool,
     onSelect: PropTypes.func
 }
 
@@ -252,5 +333,5 @@ Select.defaultProps = {
     loading: false,
     clearable: false,
     disabled: false,
-    multi: false
+    multiple: false
 }

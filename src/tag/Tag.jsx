@@ -5,9 +5,9 @@ import classnames from 'classnames';
 import './tag.css';
 
 export default class Tag extends React.Component {
-    handleClick = () => {
+    handleClick = (ev) => {
         const { onClose } = this.props;
-        onClose && onClose();
+        onClose && onClose(ev);
     }
 
     render() {

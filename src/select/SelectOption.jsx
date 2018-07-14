@@ -11,21 +11,23 @@ class SelectOption extends React.Component {
     }
 
     handleClick = () => {
-        const { value, label, onSelect } = this.props;
-        onSelect(value, label);
+        const { value, label, children, onSelect } = this.props;
+        onSelect(value, label || children);
     }
 
     render() {
         const {
             value,
-            selected,
+            selection,
+            multiple,
             className,
             style,
             children,
         } = this.props;
+        let selected = multiple ? selection.includes(value) : selection === value;
 
         const classes = classnames(className, 'x-select-option', {
-            'x-select-option--selected': value === selected
+            'x-select-option--selected': selected
         });
 
         return (
@@ -55,10 +57,11 @@ SelectOption.defaultProps = {
 
 export default props => (
     <SelectContext.Consumer>
-        {({ value: selected, onSelect }) => (
+        {({ value: selection, multiple, onSelect }) => (
             <SelectOption
                 {...props}
-                selected={selected}
+                multiple
+                selection={selection}
                 onSelect={onSelect}
             />
         )}
