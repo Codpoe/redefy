@@ -42,6 +42,20 @@ render() {
 ```
 :::
 
+## color 颜色
+
+:::demo
+```jsx
+render() {
+    return (
+        <div>
+            <Tag color="#6ed4d2">#6ed4d2</Tag>
+        </div>
+    );
+}
+```
+:::
+
 ## closable 可关闭
 
 :::demo

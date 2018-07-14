@@ -30,7 +30,11 @@ export default class Tag extends React.Component {
         return (
             <span
                 className={classes}
-                style={{ backgroundColor: color, ...style }}
+                style={{
+                    backgroundColor: color,
+                    borderColor: color,
+                    ...style
+                }}
             >
                 <span className="x-tag__text">{children}</span>
                 {closable && (
