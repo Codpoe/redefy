@@ -129,6 +129,7 @@ export default class Pop extends React.Component {
             content,
             popHeight,
             controlled,
+            disabled,
             className,
             style,
             children
@@ -139,6 +140,7 @@ export default class Pop extends React.Component {
         } = this.state;
 
         const classes = classnames(className, 'x-pop', {
+            'x-pop--disabled': disabled,
             'x-pop--active': active
         });
 

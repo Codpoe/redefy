@@ -9,6 +9,10 @@
     transition: all 0.24s;
 }
 
+.x-pop--disabled {
+    cursor: not-allowed;
+}
+
 .x-pop__wrapper {
     position: absolute;
     min-width: 100%;

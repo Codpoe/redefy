@@ -36,17 +36,21 @@ export default class Select extends React.Component {
         };
     }
 
-    static getDerivedStateFromProps({ children, value }) {
+    static getDerivedStateFromProps({ value, multiple, children }) {
         let selection;
+        let hasSelection;
 
-        if (Array.isArray(value)) {
+        if (multiple) {
             selection = value.map(item => findLabelByValue(children, item));
+            hasSelection = selection.length > 0;
         } else {
             selection = findLabelByValue(children, value);
+            hasSelection = Boolean(selection);
         }
 
         return {
-            selection
+            selection,
+            hasSelection
         };
     }
 
@@ -99,11 +103,13 @@ export default class Select extends React.Component {
     }
 
     handleInputMouseEnter = () => {
-        const { value, clearable, multiple } = this.props;
+        const { value, clearable, multiple, disabled } = this.props;
 
-        clearable && (multiple ? value.length > 0 : value) && this.setState({
-            showClearIcon: true
-        });
+        if (!disabled && clearable && (multiple ? value.length > 0 : value)) {
+            this.setState({
+                showClearIcon: true
+            });
+        }
     }
 
     handleInputMouseLeave = () => {
@@ -169,8 +175,8 @@ export default class Select extends React.Component {
                     key={item}
                     className="x-select__tag"
                     color="#ECECEC"
-                    round
-                    closable
+                    round={round}
+                    closable={!disabled}
                     onClose={this.handleClearItem.bind(this, index)}
                 >
                     {item}
@@ -186,6 +192,29 @@ export default class Select extends React.Component {
                 disabled={disabled}
                 onChange={this.handleInputChange}
             />
+        )
+    }
+
+    renderPlaceholder() {
+        const { placeholder } = this.props;
+        return (
+            <span className="x-select__placeholder">
+                {placeholder}
+            </span>
+        );
+    }
+
+    renderIcon() {
+        const { showClearIcon } = this.state;
+        return (
+            <div
+                className="x-select__icon-wrapper"
+                onClick={showClearIcon ? this.handleClear : null}
+            >
+                {showClearIcon
+                    ? (<i className="icon icon-x"></i>)
+                    : (<i className="icon icon-chevron-down"></i>)}
+            </div>
         )
     }
 
@@ -217,42 +246,22 @@ export default class Select extends React.Component {
         )
     }
 
-    renderIcon() {
-        const { showClearIcon } = this.state;
-        return (
-            <div
-                className="x-select__icon-wrapper"
-                onClick={showClearIcon ? this.handleClear : null}
-            >
-                {showClearIcon
-                    ? (<i className="icon icon-x"></i>)
-                    : (<i className="icon icon-chevron-down"></i>)}
-            </div>
-        )
-    }
-
     render() {
         const {
             name,
             value,
-            label,
-            placeholder,
             size,
-            multiple,
             round,
             filterable,
             loading,
             disabled,
-            onSelect,
-            children,
             className,
             style
         } = this.props;
 
         const {
             active,
-            inputValue,
-            showClearIcon
+            hasSelection
         } = this.state;
 
         let popContent;
@@ -264,7 +273,8 @@ export default class Select extends React.Component {
         }
 
         const classes = classnames(className, 'x-select', {
-            'x-select--active': active
+            'x-select--active': active,
+            'x-select--disabled': disabled
         });
 
         return (
@@ -273,37 +283,28 @@ export default class Select extends React.Component {
                 style={style}
             >
                 <Pop
+                    className="x-select__pop"
                     content={popContent}
                     trigger="click"
                     active={active}
-                    className="x-select__pop"
+                    disabled={disabled}
                     onChange={this.handlePopChange}
                 >
                     <div
-                        className="x-select__trigger"
+                        className={classnames('x-select__trigger', {
+                            'x-select__trigger--round': round
+                        })}
                         onMouseEnter={this.handleInputMouseEnter}
                         onMouseLeave={this.handleInputMouseLeave}
                     >
                         <div className="x-select__selection">
-                            {this.renderSelection()}
+                            {hasSelection
+                                ? this.renderSelection()
+                                : this.renderPlaceholder()
+                            }
                         </div>
                         {this.renderIcon()}
                     </div>
-
-                    {/* <Input
-                        className="x-select__input"
-                        value={inputValue}
-                        placeholder={placeholder}
-                        size={size}
-                        round={round}
-                        disabled={disabled}
-                        keepFocused={active}
-                        readOnly={!filterable}
-                        onMouseEnter={this.handleInputMouseEnter}
-                        onMouseLeave={this.handleInputMouseLeave}
-                        onChange={this.handleInputChange}
-                        suffix={this.renderIcon()}
-                    /> */}
                 </Pop>    
             </div>
         )
@@ -311,9 +312,7 @@ export default class Select extends React.Component {
 }
 
 Select.propTypes = {
-    name: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    label: PropTypes.string,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['small', 'normal', 'large']),
     round: PropTypes.bool,
@@ -326,7 +325,6 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
-    label: '',
     size: 'normal',
     round: false,
     filterable: false,
