@@ -105,7 +105,7 @@ export default class Select extends React.Component {
     handleInputMouseEnter = () => {
         const { value, clearable, multiple, disabled } = this.props;
 
-        if (!disabled && clearable && (multiple ? value.length > 0 : value)) {
+        if (!disabled && !multiple && clearable && value) {
             this.setState({
                 showClearIcon: true
             });
