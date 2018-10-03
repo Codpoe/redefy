@@ -4,9 +4,9 @@
 
 }
 
-.z-tooltip__content {
+.x-tooltip__content {
     position: relative;
-    padding: 8px 10px;
+    padding: 4px 10px;
     border-radius: 4px;
     background: rgba(0,0,0,0.7);
     font-size: 12px;
@@ -15,7 +15,7 @@
     white-space: nowrap;
 }
 
-.z-tooltip__content::before {
+.x-tooltip__content::before {
     content: '';
     position: absolute;
     box-sizing: border-box;
@@ -26,25 +26,25 @@
     border-right: 4px solid transparent;
 }
 
-.z-tooltip__content--bottom::before {
+.x-tooltip__content--bottom::before {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.z-tooltip__content--top::before {
+.x-tooltip__content--top::before {
     top: 100%;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
 }
 
-.z-tooltip__content--left::before {
+.x-tooltip__content--left::before {
     top: 50%;
     left: calc(100% - 2px);
     transform: translateY(-50%) rotate(90deg);
 }
 
-.z-tooltip__content--right::before {
+.x-tooltip__content--right::before {
     top: 50%;
     right: calc(100% - 2px);
     transform: translateY(-50%) rotate(-90deg);

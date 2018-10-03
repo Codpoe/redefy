@@ -1,22 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import Popup from '../popup/';
+import Pop from '../pop/';
 import './tooltip.css';
 
 export default class Tooltip extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            active: false
-        };
-        this.handlePopupChange = this.handlePopupChange.bind(this);
-    }
-
-    handlePopupChange({ active }) {
-        this.setState({
-            active
-        })
     }
 
     render() {
@@ -27,27 +18,27 @@ export default class Tooltip extends React.Component {
             children
         } = this.props;
 
-        const {
-            active
-        } = this.state;
+        const classes = classnames('x-tooltip__content', {
+            [`x-tooltip__content--${position}`]: true
+        });
 
-        const _content = (
-            <div
-                className={`z-tooltip__content
-                z-tooltip__content--${position}`}>
+        const popContent = (
+            <div className={classes}>
                 {content}
             </div>
-        )
+        );
 
         return (
-            <Popup
-                content={_content}
+            <Pop
+                content={popContent}
                 position={`${position}-center`}
                 trigger={trigger}
+                controlled={false}
+                active={true}
             >
                 {children}
-            </Popup>
-        )
+            </Pop>
+        );
     }
 }
 
@@ -55,9 +46,9 @@ Tooltip.propTypes = {
     content: PropTypes.any,
     position: PropTypes.oneOf(['bottom', 'top', 'left', 'right']),
     trigger: PropTypes.oneOf(['hover', 'focus'])
-}
+};
 
 Tooltip.defaultProps = {
     position: 'top',
     trigger: 'hover'
-}
+};

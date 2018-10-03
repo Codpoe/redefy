@@ -52,6 +52,10 @@ export default [
                 doc: 'tag'
             },
             {
+                title: 'Tooltip 文字提示',
+                doc: 'tooltip'
+            },
+            {
                 title: 'Test 测试',
                 doc: 'test'
             }

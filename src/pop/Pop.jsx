@@ -94,6 +94,9 @@ export default class Pop extends React.Component {
     }
 
     bodyClickListener = (ev) => {
+        if (this.props.trigger === 'hover') {
+            return;
+        }
         this.updateActive(false);
     }
 
