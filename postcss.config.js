@@ -1,6 +1,15 @@
-module.exports = {
-    plugins: [
-      require('precss'),
-      require('autoprefixer')
-    ]
+module.exports = ctx => ({
+  plugins: {
+    precss: {},
+    autoprefixer: {
+      ...ctx.options.autoprefixer,
+      browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9',
+      ],
+      flexbox: 'no-2009',
+    }
   }
+});

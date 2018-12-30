@@ -13,7 +13,7 @@ module.exports = Object.assign(devConfig, {
   },
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: 'xview.[hash:8].js',
+    filename: '[name].[hash:8].js',
     library: 'xview',
     libraryTarget: 'umd'
   },
@@ -33,7 +33,7 @@ module.exports = Object.assign(devConfig, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[hash:8].css'
     })
   ],
   optimization: {

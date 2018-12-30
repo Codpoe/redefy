@@ -4,9 +4,11 @@
   "description": "react components for myself",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "bootstrap": "yarn || npm i",
     "dev": "webpack-dev-server --hot --config build/webpack.dev.js",
-    "prod": "cross-env NODE_ENV=production webpack --color --config build/webpack.prod.js"
+    "prod": "npm run clean && cross-env NODE_ENV=production webpack --color --config build/webpack.prod.js",
+    "clean": "rimraf dist",
+    "test": "jest --coverage"
   },
   "keywords": [
     "react",
