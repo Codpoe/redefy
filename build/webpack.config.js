@@ -3,6 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname),
     mode: 'development',
     entry: {
         // sview: './src/sview.js',

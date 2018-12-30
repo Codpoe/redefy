@@ -1,11 +1,17 @@
-import button from './zh-CN/button.md';
-import checkbox from './zh-CN/checkbox.md';
-import icon from './zh-CN/icon.md';
-import introduction from './zh-CN/introduction.md';
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Redirect } from '@reach/router';
 
-export default {
-    button,
-    checkbox,
-    icon,
-    introduction,
-};
+import Docs from './components/Docs';
+
+const App = () => (
+    <div className="app">
+        <Router>
+            <Docs path="/docs/:name" />
+            <Redirect from="/docs/" to="/docs/introduction" noThrow />
+            {/* <Redirect from="/" to="docs/introduction" /> */}
+        </Router>
+    </div>
+);
+
+render(<App />, document.querySelector('#root'));
