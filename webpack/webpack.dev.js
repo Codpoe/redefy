@@ -1,11 +1,13 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = ({ env }) => {
-  return {
-    mode: env.mode,
+const devServer = require('./parts/dev-server');
+
+module.exports = merge([
+  {
+    mode: 'development',
     entry: {
       docs: './docs/index.js'
     },
@@ -29,15 +31,6 @@ module.exports = ({ env }) => {
           loader: 'babel-loader'
         },
         {
-          test: /\.css$/,
-          exclude: /node_modles/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'postcss-loader'
-          ]
-        },
-        {
           test: /\.(jpg|jpeg|png)$/,
           loader: 'url-loader',
           options: {
@@ -58,23 +51,15 @@ module.exports = ({ env }) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-      }),
+      new CleanWebpackPlugin('../dist'),
       new HtmlWebpackPlugin({
         chunks: ['docs'],
         template: 'docs/index.tpl',
         filename: 'index.html',
         inject: true
       }),
-      new ProgressBarPlugin()
     ],
-    devServer: {
-      host: '0.0.0.0',
-      port: 8008,
-      historyApiFallback: true,
-      hot: true,
-    },
-    devtool: 'source-map'
-  };
-};
+    devtool: 'source-map',
+  },
+  devServer(),
+]);

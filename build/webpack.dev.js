@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -9,15 +9,15 @@ module.exports = {
     docs: './docs/index.js'
   },
   output: {
-    path: path.join(__dirname, '../docs/dist'),
+    path: path.resolve(__dirname, '../docs/dist'),
     publicPath: '/',
     filename: '[name].bundle.js',
     chunkFilename: 'async_[name].bundle.js'
   },
   resolve: {
     alias: {
-      'xview': path.join(__dirname, '../src'),
-      'docs': path.join(__dirname, '../docs')
+      'xview': path.resolve(__dirname, '../src'),
+      'docs': path.resolve(__dirname, '../docs')
     }
   },
   module: {
@@ -29,7 +29,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modles/,
+        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -57,6 +57,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin('../dist'),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
@@ -66,12 +67,11 @@ module.exports = {
       filename: 'index.html',
       inject: true
     }),
-    new ProgressBarPlugin()
   ],
   devServer: {
     host: '0.0.0.0',
     port: 8008,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   devtool: 'source-map'
 };

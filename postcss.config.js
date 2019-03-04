@@ -1,15 +1,8 @@
-module.exports = ctx => ({
-  plugins: {
-    precss: {},
-    autoprefixer: {
-      ...ctx.options.autoprefixer,
-      browsers: [
-        '>1%',
-        'last 4 versions',
-        'Firefox ESR',
-        'not ie < 9',
-      ],
-      flexbox: 'no-2009',
-    }
-  }
-});
+module.exports = {
+  plugins: [
+    require('postcss-import'),
+    require('precss'),
+    require('autoprefixer'),
+    require('cssnano'),
+  ]
+};
