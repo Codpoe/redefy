@@ -6,6 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const loadJs = require('./parts/load-js');
 const loadCss = require('./parts/load-css');
 const loadImages = require('./parts/load-images');
+const loadFonts = require('./parts/load-fonts');
+const loadMd = require('./parts/load-md');
 const devServer = require('./parts/dev-server');
 
 module.exports = merge([
@@ -26,21 +28,6 @@ module.exports = merge([
         'docs': path.resolve(__dirname, '../docs')
       }
     },
-    module: {
-      rules: [
-        {
-          test: /\.(eot|svg|ttf|woff)$/,
-          loader: 'file-loader',
-        },
-        {
-          test: /\.md$/,
-          use: [
-            'babel-loader',
-            '@codpoe/react-markdown-loader'
-          ]
-        }
-      ]
-    },
     plugins: [
       new CleanWebpackPlugin('../dist'),
       new HtmlWebpackPlugin({
@@ -55,5 +42,7 @@ module.exports = merge([
   loadJs(),
   loadCss(),
   loadImages(),
+  loadFonts(),
+  loadMd(),
   devServer(),
 ]);
