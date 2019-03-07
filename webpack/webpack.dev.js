@@ -3,6 +3,9 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const loadJs = require('./parts/load-js');
+const loadCss = require('./parts/load-css');
+const loadImages = require('./parts/load-images');
 const devServer = require('./parts/dev-server');
 
 module.exports = merge([
@@ -25,18 +28,6 @@ module.exports = merge([
     },
     module: {
       rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        },
-        {
-          test: /\.(jpg|jpeg|png)$/,
-          loader: 'url-loader',
-          options: {
-            limit: 8192
-          }
-        },
         {
           test: /\.(eot|svg|ttf|woff)$/,
           loader: 'file-loader',
@@ -61,5 +52,8 @@ module.exports = merge([
     ],
     devtool: 'source-map',
   },
+  loadJs(),
+  loadCss(),
+  loadImages(),
   devServer(),
 ]);
