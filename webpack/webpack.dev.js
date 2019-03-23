@@ -9,6 +9,7 @@ const loadImages = require('./parts/load-images');
 const loadFonts = require('./parts/load-fonts');
 const loadMd = require('./parts/load-md');
 const devServer = require('./parts/dev-server');
+const sourceMap = require('./parts/source-map');
 
 module.exports = merge([
   {
@@ -45,4 +46,5 @@ module.exports = merge([
   loadFonts(),
   loadMd(),
   devServer(),
+  sourceMap({ type: 'inline-source-map' }),
 ]);
