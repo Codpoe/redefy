@@ -1,107 +1,94 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cx from 'classnames';
+import bem from '../utils/bem';
+import Loader from '../loader';
+import './style/button.css';
 
-import Loader from '../loader/';
-import './button.css';
-
-export default class Button extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(ev) {
-        const { onClick } = this.props;
-
-        if (onClick) {
-            onClick(ev);
-        }
-    }
-
-    render() {
-        const {
-            type,
-            size,
-            text,
-            hollow,
-            round,
-            circle,
-            block,
-            disabled,
-            loading,
-            href,
-            target,
-            loaderColor,
-            children,
-            className,
-            style
-        } = this.props;
-
-        const Node = href ? 'a' : 'button';
-
-        const classes = classnames(className, 'x-button', {
-            [`x-button--${type}`]: true,
-            [`x-button--${size}`]: true,
-            'x-button--text': text,
-            'x-button--hollow': hollow,
-            'x-button--round': round,
-            'x-button--circle': circle,
-            'x-button--block': block,
-            'x-button--disabled': disabled,
-            'x-button--loading': loading
-        });
-
-        return (
-            <Node
-                className={classes}
-                style={style}
-                href={href}
-                target={href ? target : undefined}
-                disabled={disabled}
-                onClick={this.handleClick}
-            >
-                {children}
-                {loading && (
-                    <Loader color={loaderColor} />
-                )}
-            </Node>
-        );
-    }
-}
-
-Button.propTypes = {
+const b = bem('x-button');
+export default class Button extends React.Component {
+  static propTypes = {
     type: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'error']),
-    size: PropTypes.oneOf(['normal', 'large', 'small', 'smaller']),
+    size: PropTypes.oneOf(['normal', 'large', 'small']),
     text: PropTypes.bool,
     hollow: PropTypes.bool,
+    pure: PropTypes.bool,
     round: PropTypes.bool,
-    circle: PropTypes.bool,
+    fullRound: PropTypes.bool,
     block: PropTypes.bool,
     disabled: PropTypes.bool,
     loading: PropTypes.bool,
     href: PropTypes.string,
     target: PropTypes.oneOf(['_self', '_blank']),
-    onClick: PropTypes.func,
-    children: PropTypes.any,
+    onClick: PropTypes.instanceOf(React.MouseEventHandler),
     loaderColor: PropTypes.string,
     className: PropTypes.string,
-    style: PropTypes.object
-};
+    style: PropTypes.shape(React.CSSProperties),
+  };
 
-Button.defaultProps = {
+  static defaultProps = {
     type: 'default',
     size: 'normal',
     text: false,
     hollow: false,
     round: false,
-    circle: false,
+    fullRound: false,
     block: false,
+    pure: false,
     disabled: false,
     loading: false,
     href: undefined,
     target: '_blank',
     loaderColor: 'white',
-    className: '',
-    style: {}
-};
+  };
+
+  render() {
+    const {
+      type,
+      size,
+      text,
+      hollow,
+      pure,
+      round,
+      fullRound,
+      block,
+      disabled,
+      loading,
+      href,
+      target,
+      loaderColor,
+      children,
+      onClick,
+      className,
+      style,
+    } = this.props;
+
+    const Node = href ? 'a' : 'button';
+
+    const cls = cx(className, b(), b([type]), b([size]), {
+      [b(['hollow'])]: hollow,
+      [b(['text'])]: text || pure,
+      [b(['pure'])]: pure,
+      [b(['round'])]: round,
+      [b(['full-round'])]: fullRound,
+      [b(['block'])]: block,
+      [b(['disabled'])]: disabled,
+      [b(['loading'])]: loading,
+    });
+
+    return (
+      <Node
+        className={cls}
+        style={style}
+        href={href}
+        target={href ? target : undefined}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        {loading ? (
+          <Loader color={loaderColor} />
+        ) : children}
+      </Node>
+    );
+  }
+}

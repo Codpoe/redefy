@@ -1,0 +1,20 @@
+.x-button-group {
+  display: inline-flex;
+
+  & .x-button {
+    &:hover {
+      z-index: 1;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

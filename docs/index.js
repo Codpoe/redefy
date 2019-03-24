@@ -8,8 +8,6 @@ const App = () => (
   <div className="app">
     <Router>
       <Docs path="/docs/:name" />
-      <Redirect from="/docs/" to="/docs/introduction" />
-      <Redirect from="/" to="/docs/introduction" />
     </Router>
   </div>
 );

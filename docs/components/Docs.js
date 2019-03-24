@@ -37,10 +37,12 @@ class Docs extends React.Component {
   fetchMd(name) {
     return import(`../../src/${name}/README.md`)
       .then(module => {
+        console.log(module);
         const Md = module.default;
         this.setState({ Md });
       })
       .catch(err => {
+        console.log(err);
         this.props.navigate('/introduction');
       });
   }
@@ -61,10 +63,6 @@ class Docs extends React.Component {
     console.log('render');
     const { name } = this.props;
     const { Md } = this.state;
-
-    if (!name) {
-      return <Redirect to="/docs/introduction" noThrow />;
-    }
 
     return (
       <div className="docs">

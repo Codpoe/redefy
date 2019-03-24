@@ -80,9 +80,9 @@ render() {
 render() {
     return (
         <div>
-            <Button circle size="large"><i className="icon icon-search"></i></Button>{' '}
-            <Button circle hollow type="primary"><i className="icon icon-search"></i></Button>{' '}
-            <Button circle type="primary" size="small"><i className="icon icon-search"></i></Button>
+            <Button fullRound size="large"><i className="icon icon-search"></i></Button>{' '}
+            <Button fullRound hollow type="primary"><i className="icon icon-search"></i></Button>{' '}
+            <Button fullRound type="primary" size="small"><i className="icon icon-search"></i></Button>
         </div>
     );
 }
@@ -118,6 +118,23 @@ render() {
 ```
 :::
 
+## 无 padding 纯净
+:::demo
+```js
+render() {
+    return (
+        <div>
+            <Button pure>默认按钮</Button>{' '}
+            <Button type="primary" pure>文字按钮</Button>{' '}
+            <Button type="success" pure>文字按钮</Button>{' '}
+            <Button type="warning" pure>文字按钮</Button>{' '}
+            <Button type="error" pure>文字按钮</Button>
+        </div>
+    )
+}
+```
+:::
+
 ## 禁用 disabled
 :::demo
 ```js
@@ -125,7 +142,8 @@ render() {
     return (
         <div>
             <Button disabled>禁用按钮</Button>{' '}
-            <Button hollow disabled>禁用按钮</Button>{' '}
+            <Button type="primary" disabled>禁用按钮</Button>{' '}
+            <Button hollow type="error" disabled>禁用按钮</Button>{' '}
             <Button text disabled>禁用按钮</Button>
         </div>
     );

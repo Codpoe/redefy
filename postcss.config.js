@@ -4,5 +4,5 @@ module.exports = {
     require('precss'),
     require('autoprefixer'),
     require('cssnano'),
-  ]
+  ],
 };

@@ -38,7 +38,6 @@ module.exports = merge([
         inject: true
       }),
     ],
-    devtool: 'source-map',
   },
   loadJs(),
   loadCss(),
