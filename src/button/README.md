@@ -125,10 +125,10 @@ render() {
     return (
         <div>
             <Button pure>默认按钮</Button>{' '}
-            <Button type="primary" pure>文字按钮</Button>{' '}
-            <Button type="success" pure>文字按钮</Button>{' '}
-            <Button type="warning" pure>文字按钮</Button>{' '}
-            <Button type="error" pure>文字按钮</Button>
+            <Button type="primary" pure>纯净按钮</Button>{' '}
+            <Button type="success" pure>纯净按钮</Button>{' '}
+            <Button type="warning" pure>纯净按钮</Button>{' '}
+            <Button type="error" pure>纯净按钮</Button>
         </div>
     )
 }
