@@ -15,19 +15,19 @@ module.exports = merge([
   {
     mode: 'development',
     entry: {
-      docs: './docs/index.js'
+      docs: './docs/index.js',
     },
     output: {
       path: path.resolve(__dirname, '../docs/dist'),
       publicPath: '/',
       filename: '[name].bundle.js',
-      chunkFilename: 'async_[name].bundle.js'
+      chunkFilename: 'async_[name].bundle.js',
     },
     resolve: {
       alias: {
-        'xview': path.resolve(__dirname, '../src'),
-        'docs': path.resolve(__dirname, '../docs')
-      }
+        jimu: path.resolve(__dirname, '../src'),
+        docs: path.resolve(__dirname, '../docs'),
+      },
     },
     plugins: [
       new CleanWebpackPlugin('../dist'),
@@ -35,7 +35,7 @@ module.exports = merge([
         chunks: ['docs'],
         template: 'docs/index.tpl',
         filename: 'index.html',
-        inject: true
+        inject: true,
       }),
     ],
   },

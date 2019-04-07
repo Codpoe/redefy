@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import bem from '../utils/bem';
+import bem from 'jimu/utils/bem';
 import Loader from '../loader';
 import './style/button.css';
 
@@ -20,8 +20,8 @@ export default class Button extends React.Component {
     loading: PropTypes.bool,
     href: PropTypes.string,
     target: PropTypes.oneOf(['_self', '_blank']),
-    onClick: PropTypes.instanceOf(React.MouseEventHandler),
     loaderColor: PropTypes.string,
+    onClick: PropTypes.instanceOf(React.MouseEventHandler),
     className: PropTypes.string,
     style: PropTypes.shape(React.CSSProperties),
   };

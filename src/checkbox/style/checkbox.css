@@ -1,0 +1,134 @@
+@import '../../common/color.css';
+
+.jm-checkbox {
+  --default-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__label {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-color);
+  }
+
+  &__indicator {
+    position: relative;
+    width: var(--default-size);
+    height: var(--default-size);
+    margin-right: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: all .4s, border-color .2s;
+  }
+
+  &__line {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 10px;
+    height: 6px;
+    border-bottom-left-radius: 1px;
+    transform: rotate(-45deg);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 1px;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: all .1s;
+      transition-delay: .1s;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 1px;
+      right: 0;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: all .1s;
+    }
+  }
+
+  & + .jm-checkbox {
+    margin-left: 24px;
+  }
+
+  &:hover:not(&--disabled) {
+    & .jm-checkbox__indicator {
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+.jm-checkbox--checked .jm-checkbox {
+  &__indicator {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    box-shadow: 0 0 8px var(--primary-color);
+    transition-delay: 0s;
+  }
+
+  &__line {
+    &::before {
+      will-change: transform;
+      transform: scaleY(1);
+      transition-delay: 0s;
+    }
+
+    &::after {
+      will-change: transform;
+      transform: scaleX(1);
+      transition-delay: 0.1s;
+    }
+  }
+}
+
+/**
+ * disabled
+ */
+.jm-checkbox--disabled {
+  opacity: .5;
+  cursor: not-allowed;
+
+  & .jm-checkbox__indicator {
+    box-shadow: none;
+  }
+}
+
+/*
+.jm-checkbox--disabled .jm-checkbox__indicator {
+  background-color: var(--grey-lightest);
+  border-color: var(--grey-lighter);
+}
+
+.jm-checkbox--disabled:hover {
+  & .jm-checkbox__indicator {
+    background-color: var(--grey-lightest);
+    border-color: var(--grey-lighter);
+  }
+}
+
+.jm-checkbox--disabled.jm-checkbox--checked {
+  & .jm-checkbox__indicator {
+    box-shadow: none;
+  }
+  & .jm-checkbox__line::before,
+  & .jm-checkbox__line::after {
+    background-color: var(--grey-light);
+  }
+}
+*/

@@ -1,5 +1,5 @@
-import Checkbox from './Checkbox.jsx';
-import CheckboxGroup from './CheckboxGroup.jsx';
+import Checkbox from './Checkbox';
+import CheckboxGroup from './CheckboxGroup';
 
 Checkbox.Group = CheckboxGroup;
 

@@ -4,7 +4,7 @@ import { Redirect, Link, redirectTo } from '@reach/router';
 
 import docConfig from '../doc.config';
 
-import 'xview/common/base.css';
+import 'jimu/common/base.css';
 import 'docs/style/docs.css';
 
 class Docs extends React.Component {

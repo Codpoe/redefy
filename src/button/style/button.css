@@ -1,10 +1,9 @@
-:root {
+@import '../../common/color.css';
+
+.jm-button {
   --default-height: 32px;
   --large-height: 38px;
   --small-height: 26px;
-}
-
-.jm-button {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
