@@ -2,7 +2,7 @@ import React from 'react';
 import './style/group.css';
 
 const ButtonGroup = ({ children }) => (
-  <div className="x-button-group">
+  <div className="jm-button-group">
     {children}
   </div>
 );

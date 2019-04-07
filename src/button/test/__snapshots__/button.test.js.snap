@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button test snapshot 1`] = `
+<button
+  className="x-button x-button--default x-button--normal"
+  disabled={false}
+>
+  TEST
+</button>
+`;

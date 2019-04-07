@@ -34,7 +34,6 @@
     "@codpoe/react-markdown-loader": "^0.0.2",
     "autoprefixer": "^9.4.7",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
     "babel-standalone": "^6.26.0",
     "clean-webpack-plugin": "^1.0.1",
@@ -42,13 +41,13 @@
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^5.14.0",
     "eslint-config-google": "^0.12.0",
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^21.2.1",
+    "jest": "^24.7.1",
     "marked": "^0.6.0",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -58,6 +57,7 @@
     "precss": "^4.0.0",
     "progress-bar-webpack-plugin": "^1.12.1",
     "raw-loader": "^1.0.0",
+    "react-test-renderer": "^16.8.6",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
@@ -65,15 +65,5 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/jest/config.js",
-    "testPathIgnorePatterns": [
-      "<rootDir>/jest"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/fileMock.js",
-      "\\.(css|less|sass|scss|pcss)$": "identity-obj-proxy"
-    }
   }
 }

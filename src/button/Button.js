@@ -5,7 +5,7 @@ import bem from '../utils/bem';
 import Loader from '../loader';
 import './style/button.css';
 
-const b = bem('x-button');
+const b = bem('jm-button');
 export default class Button extends React.Component {
   static propTypes = {
     type: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'error']),

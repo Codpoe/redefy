@@ -4,7 +4,7 @@ import { Redirect, Link, redirectTo } from '@reach/router';
 
 import docConfig from '../doc.config';
 
-import 'xview/common/common.css';
+import 'xview/common/base.css';
 import 'docs/style/docs.css';
 
 class Docs extends React.Component {
@@ -12,7 +12,7 @@ class Docs extends React.Component {
     super(props);
     this.components = {};
     this.state = {
-      Md: ''
+      Md: '',
     };
   }
 
@@ -36,12 +36,12 @@ class Docs extends React.Component {
   // 动态获取文档
   fetchMd(name) {
     return import(`../../src/${name}/README.md`)
-      .then(module => {
+      .then((module) => {
         console.log(module);
         const Md = module.default;
         this.setState({ Md });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         this.props.navigate('/introduction');
       });
@@ -67,7 +67,7 @@ class Docs extends React.Component {
     return (
       <div className="docs">
         <div className="docs__nav">
-          {docConfig.map(config => (this.renderNavGroup(config)))}
+          {docConfig.map((config) => (this.renderNavGroup(config)))}
         </div>
         <div className="docs__content">
           {Md && <Md />}
