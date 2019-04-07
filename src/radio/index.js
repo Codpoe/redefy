@@ -1,5 +1,5 @@
-import Radio from './Radio.jsx';
-import RadioGroup from './RadioGroup.jsx';
+import Radio from './Radio';
+import RadioGroup from './RadioGroup';
 
 Radio.Group = RadioGroup;
 

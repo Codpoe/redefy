@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import bem from '../utils/bem';
-import './style/checkbox.css';
+import bem from 'jimu/utils/bem';
+import './style/radio.css';
 
-const b = bem('jm-checkbox');
+const b = bem('jm-radio');
 
-export default class Checkbox extends React.Component {
+export default class Radio extends React.Component {
   static propTypes = {
     value: PropTypes.any,
     checked: PropTypes.bool,
@@ -15,7 +15,7 @@ export default class Checkbox extends React.Component {
     children: PropTypes.node,
     className: PropTypes.string,
     style: PropTypes.shape(React.CSSProperties),
-  }
+  };
 
   static defaultProps = {
     checked: false,
@@ -23,10 +23,10 @@ export default class Checkbox extends React.Component {
   };
 
   handleChange = (ev) => {
-    const { value, checked, disabled, onChange } = this.props;
+    const { value, disabled, onChange } = this.props;
 
     if (!disabled && onChange) {
-      onChange(!checked, value, ev);
+      onChange(value, ev);
     }
   }
 
@@ -39,20 +39,18 @@ export default class Checkbox extends React.Component {
       style,
     } = this.props;
 
-    const cls = cx(className, b(), {
+    const classes = cx(className, b(), {
       [b(['checked'])]: checked,
       [b(['disabled'])]: disabled,
     });
 
     return (
       <label
-        className={cls}
+        className={classes}
         style={style}
         onClick={this.handleChange}
       >
-        <span className={b('indicator')}>
-          <div className={b('line')}></div>
-        </span>
+        <span className={b('indicator')}></span>
         <span className={b('label')}>{children}</span>
       </label>
     );
