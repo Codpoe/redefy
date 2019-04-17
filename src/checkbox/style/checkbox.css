@@ -78,7 +78,6 @@
   &__indicator {
     border-color: var(--primary-color);
     background: var(--primary-color);
-    box-shadow: 0 0 8px var(--primary-color);
     transition-delay: 0s;
   }
 
@@ -103,10 +102,6 @@
 .jm-checkbox--disabled {
   opacity: .5;
   cursor: not-allowed;
-
-  & .jm-checkbox__indicator {
-    box-shadow: none;
-  }
 }
 
 /*

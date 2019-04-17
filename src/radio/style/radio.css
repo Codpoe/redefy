@@ -53,7 +53,6 @@
 .jm-radio--checked {
   & .jm-radio__indicator {
     border-color: var(--primary-color);
-    box-shadow: 0 0 8px var(--primary-color);
 
     &::before {
       transform: scale(1);
@@ -64,10 +63,6 @@
 .jm-radio--disabled {
   opacity: .5;
   cursor: not-allowed;
-
-  & .jm-radio__indicator {
-    box-shadow: none;
-  }
 }
 
 /*
