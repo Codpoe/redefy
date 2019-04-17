@@ -53,6 +53,7 @@
 .jm-radio--checked {
   & .jm-radio__indicator {
     border-color: var(--primary-color);
+    box-shadow: 0 0 8px -1px var(--primary-color);
 
     &::before {
       transform: scale(1);
