@@ -6,7 +6,7 @@ module.exports = (opts = {}) => ({
         exclude: /node_modules/,
         loader: 'babel-loader',
         ...opts,
-      }
+      },
     ],
   },
 });
