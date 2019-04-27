@@ -297,3 +297,33 @@ render() {
 }
 ```
 :::
+
+## 手动获取焦点
+:::demo
+```js
+constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: ''
+    };
+}
+
+handleChange = (inputValue) => {
+    this.setState({ inputValue });
+}
+
+render() {
+  return (
+    <div style={{ width: '200px' }}>
+      <Input
+        ref={ref => { this.input = ref }}
+        value={this.state.inputValue}
+        placeholder="输入提示"
+        onChange={this.handleChange}
+      />
+      <Button onClick={() => { this.input.focus() }}>Focus</Button>
+    </div>
+  );
+}
+```
+:::

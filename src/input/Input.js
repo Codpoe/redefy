@@ -73,7 +73,7 @@ export default class Input extends React.Component {
 
   constructor(props) {
     super(props);
-    this.textareaInstance = React.createRef();
+    this.inputInstance = React.createRef();
   }
 
   state = {
@@ -119,9 +119,18 @@ export default class Input extends React.Component {
     onBlur && onBlur(ev);
   };
 
+  // 提供手动 focus 的方法
+  focus() {
+    const el = this.inputInstance.current;
+
+    if (el) {
+      el.focus();
+    }
+  }
+
   resize() {
     const { type, autoResize = true } = this.props;
-    const el = this.textareaInstance.current;
+    const el = this.inputInstance.current;
 
     if (type !== 'textarea' || !autoResize || !el) {
       return;
@@ -246,7 +255,7 @@ export default class Input extends React.Component {
           style={style}
         >
           <textarea
-            ref={this.textareaInstance}
+            ref={this.inputInstance}
             className={b('content')}
             style={textareaStyle}
             rows="2"
@@ -289,6 +298,7 @@ export default class Input extends React.Component {
           </div>
         )}
         <input
+          ref={this.inputInstance}
           className={cx(b('content'), {
             [b('content', 'has-prefix')]: prefix,
             [b('content', 'has-suffix')]: suffix,

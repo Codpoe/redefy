@@ -21,7 +21,7 @@ export default class Button extends React.Component {
     href: PropTypes.string,
     target: PropTypes.oneOf(['_self', '_blank']),
     loaderColor: PropTypes.string,
-    onClick: PropTypes.instanceOf(React.MouseEventHandler),
+    onClick: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.shape(React.CSSProperties),
   };
