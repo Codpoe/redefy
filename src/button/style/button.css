@@ -30,12 +30,13 @@
   &--default {
     &:not(.jm-button--disabled) {
       &:hover {
-        border-color: var(--border-dark);
-        background: var(--background-alpha-1);
+        border-color: var(--primary-light);
+        color: var(--primary-light);
       }
   
       &:active {
-        background: var(--background-alpha-2);
+        border-color: var(--primary-dark);
+        color: var(--primary-dark);
       }
     }
   }
@@ -113,8 +114,16 @@
   }
 
   &--hollow {
-    border-color: currentColor;
     background: transparent;
+
+    &:not(.jm-button--disabled) {
+      &:hover {
+        color: #fff;
+      }
+      &:active {
+        color: #fff;
+      }
+    }
   }
 
   &--text {
@@ -171,65 +180,29 @@
   &--default {
     &:not(.jm-button--disabled) {
       &:hover {
-        border-color: currentColor;
+        background: var(--primary-light);
+      }
+      &:active {
+        background: var(--primary-dark);
+        color: #fff;
       }
     }
   }
 
   &--primary {
     color: var(--primary-color);
-
-    &:not(.jm-button--disabled) {
-      &:hover {
-        background: var(--primary-alpha-1);
-      }
-
-      &:active {
-        background: var(--primary-alpha-2);
-      }
-    }
   }
 
   &--success {
     color: var(--success-color);
-
-    &:not(.jm-button--disabled) {
-      &:hover {
-        background: var(--success-alpha-1);
-      }
-
-      &:active {
-        background: var(--success-alpha-2);
-      }
-    }
   }
 
   &--warning {
     color: var(--warning-color);
-
-    &:not(.jm-button--disabled) {
-      &:hover {
-        background: var(--warning-alpha-1);
-      }
-
-      &:active {
-        background: var(--warning-alpha-2);
-      }
-    }
   }
 
   &--error {
     color: var(--error-color);
-
-    &:not(.jm-button--disabled) {
-      &:hover {
-        background: var(--error-alpha-1);
-      }
-
-      &:active {
-        background: var(--error-alpha-2);
-      }
-    }
   }
 }
 

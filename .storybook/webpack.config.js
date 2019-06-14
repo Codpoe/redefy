@@ -11,22 +11,31 @@ const merge = require('webpack-merge');
 const loadJs = require('../webpack/parts/load-js');
 const loadCss = require('../webpack/parts/load-css');
 
-module.exports = merge([
-  {
-    plugins: [
-      // your custom plugins
+module.exports = ({ config, mode }) => {
+  config.module.rules.splice(0, 1, {
+    test: /\.(js|jsx|ts|tsx)$/,
+    exclude: /node_modules/,
+    use: [
+      'babel-loader',
+      // 'react-docgen-typescript-loader',
     ],
-    module: {
-      rules: [
-        // add your custom rules.
-      ],
-    },
-    resolve: {
-      alias: {
-        jimu: path.resolve(__dirname, '../src'),
+  });
+
+  config.module.rules.splice(2, 1,{
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+        },
       },
-    },
-  },
-  loadJs(),
-  loadCss(),
-]);
+      'postcss-loader',
+    ],
+  });
+
+  config.resolve.extensions.push('.ts', '.tsx');
+
+  return config;
+};

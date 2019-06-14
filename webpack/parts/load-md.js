@@ -3,10 +3,7 @@ module.exports = (opts = {}) => ({
     rules: [
       {
         test: /\.md$/,
-        use: [
-          'babel-loader',
-          '@codpoe/react-markdown-loader'
-        ],
+        use: ['babel-loader', '@codpoe/react-markdown-loader'],
         ...opts,
       },
     ],

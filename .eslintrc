@@ -14,33 +14,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "google"
-  ],
-  "plugins": [
-    "react"
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "indent": [2, 2],
-    "max-len": [2, 
-      {
-        "code": 120,
-        "tabWidth": 2,
-        "ignoreUrls": true,
-        "ignorePattern": "^import\\s.*\\s*'.+';$"
-      }
-    ],
-    "linebreak-style": [2, "unix"],
-    "object-curly-spacing": [2, "always"],
-    "require-jsdoc": 0,
-    "no-invalid-this": 0,
-    "react/prop-types": [
-      2,
-      {
-        "ignore": [
-          "children"
-        ]
-      }
-    ],
-    "react/require-default-props": 0
   }
 }

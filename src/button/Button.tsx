@@ -1,53 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
-import bem from 'jimu/utils/bem';
-import Loader from '../loader';
+import bem from '../utils/bem';
+import Loader from '../loader/index';
 import './style/button.css';
 
-const b = bem('jm-button');
-export default class Button extends React.Component {
-  static propTypes = {
-    type: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'error']),
-    size: PropTypes.oneOf(['normal', 'large', 'small']),
-    text: PropTypes.bool,
-    hollow: PropTypes.bool,
-    pure: PropTypes.bool,
-    round: PropTypes.bool,
-    fullRound: PropTypes.bool,
-    block: PropTypes.bool,
-    disabled: PropTypes.bool,
-    loading: PropTypes.bool,
-    href: PropTypes.string,
-    target: PropTypes.oneOf(['_self', '_blank']),
-    loaderColor: PropTypes.string,
-    onClick: PropTypes.func,
-    className: PropTypes.string,
-    style: PropTypes.shape(React.CSSProperties),
-  };
+export interface ButtonProps {
+  type?: 'default' | 'primary' | 'success' | 'warning' | 'error';
+  size?: 'normal' | 'large' | 'small';
+  hollow?: boolean;
+  text?: boolean;
+  pure?: boolean;
+  round?: boolean;
+  fullRound?: boolean;
+  block?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  href?: string;
+  target?: '_self' | '_blank';
+  loaderColor?: string;
+  onClick?: React.EventHandler<any>;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
+const b = bem('jm-button');
+export default class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     type: 'default',
     size: 'normal',
-    text: false,
     hollow: false,
+    text: false,
+    pure: false,
     round: false,
     fullRound: false,
     block: false,
-    pure: false,
     disabled: false,
     loading: false,
-    href: undefined,
-    target: '_blank',
     loaderColor: 'white',
+    href: '',
+    target: '_blank',
+    onClick: () => {},
   };
 
   render() {
     const {
       type,
       size,
-      text,
       hollow,
+      text,
       pure,
       round,
       fullRound,
@@ -63,7 +63,7 @@ export default class Button extends React.Component {
       style,
     } = this.props;
 
-    const Node = href ? 'a' : 'button';
+    const NodeName = href ? 'a' : 'button';
 
     const cls = cx(className, b(), b([type]), b([size]), {
       [b(['hollow'])]: hollow,
@@ -77,7 +77,7 @@ export default class Button extends React.Component {
     });
 
     return (
-      <Node
+      <NodeName
         className={cls}
         style={style}
         href={href}
@@ -85,10 +85,8 @@ export default class Button extends React.Component {
         disabled={disabled}
         onClick={onClick}
       >
-        {loading ? (
-          <Loader color={loaderColor} />
-        ) : children}
-      </Node>
+        {loading ? <Loader color={loaderColor} /> : children}
+      </NodeName>
     );
   }
 }

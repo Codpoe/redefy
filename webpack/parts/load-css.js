@@ -12,14 +12,14 @@ module.exports = (opts = {}) => ({
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
+              importLoaders: 1,
             },
           },
-          'postcss-loader'
+          'postcss-loader',
         ],
         ...opts,
       },
-    ]
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({

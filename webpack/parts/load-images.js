@@ -9,7 +9,7 @@ module.exports = ({ include, exclude, options } = {}) => ({
         options: {
           limit: 8000,
           ...options,
-        }
+        },
       },
     ],
   },

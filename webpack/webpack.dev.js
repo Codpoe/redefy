@@ -24,13 +24,14 @@ module.exports = merge([
       chunkFilename: 'async_[name].bundle.js',
     },
     resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
         jimu: path.resolve(__dirname, '../src'),
         docs: path.resolve(__dirname, '../docs'),
       },
     },
     plugins: [
-      new CleanWebpackPlugin('../dist'),
+      new CleanWebpackPlugin('../es'),
       new HtmlWebpackPlugin({
         chunks: ['docs'],
         template: 'docs/index.tpl',
