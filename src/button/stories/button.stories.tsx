@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Button, { ButtonGroup } from '../index';
+import { Search, Upload, Download } from '../../icon/index';
 
 storiesOf('Basic | Button', module)
   .add('基础用法', () => (
@@ -59,23 +60,25 @@ storiesOf('Basic | Button', module)
   .add('全圆形 fullRound', () => (
     <>
       <Button fullRound size="large">
-        <i className="icon icon-search"></i>
+        <Search />
       </Button>{' '}
       <Button fullRound hollow type="primary">
-        <i className="icon icon-search"></i>
+        <Search />
       </Button>{' '}
       <Button fullRound type="primary" size="small">
-        <i className="icon icon-search"></i>
+        <Search />
       </Button>
     </>
   ))
   .add('带图标', () => (
     <>
       <Button>
-        <i className="icon icon-upload"></i>&nbsp;上传
+        <Upload />
+        &nbsp;上传
       </Button>{' '}
       <Button hollow type="primary">
-        <i className="icon icon-download"></i>&nbsp;下载
+        <Download />
+        &nbsp;下载
       </Button>
     </>
   ))

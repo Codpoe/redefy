@@ -143,16 +143,6 @@
     }
   }
 
-  &--round {
-    border-radius: calc(var(--default-height) / 2);
-  }
-
-  &--full-round {
-    width: var(--default-height);
-    border-radius: 50%;
-    padding: 0;
-  }
-
   &--large {
     height: var(--large-height);
     font-size: 14px;
@@ -163,6 +153,16 @@
     height: var(--small-height);
     padding: 2px 8px;
     font-size: 12px;
+  }
+
+  &--round {
+    border-radius: calc(var(--default-height) / 2);
+  }
+
+  &--full-round {
+    width: var(--default-height);
+    border-radius: 50%;
+    padding: 0;
   }
 
   &--block {
