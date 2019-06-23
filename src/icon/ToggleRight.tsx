@@ -1,0 +1,39 @@
+import React from 'react';
+
+export interface ToggleRightProps extends React.SVGAttributes<SVGElement> {
+  color?: string;
+  size?: string | number;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+const ToggleRight: React.SFC<ToggleRightProps> = (
+  props: ToggleRightProps
+): React.ReactElement => {
+  const { color, size, ...restProps } = props;
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      className="feather feather-toggle-right"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...restProps}
+    >
+      <rect x="1" y="5" width="22" height="14" rx="7" ry="7" />
+      <circle cx="16" cy="12" r="3" />
+    </svg>
+  );
+};
+
+ToggleRight.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+};
+
+export default ToggleRight;
