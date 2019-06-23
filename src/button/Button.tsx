@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Loader from '../loader/index';
-import './style/button.css';
+import './styles/button.css';
 
 export interface ButtonProps {
   type?: 'default' | 'primary' | 'success' | 'warning' | 'error';

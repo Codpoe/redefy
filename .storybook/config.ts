@@ -3,7 +3,7 @@ import { create } from '@storybook/theming';
 import { withInfo } from '@storybook/addon-info';
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../src', true, /button\.stories\.tsx?$/);
+const req = require.context('../src', true, /\.stories\.tsx?$/);
 
 function loadStories() {
   req.keys().forEach(req);
