@@ -22,7 +22,8 @@ export interface PopContentProps {
     | 'right-top'
     | 'right-center'
     | 'right-bottom';
-  visible: boolean;
+  visible?: boolean;
+  hasArrow?: boolean;
   getTriggerRef: () => React.RefObject<HTMLDivElement>;
   className?: string;
   style?: React.CSSProperties;
@@ -131,7 +132,14 @@ export default class Content extends React.Component<
   };
 
   render() {
-    const { content, position, visible, className, style } = this.props;
+    const {
+      content,
+      position,
+      visible,
+      hasArrow,
+      className,
+      style,
+    } = this.props;
     const { positionReady, positionStyle } = this.state;
 
     if (!this.popRoot) {
@@ -153,7 +161,7 @@ export default class Content extends React.Component<
           style={{ ...style, ...positionStyle }}
         >
           <div className={b('content-inner')}>{content}</div>
-          <div className={b('content-arrow')} />
+          {hasArrow && <div className={b('content-arrow')} />}
         </div>
       </CSSTransition>,
       this.popRoot

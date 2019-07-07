@@ -25,6 +25,7 @@ export interface PopProps {
   delay?: number;
   visible?: boolean;
   disabled?: boolean;
+  hasArrow?: boolean;
   onChange?: (visible: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
@@ -42,6 +43,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
     position: 'bottom-left' as PopProps['position'],
     delay: 150,
     disabled: false,
+    hasArrow: false,
   };
 
   isControlled: boolean = false;
@@ -168,6 +170,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
       position,
       trigger,
       disabled,
+      hasArrow,
       className,
       style,
       children,
@@ -206,6 +209,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
           content={content}
           position={position}
           visible={visible}
+          hasArrow={hasArrow}
           getTriggerRef={this.getTriggerRef}
           className={contentClassName}
           style={contentStyle}
