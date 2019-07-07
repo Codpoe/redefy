@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "dev": "webpack-dev-server --config webpack/webpack.dev.js --watch --color --progress  --hot",
-    "prod": "cross-env NODE_ENV=production webpack --color --config build/webpack.prod.js",
-    "test": "jest --coverage",
-    "storybook": "start-storybook -p 8008",
-    "build-storybook": "build-storybook",
-    "build-icons": "node scripts/build-icons.js"
+    "dev": "start-storybook -p 8008",
+    "build": "cross-env NODE_ENV=production webpack --color --config build/webpack.prod.js",
+    "build:storybook": "build-storybook",
+    "build:icons": "node scripts/build-icons.js",
+    "test": "jest --coverage"
   },
   "keywords": [
     "react",
@@ -26,7 +25,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-transition-group": "^2.5.3"
+    "react-transition-group": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -47,6 +46,7 @@
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@types/react-transition-group": "^2.9.2",
     "@types/storybook__addon-actions": "^3.4.3",
     "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^1.10.2",

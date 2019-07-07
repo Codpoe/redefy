@@ -1,0 +1,160 @@
+@import '../../common/color.css';
+
+.x-pop {
+  position: relative;
+  display: inline-block;
+  color: var(--text-color);
+  transition: all .2s;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &__content {
+    position: absolute;
+    display: none;
+    opacity: 0;
+    z-index: 999;
+  }
+
+  &__content-inner {
+    max-height: 200px;
+    padding: 6px 12px;
+    background-color: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+}
+
+[class*="x-pop__content--bottom-"] {
+  padding-top: 4px;
+}
+
+[class*="x-pop__content--top-"] {
+  padding-bottom: 4px;
+}
+
+[class*="x-pop__content--left-"] {
+  padding-right: 4px;
+}
+
+[class*="x-pop__content--right-"] {
+  padding-left: 4px;
+}
+
+.x-pop__content {
+  &--bottom-left {
+    --x: 0;
+    --y: -4px;
+    --x2: 0;
+    --y2: 0;
+  }
+
+  &--bottom-center {
+    --x: -50%;
+    --y: -4px;
+    --x2: -50%;
+    --y2: 0;
+  }
+
+  &--bottom-right {
+    --x: -100%;
+    --y: -4px;
+    --x2: -100%;
+    --y2: 0;
+
+  }
+
+  &--top-left {
+    --x: 0;
+    --y: 4px;
+    --x2: 0;
+    --y2: 0;
+  }
+
+  &--top-center {
+    --x: -50%;
+    --y: 4px;
+    --x2: -50%;
+    --y2: 0;
+  }
+
+  &--top-right {
+    --x: -100%;
+    --y: 4px;
+    --x2: -100%;
+    --y2: 0;
+  }
+
+  &--left-top {
+    --x: 4px;
+    --y: 0;
+    --x2: 0;
+    --y2: 0;
+  }
+
+  &--left-center {
+    --x: 4px;
+    --y: -50%;
+    --x2: 0;
+    --y2: -50%;
+  }
+
+  &--left-bottom {
+    --x: 4px;
+    --y: -100%;
+    --x2: 0;
+    --y2: -100%;
+  }
+
+  &--right-top {
+    --x: -4px;
+    --y: 0;
+    --x2: 0;
+    --y2: 0;
+  }
+
+  &--right-center {
+    --x: -4px;
+    --y: -50%;
+    --x2: 0;
+    --y2: -50%;
+  }
+
+  &--right-bottom {
+    --x: -4px;
+    --y: -100%;
+    --x2: 0;
+    --y2: -100%;
+  }
+}
+
+.x-pop-anim {
+  &--enter {
+    display: block;
+    transform: translate3d(var(--x), var(--y), 0);
+  }
+
+  &--enter-active,
+  &--enter-done {
+    display: block;
+    opacity: 1;
+    transform: translate3d(var(--x2), var(--y2), 0);
+    transition: all .2s;
+  }
+
+  &--exit {
+    display: block;
+    opacity: 1;
+    transform: translate3d(var(--x2), var(--y2), 0);
+  }
+
+  &--exit-active {
+    opacity: 0;
+    transform: translate3d(var(--x), var(--y), 0);
+    pointer-events: none;
+    transition: all .2s;
+  }
+}
