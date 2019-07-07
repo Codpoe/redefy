@@ -153,6 +153,7 @@ export default class Content extends React.Component<
           style={{ ...style, ...positionStyle }}
         >
           <div className={b('content-inner')}>{content}</div>
+          <div className={b('content-arrow')} />
         </div>
       </CSSTransition>,
       this.popRoot
