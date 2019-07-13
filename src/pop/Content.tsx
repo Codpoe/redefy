@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
-// import throttle from 'lodash-es/throttle';
+import { throttle } from 'lodash-es';
 import bem from '../utils/bem';
 import { isFixed, getRect, getPagePosition } from '../utils/dom';
-import { throttle } from 'lodash-es';
 
 const b = bem('x-pop');
 
