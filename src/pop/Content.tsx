@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
+// import throttle from 'lodash-es/throttle';
 import bem from '../utils/bem';
-import getViewportSize from '../utils/get-viewport-size';
+import { isFixed, getRect, getPagePosition } from '../utils/dom';
+import { throttle } from 'lodash-es';
 
 const b = bem('x-pop');
 
@@ -43,7 +45,19 @@ export default class Content extends React.Component<
     positionStyle: {},
   };
 
-  popRoot: HTMLElement | null = document.getElementById('x-pop-root');
+  popRoot = document.getElementById('x-pop-root');
+
+  isTriggerFixed?: boolean = undefined;
+
+  static getDerivedStateFromProps(props: PopContentProps) {
+    if (!props.visible) {
+      return {
+        positionReady: false,
+      };
+    }
+
+    return null;
+  }
 
   componentDidMount() {
     this.updatePosition();
@@ -53,10 +67,6 @@ export default class Content extends React.Component<
     const { visible } = this.props;
     if (visible !== prevProps.visible) {
       this.updatePosition();
-
-      if (!visible) {
-        this.setState({ positionReady: false });
-      }
     }
   }
 
@@ -68,67 +78,135 @@ export default class Content extends React.Component<
       return;
     }
 
-    const r = triggerRef.current.getBoundingClientRect();
-    const v = getViewportSize();
-    let style: React.CSSProperties;
+    if (typeof this.isTriggerFixed === 'undefined') {
+      this.isTriggerFixed = isFixed(triggerRef.current);
+    }
+
+    const trigger = getRect(triggerRef.current);
+    let pos;
+
+    if (this.isTriggerFixed) {
+      pos = trigger;
+    } else {
+      pos = getPagePosition(triggerRef.current);
+    }
+
+    let style: {
+      position?: 'fixed';
+      top: number;
+      left: number;
+    };
 
     switch (position) {
       case 'bottom-left':
-        style = { top: r.bottom, left: r.left };
+        style = {
+          top: pos.bottom,
+          left: pos.left,
+        };
         break;
       case 'bottom-center':
         style = {
-          top: r.bottom,
-          left: r.left + r.width / 2,
+          top: pos.bottom,
+          left: pos.left + trigger.width / 2,
         };
         break;
       case 'bottom-right':
-        style = { top: r.bottom, left: r.right };
+        style = {
+          top: pos.bottom,
+          left: pos.right,
+        };
         break;
       case 'top-left':
-        style = { bottom: v.height - r.top, left: r.left };
+        style = {
+          top: pos.top,
+          left: pos.left,
+        };
         break;
       case 'top-center':
         style = {
-          bottom: v.height - r.top,
-          left: r.left + r.width / 2,
+          top: pos.top,
+          left: pos.left + trigger.width / 2,
         };
         break;
       case 'top-right':
-        style = { bottom: v.height - r.top, left: r.right };
+        style = {
+          top: pos.top,
+          left: pos.right,
+        };
         break;
       case 'left-top':
-        style = { top: r.top, right: v.width - r.left };
+        style = {
+          top: pos.top,
+          left: pos.left,
+        };
         break;
       case 'left-center':
         style = {
-          top: r.top + r.height / 2,
-          right: v.width - r.left,
+          top: pos.top + trigger.height / 2,
+          left: pos.left,
         };
         break;
       case 'left-bottom':
-        style = { top: r.bottom, right: v.width - r.left };
+        style = {
+          top: pos.bottom,
+          left: pos.left,
+        };
         break;
       case 'right-top':
-        style = { top: r.top, left: r.right };
+        style = {
+          top: pos.top,
+          left: pos.right,
+        };
         break;
       case 'right-center':
         style = {
-          top: r.top + r.height / 2,
-          left: r.right,
+          top: pos.top + trigger.height / 2,
+          left: pos.right,
         };
         break;
       case 'right-bottom':
-        style = { top: r.bottom, left: r.right };
+        style = {
+          top: pos.bottom,
+          left: pos.right,
+        };
         break;
       default:
-        style = { top: r.bottom, left: r.left };
+        style = {
+          top: pos.bottom,
+          left: pos.left,
+        };
+    }
+
+    if (this.isTriggerFixed) {
+      style.position = 'fixed';
     }
 
     this.setState({
       positionReady: true,
       positionStyle: style,
     });
+  };
+
+  throttledUpdatePosition = throttle(this.updatePosition, 100);
+
+  getPopRoot() {
+    if (!this.popRoot) {
+      this.popRoot = document.createElement('div');
+      this.popRoot.id = 'x-pop-root';
+      document.body.appendChild(this.popRoot);
+    }
+
+    return this.popRoot;
+  }
+
+  handleEntered = () => {
+    window.addEventListener('resize', this.throttledUpdatePosition);
+    window.addEventListener('scroll', this.throttledUpdatePosition);
+  };
+
+  handleExited = () => {
+    window.removeEventListener('resize', this.throttledUpdatePosition);
+    window.removeEventListener('scroll', this.throttledUpdatePosition);
   };
 
   render() {
@@ -142,12 +220,6 @@ export default class Content extends React.Component<
     } = this.props;
     const { positionReady, positionStyle } = this.state;
 
-    if (!this.popRoot) {
-      this.popRoot = document.createElement('div');
-      this.popRoot.id = 'x-pop-root';
-      document.body.appendChild(this.popRoot);
-    }
-
     return ReactDOM.createPortal(
       <CSSTransition
         classNames="x-pop-anim-"
@@ -155,6 +227,8 @@ export default class Content extends React.Component<
         timeout={{ exit: 200 }}
         mountOnEnter
         unmountOnExit
+        onEntered={this.handleEntered}
+        onExited={this.handleExited}
       >
         <div
           className={cx(className, b('content'), b('content', position))}
@@ -164,7 +238,7 @@ export default class Content extends React.Component<
           {hasArrow && <div className={b('content-arrow')} />}
         </div>
       </CSSTransition>,
-      this.popRoot
+      this.getPopRoot()
     );
   }
 }

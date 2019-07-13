@@ -52,9 +52,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
 
   triggerRef = React.createRef<HTMLDivElement>();
 
-  contentEl = React.createRef<HTMLDivElement>();
-
-  updateTimer: number | null = null;
+  updateTimer?: number = undefined;
 
   constructor(props: PopProps) {
     super(props);
@@ -147,9 +145,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
   updateVisible(visible: boolean) {
     const { delay, onChange } = this.props;
 
-    if (this.updateTimer) {
-      clearTimeout(this.updateTimer);
-    }
+    clearTimeout(this.updateTimer);
 
     this.updateTimer = setTimeout(() => {
       if (this.isControlled) {
