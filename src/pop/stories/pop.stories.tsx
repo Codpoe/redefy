@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import Pop from '../index';
 import Button from '../../button/index';
@@ -18,6 +19,10 @@ const PopShowcase: React.SFC<{}> = props => {
       <div className={b(['bottom'])}>{popList.slice(9, 12)}</div>
     </div>
   );
+};
+
+PopShowcase.propTypes = {
+  children: PropTypes.any,
 };
 
 const content = (

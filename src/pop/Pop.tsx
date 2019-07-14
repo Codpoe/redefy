@@ -24,6 +24,7 @@ export interface PopProps {
     | 'right-bottom';
   delay?: number;
   visible?: boolean;
+  defaultVisible?: boolean;
   disabled?: boolean;
   withArrow?: boolean;
   onChange?: (visible: boolean) => void;
@@ -38,7 +39,8 @@ export interface PopState {
 }
 
 export default class Pop extends React.Component<PopProps, PopState> {
-  static defaultProps = {
+  static defaultProps: PopProps = {
+    defaultVisible: false,
     trigger: 'hover' as PopProps['trigger'],
     position: 'bottom-left' as PopProps['position'],
     delay: 150,
@@ -46,7 +48,9 @@ export default class Pop extends React.Component<PopProps, PopState> {
     withArrow: false,
   };
 
-  isControlled: boolean = false;
+  isControlled: boolean = true;
+
+  isHovered: boolean = false;
 
   popRoot: HTMLElement | null = document.getElementById('x-pop-root');
 
@@ -58,11 +62,10 @@ export default class Pop extends React.Component<PopProps, PopState> {
     super(props);
 
     if (typeof props.visible === 'undefined') {
+      this.isControlled = false;
       this.state = {
-        visible: false,
+        visible: props.defaultVisible,
       };
-    } else {
-      this.isControlled = true;
     }
   }
 
@@ -72,14 +75,14 @@ export default class Pop extends React.Component<PopProps, PopState> {
     }
 
     if (this.checkVisible()) {
-      document.body.addEventListener('click', this.handleBodyClick);
+      document.addEventListener('click', this.handleBodyClick);
     } else {
-      document.body.removeEventListener('click', this.handleBodyClick);
+      document.removeEventListener('click', this.handleBodyClick);
     }
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('click', this.handleBodyClick);
+    document.removeEventListener('click', this.handleBodyClick);
   }
 
   checkVisible(): boolean {
@@ -90,50 +93,34 @@ export default class Pop extends React.Component<PopProps, PopState> {
     return this.state.visible as boolean;
   }
   handleTriggerClick = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.updateVisible(true);
   };
 
   handleBodyClick = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.updateVisible(false);
   };
 
-  handleMouseOver = () => {
-    if (this.props.disabled) {
-      return;
-    }
+  handlePopMouseEnter = () => {
+    this.isHovered = true;
+  };
 
+  handlePopMouseLeave = () => {
+    this.isHovered = false;
+
+    if (this.props.trigger === 'hover') {
+      this.updateVisible(false);
+    }
+  };
+
+  handleMouseEnter = () => {
     this.updateVisible(true);
   };
 
-  handleMouseOut = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
-    this.updateVisible(false);
-  };
-
   handleFocus = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.updateVisible(true);
   };
 
   handleBlur = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.updateVisible(false);
   };
 
@@ -143,17 +130,25 @@ export default class Pop extends React.Component<PopProps, PopState> {
    * - 如果不是受控的，则直接在组件内部调用 setState 更新 visible
    */
   updateVisible(visible: boolean) {
-    const { delay, onChange } = this.props;
+    const { trigger, delay, disabled, onChange } = this.props;
 
-    clearTimeout(this.updateTimer);
+    if (disabled || (!visible && this.isHovered)) {
+      return;
+    }
 
-    this.updateTimer = setTimeout(() => {
-      if (this.isControlled) {
-        onChange && onChange(visible);
-      } else {
+    const update = () => {
+      if (!this.isControlled) {
         this.setState({ visible });
       }
-    }, delay);
+      onChange && onChange(visible);
+    };
+
+    if (trigger === 'hover') {
+      clearTimeout(this.updateTimer);
+      this.updateTimer = setTimeout(update, delay);
+    } else {
+      update();
+    }
   }
 
   getTriggerRef = () => {
@@ -184,14 +179,17 @@ export default class Pop extends React.Component<PopProps, PopState> {
       <div
         className={cls}
         style={style}
-        {...(trigger === 'hover' && {
-          onMouseOver: this.handleMouseOver,
-          onMouseLeave: this.handleMouseOut,
-        })}
+        onMouseEnter={this.handlePopMouseEnter}
+        onMouseLeave={this.handlePopMouseLeave}
       >
         <div
           className={b('trigger')}
-          {...(trigger === 'click' && { onClick: this.handleTriggerClick })}
+          {...(trigger === 'hover' && {
+            onMouseEnter: this.handleMouseEnter,
+          })}
+          {...(trigger === 'click' && {
+            onClick: this.handleTriggerClick,
+          })}
           {...(trigger === 'focus' && {
             onFocus: this.handleFocus,
             onBlur: this.handleBlur,
