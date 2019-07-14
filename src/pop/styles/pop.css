@@ -26,9 +26,9 @@
 
   &__content-arrow {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 4px solid transparent;
+    width: 10px;
+    height: 10px;
+    border: 5px solid transparent;
     border-right-color: #fff;
     border-bottom-color: #fff;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, .08);
@@ -37,19 +37,19 @@
 }
 
 [class*="x-pop__content--bottom-"] {
-  padding-top: 4px;
+  padding-top: 10px;
 }
 
 [class*="x-pop__content--top-"] {
-  padding-bottom: 4px;
+  padding-bottom: 10px;
 }
 
 [class*="x-pop__content--left-"] {
-  padding-right: 4px;
+  padding-right: 10px;
 }
 
 [class*="x-pop__content--right-"] {
-  padding-left: 4px;
+  padding-left: 10px;
 }
 
 .x-pop__content {
@@ -60,7 +60,7 @@
     --y2: 0;
 
     & .x-pop__content-arrow {
-      top: 1px;
+      top: 5px;
       left: 8px;
       transform: rotate(-135deg);
     }
@@ -73,7 +73,7 @@
     --y2: 0;
 
     & .x-pop__content-arrow {
-      top: 1px;
+      top: 5px;
       left: 50%;
       transform: translateX(-50%) rotate(-135deg);
     }
@@ -86,7 +86,7 @@
     --y2: 0;
 
     & .x-pop__content-arrow {
-      top: 1px;
+      top: 5px;
       right: 8px;
       transform: rotate(-135deg);
     }
@@ -99,7 +99,7 @@
     --y2: calc(-100%);
 
     & .x-pop__content-arrow {
-      bottom: 1px;
+      bottom: 5px;
       left: 8px;
       transform: rotate(45deg);
     }
@@ -112,7 +112,7 @@
     --y2: -100%;
 
     & .x-pop__content-arrow {
-      bottom: 1px;
+      bottom: 5px;
       left: 50%;
       transform: translateX(-50%) rotate(45deg);
     }
@@ -125,7 +125,7 @@
     --y2: -100%;
 
     & .x-pop__content-arrow {
-      bottom: 1px;
+      bottom: 5px;
       right: 8px;
       transform: rotate(45deg);
     }
@@ -139,7 +139,7 @@
 
     & .x-pop__content-arrow {
       top: 8px;
-      right: 1px;
+      right: 5px;
       transform: rotate(-45deg);
     }
   }
@@ -152,7 +152,7 @@
 
     & .x-pop__content-arrow {
       top: 50%;
-      right: 1px;
+      right: 5px;
       transform: translateY(-50%) rotate(-45deg);
     }
   }
@@ -165,7 +165,7 @@
 
     & .x-pop__content-arrow {
       bottom: 8px;
-      right: 1px;
+      right: 5px;
       transform: rotate(-45deg);
     }
   }
@@ -178,7 +178,7 @@
 
     & .x-pop__content-arrow {
       top: 8px;
-      left: 1px;
+      left: 5px;
       transform: rotate(135deg);
     }
   }
@@ -191,7 +191,7 @@
 
     & .x-pop__content-arrow {
       top: 50%;
-      left: 1px;
+      left: 5px;
       transform: translateY(-50%) rotate(135deg);
     }
   }
@@ -204,7 +204,7 @@
 
     & .x-pop__content-arrow {
       bottom: 8px;
-      left: 1px;
+      left: 5px;
       transform: rotate(135deg);
     }
   }

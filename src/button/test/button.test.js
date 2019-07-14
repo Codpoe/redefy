@@ -6,98 +6,72 @@ import Button from '../button/';
 
 describe('Button test', () => {
   it('snapshot', () => {
-    const button = renderer.create(
-      <Button>TEST</Button>
-    );
+    const button = renderer.create(<Button>TEST</Button>);
     const tree = button.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('default', () => {
-    const button = shallow(
-      <Button>TEST</Button>
-    );
+    const button = shallow(<Button>TEST</Button>);
     expect(button.type()).toBe('button');
-    expect(button.hasClass('jm-button')).toBeTruthy();
-    expect(button.hasClass('jm-button--default')).toBeTruthy();
+    expect(button.hasClass('x-button')).toBeTruthy();
+    expect(button.hasClass('x-button--default')).toBeTruthy();
     expect(button.childAt(0).text()).toBe('TEST');
   });
 
   it('type', () => {
-    const jm = shallow(
-      <Button type="primary">TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--primary')).toBeTruthy();
+    const jm = shallow(<Button type="primary">TEST</Button>);
+    expect(jm.hasClass('x-button--primary')).toBeTruthy();
   });
 
   it('size', () => {
-    const jm = shallow(
-      <Button size="large">TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--large')).toBeTruthy();
+    const jm = shallow(<Button size="large">TEST</Button>);
+    expect(jm.hasClass('x-button--large')).toBeTruthy();
   });
 
   it('text', () => {
-    const jm = shallow(
-      <Button text>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--text')).toBeTruthy();
+    const jm = shallow(<Button text>TEST</Button>);
+    expect(jm.hasClass('x-button--text')).toBeTruthy();
   });
 
   it('outline', () => {
-    const jm = shallow(
-      <Button outline>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--outline')).toBeTruthy();
+    const jm = shallow(<Button outline>TEST</Button>);
+    expect(jm.hasClass('x-button--outline')).toBeTruthy();
   });
 
   it('flat', () => {
-    const jm = shallow(
-      <Button flat>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--flat')).toBeTruthy();
+    const jm = shallow(<Button flat>TEST</Button>);
+    expect(jm.hasClass('x-button--flat')).toBeTruthy();
   });
 
   it('round', () => {
-    const jm = shallow(
-      <Button round>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--round')).toBeTruthy();
+    const jm = shallow(<Button round>TEST</Button>);
+    expect(jm.hasClass('x-button--round')).toBeTruthy();
   });
 
   it('block', () => {
-    const jm = shallow(
-      <Button block>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--block')).toBeTruthy();
+    const jm = shallow(<Button block>TEST</Button>);
+    expect(jm.hasClass('x-button--block')).toBeTruthy();
   });
 
   it('disabled', () => {
-    const jm = shallow(
-      <Button disabled>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--disabled')).toBeTruthy();
+    const jm = shallow(<Button disabled>TEST</Button>);
+    expect(jm.hasClass('x-button--disabled')).toBeTruthy();
   });
 
   it('loading', () => {
-    const jm = shallow(
-      <Button loading>TEST</Button>
-    );
-    expect(jm.hasClass('jm-button--loading')).toBeTruthy();
+    const jm = shallow(<Button loading>TEST</Button>);
+    expect(jm.hasClass('x-button--loading')).toBeTruthy();
   });
 
   it('a', () => {
-    const jm = shallow(
-      <Button href="https://youzan.com">TEST</Button>
-    );
+    const jm = shallow(<Button href="https://youzan.com">TEST</Button>);
     expect(jm.type()).toBe('a');
   });
 
   it('click', () => {
     const fn = jest.fn();
-    const jm = shallow(
-      <Button onClick={fn}>TEST</Button>
-    );
+    const jm = shallow(<Button onClick={fn}>TEST</Button>);
     jm.simulate('click');
     expect(fn.mock.calls.length).toBe(1);
   });

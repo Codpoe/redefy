@@ -1,0 +1,31 @@
+.demo-pop-showcase {
+  margin: 150px;
+
+  &--top {
+    margin-left: 70px;
+  }
+
+  &--left {
+    float: left;
+    width: 70px;
+  }
+
+  &--right {
+    float: left;
+    margin-left: 230px;
+    width: 70px;
+  }
+
+  &--bottom {
+    clear: both;
+    margin-left: 70px;
+  }
+
+  .x-pop__trigger {
+    margin: 0 10px 10px 0;
+  }
+  
+  .x-button {
+    width: 70px;
+  }
+}

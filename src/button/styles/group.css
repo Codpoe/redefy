@@ -1,7 +1,7 @@
-.jm-button-group {
+.x-button-group {
   display: inline-flex;
 
-  & .jm-button {
+  & .x-button {
     &:hover {
       z-index: 1;
     }

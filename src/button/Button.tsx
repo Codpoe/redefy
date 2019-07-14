@@ -23,7 +23,7 @@ export interface ButtonProps {
   style?: React.CSSProperties;
 }
 
-const b = bem('jm-button');
+const b = bem('x-button');
 export default class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     type: 'default',

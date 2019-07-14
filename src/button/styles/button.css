@@ -1,6 +1,6 @@
 @import '../../common/color.css';
 
-.jm-button {
+.x-button {
   --default-height: 32px;
   --large-height: 38px;
   --small-height: 26px;
@@ -16,7 +16,7 @@
   outline: none;
   background: transparent;
   color: var(--text-color);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   white-space: nowrap;
   text-decoration: none;
@@ -28,7 +28,7 @@
   }
 
   &--default {
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: var(--primary-light);
         color: var(--primary-light);
@@ -46,7 +46,7 @@
     background: var(--primary-color);
     color: #fff;
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: var(--primary-light);
         background: var(--primary-light);
@@ -64,7 +64,7 @@
     background: var(--success-color);
     color: #fff;
   
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: var(--success-light);
         background: var(--success-light);
@@ -82,7 +82,7 @@
     background: var(--warning-color);
     color: #fff;
     
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: var(--warning-light);
         background: var(--warning-light);
@@ -100,7 +100,7 @@
     background: var(--error-color);
     color: #fff;
   
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: var(--error-light);
         background: var(--error-light);
@@ -116,7 +116,7 @@
   &--hollow {
     background: transparent;
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: #fff;
       }
@@ -130,7 +130,7 @@
     border-color: transparent;
     background: transparent;
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         border-color: transparent;
         background: transparent;
@@ -176,9 +176,9 @@
   }
 }
 
-.jm-button--hollow.jm-button {
+.x-button--hollow.x-button {
   &--default {
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         background: var(--primary-light);
       }
@@ -206,9 +206,9 @@
   }
 }
 
-.jm-button--text.jm-button {
+.x-button--text.x-button {
   &--default {
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: var(--primary-light);
       }
@@ -222,7 +222,7 @@
   &--primary {
     color: var(--primary-color);
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: var(--primary-light);
       }
@@ -236,7 +236,7 @@
   &--success {
     color: var(--success-color);
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: var(--success-light);
       }
@@ -250,7 +250,7 @@
   &--warning {
     color: var(--warning-color);
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: var(--warning-light);
       }
@@ -264,7 +264,7 @@
   &--error {
     color: var(--error-color);
 
-    &:not(.jm-button--disabled) {
+    &:not(.x-button--disabled) {
       &:hover {
         color: var(--error-light);
       }
@@ -284,7 +284,7 @@
 /*
  * round
  */
-.jm-button--round.jm-button {
+.x-button--round.x-button {
   &--large {
     border-radius: calc(var(--large-height) / 2);
   }
@@ -297,7 +297,7 @@
 /*
  * full round
  */
-.jm-button--full-round.jm-button {
+.x-button--full-round.x-button {
   &--large {
     width: var(--large-height);
   }
