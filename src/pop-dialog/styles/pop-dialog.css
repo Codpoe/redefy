@@ -1,0 +1,30 @@
+@import '../../common/color.css';
+
+.x-pop-dialog {
+  &__content-wrap {
+    position: relative;
+    line-height: 1.5;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    color: var(--warning-color);
+    line-height: inherit
+  }
+
+  &__content {
+    padding-left: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  &__ok {
+    margin-left: 8px;
+  }
+}

@@ -18,7 +18,7 @@ export interface ButtonProps {
   href?: string;
   target?: '_self' | '_blank';
   loaderColor?: string;
-  onClick?: React.EventHandler<any>;
+  onClick?: React.EventHandler<React.SyntheticEvent>;
   className?: string;
   style?: React.CSSProperties;
 }

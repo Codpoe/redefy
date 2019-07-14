@@ -3,7 +3,7 @@
 .x-button {
   --default-height: 32px;
   --large-height: 38px;
-  --small-height: 26px;
+  --small-height: 24px;
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: row;
