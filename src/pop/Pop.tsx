@@ -92,8 +92,9 @@ export default class Pop extends React.Component<PopProps, PopState> {
 
     return this.state.visible as boolean;
   }
+
   handleTriggerClick = () => {
-    this.updateVisible(true);
+    this.updateVisible(!this.checkVisible(), true);
   };
 
   handleBodyClick = () => {
@@ -129,10 +130,10 @@ export default class Pop extends React.Component<PopProps, PopState> {
    * - 如果是受控的，则触发 change 事件，由外部更新 visible
    * - 如果不是受控的，则直接在组件内部调用 setState 更新 visible
    */
-  updateVisible(visible: boolean) {
+  updateVisible(visible: boolean, force: boolean = false) {
     const { trigger, delay, disabled, onChange } = this.props;
 
-    if (disabled || (!visible && this.isHovered)) {
+    if (disabled || (!force && !visible && this.isHovered)) {
       return;
     }
 
