@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Content from './Content';
-import './styles/pop.css';
+import './styles/index.css';
 
 const b = bem('x-pop');
 

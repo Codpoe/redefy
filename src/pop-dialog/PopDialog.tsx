@@ -1,9 +1,9 @@
 import React from 'react';
-import Pop, { PopProps } from '../pop/index'; // eslint-disable-line no-unused-vars
-import Button, { ButtonProps } from '../button/index'; // eslint-disable-line no-unused-vars
+import Pop, { PopProps } from '../pop/index';
+import Button, { ButtonProps } from '../button/index';
 import * as Icon from '../icon/index';
 import bem from '../utils/bem';
-import './styles/pop-dialog.css';
+import './styles/index.css';
 
 const b = bem('x-pop-dialog');
 

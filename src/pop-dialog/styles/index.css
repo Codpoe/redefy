@@ -2,6 +2,7 @@
 
 .x-pop-dialog {
   &__content-wrap {
+    margin: 6px 4px;
     position: relative;
     line-height: 1.5;
   }
