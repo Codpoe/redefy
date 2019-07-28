@@ -11,7 +11,7 @@ const content = (
   </div>
 );
 
-storiesOf('Basic | Pop', module).add('基础用法', () => (
+storiesOf('Interaction | Pop', module).add('basic', () => (
   <PopShowcase>
     <Pop content={content} position="top-left" withArrow>
       <Button>TL</Button>

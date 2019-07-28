@@ -4,7 +4,7 @@ import * as Icon from '../index';
 
 const allIconKeys = Object.keys(Icon) as (keyof typeof Icon)[];
 
-storiesOf('Basic | Icon', module).add('基础用法', () => (
+storiesOf('Basic | Icon', module).add('basic', () => (
   <>
     {allIconKeys.length} icons
     <br />

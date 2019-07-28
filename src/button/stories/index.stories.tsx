@@ -6,7 +6,7 @@ import Button, { ButtonGroup } from '../index';
 import { Search, Upload, Download } from '../../icon/index';
 
 storiesOf('Basic | Button', module)
-  .add('基础用法', () => (
+  .add('basic', () => (
     <>
       <Button onClick={action('clicked')}>Default</Button>{' '}
       <Button type="primary">Primary</Button>{' '}
@@ -15,7 +15,7 @@ storiesOf('Basic | Button', module)
       <Button type="error">Error</Button>
     </>
   ))
-  .add('镂空 hollow', () => (
+  .add('hollow', () => (
     <>
       <Button hollow>Hollow</Button>{' '}
       <Button type="primary" hollow>
@@ -32,7 +32,7 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('文字 text', () => (
+  .add('text', () => (
     <>
       <Button text>Text</Button>{' '}
       <Button type="primary" text>
@@ -49,7 +49,7 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('两边圆形 round', () => (
+  .add('round', () => (
     <>
       <Button round>Round</Button>{' '}
       <Button type="primary" hollow round>
@@ -57,7 +57,7 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('全圆形 fullRound', () => (
+  .add('fullRound', () => (
     <>
       <Button fullRound size="large">
         <Search />
@@ -70,7 +70,7 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('带图标', () => (
+  .add('icon', () => (
     <>
       <Button>
         <Upload />
@@ -82,13 +82,13 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('尺寸 size', () => (
+  .add('size', () => (
     <>
       <Button size="large">Large</Button> <Button size="normal">Normal</Button>{' '}
       <Button size="small">Small</Button>
     </>
   ))
-  .add('无 padding 纯净', () => (
+  .add('pure', () => (
     <>
       <Button pure>Pure</Button>{' '}
       <Button type="primary" pure>
@@ -105,7 +105,7 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('禁用 disabled', () => (
+  .add('disabled', () => (
     <>
       <Button disabled>Disabled</Button>{' '}
       <Button type="primary" disabled>
@@ -119,13 +119,13 @@ storiesOf('Basic | Button', module)
       </Button>
     </>
   ))
-  .add('链接', () => (
+  .add('link', () => (
     <Button href="http://t.tt" target="_blank" type="primary">
       Smartisan
     </Button>
   ))
-  .add('块级按钮 block', () => <Button block>块级按钮</Button>)
-  .add('组合', () => (
+  .add('block', () => <Button block>块级按钮</Button>)
+  .add('group', () => (
     <>
       <ButtonGroup>
         <Button>Past</Button>
