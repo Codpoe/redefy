@@ -39,15 +39,6 @@ export default class Content extends React.Component<
   PopContentProps,
   PopContentState
 > {
-  state: PopContentState = {
-    positionReady: false,
-    positionStyle: {},
-  };
-
-  popRoot = document.getElementById('x-pop-root');
-
-  isTriggerFixed?: boolean = undefined;
-
   static getDerivedStateFromProps(props: PopContentProps) {
     if (!props.visible) {
       return {
@@ -57,6 +48,15 @@ export default class Content extends React.Component<
 
     return null;
   }
+
+  state: PopContentState = {
+    positionReady: false,
+    positionStyle: {},
+  };
+
+  popRoot = document.getElementById('x-pop-root');
+
+  isTriggerFixed?: boolean = undefined;
 
   componentDidMount() {
     this.updatePosition();

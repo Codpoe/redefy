@@ -22,7 +22,7 @@ export interface PopProps {
     | 'right-top'
     | 'right-center'
     | 'right-bottom';
-  delay?: number;
+  delay?: number | number[];
   visible?: boolean;
   defaultVisible?: boolean;
   disabled?: boolean;
@@ -36,6 +36,7 @@ export interface PopProps {
 
 export interface PopState {
   visible?: boolean;
+  delays?: (number | undefined)[];
 }
 
 export default class Pop extends React.Component<PopProps, PopState> {
@@ -48,7 +49,25 @@ export default class Pop extends React.Component<PopProps, PopState> {
     withArrow: false,
   };
 
-  isControlled: boolean = true;
+  static getDerivedStateFromProps(props: PopProps) {
+    const { visible, delay } = props;
+    const state: PopState = {
+      delays: Array.isArray(delay) ? delay : [delay, delay],
+    };
+
+    if (typeof visible !== 'undefined') {
+      state.visible = visible;
+    }
+
+    return state;
+  }
+
+  state: PopState = {
+    visible:
+      typeof this.props.visible !== 'undefined'
+        ? this.props.visible
+        : this.props.defaultVisible,
+  };
 
   isHovered: boolean = false;
 
@@ -58,23 +77,12 @@ export default class Pop extends React.Component<PopProps, PopState> {
 
   updateTimer?: number = undefined;
 
-  constructor(props: PopProps) {
-    super(props);
-
-    if (typeof props.visible === 'undefined') {
-      this.isControlled = false;
-      this.state = {
-        visible: props.defaultVisible,
-      };
-    }
-  }
-
   componentDidUpdate() {
     if (this.props.trigger !== 'click') {
       return;
     }
 
-    if (this.checkVisible()) {
+    if (this.state.visible) {
       document.addEventListener('click', this.handleBodyClick);
     } else {
       document.removeEventListener('click', this.handleBodyClick);
@@ -85,16 +93,8 @@ export default class Pop extends React.Component<PopProps, PopState> {
     document.removeEventListener('click', this.handleBodyClick);
   }
 
-  checkVisible(): boolean {
-    if (this.isControlled) {
-      return this.props.visible as boolean;
-    }
-
-    return this.state.visible as boolean;
-  }
-
   handleTriggerClick = () => {
-    this.updateVisible(!this.checkVisible(), true);
+    this.updateVisible(!this.state.visible, true);
   };
 
   handleBodyClick = () => {
@@ -131,22 +131,25 @@ export default class Pop extends React.Component<PopProps, PopState> {
    * - 如果不是受控的，则直接在组件内部调用 setState 更新 visible
    */
   updateVisible(visible: boolean, force: boolean = false) {
-    const { trigger, delay, disabled, onChange } = this.props;
+    const { trigger, disabled, onChange } = this.props;
+    const delays = this.state.delays as (number | undefined)[];
 
     if (disabled || (!force && !visible && this.isHovered)) {
       return;
     }
 
     const update = () => {
-      if (!this.isControlled) {
+      if (typeof this.props.visible === 'undefined') {
         this.setState({ visible });
       }
-      onChange && onChange(visible);
+      if (onChange) {
+        onChange(visible);
+      }
     };
 
     if (trigger === 'hover') {
       clearTimeout(this.updateTimer);
-      this.updateTimer = setTimeout(update, delay);
+      this.updateTimer = setTimeout(update, visible ? delays[0] : delays[1]);
     } else {
       update();
     }
@@ -169,7 +172,7 @@ export default class Pop extends React.Component<PopProps, PopState> {
       contentClassName,
       contentStyle,
     } = this.props;
-    const visible = this.checkVisible();
+    const { visible } = this.state;
 
     const cls = cx(className, b(), {
       [b(['visible'])]: visible,
