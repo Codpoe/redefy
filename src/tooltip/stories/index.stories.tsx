@@ -6,12 +6,12 @@ import PopShowcase from '../../pop/stories/pop-showcase/index';
 
 const content = 'Tooltip content';
 
-storiesOf('Interaction | Tooltip', module).add('Basic', () => (
+storiesOf('Interaction | Tooltip', module).add('basic', () => (
   <PopShowcase>
     <Tooltip content={content} position="top-left">
       <Button>TL</Button>
     </Tooltip>
-    <Tooltip content={content} position="top-center">
+    <Tooltip content={content}>
       <Button>Top</Button>
     </Tooltip>
     <Tooltip content={content} position="top-right">
@@ -35,7 +35,7 @@ storiesOf('Interaction | Tooltip', module).add('Basic', () => (
     <Tooltip content={content} position="right-bottom">
       <Button>RB</Button>
     </Tooltip>
-    <Tooltip content={content}>
+    <Tooltip content={content} position="bottom-left">
       <Button>BL</Button>
     </Tooltip>
     <Tooltip content={content} position="bottom-center">
