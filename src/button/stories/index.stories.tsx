@@ -132,7 +132,7 @@ storiesOf('Basic | Button', module)
         <Button>Present</Button>
         <Button>Future</Button>
       </ButtonGroup>{' '}
-      <ButtonGroup type="primary" hollow>
+      <ButtonGroup type="primary">
         <Button>Past</Button>
         <Button>Present</Button>
         <Button>Future</Button>
