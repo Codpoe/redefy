@@ -7,7 +7,7 @@ import './styles/button.css';
 export interface ButtonProps {
   type?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   size?: 'normal' | 'large' | 'small';
-  hollow?: boolean;
+  flat?: boolean;
   text?: boolean;
   pure?: boolean;
   round?: boolean;
@@ -28,7 +28,7 @@ export default class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     type: 'default',
     size: 'normal',
-    hollow: false,
+    flat: false,
     text: false,
     pure: false,
     round: false,
@@ -46,7 +46,7 @@ export default class Button extends React.Component<ButtonProps> {
     const {
       type,
       size,
-      hollow,
+      flat,
       text,
       pure,
       round,
@@ -66,7 +66,7 @@ export default class Button extends React.Component<ButtonProps> {
     const NodeName = href ? 'a' : 'button';
 
     const cls = cx(className, b(), b([type]), b([size]), {
-      [b(['hollow'])]: hollow,
+      [b(['flat'])]: flat,
       [b(['text'])]: text || pure,
       [b(['pure'])]: pure,
       [b(['round'])]: round,

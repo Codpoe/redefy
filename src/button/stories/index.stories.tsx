@@ -15,20 +15,20 @@ storiesOf('Basic | Button', module)
       <Button type="error">Error</Button>
     </>
   ))
-  .add('hollow', () => (
+  .add('flat', () => (
     <>
-      <Button hollow>Hollow</Button>{' '}
-      <Button type="primary" hollow>
-        Hollow
+      <Button flat>Flat</Button>{' '}
+      <Button type="primary" flat>
+        Flat
       </Button>{' '}
-      <Button type="success" hollow>
-        Hollow
+      <Button type="success" flat>
+        Flat
       </Button>{' '}
-      <Button type="warning" hollow>
-        Hollow
+      <Button type="warning" flat>
+        Flat
       </Button>{' '}
-      <Button type="error" hollow>
-        Hollow
+      <Button type="error" flat>
+        Flat
       </Button>
     </>
   ))
@@ -52,7 +52,7 @@ storiesOf('Basic | Button', module)
   .add('round', () => (
     <>
       <Button round>Round</Button>{' '}
-      <Button type="primary" hollow round>
+      <Button type="primary" flat round>
         Round
       </Button>
     </>
@@ -62,7 +62,7 @@ storiesOf('Basic | Button', module)
       <Button fullRound size="large">
         <Search />
       </Button>{' '}
-      <Button fullRound hollow type="primary">
+      <Button fullRound flat type="primary">
         <Search />
       </Button>{' '}
       <Button fullRound type="primary" size="small">
@@ -76,7 +76,7 @@ storiesOf('Basic | Button', module)
         <Upload />
         &nbsp;Upload
       </Button>{' '}
-      <Button hollow type="primary">
+      <Button flat type="primary">
         <Download />
         &nbsp;Download
       </Button>
@@ -111,7 +111,7 @@ storiesOf('Basic | Button', module)
       <Button type="primary" disabled>
         Disabled
       </Button>{' '}
-      <Button hollow type="error" disabled>
+      <Button flat type="error" disabled>
         Disabled
       </Button>{' '}
       <Button text disabled>
