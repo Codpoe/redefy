@@ -1,0 +1,62 @@
+@import '../../common/color.css';
+
+.x-switch {
+  --switch-width: 44px;
+  --switch-height: 22px;
+  --indicator-size: 18px;
+  --gap-width: calc((var(--switch-height) - var(--indicator-size)) / 2);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--switch-width);
+  height: var(--switch-height);
+  border-radius: calc(var(--switch-height) / 2);
+  background-color: var(--grey-light);
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all .2s;
+
+  &__indicator {
+    content: '';
+    position: absolute;
+    top: var(--gap-width);
+    left: var(--gap-width);
+    width: var(--indicator-size);
+    height: var(--indicator-size);
+    border-radius: 100%;
+    background: white;
+    transition: all .3s;
+  }
+
+  &__check-child,
+  &__uncheck-child {
+    padding: 0 6px;
+    color: white;
+    font-size: 12px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  &__check-child {
+    margin-right: calc(var(--indicator-size) + var(--gap-width));
+  }
+
+  &__uncheck-child {
+    margin-left: calc(var(--indicator-size) + var(--gap-width));
+  }
+
+  &--checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px -1px var(--primary-color);
+
+    .x-switch__indicator {
+      left: calc(100% - var(--indicator-size) - var(--gap-width));
+    }
+  }
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}
