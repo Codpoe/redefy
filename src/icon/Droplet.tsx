@@ -10,7 +10,7 @@ export interface DropletProps extends React.SVGAttributes<SVGElement> {
 const Droplet: React.SFC<DropletProps> = (
   props: DropletProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Droplet: React.SFC<DropletProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />

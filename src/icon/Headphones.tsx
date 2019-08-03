@@ -10,7 +10,7 @@ export interface HeadphonesProps extends React.SVGAttributes<SVGElement> {
 const Headphones: React.SFC<HeadphonesProps> = (
   props: HeadphonesProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Headphones: React.SFC<HeadphonesProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M3 18v-6a9 9 0 0 1 18 0v6" />

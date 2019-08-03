@@ -10,7 +10,7 @@ export interface ClipboardProps extends React.SVGAttributes<SVGElement> {
 const Clipboard: React.SFC<ClipboardProps> = (
   props: ClipboardProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Clipboard: React.SFC<ClipboardProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />

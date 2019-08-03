@@ -8,7 +8,7 @@ export interface WifiProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Wifi: React.SFC<WifiProps> = (props: WifiProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Wifi: React.SFC<WifiProps> = (props: WifiProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M5 12.55a11 11 0 0 1 14.08 0" />

@@ -8,7 +8,7 @@ export interface MapProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Map: React.SFC<MapProps> = (props: MapProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Map: React.SFC<MapProps> = (props: MapProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />

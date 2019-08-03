@@ -10,7 +10,7 @@ export interface ShieldOffProps extends React.SVGAttributes<SVGElement> {
 const ShieldOff: React.SFC<ShieldOffProps> = (
   props: ShieldOffProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ShieldOff: React.SFC<ShieldOffProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M19.69 14a6.9 6.9 0 0 0 .31-2V5l-8-3-3.16 1.18" />

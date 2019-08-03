@@ -8,7 +8,7 @@ export interface CopyProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Copy: React.SFC<CopyProps> = (props: CopyProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Copy: React.SFC<CopyProps> = (props: CopyProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />

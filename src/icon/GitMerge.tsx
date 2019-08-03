@@ -10,7 +10,7 @@ export interface GitMergeProps extends React.SVGAttributes<SVGElement> {
 const GitMerge: React.SFC<GitMergeProps> = (
   props: GitMergeProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const GitMerge: React.SFC<GitMergeProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="18" cy="18" r="3" />

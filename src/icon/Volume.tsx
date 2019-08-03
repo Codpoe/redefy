@@ -10,7 +10,7 @@ export interface VolumeProps extends React.SVGAttributes<SVGElement> {
 const Volume: React.SFC<VolumeProps> = (
   props: VolumeProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Volume: React.SFC<VolumeProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />

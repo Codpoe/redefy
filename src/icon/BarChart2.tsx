@@ -10,7 +10,7 @@ export interface BarChart2Props extends React.SVGAttributes<SVGElement> {
 const BarChart2: React.SFC<BarChart2Props> = (
   props: BarChart2Props
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const BarChart2: React.SFC<BarChart2Props> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="18" y1="20" x2="18" y2="10" />

@@ -10,7 +10,7 @@ export interface DatabaseProps extends React.SVGAttributes<SVGElement> {
 const Database: React.SFC<DatabaseProps> = (
   props: DatabaseProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Database: React.SFC<DatabaseProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <ellipse cx="12" cy="5" rx="9" ry="3" />

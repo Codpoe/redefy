@@ -8,7 +8,7 @@ export interface ZapProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Zap: React.SFC<ZapProps> = (props: ZapProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Zap: React.SFC<ZapProps> = (props: ZapProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />

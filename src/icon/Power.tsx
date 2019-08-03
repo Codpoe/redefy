@@ -10,7 +10,7 @@ export interface PowerProps extends React.SVGAttributes<SVGElement> {
 const Power: React.SFC<PowerProps> = (
   props: PowerProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Power: React.SFC<PowerProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />

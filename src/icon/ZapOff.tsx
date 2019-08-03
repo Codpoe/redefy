@@ -10,7 +10,7 @@ export interface ZapOffProps extends React.SVGAttributes<SVGElement> {
 const ZapOff: React.SFC<ZapOffProps> = (
   props: ZapOffProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ZapOff: React.SFC<ZapOffProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="12.41 6.75 13 2 10.57 4.92" />

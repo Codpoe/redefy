@@ -10,7 +10,7 @@ export interface ArrowUpProps extends React.SVGAttributes<SVGElement> {
 const ArrowUp: React.SFC<ArrowUpProps> = (
   props: ArrowUpProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ArrowUp: React.SFC<ArrowUpProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="12" y1="19" x2="12" y2="5" />

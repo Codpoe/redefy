@@ -8,7 +8,7 @@ export interface GridProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Grid: React.SFC<GridProps> = (props: GridProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Grid: React.SFC<GridProps> = (props: GridProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="3" y="3" width="7" height="7" />

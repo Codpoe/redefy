@@ -10,7 +10,7 @@ export interface ToggleRightProps extends React.SVGAttributes<SVGElement> {
 const ToggleRight: React.SFC<ToggleRightProps> = (
   props: ToggleRightProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ToggleRight: React.SFC<ToggleRightProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="1" y="5" width="22" height="14" rx="7" ry="7" />

@@ -10,7 +10,7 @@ export interface MonitorProps extends React.SVGAttributes<SVGElement> {
 const Monitor: React.SFC<MonitorProps> = (
   props: MonitorProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Monitor: React.SFC<MonitorProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />

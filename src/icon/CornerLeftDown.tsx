@@ -10,7 +10,7 @@ export interface CornerLeftDownProps extends React.SVGAttributes<SVGElement> {
 const CornerLeftDown: React.SFC<CornerLeftDownProps> = (
   props: CornerLeftDownProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CornerLeftDown: React.SFC<CornerLeftDownProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="14 15 9 20 4 15" />

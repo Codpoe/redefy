@@ -10,7 +10,7 @@ export interface ShoppingCartProps extends React.SVGAttributes<SVGElement> {
 const ShoppingCart: React.SFC<ShoppingCartProps> = (
   props: ShoppingCartProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ShoppingCart: React.SFC<ShoppingCartProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="9" cy="21" r="1" />

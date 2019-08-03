@@ -10,7 +10,7 @@ export interface HardDriveProps extends React.SVGAttributes<SVGElement> {
 const HardDrive: React.SFC<HardDriveProps> = (
   props: HardDriveProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const HardDrive: React.SFC<HardDriveProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="22" y1="12" x2="2" y2="12" />

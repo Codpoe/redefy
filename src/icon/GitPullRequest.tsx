@@ -10,7 +10,7 @@ export interface GitPullRequestProps extends React.SVGAttributes<SVGElement> {
 const GitPullRequest: React.SFC<GitPullRequestProps> = (
   props: GitPullRequestProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const GitPullRequest: React.SFC<GitPullRequestProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="18" cy="18" r="3" />

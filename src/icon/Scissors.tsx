@@ -10,7 +10,7 @@ export interface ScissorsProps extends React.SVGAttributes<SVGElement> {
 const Scissors: React.SFC<ScissorsProps> = (
   props: ScissorsProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Scissors: React.SFC<ScissorsProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="6" cy="6" r="3" />

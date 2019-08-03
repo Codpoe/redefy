@@ -10,7 +10,7 @@ export interface MusicProps extends React.SVGAttributes<SVGElement> {
 const Music: React.SFC<MusicProps> = (
   props: MusicProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Music: React.SFC<MusicProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M9 18V5l12-2v13" />

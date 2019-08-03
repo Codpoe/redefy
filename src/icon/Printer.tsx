@@ -10,7 +10,7 @@ export interface PrinterProps extends React.SVGAttributes<SVGElement> {
 const Printer: React.SFC<PrinterProps> = (
   props: PrinterProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Printer: React.SFC<PrinterProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="6 9 6 2 18 2 18 9" />

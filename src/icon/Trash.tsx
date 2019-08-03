@@ -10,7 +10,7 @@ export interface TrashProps extends React.SVGAttributes<SVGElement> {
 const Trash: React.SFC<TrashProps> = (
   props: TrashProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Trash: React.SFC<TrashProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="3 6 5 6 21 6" />

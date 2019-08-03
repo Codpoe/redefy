@@ -10,7 +10,7 @@ export interface SunriseProps extends React.SVGAttributes<SVGElement> {
 const Sunrise: React.SFC<SunriseProps> = (
   props: SunriseProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Sunrise: React.SFC<SunriseProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M17 18a5 5 0 0 0-10 0" />

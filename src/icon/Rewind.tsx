@@ -10,7 +10,7 @@ export interface RewindProps extends React.SVGAttributes<SVGElement> {
 const Rewind: React.SFC<RewindProps> = (
   props: RewindProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Rewind: React.SFC<RewindProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="11 19 2 12 11 5 11 19" />

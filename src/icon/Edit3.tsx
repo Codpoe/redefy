@@ -10,7 +10,7 @@ export interface Edit3Props extends React.SVGAttributes<SVGElement> {
 const Edit3: React.SFC<Edit3Props> = (
   props: Edit3Props
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Edit3: React.SFC<Edit3Props> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M12 20h9" />

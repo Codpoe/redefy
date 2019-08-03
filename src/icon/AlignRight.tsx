@@ -10,7 +10,7 @@ export interface AlignRightProps extends React.SVGAttributes<SVGElement> {
 const AlignRight: React.SFC<AlignRightProps> = (
   props: AlignRightProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const AlignRight: React.SFC<AlignRightProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="21" y1="10" x2="7" y2="10" />

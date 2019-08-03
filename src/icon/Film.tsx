@@ -8,7 +8,7 @@ export interface FilmProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Film: React.SFC<FilmProps> = (props: FilmProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Film: React.SFC<FilmProps> = (props: FilmProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />

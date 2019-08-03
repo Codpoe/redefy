@@ -10,7 +10,7 @@ export interface MinusCircleProps extends React.SVGAttributes<SVGElement> {
 const MinusCircle: React.SFC<MinusCircleProps> = (
   props: MinusCircleProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const MinusCircle: React.SFC<MinusCircleProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="12" cy="12" r="10" />

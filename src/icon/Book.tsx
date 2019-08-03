@@ -8,7 +8,7 @@ export interface BookProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Book: React.SFC<BookProps> = (props: BookProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Book: React.SFC<BookProps> = (props: BookProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />

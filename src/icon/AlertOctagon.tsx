@@ -10,7 +10,7 @@ export interface AlertOctagonProps extends React.SVGAttributes<SVGElement> {
 const AlertOctagon: React.SFC<AlertOctagonProps> = (
   props: AlertOctagonProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const AlertOctagon: React.SFC<AlertOctagonProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />

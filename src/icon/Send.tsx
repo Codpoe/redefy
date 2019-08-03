@@ -8,7 +8,7 @@ export interface SendProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Send: React.SFC<SendProps> = (props: SendProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Send: React.SFC<SendProps> = (props: SendProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="22" y1="2" x2="11" y2="13" />

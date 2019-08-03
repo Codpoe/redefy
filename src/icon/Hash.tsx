@@ -8,7 +8,7 @@ export interface HashProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Hash: React.SFC<HashProps> = (props: HashProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Hash: React.SFC<HashProps> = (props: HashProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="4" y1="9" x2="20" y2="9" />

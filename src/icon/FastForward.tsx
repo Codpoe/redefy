@@ -10,7 +10,7 @@ export interface FastForwardProps extends React.SVGAttributes<SVGElement> {
 const FastForward: React.SFC<FastForwardProps> = (
   props: FastForwardProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const FastForward: React.SFC<FastForwardProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="13 19 22 12 13 5 13 19" />

@@ -8,7 +8,7 @@ export interface TypeProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Type: React.SFC<TypeProps> = (props: TypeProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Type: React.SFC<TypeProps> = (props: TypeProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="4 7 4 4 20 4 20 7" />

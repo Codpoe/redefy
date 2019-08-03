@@ -10,7 +10,7 @@ export interface CloudDrizzleProps extends React.SVGAttributes<SVGElement> {
 const CloudDrizzle: React.SFC<CloudDrizzleProps> = (
   props: CloudDrizzleProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CloudDrizzle: React.SFC<CloudDrizzleProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="8" y1="19" x2="8" y2="21" />

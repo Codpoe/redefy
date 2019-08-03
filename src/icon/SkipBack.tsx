@@ -10,7 +10,7 @@ export interface SkipBackProps extends React.SVGAttributes<SVGElement> {
 const SkipBack: React.SFC<SkipBackProps> = (
   props: SkipBackProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const SkipBack: React.SFC<SkipBackProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="19 20 9 12 19 4 19 20" />

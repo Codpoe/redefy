@@ -10,7 +10,7 @@ export interface Maximize2Props extends React.SVGAttributes<SVGElement> {
 const Maximize2: React.SFC<Maximize2Props> = (
   props: Maximize2Props
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Maximize2: React.SFC<Maximize2Props> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="15 3 21 3 21 9" />

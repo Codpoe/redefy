@@ -10,7 +10,7 @@ export interface CheckCircleProps extends React.SVGAttributes<SVGElement> {
 const CheckCircle: React.SFC<CheckCircleProps> = (
   props: CheckCircleProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CheckCircle: React.SFC<CheckCircleProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />

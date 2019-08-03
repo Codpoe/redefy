@@ -10,7 +10,7 @@ export interface LayersProps extends React.SVGAttributes<SVGElement> {
 const Layers: React.SFC<LayersProps> = (
   props: LayersProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Layers: React.SFC<LayersProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="12 2 2 7 12 12 22 7 12 2" />

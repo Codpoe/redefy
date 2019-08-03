@@ -8,7 +8,7 @@ export interface CropProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Crop: React.SFC<CropProps> = (props: CropProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Crop: React.SFC<CropProps> = (props: CropProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M6.13 1L6 16a2 2 0 0 0 2 2h15" />

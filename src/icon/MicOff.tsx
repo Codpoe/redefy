@@ -10,7 +10,7 @@ export interface MicOffProps extends React.SVGAttributes<SVGElement> {
 const MicOff: React.SFC<MicOffProps> = (
   props: MicOffProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const MicOff: React.SFC<MicOffProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="1" y1="1" x2="23" y2="23" />

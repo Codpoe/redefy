@@ -10,7 +10,7 @@ export interface CornerRightUpProps extends React.SVGAttributes<SVGElement> {
 const CornerRightUp: React.SFC<CornerRightUpProps> = (
   props: CornerRightUpProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CornerRightUp: React.SFC<CornerRightUpProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="10 9 15 4 20 9" />

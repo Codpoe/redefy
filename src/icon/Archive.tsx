@@ -10,7 +10,7 @@ export interface ArchiveProps extends React.SVGAttributes<SVGElement> {
 const Archive: React.SFC<ArchiveProps> = (
   props: ArchiveProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Archive: React.SFC<ArchiveProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="21 8 21 21 3 21 3 8" />

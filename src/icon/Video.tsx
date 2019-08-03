@@ -10,7 +10,7 @@ export interface VideoProps extends React.SVGAttributes<SVGElement> {
 const Video: React.SFC<VideoProps> = (
   props: VideoProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Video: React.SFC<VideoProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="23 7 16 12 23 17 23 7" />

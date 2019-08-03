@@ -10,7 +10,7 @@ export interface CloudSnowProps extends React.SVGAttributes<SVGElement> {
 const CloudSnow: React.SFC<CloudSnowProps> = (
   props: CloudSnowProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CloudSnow: React.SFC<CloudSnowProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" />

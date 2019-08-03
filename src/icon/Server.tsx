@@ -10,7 +10,7 @@ export interface ServerProps extends React.SVGAttributes<SVGElement> {
 const Server: React.SFC<ServerProps> = (
   props: ServerProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Server: React.SFC<ServerProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />

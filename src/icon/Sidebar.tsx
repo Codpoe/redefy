@@ -10,7 +10,7 @@ export interface SidebarProps extends React.SVGAttributes<SVGElement> {
 const Sidebar: React.SFC<SidebarProps> = (
   props: SidebarProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Sidebar: React.SFC<SidebarProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />

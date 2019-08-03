@@ -10,7 +10,7 @@ export interface DollarSignProps extends React.SVGAttributes<SVGElement> {
 const DollarSign: React.SFC<DollarSignProps> = (
   props: DollarSignProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const DollarSign: React.SFC<DollarSignProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="12" y1="1" x2="12" y2="23" />

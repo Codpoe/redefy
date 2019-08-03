@@ -10,7 +10,7 @@ export interface TruckProps extends React.SVGAttributes<SVGElement> {
 const Truck: React.SFC<TruckProps> = (
   props: TruckProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Truck: React.SFC<TruckProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="1" y="3" width="15" height="13" />

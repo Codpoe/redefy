@@ -10,7 +10,7 @@ export interface SkipForwardProps extends React.SVGAttributes<SVGElement> {
 const SkipForward: React.SFC<SkipForwardProps> = (
   props: SkipForwardProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const SkipForward: React.SFC<SkipForwardProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="5 4 15 12 5 20 5 4" />

@@ -10,7 +10,7 @@ export interface BellOffProps extends React.SVGAttributes<SVGElement> {
 const BellOff: React.SFC<BellOffProps> = (
   props: BellOffProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const BellOff: React.SFC<BellOffProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M13.73 21a2 2 0 0 1-3.46 0" />

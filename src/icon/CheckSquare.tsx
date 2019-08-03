@@ -10,7 +10,7 @@ export interface CheckSquareProps extends React.SVGAttributes<SVGElement> {
 const CheckSquare: React.SFC<CheckSquareProps> = (
   props: CheckSquareProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CheckSquare: React.SFC<CheckSquareProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="9 11 12 14 22 4" />

@@ -8,7 +8,7 @@ export interface XProps extends React.SVGAttributes<SVGElement> {
 }
 
 const X: React.SFC<XProps> = (props: XProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const X: React.SFC<XProps> = (props: XProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="18" y1="6" x2="6" y2="18" />

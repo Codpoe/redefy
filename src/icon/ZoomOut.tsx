@@ -10,7 +10,7 @@ export interface ZoomOutProps extends React.SVGAttributes<SVGElement> {
 const ZoomOut: React.SFC<ZoomOutProps> = (
   props: ZoomOutProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ZoomOut: React.SFC<ZoomOutProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="11" cy="11" r="8" />

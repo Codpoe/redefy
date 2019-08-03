@@ -10,7 +10,7 @@ export interface AlignLeftProps extends React.SVGAttributes<SVGElement> {
 const AlignLeft: React.SFC<AlignLeftProps> = (
   props: AlignLeftProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const AlignLeft: React.SFC<AlignLeftProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="17" y1="10" x2="3" y2="10" />

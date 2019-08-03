@@ -10,7 +10,7 @@ export interface NavigationProps extends React.SVGAttributes<SVGElement> {
 const Navigation: React.SFC<NavigationProps> = (
   props: NavigationProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Navigation: React.SFC<NavigationProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="3 11 22 2 13 21 11 13 3 11" />

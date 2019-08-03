@@ -10,7 +10,7 @@ export interface CheckProps extends React.SVGAttributes<SVGElement> {
 const Check: React.SFC<CheckProps> = (
   props: CheckProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Check: React.SFC<CheckProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="20 6 9 17 4 12" />

@@ -10,7 +10,7 @@ export interface CloudRainProps extends React.SVGAttributes<SVGElement> {
 const CloudRain: React.SFC<CloudRainProps> = (
   props: CloudRainProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const CloudRain: React.SFC<CloudRainProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="16" y1="13" x2="16" y2="21" />

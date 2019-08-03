@@ -10,7 +10,7 @@ export interface ArrowDownRightProps extends React.SVGAttributes<SVGElement> {
 const ArrowDownRight: React.SFC<ArrowDownRightProps> = (
   props: ArrowDownRightProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ArrowDownRight: React.SFC<ArrowDownRightProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="7" y1="7" x2="17" y2="17" />

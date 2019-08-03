@@ -10,7 +10,7 @@ export interface BatteryProps extends React.SVGAttributes<SVGElement> {
 const Battery: React.SFC<BatteryProps> = (
   props: BatteryProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Battery: React.SFC<BatteryProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="1" y="6" width="18" height="12" rx="2" ry="2" />

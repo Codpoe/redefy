@@ -10,7 +10,7 @@ export interface Share2Props extends React.SVGAttributes<SVGElement> {
 const Share2: React.SFC<Share2Props> = (
   props: Share2Props
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Share2: React.SFC<Share2Props> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="18" cy="5" r="3" />

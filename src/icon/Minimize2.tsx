@@ -10,7 +10,7 @@ export interface Minimize2Props extends React.SVGAttributes<SVGElement> {
 const Minimize2: React.SFC<Minimize2Props> = (
   props: Minimize2Props
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Minimize2: React.SFC<Minimize2Props> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="4 14 10 14 10 20" />

@@ -10,7 +10,7 @@ export interface HelpCircleProps extends React.SVGAttributes<SVGElement> {
 const HelpCircle: React.SFC<HelpCircleProps> = (
   props: HelpCircleProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const HelpCircle: React.SFC<HelpCircleProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="12" cy="12" r="10" />

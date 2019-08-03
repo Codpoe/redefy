@@ -10,7 +10,7 @@ export interface SmartphoneProps extends React.SVGAttributes<SVGElement> {
 const Smartphone: React.SFC<SmartphoneProps> = (
   props: SmartphoneProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Smartphone: React.SFC<SmartphoneProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />

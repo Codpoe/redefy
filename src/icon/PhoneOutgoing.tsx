@@ -10,7 +10,7 @@ export interface PhoneOutgoingProps extends React.SVGAttributes<SVGElement> {
 const PhoneOutgoing: React.SFC<PhoneOutgoingProps> = (
   props: PhoneOutgoingProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const PhoneOutgoing: React.SFC<PhoneOutgoingProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="23 7 23 1 17 1" />

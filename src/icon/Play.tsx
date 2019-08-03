@@ -8,7 +8,7 @@ export interface PlayProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Play: React.SFC<PlayProps> = (props: PlayProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Play: React.SFC<PlayProps> = (props: PlayProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polygon points="5 3 19 12 5 21 5 3" />

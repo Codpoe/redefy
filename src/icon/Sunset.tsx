@@ -10,7 +10,7 @@ export interface SunsetProps extends React.SVGAttributes<SVGElement> {
 const Sunset: React.SFC<SunsetProps> = (
   props: SunsetProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Sunset: React.SFC<SunsetProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M17 18a5 5 0 0 0-10 0" />

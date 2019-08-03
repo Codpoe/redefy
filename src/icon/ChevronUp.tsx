@@ -10,7 +10,7 @@ export interface ChevronUpProps extends React.SVGAttributes<SVGElement> {
 const ChevronUp: React.SFC<ChevronUpProps> = (
   props: ChevronUpProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ChevronUp: React.SFC<ChevronUpProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="18 15 12 9 6 15" />

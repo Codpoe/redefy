@@ -10,7 +10,7 @@ export interface MousePointerProps extends React.SVGAttributes<SVGElement> {
 const MousePointer: React.SFC<MousePointerProps> = (
   props: MousePointerProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const MousePointer: React.SFC<MousePointerProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />

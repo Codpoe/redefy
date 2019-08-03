@@ -10,7 +10,7 @@ export interface RotateCcwProps extends React.SVGAttributes<SVGElement> {
 const RotateCcw: React.SFC<RotateCcwProps> = (
   props: RotateCcwProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const RotateCcw: React.SFC<RotateCcwProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="1 4 1 10 7 10" />

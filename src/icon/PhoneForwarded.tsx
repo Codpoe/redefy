@@ -10,7 +10,7 @@ export interface PhoneForwardedProps extends React.SVGAttributes<SVGElement> {
 const PhoneForwarded: React.SFC<PhoneForwardedProps> = (
   props: PhoneForwardedProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const PhoneForwarded: React.SFC<PhoneForwardedProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="19 1 23 5 19 9" />

@@ -10,7 +10,7 @@ export interface DownloadCloudProps extends React.SVGAttributes<SVGElement> {
 const DownloadCloud: React.SFC<DownloadCloudProps> = (
   props: DownloadCloudProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const DownloadCloud: React.SFC<DownloadCloudProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="8 17 12 21 16 17" />

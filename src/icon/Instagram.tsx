@@ -10,7 +10,7 @@ export interface InstagramProps extends React.SVGAttributes<SVGElement> {
 const Instagram: React.SFC<InstagramProps> = (
   props: InstagramProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Instagram: React.SFC<InstagramProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />

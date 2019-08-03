@@ -10,7 +10,7 @@ export interface VoicemailProps extends React.SVGAttributes<SVGElement> {
 const Voicemail: React.SFC<VoicemailProps> = (
   props: VoicemailProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Voicemail: React.SFC<VoicemailProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <circle cx="5.5" cy="11.5" r="4.5" />

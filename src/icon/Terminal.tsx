@@ -10,7 +10,7 @@ export interface TerminalProps extends React.SVGAttributes<SVGElement> {
 const Terminal: React.SFC<TerminalProps> = (
   props: TerminalProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Terminal: React.SFC<TerminalProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="4 17 10 11 4 5" />

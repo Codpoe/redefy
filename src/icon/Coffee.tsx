@@ -10,7 +10,7 @@ export interface CoffeeProps extends React.SVGAttributes<SVGElement> {
 const Coffee: React.SFC<CoffeeProps> = (
   props: CoffeeProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Coffee: React.SFC<CoffeeProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M18 8h1a4 4 0 0 1 0 8h-1" />

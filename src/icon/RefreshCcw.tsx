@@ -10,7 +10,7 @@ export interface RefreshCcwProps extends React.SVGAttributes<SVGElement> {
 const RefreshCcw: React.SFC<RefreshCcwProps> = (
   props: RefreshCcwProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const RefreshCcw: React.SFC<RefreshCcwProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="1 4 1 10 7 10" />

@@ -10,7 +10,7 @@ export interface GitBranchProps extends React.SVGAttributes<SVGElement> {
 const GitBranch: React.SFC<GitBranchProps> = (
   props: GitBranchProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const GitBranch: React.SFC<GitBranchProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="6" y1="3" x2="6" y2="15" />

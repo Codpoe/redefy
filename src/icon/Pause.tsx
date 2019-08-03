@@ -10,7 +10,7 @@ export interface PauseProps extends React.SVGAttributes<SVGElement> {
 const Pause: React.SFC<PauseProps> = (
   props: PauseProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Pause: React.SFC<PauseProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="6" y="4" width="4" height="16" />

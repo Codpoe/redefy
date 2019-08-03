@@ -10,7 +10,7 @@ export interface ChevronsLeftProps extends React.SVGAttributes<SVGElement> {
 const ChevronsLeft: React.SFC<ChevronsLeftProps> = (
   props: ChevronsLeftProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const ChevronsLeft: React.SFC<ChevronsLeftProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="11 17 6 12 11 7" />

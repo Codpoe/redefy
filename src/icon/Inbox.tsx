@@ -10,7 +10,7 @@ export interface InboxProps extends React.SVGAttributes<SVGElement> {
 const Inbox: React.SFC<InboxProps> = (
   props: InboxProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Inbox: React.SFC<InboxProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />

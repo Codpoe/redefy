@@ -10,7 +10,7 @@ export interface SlidersProps extends React.SVGAttributes<SVGElement> {
 const Sliders: React.SFC<SlidersProps> = (
   props: SlidersProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Sliders: React.SFC<SlidersProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="4" y1="21" x2="4" y2="14" />

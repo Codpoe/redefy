@@ -10,7 +10,7 @@ export interface AlignCenterProps extends React.SVGAttributes<SVGElement> {
 const AlignCenter: React.SFC<AlignCenterProps> = (
   props: AlignCenterProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const AlignCenter: React.SFC<AlignCenterProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="18" y1="10" x2="6" y2="10" />

@@ -10,7 +10,7 @@ export interface ActivityProps extends React.SVGAttributes<SVGElement> {
 const Activity: React.SFC<ActivityProps> = (
   props: ActivityProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Activity: React.SFC<ActivityProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />

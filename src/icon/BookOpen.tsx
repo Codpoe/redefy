@@ -10,7 +10,7 @@ export interface BookOpenProps extends React.SVGAttributes<SVGElement> {
 const BookOpen: React.SFC<BookOpenProps> = (
   props: BookOpenProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const BookOpen: React.SFC<BookOpenProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />

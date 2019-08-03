@@ -10,7 +10,7 @@ export interface LoaderProps extends React.SVGAttributes<SVGElement> {
 const Loader: React.SFC<LoaderProps> = (
   props: LoaderProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Loader: React.SFC<LoaderProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="12" y1="2" x2="12" y2="6" />

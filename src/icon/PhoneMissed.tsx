@@ -10,7 +10,7 @@ export interface PhoneMissedProps extends React.SVGAttributes<SVGElement> {
 const PhoneMissed: React.SFC<PhoneMissedProps> = (
   props: PhoneMissedProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const PhoneMissed: React.SFC<PhoneMissedProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="23" y1="1" x2="17" y2="7" />

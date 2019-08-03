@@ -10,7 +10,7 @@ export interface TrendingUpProps extends React.SVGAttributes<SVGElement> {
 const TrendingUp: React.SFC<TrendingUpProps> = (
   props: TrendingUpProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const TrendingUp: React.SFC<TrendingUpProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />

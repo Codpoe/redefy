@@ -8,7 +8,7 @@ export interface MoveProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Move: React.SFC<MoveProps> = (props: MoveProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Move: React.SFC<MoveProps> = (props: MoveProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="5 9 2 12 5 15" />

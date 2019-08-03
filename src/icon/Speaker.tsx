@@ -10,7 +10,7 @@ export interface SpeakerProps extends React.SVGAttributes<SVGElement> {
 const Speaker: React.SFC<SpeakerProps> = (
   props: SpeakerProps
 ): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,7 @@ const Speaker: React.SFC<SpeakerProps> = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />

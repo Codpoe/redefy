@@ -8,7 +8,7 @@ export interface GiftProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Gift: React.SFC<GiftProps> = (props: GiftProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Gift: React.SFC<GiftProps> = (props: GiftProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <polyline points="20 12 20 22 4 22 4 12" />

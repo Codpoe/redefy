@@ -8,7 +8,7 @@ export interface MenuProps extends React.SVGAttributes<SVGElement> {
 }
 
 const Menu: React.SFC<MenuProps> = (props: MenuProps): React.ReactElement => {
-  const { color, size, ...restProps } = props;
+  const { color, size, style, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,7 @@ const Menu: React.SFC<MenuProps> = (props: MenuProps): React.ReactElement => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', ...style }}
       {...restProps}
     >
       <line x1="3" y1="12" x2="21" y2="12" />
