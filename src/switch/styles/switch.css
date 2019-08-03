@@ -7,11 +7,14 @@
   --gap-width: calc((var(--switch-height) - var(--indicator-size)) / 2);
   position: relative;
   display: inline-flex;
+  justify-content: flex-end;
   align-items: center;
   min-width: var(--switch-width);
   height: var(--switch-height);
   border-radius: calc(var(--switch-height) / 2);
   background-color: var(--grey-light);
+  color: #fff;
+  font-size: 12px;
   vertical-align: middle;
   cursor: pointer;
   transition: all .2s;
@@ -24,16 +27,14 @@
     width: var(--indicator-size);
     height: var(--indicator-size);
     border-radius: 100%;
-    background: white;
+    background: #fff;
     transition: all .3s;
   }
 
   &__check-child,
   &__uncheck-child {
-    padding: 0 6px;
-    color: white;
-    font-size: 12px;
     line-height: 1;
+    padding: 0 6px;
     user-select: none;
   }
 
@@ -46,6 +47,7 @@
   }
 
   &--checked {
+    justify-content: flex-start;
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     box-shadow: 0 0 8px -1px var(--primary-color);
