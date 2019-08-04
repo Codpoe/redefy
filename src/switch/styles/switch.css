@@ -12,7 +12,7 @@
   min-width: var(--switch-width);
   height: var(--switch-height);
   border-radius: calc(var(--switch-height) / 2);
-  background-color: var(--grey-light);
+  background-color: var(--border-color);
   color: #fff;
   font-size: 12px;
   vertical-align: middle;
