@@ -1,19 +1,18 @@
-.jm-input {
-  --default-height: 32px;
-  --large-height: 38px;
-  --small-height: 26px;
+.x-input {
+  --height: 32px;
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   width: 100%;
-  height: var(--default-height);
-  background-color: #fff3;
+  height: var(--height);
+  background: #fff3;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: calc(var(--height) - 2px);
   transition: all .2s;
 
   &:hover:not(&--disabled) {
@@ -22,28 +21,28 @@
 
   &--focused {
     border-color: var(--primary-color);
-    box-shadow: 0 0 8px -3px var(--primary-color);
+    box-shadow: 0 0 8px -2px var(--primary-color);
   }
 
   &--large {
-    height: var(--large-height);
-    font-size: 14px;
+    --height: 38px;
   }
 
   &--small {
-    height: var(--small-height);
+    --height: 24px;
+    font-size: 12px;
   }
 
   &--round {
     padding: 0 6px;
-    border-radius: calc(var(--default-height) / 2);
+    border-radius: calc(var(--height) / 2);
   }
 
   &--disabled {
     opacity: .5;
     cursor: not-allowed;
 
-    .jm-input__content {
+    .x-input__content {
       cursor: not-allowed;
     }
   }
@@ -70,11 +69,15 @@
   
     &::placeholder {
       font-size: inherit;
-      color: var(--text-light);
+      color: var(--text-lighter);
+    }
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
     }
   
     &:-webkit-autofill {
-      transition: background-color 5000s ease-in;
+      transition: background 5000s ease-in;
     }
   
     &:-moz-ui-invalid {
@@ -103,37 +106,12 @@
 }
 
 /*
-.jm-input--disabled .jm-input__content {
-  color: var(--grey-light);
-  cursor: not-allowed;
-
-  &::placeholder {
-    color: var(--grey-light);
-  }
-}
-
-.jm-input--disabled.jm-input--focused {
-  border-color: var(--grey-lighter);
-}
-*/
-
-.jm-input--round.jm-input {
-  &--large {
-    border-radius: calc(var(--large-height) / 2);
-  }
-
-  &--small {
-    border-radius: calc(var(--small-height) / 2);
-  }
-}
-
-/*
  * textarea
  */
-.jm-textarea {
+.x-textarea {
   height: auto;
 
-  & .jm-input__content {
+  & .x-input__content {
     padding: 4px 10px;
     line-height: 1.5;
     resize: vertical;
