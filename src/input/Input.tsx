@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import { XEvent, toXEvent } from '../utils/event';
 import './styles/input.css';
 
 const b = bem('x-input');
@@ -46,19 +45,15 @@ export interface InputProps {
   readOnly?: boolean;
   disabled?: boolean;
   autoResize?: boolean | { minRows?: number; maxRows?: number };
-  onChange?: (ev: XEvent<InputChangeEventTarget>) => void;
+  onChange?: (value: InputProps['value']) => void;
   onFocus?: (ev: React.SyntheticEvent) => void;
   onBlur?: (ev: React.SyntheticEvent) => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onPrefixClick?: () => void;
-  onSuffixClick?: () => void;
+  onMouseEnter?: (ev: React.SyntheticEvent) => void;
+  onMouseLeave?: (ev: React.SyntheticEvent) => void;
+  onPrefixClick?: (ev: React.SyntheticEvent) => void;
+  onSuffixClick?: (ev: React.SyntheticEvent) => void;
   className?: string;
   style?: React.CSSProperties;
-}
-
-export interface InputChangeEventTarget extends InputProps {
-  value: any;
 }
 
 export interface InputState {
@@ -117,7 +112,9 @@ export default class Input extends React.Component<InputProps, InputState> {
     this.resize();
   }
 
-  handleChange = (ev: React.SyntheticEvent) => {
+  handleChange = (
+    ev: React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { value, disabled, onChange } = this.props;
     const newValue = (ev.target as any).value;
 
@@ -130,7 +127,7 @@ export default class Input extends React.Component<InputProps, InputState> {
     }
 
     if (onChange) {
-      onChange(toXEvent(ev, { ...this.props, value: ev.target }));
+      onChange(ev.currentTarget.value);
     }
 
     this.resize();
