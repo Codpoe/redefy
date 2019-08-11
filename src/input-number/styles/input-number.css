@@ -1,0 +1,13 @@
+.x-input-number {
+  display: inline-flex;
+  width: 100px;
+
+  &__fix {
+    padding: 6px;
+  }
+
+  & .x-input__content {
+    text-align: center;
+    -moz-appearance: textfield;
+  }
+}
