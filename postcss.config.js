@@ -3,6 +3,8 @@ module.exports = {
     require('postcss-import'),
     require('precss'),
     require('postcss-color-mod-function'),
-    require('cssnano'),
+    require('cssnano')({
+      preset: 'default',
+    }),
   ],
 };
