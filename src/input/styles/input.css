@@ -34,7 +34,6 @@
   }
 
   &--round {
-    padding: 0 6px;
     border-radius: calc(var(--height) / 2);
   }
 
