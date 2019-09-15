@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import CheckboxGroup from './CheckboxGroup';
 import bem from '../utils/bem';
-import { toXEvent, XEvent } from '../utils/event';
 import './styles/checkbox.css';
 
 const b = bem('x-checkbox');
@@ -12,13 +11,9 @@ export interface CheckboxProps {
   defaultChecked?: boolean;
   value?: any;
   disabled?: boolean;
-  onChange?: (ev: XEvent<CheckboxChangeEventTarget>) => void;
+  onChange?: (checked: boolean, target: CheckboxProps) => void;
   className?: string;
   style?: React.CSSProperties;
-}
-
-export interface CheckboxChangeEventTarget extends CheckboxProps {
-  checked: boolean;
 }
 
 export interface CheckboxState {
@@ -49,7 +44,7 @@ export default class Checkbox extends React.Component<
         : (this.props.defaultChecked as boolean),
   };
 
-  handleChange = (ev: React.SyntheticEvent) => {
+  handleChange = () => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
@@ -62,12 +57,7 @@ export default class Checkbox extends React.Component<
     }
 
     if (onChange) {
-      const target: CheckboxChangeEventTarget = {
-        ...this.props,
-        checked: !checked,
-      };
-
-      onChange(toXEvent(ev, target));
+      onChange(!checked, { ...this.props });
     }
   };
 

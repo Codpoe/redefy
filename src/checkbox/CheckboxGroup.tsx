@@ -1,16 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 import Checkbox, { CheckboxProps } from './Checkbox';
+import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 import './styles/checkbox-group.css';
 
 const b = bem('x-checkbox-group');
 
-export interface CheckboxGroupProps {
+export interface CheckboxGroupProps extends FieldProps {
   value?: any[];
   defaultValue?: any[];
   disabled?: boolean;
-  onChange?: (value: any[]) => void;
+  onChange?: (value: any[], target: CheckboxGroupProps) => void;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -19,13 +20,17 @@ export interface CheckboxGroupState {
   value: any[];
 }
 
-export default class CheckboxGroup extends React.Component<
+class CheckboxGroup extends React.Component<
   CheckboxGroupProps,
   CheckboxGroupState
 > {
   static defaultProps: CheckboxGroupProps = {
     defaultValue: [],
     disabled: false,
+    fieldContext: {
+      onChange: () => {},
+      onBlur: () => {},
+    },
   };
 
   static getDerivedStateFromProps(props: CheckboxGroupProps) {
@@ -49,10 +54,10 @@ export default class CheckboxGroup extends React.Component<
     return a.indexOf(b) >= 0;
   }
 
-  handleChange: CheckboxProps['onChange'] = ev => {
-    const { onChange } = this.props;
+  handleChange: CheckboxProps['onChange'] = (checked, target) => {
+    const { onChange, fieldContext } = this.props;
     let { value } = this.state;
-    let { checked, value: changedValue } = ev.target;
+    let { value: changedValue } = target;
     value = value.slice();
 
     // 统一为数组
@@ -71,7 +76,14 @@ export default class CheckboxGroup extends React.Component<
       value = value.filter(item => changedValue.indexOf(item) < 0);
     }
 
-    onChange && onChange(value);
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+
+    if (onChange) {
+      onChange(value, { ...this.props });
+      fieldContext.onChange();
+    }
   };
 
   render() {
@@ -99,3 +111,5 @@ export default class CheckboxGroup extends React.Component<
     );
   }
 }
+
+export default toBeField(CheckboxGroup);

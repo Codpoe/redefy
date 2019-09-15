@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import toBeField, { FieldProps } from '../form/to-be-field';
+import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 import './styles/input.css';
 
@@ -133,12 +133,11 @@ class Input extends React.Component<InputProps, InputState> {
 
     if (onChange) {
       onChange(ev.currentTarget.value, { ...this.props });
+      // form
+      fieldContext.onChange();
     }
 
     this.resize();
-
-    // form
-    fieldContext.onChange();
   };
 
   handleFocus = (ev: React.SyntheticEvent) => {
