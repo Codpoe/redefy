@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import toBeField, { FieldProps } from '../form/to-be-field';
 import bem from '../utils/bem';
 import './styles/input.css';
 
@@ -28,7 +29,7 @@ const STYLE_NAMES = [
   'letter-spacing',
 ];
 
-export interface InputProps {
+export interface InputProps extends FieldProps {
   type?: 'text' | 'textarea' | 'password' | 'number';
   name?: string;
   value?: any;
@@ -45,7 +46,7 @@ export interface InputProps {
   readOnly?: boolean;
   disabled?: boolean;
   autoResize?: boolean | { minRows?: number; maxRows?: number };
-  onChange?: (value: InputProps['value']) => void;
+  onChange?: (value: InputProps['value'], target: InputProps) => void;
   onFocus?: (ev: React.SyntheticEvent) => void;
   onBlur?: (ev: React.SyntheticEvent) => void;
   onMouseEnter?: (ev: React.SyntheticEvent) => void;
@@ -62,7 +63,7 @@ export interface InputState {
   textareaStyle: React.CSSProperties;
 }
 
-export default class Input extends React.Component<InputProps, InputState> {
+class Input extends React.Component<InputProps, InputState> {
   static defaultProps: InputProps = {
     type: 'text',
     size: 'normal',
@@ -73,6 +74,10 @@ export default class Input extends React.Component<InputProps, InputState> {
     noPadding: false,
     readOnly: false,
     disabled: false,
+    fieldContext: {
+      onChange: () => {},
+      onBlur: () => {},
+    },
   };
 
   static getDerivedStateFromProps(props: InputProps) {
@@ -115,7 +120,7 @@ export default class Input extends React.Component<InputProps, InputState> {
   handleChange = (
     ev: React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { value, disabled, onChange } = this.props;
+    const { value, disabled, onChange, fieldContext } = this.props;
     const newValue = (ev.target as any).value;
 
     if (disabled) {
@@ -127,10 +132,13 @@ export default class Input extends React.Component<InputProps, InputState> {
     }
 
     if (onChange) {
-      onChange(ev.currentTarget.value);
+      onChange(ev.currentTarget.value, { ...this.props });
     }
 
     this.resize();
+
+    // form
+    fieldContext.onChange();
   };
 
   handleFocus = (ev: React.SyntheticEvent) => {
@@ -150,7 +158,7 @@ export default class Input extends React.Component<InputProps, InputState> {
   };
 
   handleBlur = (ev: React.SyntheticEvent) => {
-    const { focused, disabled, onBlur } = this.props;
+    const { focused, disabled, onBlur, fieldContext } = this.props;
 
     if (disabled) {
       return;
@@ -163,6 +171,8 @@ export default class Input extends React.Component<InputProps, InputState> {
     if (onBlur) {
       onBlur(ev);
     }
+
+    fieldContext.onBlur();
   };
 
   resize() {
@@ -356,3 +366,5 @@ export default class Input extends React.Component<InputProps, InputState> {
     );
   }
 }
+
+export default toBeField(Input);
