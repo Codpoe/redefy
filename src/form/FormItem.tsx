@@ -2,12 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import { FormContext, FormItemContext, FormItemContextValue } from './context';
+import { FormValidator } from './Form';
 
 const b = bem('x-form-item');
 
 export interface FormItemProps {
   label?: React.ReactNode;
-  propName?: string;
+  prop?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -33,14 +34,14 @@ export default class FormItem extends React.Component<
   initialValue: any;
 
   componentDidMount() {
-    const { propName } = this.props;
+    const { prop } = this.props;
     const { value } = this.context;
 
-    if (!propName || !value) {
+    if (!prop || !value) {
       return;
     }
 
-    this.initialValue = value[propName];
+    this.initialValue = value[prop];
     this.context.addItem(this);
   }
 
@@ -49,65 +50,107 @@ export default class FormItem extends React.Component<
   }
 
   validate(eventType?: 'change' | 'blur'): boolean {
-    const { propName } = this.props;
+    const { prop } = this.props;
     const { value, validators } = this.context;
 
-    if (!value || !propName || !validators || !validators[propName]) {
+    if (!value || !prop || !validators || !validators[prop]) {
       this.setState({ valid: true, message: '' });
       return true;
     }
 
-    const propValue = value[propName];
-    const { required, message = '', trigger = 'change', custom } = validators[
-      propName
-    ];
+    let validator = validators[prop];
+
+    if (!Array.isArray(validator)) {
+      validator = [validator];
+    }
+
+    return validator.some(rule => {
+      return !this.ruleValidate(rule, value[prop], value, eventType);
+    });
+  }
+
+  ruleValidate(
+    rule: FormValidator,
+    value: any,
+    formValue: Record<string, any>,
+    eventType?: 'change' | 'blur'
+  ): boolean {
+    const {
+      required,
+      min,
+      max,
+      message = '',
+      trigger = 'change',
+      custom,
+    } = rule;
 
     // has set `eventType` but not equal `trigger`
     if (eventType && eventType !== trigger) {
       return this.state.valid;
     }
 
-    // required validate
-    if (
-      required &&
-      (!propValue || (Array.isArray(propValue) && propValue.length === 0))
-    ) {
-      this.setState({
-        valid: false,
-        message,
-      });
-      return false;
-    }
-
     // custom validate
-    if (custom) {
-      const result = custom(propValue, value);
+    if (typeof custom !== 'undefined') {
+      const result = custom(value, formValue);
 
       if (result === false) {
-        this.setState({
-          valid: false,
-          message,
-        });
-        return false;
+        return this.setValidateStatus(false, message);
       }
 
       if (typeof result === 'string' && result) {
-        this.setState({
-          valid: false,
-          message: result,
-        });
-        return false;
+        return this.setValidateStatus(false, result);
       }
+
+      return this.setValidateStatus(true);
     }
 
-    this.setState({ valid: true });
-    return true;
+    // required validate
+    if (typeof required !== 'undefined') {
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        return this.setValidateStatus(false, message);
+      }
+      return this.setValidateStatus(true);
+    }
+
+    const hasMin = typeof min !== 'undefined';
+    const hasMax = typeof max !== 'undefined';
+    // min and max
+    if (hasMin || hasMax) {
+      if (typeof value === 'undefined') {
+        return this.setValidateStatus(true);
+      }
+
+      let result: boolean | undefined;
+
+      if (hasMin) {
+        result = value >= (min as number);
+      }
+
+      if (typeof result === 'undefined') {
+        result = value <= (max as number);
+      }
+
+      return this.setValidateStatus(result, message);
+    }
+
+    return this.setValidateStatus(true);
+  }
+
+  setValidateStatus(valid: boolean, message?: string) {
+    const status: Record<string, any> = { valid };
+
+    if (!valid && typeof message !== 'undefined') {
+      status.message = message;
+    }
+
+    this.setState(status as FormItemState);
+    return valid;
   }
 
   reset() {
-    const { propName } = this.props;
+    const { prop } = this.props;
 
-    if (!propName) {
+    if (!prop) {
       return;
     }
 
@@ -117,7 +160,7 @@ export default class FormItem extends React.Component<
     });
 
     return {
-      [propName]: this.initialValue,
+      [prop]: this.initialValue,
     };
   }
 

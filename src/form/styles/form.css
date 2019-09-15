@@ -46,6 +46,12 @@
   }
 }
 
+.x-form--label-left .x-form-item {
+  &__label {
+    justify-content: flex-start;
+  }
+}
+
 .x-form--label-top .x-form-item {
   flex-direction: column;
 

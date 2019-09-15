@@ -10,8 +10,10 @@ const b = bem('x-form');
 
 export interface FormValidator {
   required?: boolean;
+  min?: number;
+  max?: number;
   message?: string;
-  trigger?: 'change' | 'blur';
+  trigger?: 'change' | 'blur' | 'none';
   custom?: (
     propValue: any,
     value: NonNullable<FormProps['value']>
@@ -20,7 +22,7 @@ export interface FormValidator {
 
 export interface FormProps {
   value?: Record<string, any>;
-  validators?: Record<keyof NonNullable<FormProps['value']>, FormValidator>;
+  validators?: Record<string, FormValidator | FormValidator[]>;
   labelPosition?: 'left' | 'right' | 'top';
   labelWidth?: number | string;
   labelHeight?: number | string;
