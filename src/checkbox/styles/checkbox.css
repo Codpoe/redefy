@@ -1,12 +1,13 @@
 @import '../../common/color.css';
 
 .x-checkbox {
-  --default-size: 16px;
   display: inline-flex;
   align-items: center;
+  height: 32px;
   cursor: pointer;
 
   &__label {
+    padding: 0 8px;
     font-size: 14px;
     line-height: 1;
     color: var(--text-color);
@@ -14,9 +15,8 @@
 
   &__indicator {
     position: relative;
-    width: var(--default-size);
-    height: var(--default-size);
-    margin-right: 8px;
+    width: 16px;
+    height: 16px;
     border: 1px solid var(--border-color);
     border-radius: 2px;
     overflow: hidden;
@@ -63,8 +63,8 @@
     }
   }
 
-  & + .x-checkbox {
-    margin-left: 24px;
+  &:not(:last-child) {
+    margin-right: 16px;
   }
 
   &:hover:not(&--disabled) {

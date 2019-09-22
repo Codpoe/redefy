@@ -14,6 +14,7 @@ export interface CheckboxProps {
   onChange?: (checked: boolean, target: CheckboxProps) => void;
   className?: string;
   style?: React.CSSProperties;
+  [key: string]: any;
 }
 
 export interface CheckboxState {
