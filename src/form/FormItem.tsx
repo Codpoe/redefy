@@ -106,7 +106,11 @@ export default class FormItem extends React.Component<
 
     // required validate
     if (typeof required !== 'undefined') {
-      if (!value || (Array.isArray(value) && value.length === 0)) {
+      if (
+        typeof value === 'undefined' ||
+        value === '' ||
+        (Array.isArray(value) && value.length === 0)
+      ) {
         return this.setValidateStatus(false, message);
       }
       return this.setValidateStatus(true);
@@ -126,7 +130,7 @@ export default class FormItem extends React.Component<
         result = value >= (min as number);
       }
 
-      if (typeof result === 'undefined') {
+      if (typeof result === 'undefined' || result) {
         result = value <= (max as number);
       }
 
