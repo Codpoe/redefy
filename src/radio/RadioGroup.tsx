@@ -1,16 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 import Radio, { RadioProps } from './Radio';
+import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 import './styles/radio-group.css';
 
 const b = bem('x-radio-group');
 
-export interface RadioGroupProps {
+export interface RadioGroupProps extends FieldProps {
   value?: any;
   defaultValue?: any;
   disabled?: boolean;
-  onChange?: (value: any) => void;
+  onChange?: (value: any, target: RadioGroupProps) => void;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
@@ -20,12 +21,13 @@ export interface RadioGroupState {
   value?: any;
 }
 
-export default class RadioGroup extends React.Component<
-  RadioGroupProps,
-  RadioGroupState
-> {
+class RadioGroup extends React.Component<RadioGroupProps, RadioGroupState> {
   static defaultProps: RadioGroupProps = {
     disabled: false,
+    fieldContext: {
+      onChange: () => {},
+      onBlur: () => {},
+    },
   };
 
   static getDerivedStateFromProps(props: RadioGroupProps) {
@@ -42,9 +44,9 @@ export default class RadioGroup extends React.Component<
         : this.props.defaultValue,
   };
 
-  handleChange: RadioProps['onChange'] = ev => {
-    const { disabled, onChange } = this.props;
-    const { value } = ev.target;
+  handleChange: RadioProps['onChange'] = (checked, target) => {
+    const { disabled, fieldContext, onChange } = this.props;
+    const { value } = target;
 
     if (disabled) {
       return;
@@ -55,7 +57,8 @@ export default class RadioGroup extends React.Component<
     }
 
     if (onChange) {
-      onChange(value);
+      onChange(value, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
@@ -84,3 +87,5 @@ export default class RadioGroup extends React.Component<
     );
   }
 }
+
+export default toBeField(RadioGroup);

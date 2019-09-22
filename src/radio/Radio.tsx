@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import RadioGroup from './RadioGroup';
 import bem from '../utils/bem';
-import { toXEvent, XEvent } from '../utils/event';
 import './styles/radio.css';
 
 const b = bem('x-radio');
@@ -12,7 +11,7 @@ export interface RadioProps {
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
-  onChange?: (ev: XEvent<RadioChangeEventTarget>) => void;
+  onChange?: (checked: boolean, target: RadioProps) => void;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -49,7 +48,7 @@ export default class Radio extends React.Component<RadioProps, RadioState> {
         : (this.props.defaultChecked as boolean),
   };
 
-  handleChange = (ev: React.SyntheticEvent) => {
+  handleChange = () => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
@@ -62,7 +61,7 @@ export default class Radio extends React.Component<RadioProps, RadioState> {
     }
 
     if (onChange) {
-      onChange(toXEvent(ev, { ...this.props, checked: !checked }));
+      onChange(!checked, { ...this.props });
     }
   };
 

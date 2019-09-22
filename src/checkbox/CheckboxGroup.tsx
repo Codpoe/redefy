@@ -14,7 +14,6 @@ export interface CheckboxGroupProps extends FieldProps {
   onChange?: (value: any[], target: CheckboxGroupProps) => void;
   className?: string;
   style?: React.CSSProperties;
-  [key: string]: any;
 }
 
 export interface CheckboxGroupState {
