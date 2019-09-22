@@ -4,6 +4,7 @@ import bem from '../utils/bem';
 import Input, { InputProps } from '../input/index';
 import Button from '../button/index';
 import { Minus, Plus } from '../icon/index';
+import { toBeField, FieldProps } from '../form/index';
 import './styles/input-number.css';
 
 const b = bem('x-input-number');
@@ -24,7 +25,9 @@ type InputNumberPropsFromInput = Pick<
   | 'onChange'
 >;
 
-export interface InputNumberProps extends InputNumberPropsFromInput {
+export interface InputNumberProps
+  extends InputNumberPropsFromInput,
+    FieldProps {
   step?: number;
   min?: number;
   max?: number;
@@ -36,16 +39,17 @@ export interface InputNumberState {
   validValue: number | '';
 }
 
-export default class InputNumber extends React.Component<
-  InputNumberProps,
-  InputNumberState
-> {
+class InputNumber extends React.Component<InputNumberProps, InputNumberState> {
   static defaultProps: InputNumberProps = {
     defaultValue: '',
     step: 1,
     min: -Infinity,
     max: Infinity,
     editable: true,
+    fieldContext: {
+      onChange: () => {},
+      onBlur: () => {},
+    },
   };
 
   static getDerivedStateFromProps(props: InputNumberProps) {
@@ -91,7 +95,7 @@ export default class InputNumber extends React.Component<
   }
 
   handleChange: InputNumberProps['onChange'] = value => {
-    const { disabled, readOnly, onChange } = this.props;
+    const { disabled, readOnly, onChange, fieldContext } = this.props;
 
     if (disabled || readOnly) {
       return;
@@ -104,12 +108,20 @@ export default class InputNumber extends React.Component<
     }
 
     if (onChange) {
-      onChange(value);
+      onChange(value, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
   handleMinus = () => {
-    const { step, min, disabled, readOnly, onChange } = this.props;
+    const {
+      step,
+      min,
+      disabled,
+      readOnly,
+      onChange,
+      fieldContext,
+    } = this.props;
     const value = this.toFixed(
       Math.max(+this.state.value - (step as number), min as number)
     );
@@ -125,12 +137,20 @@ export default class InputNumber extends React.Component<
     }
 
     if (onChange) {
-      onChange(value);
+      onChange(value, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
   handlePlus = () => {
-    const { step, max, disabled, readOnly, onChange } = this.props;
+    const {
+      step,
+      max,
+      disabled,
+      readOnly,
+      onChange,
+      fieldContext,
+    } = this.props;
     const value = this.toFixed(
       Math.min(+this.state.value + (step as number), max as number)
     );
@@ -146,12 +166,13 @@ export default class InputNumber extends React.Component<
     }
 
     if (onChange) {
-      onChange(value);
+      onChange(value, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
   handleBlur = () => {
-    const { onChange } = this.props;
+    const { onChange, fieldContext } = this.props;
     const { value, validValue } = this.state;
 
     if (value === validValue) {
@@ -163,7 +184,8 @@ export default class InputNumber extends React.Component<
     }
 
     if (onChange) {
-      onChange(validValue);
+      onChange(validValue, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
@@ -237,3 +259,5 @@ export default class InputNumber extends React.Component<
     );
   }
 }
+
+export default toBeField(InputNumber);
