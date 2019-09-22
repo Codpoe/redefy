@@ -1,9 +1,9 @@
 @import '../../common/color.css';
 
 .x-switch {
-  --switch-width: 44px;
-  --switch-height: 22px;
-  --indicator-size: 18px;
+  --switch-width: 36px;
+  --switch-height: 20px;
+  --indicator-size: 16px;
   --gap-width: calc((var(--switch-height) - var(--indicator-size)) / 2);
   position: relative;
   display: inline-flex;
@@ -53,6 +53,7 @@
     box-shadow: 0 0 8px -1px var(--primary-color);
 
     .x-switch__indicator {
+      will-change: left;
       left: calc(100% - var(--indicator-size) - var(--gap-width));
     }
   }

@@ -1,16 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import { XEvent, toXEvent } from '../utils/event';
+import { toBeField, FieldProps } from '../form/index';
 import './styles/switch.css';
 
 const b = bem('x-switch');
 
-export interface SwitchProps {
+export interface SwitchProps extends FieldProps {
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
-  onChange?: (ev: XEvent<SwitchChangeEventTarget>) => void;
+  onChange?: (checked: boolean, target: SwitchProps) => void;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -23,10 +23,14 @@ export interface SwitchState {
   checked: boolean;
 }
 
-export default class Switch extends React.Component<SwitchProps, SwitchState> {
+class Switch extends React.Component<SwitchProps, SwitchState> {
   static defaultProps: SwitchProps = {
     defaultChecked: false,
     disabled: false,
+    fieldContext: {
+      onChange: () => {},
+      onBlur: () => {},
+    },
   };
 
   static getDerivedStateFromProps(props: SwitchProps) {
@@ -43,8 +47,8 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
         : (this.props.defaultChecked as boolean),
   };
 
-  handleChange = (ev: React.SyntheticEvent) => {
-    const { disabled, onChange } = this.props;
+  handleChange = () => {
+    const { disabled, onChange, fieldContext } = this.props;
     const { checked } = this.state;
 
     if (disabled) {
@@ -56,7 +60,8 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     }
 
     if (onChange) {
-      onChange(toXEvent(ev, { ...this.props, checked: !checked }));
+      onChange(!checked, { ...this.props });
+      fieldContext.onChange();
     }
   };
 
@@ -84,3 +89,5 @@ export default class Switch extends React.Component<SwitchProps, SwitchState> {
     );
   }
 }
+
+export default toBeField(Switch);
