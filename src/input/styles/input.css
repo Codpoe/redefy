@@ -12,7 +12,7 @@
   border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 14px;
-  line-height: calc(var(--height) - 2px);
+  line-height: 20px;
   overflow: hidden;
   transition: all .2s;
 
