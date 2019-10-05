@@ -1,0 +1,17 @@
+@import '../../common/color.css';
+
+.x-base-select__indicator {
+  transition: all 0.2s;
+
+  &--active {
+    transform: rotate(180deg);
+  }
+}
+
+.x-base-select__loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+}
