@@ -15,7 +15,6 @@
   }
 
   &__content-inner {
-    max-height: 200px;
     padding: 6px 12px;
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, .15);
