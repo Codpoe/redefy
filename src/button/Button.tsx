@@ -5,6 +5,7 @@ import Loader from '../loader/index';
 import './styles/button.css';
 
 export interface ButtonProps {
+  [key: string]: any;
   type?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   size?: 'normal' | 'large' | 'small';
   flat?: boolean;
@@ -61,6 +62,7 @@ export default class Button extends React.Component<ButtonProps> {
       onClick,
       className,
       style,
+      ...restProps
     } = this.props;
 
     const NodeName = href ? 'a' : 'button';
@@ -84,6 +86,7 @@ export default class Button extends React.Component<ButtonProps> {
         target={href ? target : undefined}
         disabled={disabled}
         onClick={onClick}
+        {...restProps}
       >
         {loading ? <Loader color={loaderColor} /> : children}
       </NodeName>
