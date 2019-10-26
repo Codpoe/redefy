@@ -1,0 +1,29 @@
+@import '../../common/color.css';
+
+.x-tag {
+  cursor: default;
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  &--closable {
+    padding-right: 0;
+  }
+
+  &.x-button {
+    --border-color: var(--text-color);
+    --border-hover: var(--text-color);
+    --border-active: var(--text-color);;
+  }
+
+  &__close {
+    padding: 3px 6px;
+    transition: all .2s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--error-color);
+    }
+  }
+}
