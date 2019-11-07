@@ -1,0 +1,7 @@
+.x-select__content {
+  width: 200px;
+
+  & .x-pop__content-inner {
+    padding: 0;
+  }
+}
