@@ -57,9 +57,10 @@ export default class BaseSelect extends React.Component<
 
   renderSuffix() {
     const { value, visible, icon } = this.props;
+    const { showClearIcon } = this.state;
 
     // render arrow
-    if (typeof value === 'undefined' || value === '') {
+    if (typeof value === 'undefined' || value === '' || !showClearIcon) {
       return (
         icon || (
           <ChevronDown
