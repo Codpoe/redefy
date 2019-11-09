@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import BaseSelect from '../base-select/index';
-import Option from './Option';
+import Option, { OptionProps } from './Option';
 import './styles/select.css';
 
 const b = bem('x-select');
@@ -10,6 +10,8 @@ const b = bem('x-select');
 export interface SelectProps {
   [key: string]: any;
   value?: any | any[];
+  defaultValue?: any | any[];
+  data: OptionProps[];
   placeholder?: string;
   onChange?: (value: SelectProps['value']) => void;
   className?: string;
@@ -19,32 +21,25 @@ export interface SelectProps {
 }
 
 export interface SelectState {
+  value: any | any[];
   visible: boolean;
-  valueToShow: any;
 }
 
 export default class Select extends React.Component<SelectProps, SelectState> {
-  static Option: typeof Option;
-
   static getDerivedStateFromProps(props: SelectProps) {
-    if (typeof props.value === 'undefined') {
-      return null;
+    if ('value' in props) {
+      return { value: props.value };
     }
-
     return null;
   }
 
   state: SelectState = {
+    value: 'value' in this.props ? this.props.value : this.props.defaultValue,
     visible: false,
-    valueToShow: '',
   };
 
   isSelected = (optionValue: any) => {
-    if (typeof optionValue === 'undefined') {
-      return false;
-    }
-
-    const { value } = this.props;
+    const { value } = this.state;
 
     if (Array.isArray(value)) {
       return value.indexOf(optionValue) >= 0;
@@ -53,32 +48,32 @@ export default class Select extends React.Component<SelectProps, SelectState> {
     return value === optionValue;
   };
 
-  getValueToShow() {}
+  proxyChange(value: any) {
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+  }
 
   handleVisibleChange = (visible: boolean) => {
     this.setState({ visible });
   };
 
   handleClear = () => {
-    const { value, onChange } = this.props;
-
-    if (!onChange) {
-      return;
-    }
+    const { value } = this.props;
 
     if (Array.isArray(value)) {
-      onChange([]);
+      this.proxyChange([]);
     } else {
-      onChange('');
+      this.proxyChange('');
     }
   };
 
   handleOptionClick = (optionValue: any) => {
-    let { value, onChange } = this.props;
-
-    if (typeof optionValue === 'undefined' || !onChange) {
-      return;
-    }
+    let { value } = this.state;
 
     if (Array.isArray(value)) {
       const index = value.indexOf(optionValue);
@@ -94,41 +89,34 @@ export default class Select extends React.Component<SelectProps, SelectState> {
       this.setState({ visible: false });
     }
 
-    onChange(value);
+    this.proxyChange(value);
   };
 
   getOptionsAndLabels() {
-    const { children } = this.props;
+    const { data } = this.props;
     const labels: string[] = [];
 
-    const options = React.Children.toArray(children).reduce((res, item) => {
-      if (!item) {
-        return null;
-      }
-
-      const props = (item as any).props;
-
-      if ((item as any).type.name === 'Option') {
-        const selected = this.isSelected(props.value);
+    const options = data.reduce(
+      (res, item) => {
+        const selected = this.isSelected(item.value);
 
         if (selected) {
-          labels.push(props.label || props.children);
+          labels.push(item.text || (item.label as string));
         }
 
-        res = (res as React.ReactNode[]).concat(
+        res = res.concat(
           <Option
-            {...props}
-            key={props.value}
+            {...item}
+            key={item.value}
             selected={selected}
-            onClick={() => this.handleOptionClick(props.value)}
+            onClick={() => this.handleOptionClick(item.value)}
           />
         );
-      } else {
-        res = (res as React.ReactNode[]).concat(item);
-      }
 
-      return res;
-    }, []);
+        return res;
+      },
+      [] as React.ReactNode[]
+    );
 
     return { options, labels };
   }

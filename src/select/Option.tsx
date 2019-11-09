@@ -8,8 +8,9 @@ const b = bem('x-select-option');
 
 export interface OptionProps {
   [key: string]: any;
-  value?: any;
-  label?: string;
+  value: any;
+  label: React.ReactNode;
+  text?: string;
   selected?: boolean;
   disabled?: boolean;
   onClick?: (value: any) => void;
@@ -20,12 +21,12 @@ export interface OptionProps {
 const Option: React.FC<OptionProps> = props => {
   const {
     value,
+    label,
     selected,
     disabled,
     onClick,
     className,
     style,
-    children,
     ...restProps
   } = props;
   const cls = cx(b(), className, {
@@ -41,7 +42,7 @@ const Option: React.FC<OptionProps> = props => {
       data-value={value}
       onClick={onClick}
     >
-      <div className={b('item')}>{children}</div>
+      <div className={b('item')}>{label}</div>
       {selected && <Check className={b('icon')} />}
     </div>
   );
