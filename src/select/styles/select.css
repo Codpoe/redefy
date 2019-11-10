@@ -3,5 +3,6 @@
 
   & .x-pop__content-inner {
     padding: 0;
+    overflow: hidden;
   }
 }

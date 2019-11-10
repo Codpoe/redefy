@@ -109,7 +109,11 @@ export default class Select extends React.Component<SelectProps, SelectState> {
             {...item}
             key={item.value}
             selected={selected}
-            onClick={() => this.handleOptionClick(item.value)}
+            onClick={
+              item.disabled
+                ? undefined
+                : () => this.handleOptionClick(item.value)
+            }
           />
         );
 
