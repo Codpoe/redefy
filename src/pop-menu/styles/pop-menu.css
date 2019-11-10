@@ -1,0 +1,8 @@
+.x-pop-menu__menu {
+  min-width: 150px;
+
+  & .x-pop__content-inner {
+    padding: 0;
+    overflow: hidden;
+  }
+}
