@@ -42,8 +42,8 @@ export interface PopState {
 export default class Pop extends React.Component<PopProps, PopState> {
   static defaultProps: PopProps = {
     defaultVisible: false,
-    trigger: 'hover' as PopProps['trigger'],
-    position: 'bottom-left' as PopProps['position'],
+    trigger: 'hover',
+    position: 'bottom-left',
     delay: 150,
     disabled: false,
     withArrow: false,
