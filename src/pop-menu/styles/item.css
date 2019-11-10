@@ -23,4 +23,8 @@
     opacity: .5;
     cursor: not-allowed;
   }
+
+  & + .x-pop-menu__group {
+    border-top: 1px solid var(--border-lightest);
+  }
 }

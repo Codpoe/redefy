@@ -12,6 +12,7 @@ export interface ItemProps {
   href?: string;
   target?: '_self' | '_blank';
   disabled?: boolean;
+  menu?: ItemProps[];
   onClick?: (item: ItemProps, ev: React.SyntheticEvent) => void;
   className?: string;
   style?: React.CSSProperties;

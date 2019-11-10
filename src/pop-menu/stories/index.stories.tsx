@@ -6,9 +6,22 @@ import Button from '../../button/index';
 import { ChevronDown } from '../../icon/index';
 
 const menu: PopMenuProps['menu'] = [
-  { label: 'Apple', href: '//www.apple.com' },
-  { label: 'Smartisan', href: '//www.smartisan.com' },
-  { label: 'OnePlus', href: '//www.oneplus.com', disabled: true },
+  {
+    label: 'Phone',
+    menu: [
+      { label: 'Apple', href: '//www.apple.com' },
+      { label: 'Smartisan', href: '//www.smartisan.com' },
+      { label: 'OnePlus', href: '//www.oneplus.com' },
+    ],
+  },
+  {
+    label: 'Phone',
+    menu: [
+      { label: 'Apple', href: '//www.apple.com' },
+      { label: 'Smartisan', href: '//www.smartisan.com' },
+      { label: 'OnePlus', href: '//www.oneplus.com' },
+    ],
+  },
 ];
 
 storiesOf('Interaction | PopMenu', module).add('basic', () => (

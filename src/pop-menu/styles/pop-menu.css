@@ -1,8 +1,18 @@
-.x-pop-menu__menu {
-  min-width: 150px;
+.x-pop-menu {
+  &__menu {
+    min-width: 160px;
 
-  & .x-pop__content-inner {
-    padding: 0;
-    overflow: hidden;
+    & .x-pop__content-inner {
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px 6px;
+    font-size: 12px;
+    color: var(--text-lighter);
   }
 }

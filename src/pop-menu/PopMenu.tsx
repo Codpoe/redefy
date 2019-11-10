@@ -33,27 +33,39 @@ export default class PopMenu extends React.Component<
     onClick && onClick(item, ev);
   };
 
-  renderMenu() {
-    const { menu } = this.props;
-
-    return menu.map((itemProps, index) => (
-      <Item
-        {...itemProps}
-        key={itemProps.value || index}
-        onClick={this.handleMenuClick}
-      />
-    ));
+  renderMenu(menu: PopMenuProps['menu'], level = 0): React.ReactNode[] {
+    return menu.map((itemProps, index) => {
+      if (!itemProps.menu) {
+        return (
+          <Item
+            {...itemProps}
+            key={`${level}-${index}`}
+            onClick={this.handleMenuClick}
+          />
+        );
+      } else {
+        const groupCls = cx(b('group'), {
+          [b('group', 'first')]: level === 0 && index === 0,
+        });
+        return (
+          <>
+            <div className={groupCls}>{itemProps.label}</div>
+            {this.renderMenu(itemProps.menu)}
+          </>
+        );
+      }
+    });
   }
 
   render() {
-    const { className, contentClassName, ...restProps } = this.props;
+    const { menu, className, contentClassName, ...restProps } = this.props;
 
     return (
       <Pop
         {...restProps}
         className={cx(b(), className)}
         contentClassName={cx(b('menu'), contentClassName)}
-        content={this.renderMenu()}
+        content={this.renderMenu(menu)}
       />
     );
   }
