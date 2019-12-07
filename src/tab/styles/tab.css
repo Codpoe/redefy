@@ -1,0 +1,11 @@
+.x-tab {
+  &__labels {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  &__content {
+    margin-top: 10px;
+  }
+}
