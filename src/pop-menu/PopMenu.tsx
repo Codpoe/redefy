@@ -8,7 +8,7 @@ import './styles/pop-menu.css';
 const b = bem('x-pop-menu');
 
 export interface PopMenuProps extends PopProps {
-  menu: ItemProps[];
+  items: ItemProps[];
   onClick?: (item: ItemProps, ev: React.SyntheticEvent) => void;
 }
 
@@ -19,7 +19,7 @@ export default class PopMenu extends React.Component<
   PopMenuState
 > {
   static defaultProps: PopMenuProps = {
-    menu: [],
+    items: [],
   };
 
   handleMenuClick = (item: ItemProps, ev: React.SyntheticEvent) => {
@@ -33,9 +33,9 @@ export default class PopMenu extends React.Component<
     onClick && onClick(item, ev);
   };
 
-  renderMenu(menu: PopMenuProps['menu'], level = 0): React.ReactNode[] {
-    return menu.map((itemProps, index) => {
-      if (!itemProps.menu) {
+  renderMenu(items: PopMenuProps['items'], level = 0): React.ReactNode[] {
+    return items.map((itemProps, index) => {
+      if (!itemProps.items) {
         return (
           <Item
             {...itemProps}
@@ -50,7 +50,7 @@ export default class PopMenu extends React.Component<
         return (
           <>
             <div className={groupCls}>{itemProps.label}</div>
-            {this.renderMenu(itemProps.menu)}
+            {this.renderMenu(itemProps.items)}
           </>
         );
       }
@@ -58,14 +58,14 @@ export default class PopMenu extends React.Component<
   }
 
   render() {
-    const { menu, className, contentClassName, ...restProps } = this.props;
+    const { items, className, contentClassName, ...restProps } = this.props;
 
     return (
       <Pop
         {...restProps}
         className={cx(b(), className)}
         contentClassName={cx(b('menu'), contentClassName)}
-        content={this.renderMenu(menu)}
+        content={this.renderMenu(items)}
       />
     );
   }

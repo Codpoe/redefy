@@ -8,11 +8,11 @@ const b = bem('x-pop-menu-item');
 export interface ItemProps {
   [key: string]: any;
   value?: any;
+  items?: ItemProps[];
   label: React.ReactNode;
   href?: string;
   target?: '_self' | '_blank';
   disabled?: boolean;
-  menu?: ItemProps[];
   onClick?: (item: ItemProps, ev: React.SyntheticEvent) => void;
   className?: string;
   style?: React.CSSProperties;

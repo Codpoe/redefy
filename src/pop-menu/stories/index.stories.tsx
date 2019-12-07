@@ -5,10 +5,10 @@ import PopMenu, { PopMenuProps } from '../index';
 import Button from '../../button/index';
 import { ChevronDown } from '../../icon/index';
 
-const menu: PopMenuProps['menu'] = [
+const items: PopMenuProps['items'] = [
   {
     label: 'Phone',
-    menu: [
+    items: [
       { label: 'Apple', href: '//www.apple.com' },
       { label: 'Smartisan', href: '//www.smartisan.com' },
       { label: 'OnePlus', href: '//www.oneplus.com' },
@@ -16,7 +16,7 @@ const menu: PopMenuProps['menu'] = [
   },
   {
     label: 'Phone',
-    menu: [
+    items: [
       { label: 'Apple', href: '//www.apple.com' },
       { label: 'Smartisan', href: '//www.smartisan.com' },
       { label: 'OnePlus', href: '//www.oneplus.com' },
@@ -26,7 +26,7 @@ const menu: PopMenuProps['menu'] = [
 
 storiesOf('Interaction | PopMenu', module).add('basic', () => (
   <div style={{ marginLeft: '200px' }}>
-    <PopMenu menu={menu} onClick={action('click')}>
+    <PopMenu items={items} onClick={action('click')}>
       <Button>
         PopMenu&nbsp;
         <ChevronDown />
