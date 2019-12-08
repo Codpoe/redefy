@@ -14,7 +14,7 @@
   &__item,
   &__prev,
   &__more:not(:last-of-type) {
-    min-width: 36px;
+    min-width: 32px;
     margin-right: 8px;
     padding:  0 4px;
     transition-duration: 0s;
