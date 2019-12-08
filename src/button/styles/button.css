@@ -147,12 +147,6 @@
     --border-hover: transparent;
     --border-active: transparent;
 
-    &:not(.x-button--disabled) {
-      &:hover {
-        text-shadow: 0 0 16px currentColor;
-      }
-    }
-
     &.x-button {
       &--primary {
         --text-color: var(--primary-color);
