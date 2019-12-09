@@ -1,3 +1,5 @@
+@import '../../common/color.css';
+
 .x-pop-menu-item {
   display: flex;
   align-items: center;
