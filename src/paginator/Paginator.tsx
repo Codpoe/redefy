@@ -38,10 +38,7 @@ export interface PaginatorChangeParams {
   current: number;
 }
 
-export default class Paginator extends React.Component<
-  PaginatorProps,
-  PaginatorState
-> {
+export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   static defaultProps: Partial<PaginatorProps> = {
     defaultCurrent: 1,
   };
@@ -304,3 +301,5 @@ export default class Paginator extends React.Component<
     );
   }
 }
+
+export default Paginator;

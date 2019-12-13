@@ -8,7 +8,7 @@ const b = bem('x-tooltip');
 
 export type TooltipProps = PopProps;
 
-const Tooltip: React.SFC<TooltipProps> = (props: TooltipProps) => (
+export const Tooltip: React.SFC<TooltipProps> = (props: TooltipProps) => (
   <Pop
     delay={[300, 150]}
     {...props}

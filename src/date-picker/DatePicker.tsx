@@ -33,7 +33,7 @@ export type DateObj = ReturnType<typeof parseDate>;
 
 export type PanelName = 'DatePanel' | 'MonthPanel' | 'YearPanel';
 
-export default class DatePicker extends React.Component<
+export class DatePicker extends React.Component<
   DatePickerProps,
   DatePickerState
 > {
@@ -250,3 +250,5 @@ export default class DatePicker extends React.Component<
     );
   }
 }
+
+export default DatePicker;

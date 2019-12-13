@@ -14,10 +14,7 @@ export interface PopMenuProps extends PopProps {
 
 export interface PopMenuState {}
 
-export default class PopMenu extends React.Component<
-  PopMenuProps,
-  PopMenuState
-> {
+export class PopMenu extends React.Component<PopMenuProps, PopMenuState> {
   static defaultProps: PopMenuProps = {
     items: [],
   };
@@ -70,3 +67,5 @@ export default class PopMenu extends React.Component<
     );
   }
 }
+
+export default PopMenu;

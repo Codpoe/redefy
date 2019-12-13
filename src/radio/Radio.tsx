@@ -24,7 +24,7 @@ export interface RadioState {
   checked: boolean;
 }
 
-export default class Radio extends React.Component<RadioProps, RadioState> {
+export class Radio extends React.Component<RadioProps, RadioState> {
   static Group: typeof RadioGroup;
 
   static defaultProps: RadioProps = {
@@ -81,3 +81,5 @@ export default class Radio extends React.Component<RadioProps, RadioState> {
     );
   }
 }
+
+export default Radio;

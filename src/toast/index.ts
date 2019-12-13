@@ -1,13 +1,8 @@
-import { show, info, success, warning, error } from './show';
+import * as Toast from './show';
 
+export * from './show';
 export * from './Toast';
 
-export { show, info, success, warning, error };
+export { Toast };
 
-export default {
-  show,
-  info,
-  success,
-  warning,
-  error,
-};
+export default Toast;

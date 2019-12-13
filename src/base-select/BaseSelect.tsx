@@ -25,7 +25,7 @@ export interface BaseSelectState {
   showClearIcon: boolean;
 }
 
-export default class BaseSelect extends React.Component<
+export class BaseSelect extends React.Component<
   BaseSelectProps,
   BaseSelectState
 > {
@@ -113,3 +113,5 @@ export default class BaseSelect extends React.Component<
     );
   }
 }
+
+export default BaseSelect;

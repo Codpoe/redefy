@@ -31,7 +31,7 @@ export interface FormProps {
   style?: React.CSSProperties;
 }
 
-export default class Form extends React.Component<FormProps> {
+export class Form extends React.Component<FormProps> {
   static Item: typeof FormItem;
 
   static toBeField: typeof toBeField;
@@ -106,3 +106,5 @@ export default class Form extends React.Component<FormProps> {
     );
   }
 }
+
+export default Form;

@@ -63,7 +63,7 @@ export interface InputState {
   textareaStyle: React.CSSProperties;
 }
 
-class Input extends React.Component<InputProps, InputState> {
+class InnerInput extends React.Component<InputProps, InputState> {
   static defaultProps: InputProps = {
     type: 'text',
     size: 'normal',
@@ -366,4 +366,5 @@ class Input extends React.Component<InputProps, InputState> {
   }
 }
 
-export default toBeField(Input);
+export const Input = toBeField(InnerInput);
+export default Input;

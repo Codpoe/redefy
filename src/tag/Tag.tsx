@@ -7,9 +7,11 @@ import './styles/tag.css';
 
 const b = bem('x-tag');
 
+type TagTypes = 'default' | 'primary' | 'success' | 'warning' | 'error';
+
 export interface TagProps {
   [key: string]: any;
-  type?: 'default' | 'primary' | 'success' | 'warning' | 'error';
+  type?: TagTypes;
   round?: boolean;
   href?: string;
   target?: '_self' | '_blank';
@@ -19,7 +21,7 @@ export interface TagProps {
   style?: React.CSSProperties;
 }
 
-export default class Tag extends React.Component<TagProps> {
+export class Tag extends React.Component<TagProps> {
   handleClose = (ev: React.SyntheticEvent) => {
     const { onClose } = this.props;
     ev.stopPropagation();
@@ -45,7 +47,7 @@ export default class Tag extends React.Component<TagProps> {
     } = this.props;
 
     const cls = cx(className, b(), {
-      [b('', type)]: type,
+      [b('', type as TagTypes)]: type,
       [b('', 'clickable')]: onClick,
       [b('', 'closable')]: onClose,
     });
@@ -68,3 +70,5 @@ export default class Tag extends React.Component<TagProps> {
     );
   }
 }
+
+export default Tag;

@@ -20,10 +20,7 @@ export interface CheckboxState {
   checked: boolean;
 }
 
-export default class Checkbox extends React.Component<
-  CheckboxProps,
-  CheckboxState
-> {
+export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
   static Group: typeof CheckboxGroup;
   static defaultProps: CheckboxProps = {
     defaultChecked: false,
@@ -79,3 +76,5 @@ export default class Checkbox extends React.Component<
     );
   }
 }
+
+export default Checkbox;

@@ -25,7 +25,7 @@ export interface SelectState {
   visible: boolean;
 }
 
-export default class Select extends React.Component<SelectProps, SelectState> {
+export class Select extends React.Component<SelectProps, SelectState> {
   static getDerivedStateFromProps(props: SelectProps) {
     if ('value' in props) {
       return { value: props.value };
@@ -155,3 +155,5 @@ export default class Select extends React.Component<SelectProps, SelectState> {
     );
   }
 }
+
+export default Select;

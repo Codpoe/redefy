@@ -23,7 +23,7 @@ export interface SwitchState {
   checked: boolean;
 }
 
-class Switch extends React.Component<SwitchProps, SwitchState> {
+class InnerSwitch extends React.Component<SwitchProps, SwitchState> {
   static defaultProps: SwitchProps = {
     defaultChecked: false,
     disabled: false,
@@ -90,4 +90,5 @@ class Switch extends React.Component<SwitchProps, SwitchState> {
   }
 }
 
-export default toBeField(Switch);
+export const Switch = toBeField(InnerSwitch);
+export default Switch;

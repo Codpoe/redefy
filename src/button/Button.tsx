@@ -25,7 +25,7 @@ export interface ButtonProps {
 }
 
 const b = bem('x-button');
-export default class Button extends React.Component<ButtonProps> {
+export class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     type: 'default',
     size: 'normal',
@@ -93,3 +93,5 @@ export default class Button extends React.Component<ButtonProps> {
     );
   }
 }
+
+export default Button;

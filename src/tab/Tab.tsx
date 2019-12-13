@@ -22,7 +22,7 @@ export interface TabState {
   active?: any;
 }
 
-export default class Tab extends React.Component<TabProps, TabState> {
+export class Tab extends React.Component<TabProps, TabState> {
   static Item: typeof Item;
 
   static getDerivedStateFromProps(props: TabProps): TabState | null {
@@ -110,3 +110,5 @@ export default class Tab extends React.Component<TabProps, TabState> {
     );
   }
 }
+
+export default Tab;

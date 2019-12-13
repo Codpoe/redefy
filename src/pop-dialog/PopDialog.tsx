@@ -22,10 +22,7 @@ export interface PopDialogState {
   visible?: boolean;
 }
 
-export default class PopDialog extends React.Component<
-  PopDialogProps,
-  PopDialogState
-> {
+export class PopDialog extends React.Component<PopDialogProps, PopDialogState> {
   static defaultProps: PopDialogProps = {
     trigger: 'click',
     position: 'top-center',
@@ -100,3 +97,5 @@ export default class PopDialog extends React.Component<
     );
   }
 }
+
+export default PopDialog;

@@ -39,7 +39,7 @@ export interface PopState {
   delays?: (number | undefined)[];
 }
 
-export default class Pop extends React.Component<PopProps, PopState> {
+export class Pop extends React.Component<PopProps, PopState> {
   static defaultProps: PopProps = {
     defaultVisible: false,
     trigger: 'hover',
@@ -216,3 +216,5 @@ export default class Pop extends React.Component<PopProps, PopState> {
     );
   }
 }
+
+export default Pop;

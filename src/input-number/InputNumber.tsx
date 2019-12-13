@@ -39,7 +39,10 @@ export interface InputNumberState {
   validValue: number | '';
 }
 
-class InputNumber extends React.Component<InputNumberProps, InputNumberState> {
+class InnerInputNumber extends React.Component<
+  InputNumberProps,
+  InputNumberState
+> {
   static defaultProps: InputNumberProps = {
     defaultValue: '',
     step: 1,
@@ -260,4 +263,5 @@ class InputNumber extends React.Component<InputNumberProps, InputNumberState> {
   }
 }
 
-export default toBeField(InputNumber);
+export const InputNumber = toBeField(InnerInputNumber);
+export default InputNumber;
