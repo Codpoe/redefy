@@ -8,21 +8,23 @@ import { isFixed, getRect, getPagePosition } from '../utils/dom';
 
 const b = bem('x-pop');
 
+export type PopContentPosition =
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'left-top'
+  | 'left-center'
+  | 'left-bottom'
+  | 'right-top'
+  | 'right-center'
+  | 'right-bottom';
+
 export interface PopContentProps {
   content?: any;
-  position?:
-    | 'bottom-left'
-    | 'bottom-center'
-    | 'bottom-right'
-    | 'top-left'
-    | 'top-center'
-    | 'top-right'
-    | 'left-top'
-    | 'left-center'
-    | 'left-bottom'
-    | 'right-top'
-    | 'right-center'
-    | 'right-bottom';
+  position: PopContentPosition;
   visible?: boolean;
   withArrow?: boolean;
   getTriggerRef: () => React.RefObject<HTMLDivElement>;

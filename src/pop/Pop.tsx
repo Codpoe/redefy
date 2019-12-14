@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import Content from './Content';
+import Content, { PopContentPosition } from './Content';
 import './styles/pop.css';
 
 const b = bem('x-pop');
@@ -9,19 +9,7 @@ const b = bem('x-pop');
 export interface PopProps {
   content?: any;
   trigger?: 'hover' | 'click' | 'focus';
-  position?:
-    | 'bottom-left'
-    | 'bottom-center'
-    | 'bottom-right'
-    | 'top-left'
-    | 'top-center'
-    | 'top-right'
-    | 'left-top'
-    | 'left-center'
-    | 'left-bottom'
-    | 'right-top'
-    | 'right-center'
-    | 'right-bottom';
+  position?: PopContentPosition;
   delay?: number | number[];
   visible?: boolean;
   defaultVisible?: boolean;
@@ -205,7 +193,7 @@ export class Pop extends React.Component<PopProps, PopState> {
 
         <Content
           content={content}
-          position={position}
+          position={position as PopContentPosition}
           visible={visible}
           withArrow={withArrow}
           getTriggerRef={this.getTriggerRef}
