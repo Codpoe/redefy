@@ -23,10 +23,7 @@ const combine = (name: string, el: string, symbol: string) =>
 const prefix = (name: string) => (el: string, symbol: string) =>
   combine(name, el, symbol);
 
-const bem: (name: string) => Bem = (name: string) => (
-  el?: string | string[],
-  mods?: string | string[]
-) => {
+const bem: (name: string) => Bem = (name: string) => (el?: any, mods?: any) => {
   if (typeof el === 'undefined') {
     el = '';
   }
