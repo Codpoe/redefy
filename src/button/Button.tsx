@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import Loader from '../loader/index';
 import './styles/button.css';
 
 export interface ButtonProps {
@@ -57,7 +56,6 @@ export class Button extends React.Component<ButtonProps> {
       loading,
       href,
       target,
-      loaderColor,
       children,
       onClick,
       className,
@@ -88,7 +86,7 @@ export class Button extends React.Component<ButtonProps> {
         onClick={onClick}
         {...restProps}
       >
-        {loading ? <Loader color={loaderColor} /> : children}
+        {children}
       </NodeName>
     );
   }
