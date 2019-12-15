@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import './styles/button.css';
 
 export interface ButtonProps {
   [key: string]: any;

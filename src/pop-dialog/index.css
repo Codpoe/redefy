@@ -1,4 +1,6 @@
-@import '../../common/color.css';
+@import '../common/color.css';
+@import '../pop/index.css';
+@import '../button/index.css';
 
 .x-pop-dialog {
   &__content-wrap {

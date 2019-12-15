@@ -3,7 +3,6 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import { FormContext, FormContextValue } from './context';
 import FormItem from './FormItem';
-import './styles/form.css';
 import toBeField from './to-be-field';
 
 const b = bem('x-form');

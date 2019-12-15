@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Content, { PopContentPosition } from './Content';
-import './styles/pop.css';
 
 const b = bem('x-pop');
 
@@ -137,7 +136,10 @@ export class Pop extends React.Component<PopProps, PopState> {
 
     if (trigger === 'hover') {
       clearTimeout(this.updateTimer);
-      this.updateTimer = setTimeout(update, visible ? delays[0] : delays[1]);
+      this.updateTimer = setTimeout(
+        update,
+        visible ? delays[0] : delays[1]
+      ) as any;
     } else {
       update();
     }

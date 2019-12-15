@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import RadioGroup from './RadioGroup';
 import bem from '../utils/bem';
-import './styles/radio.css';
 
 const b = bem('x-radio');
 

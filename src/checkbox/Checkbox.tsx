@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import CheckboxGroup from './CheckboxGroup';
 import bem from '../utils/bem';
-import './styles/checkbox.css';
 
 const b = bem('x-checkbox');
 

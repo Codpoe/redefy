@@ -4,7 +4,6 @@ import Input, { InputProps } from '../input/index';
 import Pop from '../pop/index';
 import bem from '../utils/bem';
 import { ChevronDown, X } from '../icon/index';
-import './styles/base-select.css';
 
 const b = bem('x-base-select');
 

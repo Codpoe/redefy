@@ -3,7 +3,6 @@ import cx from 'classnames';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
-import './styles/checkbox-group.css';
 
 const b = bem('x-checkbox-group');
 

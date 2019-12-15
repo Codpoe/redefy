@@ -1,3 +1,5 @@
+@import '../pop/index.css';
+
 .x-tooltip__content {
   --tooltip-bg-color: rgba(0,0,0,.75);
 

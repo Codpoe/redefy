@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import { Check } from '../icon/index';
-import './styles/option.css';
 
 const b = bem('x-select-option');
 

@@ -1,4 +1,4 @@
-@import '../../common/color.css';
+@import '../common/color.css';
 
 .x-form {
   --default-height: 32px;

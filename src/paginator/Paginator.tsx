@@ -11,7 +11,6 @@ import {
   ChevronsRight,
   MoreHorizontal,
 } from '../icon/index';
-import './styles/paginator.css';
 
 const b = bem('x-paginator');
 

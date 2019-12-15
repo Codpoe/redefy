@@ -1,4 +1,4 @@
-@import '../../common/color.css';
+@import '../common/color.css';
 
 .x-base-select__indicator {
   transition: all 0.2s;

@@ -1,4 +1,6 @@
-@import '../../common/color.css';
+@import '../common/color.css';
+@import '../base-select/index.css';
+@import '../button/index.css';
 
 .x-date-picker {
   &__content {

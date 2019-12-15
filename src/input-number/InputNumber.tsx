@@ -5,7 +5,6 @@ import Input, { InputProps } from '../input/index';
 import Button from '../button/index';
 import { Minus, Plus } from '../icon/index';
 import { toBeField, FieldProps } from '../form/index';
-import './styles/input-number.css';
 
 const b = bem('x-input-number');
 

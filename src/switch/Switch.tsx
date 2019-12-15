@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import { toBeField, FieldProps } from '../form/index';
-import './styles/switch.css';
 
 const b = bem('x-switch');
 

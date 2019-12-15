@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import './styles/item.css';
 
 const b = bem('x-pop-menu-item');
 

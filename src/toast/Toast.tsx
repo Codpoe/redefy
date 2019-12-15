@@ -4,7 +4,6 @@ import cx from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import bem from '../utils/bem';
 import { Info, CheckCircle, AlertCircle, XCircle } from '../icon/index';
-import './styles/toast.css';
 
 const b = bem('x-toast');
 

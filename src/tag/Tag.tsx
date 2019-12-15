@@ -3,7 +3,6 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import Button from '../button/index';
 import { X } from '../icon/index';
-import './styles/tag.css';
 
 const b = bem('x-tag');
 

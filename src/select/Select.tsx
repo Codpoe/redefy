@@ -3,7 +3,6 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import BaseSelect from '../base-select/index';
 import Option, { OptionProps } from './Option';
-import './styles/select.css';
 
 const b = bem('x-select');
 

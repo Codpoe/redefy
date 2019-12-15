@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import Button, { ButtonProps } from './Button';
-import './styles/button-group.css';
 
 export interface ButtonGroupProps {
   children?: React.ReactElement[];

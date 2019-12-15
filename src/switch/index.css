@@ -1,4 +1,4 @@
-@import '../../common/color.css';
+@import '../common/color.css';
 
 .x-switch {
   --switch-width: 36px;

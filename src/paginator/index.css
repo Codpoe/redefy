@@ -1,3 +1,7 @@
+@import '../button/index.css';
+@import '../form/index.css';
+@import '../input/index.css';
+
 .x-paginator {
   display: flex;
   align-items: center;

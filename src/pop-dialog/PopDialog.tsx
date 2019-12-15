@@ -3,7 +3,6 @@ import Pop, { PopProps } from '../pop/index';
 import Button, { ButtonProps } from '../button/index';
 import * as Icon from '../icon/index';
 import bem from '../utils/bem';
-import './styles/pop-dialog.css';
 
 const b = bem('x-pop-dialog');
 

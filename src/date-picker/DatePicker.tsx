@@ -8,7 +8,6 @@ import MonthPanel from './MonthPanel';
 import YearPanel from './YearPanel';
 import bem from '../utils/bem';
 import { format, parseDate } from '../utils/date-utils';
-import './styles/date-picker.css';
 
 const b = bem('x-date-picker');
 const panelHeight = 224;

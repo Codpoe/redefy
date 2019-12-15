@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Item, { ItemProps } from './Item';
-import './styles/tab.css';
 
 const b = bem('x-tab');
 

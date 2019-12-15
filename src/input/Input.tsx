@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
-import './styles/input.css';
 
 const b = bem('x-input');
 

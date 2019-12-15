@@ -1,3 +1,6 @@
+@import '../button/index.css';
+@import '../input/index.css';
+
 .x-input-number {
   display: inline-flex;
   width: 100px;

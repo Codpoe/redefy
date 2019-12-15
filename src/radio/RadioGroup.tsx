@@ -3,7 +3,6 @@ import cx from 'classnames';
 import Radio, { RadioProps } from './Radio';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
-import './styles/radio-group.css';
 
 const b = bem('x-radio-group');
 

@@ -3,7 +3,6 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import Pop, { PopProps } from '../pop/index';
 import Item, { ItemProps } from './Item';
-import './styles/pop-menu.css';
 
 const b = bem('x-pop-menu');
 
@@ -45,10 +44,10 @@ export class PopMenu extends React.Component<PopMenuProps, PopMenuState> {
           [b('group', 'first')]: level === 0 && index === 0,
         });
         return (
-          <>
+          <React.Fragment key={`${level}-group-${index}`}>
             <div className={groupCls}>{itemProps.label}</div>
             {this.renderMenu(itemProps.items)}
-          </>
+          </React.Fragment>
         );
       }
     });
