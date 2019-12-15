@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import BaseSelect from '../base-select/index';
-import { Calendar } from '../icon/index';
+import { IconCalendar } from '../icon/index';
 import DateHeader from './DateHeader';
 import DatePanel from './DatePanel';
 import MonthPanel from './MonthPanel';
@@ -226,7 +226,7 @@ export class DatePicker extends React.Component<
         value={valueStr}
         placeholder={placeholder}
         visible={visible}
-        icon={<Calendar />}
+        icon={<IconCalendar />}
         onChange={this.handleVisibleChange}
         onClear={this.handleClear}
       >

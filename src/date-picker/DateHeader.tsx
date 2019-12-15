@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatePickerState } from './DatePicker';
 import Button from '../button/index';
-import { ChevronLeft, ChevronRight } from '../icon/index';
+import { IconChevronLeft, IconChevronRight } from '../icon/index';
 import bem from '../utils/bem';
 
 const b = bem('x-date-picker-header');
@@ -59,10 +59,10 @@ export default class DateHeader extends React.Component<DateHeaderProps> {
       <div className={b()}>
         {this.renderContent()}
         <Button className={b('prev')} text onClick={onPrevClick}>
-          <ChevronLeft />
+          <IconChevronLeft />
         </Button>
         <Button className={b('next')} text onClick={onNextClick}>
-          <ChevronRight />
+          <IconChevronRight />
         </Button>
       </div>
     );

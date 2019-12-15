@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Button from '../button/index';
-import { X } from '../icon/index';
+import { IconX } from '../icon/index';
 
 const b = bem('x-tag');
 
@@ -64,7 +64,7 @@ export class Tag extends React.Component<TagProps> {
         <span className={b('content')} onClick={onClick}>
           {children}
         </span>
-        {onClose && <X className={b('close')} onClick={this.handleClose} />}
+        {onClose && <IconX className={b('close')} onClick={this.handleClose} />}
       </Button>
     );
   }

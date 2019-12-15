@@ -7,14 +7,14 @@ import InputNumber from '../../input-number/index';
 import Checkbox from '../../checkbox/index';
 import Switch from '../../switch/index';
 import {
-  User,
-  Lock,
-  Heart,
-  Smile,
-  Meh,
-  Frown,
-  ThumbsUp,
-  DollarSign,
+  IconUser,
+  IconLock,
+  IconHeart,
+  IconSmile,
+  IconMeh,
+  IconFrown,
+  IconThumbsUp,
+  IconDollarSign,
 } from '../../icon/index';
 
 const Demo1: React.FC = () => {
@@ -52,7 +52,7 @@ const Demo1: React.FC = () => {
         <Form.Item
           label={
             <>
-              <User />
+              <IconUser />
               &nbsp;Username
             </>
           }
@@ -67,7 +67,7 @@ const Demo1: React.FC = () => {
         <Form.Item
           label={
             <>
-              <Lock />
+              <IconLock />
               &nbsp;Password
             </>
           }
@@ -147,7 +147,7 @@ const Demo2: React.FC = () => {
       <Form.Item
         label={
           <>
-            <User />
+            <IconUser />
             &nbsp;Username
           </>
         }
@@ -158,7 +158,7 @@ const Demo2: React.FC = () => {
       <Form.Item
         label={
           <>
-            <Lock />
+            <IconLock />
             &nbsp;Password
           </>
         }
@@ -174,7 +174,7 @@ const Demo2: React.FC = () => {
       <Form.Item
         label={
           <>
-            <DollarSign />
+            <IconDollarSign />
             &nbsp;Money
           </>
         }
@@ -190,7 +190,7 @@ const Demo2: React.FC = () => {
       <Form.Item
         label={
           <>
-            <Heart />
+            <IconHeart />
             &nbsp;Habits
           </>
         }
@@ -210,7 +210,7 @@ const Demo2: React.FC = () => {
       <Form.Item
         label={
           <>
-            <User />
+            <IconUser />
             &nbsp;Mood
           </>
         }
@@ -218,20 +218,20 @@ const Demo2: React.FC = () => {
       >
         <Radio.Group name="mood" value={value.mood} onChange={handleChange}>
           <Radio value="smile">
-            <Smile />
+            <IconSmile />
           </Radio>
           <Radio value="meh">
-            <Meh />
+            <IconMeh />
           </Radio>
           <Radio value="frown">
-            <Frown />
+            <IconFrown />
           </Radio>
         </Radio.Group>
       </Form.Item>
       <Form.Item
         label={
           <>
-            <ThumbsUp />
+            <IconThumbsUp />
             &nbsp;Thumbs up
           </>
         }

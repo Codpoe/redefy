@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import PopMenu, { PopMenuProps } from '../index';
 import Button from '../../button/index';
-import { ChevronDown } from '../../icon/index';
+import { IconChevronDown } from '../../icon/index';
 
 const items: PopMenuProps['items'] = [
   {
@@ -29,7 +29,7 @@ storiesOf('Interaction | PopMenu', module).add('basic', () => (
     <PopMenu items={items} onClick={action('click')}>
       <Button>
         PopMenu&nbsp;
-        <ChevronDown />
+        <IconChevronDown />
       </Button>
     </PopMenu>
   </div>

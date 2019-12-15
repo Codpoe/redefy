@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import { Check } from '../icon/index';
+import { IconCheck } from '../icon/index';
 
 const b = bem('x-select-option');
 
@@ -42,7 +42,7 @@ const Option: React.FC<OptionProps> = props => {
       onClick={onClick}
     >
       <div className={b('item')}>{label}</div>
-      {selected && <Check className={b('icon')} />}
+      {selected && <IconCheck className={b('icon')} />}
     </div>
   );
 };

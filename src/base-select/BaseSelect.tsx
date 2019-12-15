@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Input, { InputProps } from '../input/index';
 import Pop from '../pop/index';
 import bem from '../utils/bem';
-import { ChevronDown, X } from '../icon/index';
+import { IconChevronDown, IconX } from '../icon/index';
 
 const b = bem('x-base-select');
 
@@ -62,7 +62,7 @@ export class BaseSelect extends React.Component<
     if (typeof value === 'undefined' || value === '' || !showClearIcon) {
       return (
         icon || (
-          <ChevronDown
+          <IconChevronDown
             className={cx(b('indicator'), {
               [b('indicator', 'active')]: visible,
             })}
@@ -72,7 +72,7 @@ export class BaseSelect extends React.Component<
     }
 
     // render clear
-    return <X className={b('indicator')} />;
+    return <IconX className={b('indicator')} />;
   }
 
   render() {

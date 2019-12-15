@@ -26,7 +26,7 @@ export class PopDialog extends React.Component<PopDialogProps, PopDialogState> {
     trigger: 'click',
     position: 'top-center',
     withArrow: true,
-    icon: 'AlertCircle',
+    icon: 'IconAlertCircle',
     okType: 'primary',
     okText: '确定',
     cancelText: '取消',

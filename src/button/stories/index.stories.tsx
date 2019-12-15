@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Button, { ButtonGroup } from '../index';
-import { Search, Upload, Download } from '../../icon/index';
+import { IconSearch, IconUpload, IconDownload } from '../../icon/index';
 
 storiesOf('Basic | Button', module)
   .add('basic', () => (
@@ -60,24 +60,24 @@ storiesOf('Basic | Button', module)
   .add('fullRound', () => (
     <>
       <Button fullRound size="large">
-        <Search />
+        <IconSearch />
       </Button>{' '}
       <Button fullRound flat type="primary">
-        <Search />
+        <IconSearch />
       </Button>{' '}
       <Button fullRound type="primary" size="small">
-        <Search />
+        <IconSearch />
       </Button>
     </>
   ))
   .add('icon', () => (
     <>
       <Button>
-        <Upload />
+        <IconUpload />
         &nbsp;Upload
       </Button>{' '}
       <Button flat type="primary">
-        <Download />
+        <IconDownload />
         &nbsp;Download
       </Button>
     </>

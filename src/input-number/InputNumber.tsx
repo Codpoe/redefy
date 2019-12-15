@@ -3,7 +3,7 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import Input, { InputProps } from '../input/index';
 import Button from '../button/index';
-import { Minus, Plus } from '../icon/index';
+import { IconMinus, IconPlus } from '../icon/index';
 import { toBeField, FieldProps } from '../form/index';
 
 const b = bem('x-input-number');
@@ -201,7 +201,7 @@ class InnerInputNumber extends React.Component<
         text
         disabled={disabled || value <= (min as number)}
       >
-        <Minus />
+        <IconMinus />
       </Button>
     );
   }
@@ -216,7 +216,7 @@ class InnerInputNumber extends React.Component<
         text
         disabled={disabled || value >= (max as number)}
       >
-        <Plus />
+        <IconPlus />
       </Button>
     );
   }

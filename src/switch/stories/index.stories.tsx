@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Switch from '../index';
-import { CheckCircle, XCircle } from '../../icon/index';
+import { IconCheckCircle, IconXCircle } from '../../icon/index';
 
 storiesOf('Basic | Switch', module)
   .add('basic', () => <Switch />)
@@ -9,8 +9,8 @@ storiesOf('Basic | Switch', module)
     <>
       <Switch>{['是', '否']}</Switch>
       <Switch>
-        <CheckCircle />
-        <XCircle />
+        <IconCheckCircle />
+        <IconXCircle />
       </Switch>
     </>
   ))

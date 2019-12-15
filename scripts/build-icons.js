@@ -1,4 +1,4 @@
-const { toReact } = require('icon-builder');
+const { toReact } = require('@toolman/icon-builder');
 const ora = require('ora');
 
 (async () => {

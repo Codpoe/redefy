@@ -3,15 +3,20 @@ import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import bem from '../utils/bem';
-import { Info, CheckCircle, AlertCircle, XCircle } from '../icon/index';
+import {
+  IconInfo,
+  IconCheckCircle,
+  IconAlertCircle,
+  IconXCircle,
+} from '../icon/index';
 
 const b = bem('x-toast');
 
 const ICONS = {
-  info: <Info className={cx(b('icon'), b('icon', 'info'))} />,
-  success: <CheckCircle className={cx(b('icon'), b('icon', 'success'))} />,
-  warning: <AlertCircle className={cx(b('icon'), b('icon', 'warning'))} />,
-  error: <XCircle className={cx(b('icon'), b('icon', 'error'))} />,
+  info: <IconInfo className={cx(b('icon'), b('icon', 'info'))} />,
+  success: <IconCheckCircle className={cx(b('icon'), b('icon', 'success'))} />,
+  warning: <IconAlertCircle className={cx(b('icon'), b('icon', 'warning'))} />,
+  error: <IconXCircle className={cx(b('icon'), b('icon', 'error'))} />,
 };
 
 const TOAST_ROOT_ID = 'x-toast-root';

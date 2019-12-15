@@ -5,11 +5,11 @@ import Button, { ButtonProps } from '../button/index';
 import Form from '../form/index';
 import Input from '../input/index';
 import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-  MoreHorizontal,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronsLeft,
+  IconChevronsRight,
+  IconMoreHorizontal,
 } from '../icon/index';
 
 const b = bem('x-paginator');
@@ -160,9 +160,9 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
     let icon;
 
     if (align === 'left') {
-      icon = <ChevronsLeft />;
+      icon = <IconChevronsLeft />;
     } else if (align === 'right') {
-      icon = <ChevronsRight />;
+      icon = <IconChevronsRight />;
     }
 
     return (
@@ -174,7 +174,7 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        {align === hoverMore ? icon : <MoreHorizontal />}
+        {align === hoverMore ? icon : <IconMoreHorizontal />}
       </Button>
     );
   }
@@ -192,7 +192,7 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
         data-type={type}
         onClick={this.handlePrevNextClick}
       >
-        {type === 'prev' ? <ChevronLeft /> : <ChevronRight />}
+        {type === 'prev' ? <IconChevronLeft /> : <IconChevronRight />}
       </Button>
     );
   }

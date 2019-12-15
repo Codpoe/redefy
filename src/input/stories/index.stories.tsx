@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Input from '../index';
 import Button from '../../button/index';
-import { Search } from '../../icon/index';
+import { IconSearch } from '../../icon/index';
 import Pop from '../../pop/index';
 
 storiesOf('Basic | Input', module)
@@ -46,7 +46,7 @@ storiesOf('Basic | Input', module)
         placeholder="Input something..."
         prefix={
           <Button pure type="primary">
-            <Search />
+            <IconSearch />
           </Button>
         }
       />
