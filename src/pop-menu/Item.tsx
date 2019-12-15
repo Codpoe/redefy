@@ -4,20 +4,20 @@ import bem from '../utils/bem';
 
 const b = bem('x-pop-menu-item');
 
-export interface ItemProps {
+export interface PopMenuItemProps {
   [key: string]: any;
   value?: any;
-  items?: ItemProps[];
+  items?: PopMenuItemProps[];
   label: React.ReactNode;
   href?: string;
   target?: '_self' | '_blank';
   disabled?: boolean;
-  onClick?: (item: ItemProps, ev: React.SyntheticEvent) => void;
+  onClick?: (item: PopMenuItemProps, ev: React.SyntheticEvent) => void;
   className?: string;
   style?: React.CSSProperties;
 }
 
-const Item: React.FC<ItemProps> = props => {
+const Item: React.FC<PopMenuItemProps> = props => {
   const {
     label,
     href,

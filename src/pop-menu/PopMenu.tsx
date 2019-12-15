@@ -2,13 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 import Pop, { PopProps } from '../pop/index';
-import Item, { ItemProps } from './Item';
+import Item, { PopMenuItemProps } from './Item';
 
 const b = bem('x-pop-menu');
 
 export interface PopMenuProps extends PopProps {
-  items: ItemProps[];
-  onClick?: (item: ItemProps, ev: React.SyntheticEvent) => void;
+  items: PopMenuItemProps[];
+  onClick?: (item: PopMenuItemProps, ev: React.SyntheticEvent) => void;
 }
 
 export interface PopMenuState {}
@@ -18,7 +18,7 @@ export class PopMenu extends React.Component<PopMenuProps, PopMenuState> {
     items: [],
   };
 
-  handleMenuClick = (item: ItemProps, ev: React.SyntheticEvent) => {
+  handleMenuClick = (item: PopMenuItemProps, ev: React.SyntheticEvent) => {
     const { onClick } = this.props;
 
     if (item.disabled) {
