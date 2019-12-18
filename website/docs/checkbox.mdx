@@ -1,0 +1,83 @@
+---
+title: Checkbox 复选框
+---
+
+import Checkbox from '../../es/checkbox/index';
+import '../../es/checkbox/index.css';
+
+## 引入
+
+```jsx
+import React from 'react';
+import { Checkbox } from 'x-rc';
+```
+
+## 演示
+
+### 简单示例
+
+```jsx
+export function Demo1() {
+  const [checked, changeChecked] = React.useState(false);
+  return (
+    <Checkbox checked={checked} onChange={changeChecked}>
+      Apple
+    </Checkbox>
+  );
+}
+```
+
+export function Demo1() {
+  const [checked, changeChecked] = React.useState(false);
+  return (
+    <>
+      <Checkbox checked={checked} onChange={changeChecked}>
+        Apple
+      </Checkbox>
+      <div>{String(checked)}</div>
+    </>
+  );
+}
+
+<Demo1 />
+
+### 组
+
+```jsx
+export function Demo2() {
+  const [value, changeValue] = React.useState([]);
+  return (
+    <Checkbox.Group value={['apple', 'oneplus']} onChange={changeValue}>
+      <Checkbox value={['apple', 'smartisan', 'oneplus']}>All</Checkbox>
+      <Checkbox value="apple">Apple</Checkbox>
+      <Checkbox value="smartisan">Smartisan</Checkbox>
+      <Checkbox value="oneplus">OnePlus</Checkbox>
+    </Checkbox.Group>
+  );
+}
+```
+
+export function Demo2() {
+  const [value, changeValue] = React.useState([]);
+  return (
+    <>
+      <Checkbox.Group value={value} onChange={changeValue}>
+        <Checkbox value={['apple', 'smartisan', 'oneplus']}>All</Checkbox>
+        <Checkbox value="apple">Apple</Checkbox>
+        <Checkbox value="smartisan">Smartisan</Checkbox>
+        <Checkbox value="oneplus">OnePlus</Checkbox>
+      </Checkbox.Group>
+      <div>[{value.join(', ')}]</div>
+    </>
+  );
+}
+
+<Demo2 />
+
+### 禁用
+
+```jsx
+<Checkbox checked disabled>Disabled</Checkbox>
+```
+
+<Checkbox checked disabled>Disabled</Checkbox>
