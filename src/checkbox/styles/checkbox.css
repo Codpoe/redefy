@@ -14,9 +14,10 @@
   }
 
   &__indicator {
+    box-sizing: border-box;
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border: 1px solid var(--border-color);
     border-radius: 2px;
     overflow: hidden;

@@ -28,6 +28,7 @@
     height: var(--indicator-size);
     border-radius: 100%;
     background: #fff;
+    will-change: left;
     transition: all .3s;
   }
 
@@ -53,7 +54,6 @@
     box-shadow: 0 0 8px -1px var(--primary-color);
 
     .x-switch__indicator {
-      will-change: left;
       left: calc(100% - var(--indicator-size) - var(--gap-width));
     }
   }
