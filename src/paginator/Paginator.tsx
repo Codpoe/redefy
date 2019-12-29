@@ -12,7 +12,7 @@ import {
   IconMoreHorizontal,
 } from '../icon/index';
 
-const b = bem('x-paginator');
+const b = bem('rdf-paginator');
 
 export interface PaginatorProps {
   total: number;

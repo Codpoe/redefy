@@ -3,7 +3,7 @@ import cx from 'classnames';
 import RadioGroup from './RadioGroup';
 import bem from '../utils/bem';
 
-const b = bem('x-radio');
+const b = bem('rdf-radio');
 
 export interface RadioProps {
   value?: any;

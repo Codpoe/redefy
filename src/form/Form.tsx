@@ -5,7 +5,7 @@ import { FormContext, FormContextValue } from './context';
 import FormItem from './FormItem';
 import toBeField from './to-be-field';
 
-const b = bem('x-form');
+const b = bem('rdf-form');
 
 export interface FormValidator {
   required?: boolean;

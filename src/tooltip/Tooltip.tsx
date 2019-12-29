@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Pop, { PopProps } from '../pop/index';
 import bem from '../utils/bem';
 
-const b = bem('x-tooltip');
+const b = bem('rdf-tooltip');
 
 export type TooltipProps = PopProps;
 

@@ -6,7 +6,7 @@ import Button from '../button/index';
 import { IconMinus, IconPlus } from '../icon/index';
 import { toBeField, FieldProps } from '../form/index';
 
-const b = bem('x-input-number');
+const b = bem('rdf-input-number');
 
 type InputNumberPropsFromInput = Pick<
   InputProps,

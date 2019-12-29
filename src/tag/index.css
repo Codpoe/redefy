@@ -1,7 +1,7 @@
 @import '../common/color.css';
 @import '../button/index.css';
 
-.x-tag {
+.rdf-tag {
   cursor: default;
 
   &--clickable {
@@ -12,7 +12,7 @@
     padding-right: 0;
   }
 
-  &.x-button {
+  &.rdf-button {
     --border-color: var(--text-color);
     --border-hover: var(--text-color);
     --border-active: var(--text-color);;

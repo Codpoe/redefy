@@ -1,6 +1,6 @@
 @import '../common/color.css';
 
-.x-switch {
+.rdf-switch {
   --switch-width: 36px;
   --switch-height: 20px;
   --indicator-size: 16px;
@@ -54,7 +54,7 @@
     border-color: var(--primary-color);
     box-shadow: 0 0 8px -1px var(--primary-color);
 
-    .x-switch__indicator {
+    .rdf-switch__indicator {
       left: calc(100% - var(--indicator-size) - var(--gap-width));
     }
   }

@@ -9,7 +9,7 @@ import YearPanel from './YearPanel';
 import bem from '../utils/bem';
 import { format, parseDate } from '../utils/date-utils';
 
-const b = bem('x-date-picker');
+const b = bem('rdf-date-picker');
 const panelHeight = 224;
 
 export interface DatePickerProps {

@@ -2,7 +2,7 @@
 
 exports[`Button test snapshot 1`] = `
 <button
-  className="x-button x-button--default x-button--normal"
+  className="rdf-button rdf-button--default rdf-button--normal"
   disabled={false}
 >
   TEST

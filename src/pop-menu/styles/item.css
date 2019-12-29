@@ -1,4 +1,4 @@
-.x-pop-menu-item {
+.rdf-pop-menu-item {
   display: flex;
   align-items: center;
   min-height: 32px;
@@ -9,7 +9,7 @@
   transition: all .2s;
   cursor: pointer;
 
-  &:not(.x-pop-menu-item--disabled) {
+  &:not(.rdf-pop-menu-item--disabled) {
     &:hover {
       background: color-mod(var(--primary-color) tint(85%));
     }
@@ -24,7 +24,7 @@
     cursor: not-allowed;
   }
 
-  & + .x-pop-menu__group {
+  & + .rdf-pop-menu__group {
     border-top: 1px solid var(--border-lightest);
   }
 }

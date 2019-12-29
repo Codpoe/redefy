@@ -1,4 +1,4 @@
-.x-button {
+.rdf-button {
   --height: 32px;
   --bg-color: transparent;
   --bg-hover: transparent;
@@ -94,7 +94,7 @@
     --text-hover: var(--text-color);
     --text-active: var(--text-color);
 
-    &.x-button {
+    &.rdf-button {
       &--primary {
         --text-color: var(--primary-color);
         --bg-color: color-mod(var(--primary-color) tint(85%));
@@ -145,7 +145,7 @@
     --border-hover: transparent;
     --border-active: transparent;
 
-    &.x-button {
+    &.rdf-button {
       &--primary {
         --text-color: var(--primary-color);
         --text-hover: var(--primary-light);

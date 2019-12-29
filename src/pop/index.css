@@ -1,6 +1,6 @@
 @import '../common/color.css';
 
-.x-pop {
+.rdf-pop {
   position: relative;
   display: inline-block;
   color: var(--text-color);
@@ -36,30 +36,30 @@
   }
 }
 
-[class*="x-pop__content--bottom-"] {
+[class*="rdf-pop__content--bottom-"] {
   padding-top: 10px;
 }
 
-[class*="x-pop__content--top-"] {
+[class*="rdf-pop__content--top-"] {
   padding-bottom: 10px;
 }
 
-[class*="x-pop__content--left-"] {
+[class*="rdf-pop__content--left-"] {
   padding-right: 10px;
 }
 
-[class*="x-pop__content--right-"] {
+[class*="rdf-pop__content--right-"] {
   padding-left: 10px;
 }
 
-.x-pop__content {
+.rdf-pop__content {
   &--bottom-left {
     --x: 0;
     --y: -4px;
     --x2: 0;
     --y2: 0;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 5px;
       left: 8px;
       transform: rotate(-135deg);
@@ -72,7 +72,7 @@
     --x2: -50%;
     --y2: 0;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 5px;
       left: 50%;
       transform: translateX(-50%) rotate(-135deg);
@@ -85,7 +85,7 @@
     --x2: -100%;
     --y2: 0;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 5px;
       right: 8px;
       transform: rotate(-135deg);
@@ -98,7 +98,7 @@
     --x2: 0;
     --y2: calc(-100%);
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       bottom: 5px;
       left: 8px;
       transform: rotate(45deg);
@@ -111,7 +111,7 @@
     --x2: -50%;
     --y2: -100%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       bottom: 5px;
       left: 50%;
       transform: translateX(-50%) rotate(45deg);
@@ -124,7 +124,7 @@
     --x2: -100%;
     --y2: -100%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       bottom: 5px;
       right: 8px;
       transform: rotate(45deg);
@@ -137,7 +137,7 @@
     --x2: -100%;
     --y2: 0;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 8px;
       right: 5px;
       transform: rotate(-45deg);
@@ -150,7 +150,7 @@
     --x2: -100%;
     --y2: -50%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 50%;
       right: 5px;
       transform: translateY(-50%) rotate(-45deg);
@@ -163,7 +163,7 @@
     --x2: -100%;
     --y2: -100%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       bottom: 8px;
       right: 5px;
       transform: rotate(-45deg);
@@ -176,7 +176,7 @@
     --x2: 0;
     --y2: 0;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 8px;
       left: 5px;
       transform: rotate(135deg);
@@ -189,7 +189,7 @@
     --x2: 0;
     --y2: -50%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       top: 50%;
       left: 5px;
       transform: translateY(-50%) rotate(135deg);
@@ -202,7 +202,7 @@
     --x2: 0;
     --y2: -100%;
 
-    & .x-pop__content-arrow {
+    & .rdf-pop__content-arrow {
       bottom: 8px;
       left: 5px;
       transform: rotate(135deg);
@@ -210,7 +210,7 @@
   }
 }
 
-.x-pop-anim {
+.rdf-pop-anim {
   &--enter {
     display: block;
     transform: translate3d(var(--x), var(--y), 0);

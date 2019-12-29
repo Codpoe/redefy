@@ -6,7 +6,7 @@ import { throttle } from 'lodash-es';
 import bem from '../utils/bem';
 import { isFixed, getRect, getPagePosition } from '../utils/dom';
 
-const b = bem('x-pop');
+const b = bem('rdf-pop');
 
 export type PopContentPosition =
   | 'bottom-left'
@@ -56,7 +56,7 @@ export default class Content extends React.Component<
     positionStyle: {},
   };
 
-  popRoot = document.getElementById('x-pop-root');
+  popRoot = document.getElementById('rdf-pop-root');
 
   isTriggerFixed?: boolean = undefined;
 
@@ -193,7 +193,7 @@ export default class Content extends React.Component<
   getPopRoot() {
     if (!this.popRoot) {
       this.popRoot = document.createElement('div');
-      this.popRoot.id = 'x-pop-root';
+      this.popRoot.id = 'rdf-pop-root';
       document.body.appendChild(this.popRoot);
     }
 
@@ -223,7 +223,7 @@ export default class Content extends React.Component<
 
     return ReactDOM.createPortal(
       <CSSTransition
-        classNames="x-pop-anim-"
+        classNames="rdf-pop-anim-"
         in={visible && positionReady}
         timeout={{ exit: 200 }}
         mountOnEnter

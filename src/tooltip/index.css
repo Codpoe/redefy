@@ -1,14 +1,14 @@
 @import '../pop/index.css';
 
-.x-tooltip__content {
+.rdf-tooltip__content {
   --tooltip-bg-color: rgba(0,0,0,.75);
 
-  & .x-pop__content-inner {
+  & .rdf-pop__content-inner {
     background-color: var(--tooltip-bg-color);
     color: #fff;
   }
 
-  & .x-pop__content-arrow {
+  & .rdf-pop__content-arrow {
     border-right-color: var(--tooltip-bg-color);
     border-bottom-color: var(--tooltip-bg-color);
   }

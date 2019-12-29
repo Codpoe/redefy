@@ -4,7 +4,7 @@ import Checkbox, { CheckboxProps } from './Checkbox';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 
-const b = bem('x-checkbox-group');
+const b = bem('rdf-checkbox-group');
 
 export interface CheckboxGroupProps extends FieldProps {
   value?: any[];

@@ -1,7 +1,7 @@
-.x-button-group {
+.rdf-button-group {
   display: inline-flex;
 
-  & .x-button {
+  & .rdf-button {
     &:hover {
       z-index: 1;
     }

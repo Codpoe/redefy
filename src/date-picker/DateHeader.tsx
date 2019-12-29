@@ -4,7 +4,7 @@ import Button from '../button/index';
 import { IconChevronLeft, IconChevronRight } from '../icon/index';
 import bem from '../utils/bem';
 
-const b = bem('x-date-picker-header');
+const b = bem('rdf-date-picker-header');
 
 export interface DateHeaderProps {
   dateObj: DatePickerState['dateObj'];

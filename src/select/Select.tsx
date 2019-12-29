@@ -4,7 +4,7 @@ import bem from '../utils/bem';
 import BaseSelect from '../base-select/index';
 import Option, { OptionProps } from './Option';
 
-const b = bem('x-select');
+const b = bem('rdf-select');
 
 export interface SelectProps {
   [key: string]: any;
@@ -95,31 +95,26 @@ export class Select extends React.Component<SelectProps, SelectState> {
     const { data } = this.props;
     const labels: string[] = [];
 
-    const options = data.reduce(
-      (res, item) => {
-        const selected = this.isSelected(item.value);
+    const options = data.reduce((res, item) => {
+      const selected = this.isSelected(item.value);
 
-        if (selected) {
-          labels.push(item.text || (item.label as string));
-        }
+      if (selected) {
+        labels.push(item.text || (item.label as string));
+      }
 
-        res = res.concat(
-          <Option
-            {...item}
-            key={item.value}
-            selected={selected}
-            onClick={
-              item.disabled
-                ? undefined
-                : () => this.handleOptionClick(item.value)
-            }
-          />
-        );
+      res = res.concat(
+        <Option
+          {...item}
+          key={item.value}
+          selected={selected}
+          onClick={
+            item.disabled ? undefined : () => this.handleOptionClick(item.value)
+          }
+        />
+      );
 
-        return res;
-      },
-      [] as React.ReactNode[]
-    );
+      return res;
+    }, [] as React.ReactNode[]);
 
     return { options, labels };
   }

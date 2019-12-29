@@ -4,7 +4,7 @@ import bem from '../utils/bem';
 import Pop, { PopProps } from '../pop/index';
 import Item, { PopMenuItemProps } from './Item';
 
-const b = bem('x-pop-menu');
+const b = bem('rdf-pop-menu');
 
 export interface PopMenuProps extends PopProps {
   items: PopMenuItemProps[];

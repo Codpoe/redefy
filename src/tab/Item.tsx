@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Button from '../button/index';
 import bem from '../utils/bem';
 
-const b = bem('x-tab-item');
+const b = bem('rdf-tab-item');
 
 export interface ItemProps {
   [key: string]: any;

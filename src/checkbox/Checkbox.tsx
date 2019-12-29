@@ -3,7 +3,7 @@ import cx from 'classnames';
 import CheckboxGroup from './CheckboxGroup';
 import bem from '../utils/bem';
 
-const b = bem('x-checkbox');
+const b = bem('rdf-checkbox');
 
 export interface CheckboxProps {
   checked?: boolean;

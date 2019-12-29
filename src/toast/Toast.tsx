@@ -10,7 +10,7 @@ import {
   IconXCircle,
 } from '../icon/index';
 
-const b = bem('x-toast');
+const b = bem('rdf-toast');
 
 const ICONS = {
   info: <IconInfo className={cx(b('icon'), b('icon', 'info'))} />,
@@ -19,7 +19,7 @@ const ICONS = {
   error: <IconXCircle className={cx(b('icon'), b('icon', 'error'))} />,
 };
 
-const TOAST_ROOT_ID = 'x-toast-root';
+const TOAST_ROOT_ID = 'rdf-toast-root';
 
 export type ToastType = 'info' | 'success' | 'warning' | 'error';
 
@@ -88,7 +88,7 @@ export default class Toast extends React.Component<ToastProps, ToastState> {
 
     return ReactDOM.createPortal(
       <CSSTransition
-        classNames="x-toast-anim-"
+        classNames="rdf-toast-anim-"
         in={visible}
         timeout={{ exit: 1000 }}
         mountOnEnter

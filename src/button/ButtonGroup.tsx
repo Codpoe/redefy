@@ -26,7 +26,7 @@ const ButtonGroup: React.SFC<ButtonGroupProps & ButtonProps> = ({
   });
 
   return (
-    <div className={cx('x-button-group', className)} style={style}>
+    <div className={cx('rdf-button-group', className)} style={style}>
       {btns}
     </div>
   );

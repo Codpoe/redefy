@@ -4,7 +4,7 @@ import Button, { ButtonProps } from '../button/index';
 import * as Icon from '../icon/index';
 import bem from '../utils/bem';
 
-const b = bem('x-pop-dialog');
+const b = bem('rdf-pop-dialog');
 
 type IconName = keyof typeof Icon;
 

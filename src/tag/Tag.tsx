@@ -4,7 +4,7 @@ import bem from '../utils/bem';
 import Button from '../button/index';
 import { IconX } from '../icon/index';
 
-const b = bem('x-tag');
+const b = bem('rdf-tag');
 
 type TagTypes = 'default' | 'primary' | 'success' | 'warning' | 'error';
 

@@ -1,24 +1,24 @@
 module.exports = {
-  title: 'X-RC',
+  title: 'Redefy',
   tagline: '一套简单的 React 组件库',
   url: 'localhost:3000',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'toolman',
-  projectName: 'x-rc',
+  projectName: 'redefy',
   themeConfig: {
     disableDarkMode: true,
     navbar: {
-      title: 'X-RC',
+      title: 'Redefy',
       logo: {
-        alt: 'x-rc',
+        alt: 'redefy',
         src: 'img/logo.svg',
       },
       links: [
         { label: '文档', to: 'docs/introduction', position: 'left' },
         {
           label: 'GitHub',
-          href: 'https://github.com/codpoe/x-rc',
+          href: 'https://github.com/codpoe/redefy',
           position: 'right',
         },
       ],
@@ -44,7 +44,7 @@ module.exports = {
           items: [
             {
               label: '代码仓库',
-              href: 'https://github.com/codpoe/x-rc',
+              href: 'https://github.com/codpoe/redefy',
             },
             {
               label: '微博',
@@ -54,9 +54,9 @@ module.exports = {
         },
       ],
       logo: {
-        alt: 'x-rc',
+        alt: 'redefy',
         src: 'https://docusaurus.io/img/oss_logo.png',
-        href: 'https://github.com/codpoe/x-rc',
+        href: 'https://github.com/codpoe/redefy',
       },
       copyright: `Copyright © ${new Date().getFullYear()} Codpoe. Built with Docusaurus.`,
     },

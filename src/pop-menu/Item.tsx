@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
 
-const b = bem('x-pop-menu-item');
+const b = bem('rdf-pop-menu-item');
 
 export interface PopMenuItemProps {
   [key: string]: any;

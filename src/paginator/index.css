@@ -2,12 +2,12 @@
 @import '../form/index.css';
 @import '../input/index.css';
 
-.x-paginator {
+.rdf-paginator {
   display: flex;
   align-items: center;
   user-select: none;
 
-  .x-paginator__items {
+  .rdf-paginator__items {
     display: flex;
     align-items: center;
     margin: 0;

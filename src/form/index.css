@@ -1,10 +1,10 @@
 @import '../common/color.css';
 
-.x-form {
+.rdf-form {
   --default-height: 32px;
 }
 
-.x-form-item {
+.rdf-form-item {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -46,13 +46,13 @@
   }
 }
 
-.x-form--label-left .x-form-item {
+.rdf-form--label-left .rdf-form-item {
   &__label {
     justify-content: flex-start;
   }
 }
 
-.x-form--label-top .x-form-item {
+.rdf-form--label-top .rdf-form-item {
   flex-direction: column;
 
   &__label {
@@ -65,11 +65,11 @@
   }
 }
 
-.x-form-item--invalid {
-  & .x-input {
+.rdf-form-item--invalid {
+  & .rdf-input {
     border-color: var(--error-color);
 
-    &:hover:not(.x-input--disabled) {
+    &:hover:not(.rdf-input--disabled) {
       border-color: var(--error-color);
     }
 
@@ -79,7 +79,7 @@
     }
   }
 
-  & .x-form-item__message {
+  & .rdf-form-item__message {
     transform: translateY(4px);
     opacity: 1;
     visibility: visible;

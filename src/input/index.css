@@ -1,6 +1,6 @@
 @import '../common/color.css';
 
-.x-input {
+.rdf-input {
   --height: 32px;
   box-sizing: border-box;
   position: relative;
@@ -44,7 +44,7 @@
     opacity: .5;
     cursor: not-allowed;
 
-    .x-input__content {
+    .rdf-input__content {
       cursor: not-allowed;
     }
   }
@@ -110,10 +110,10 @@
 /*
  * textarea
  */
-.x-textarea {
+.rdf-textarea {
   height: auto;
 
-  & .x-input__content {
+  & .rdf-input__content {
     padding: 4px 10px;
     line-height: 1.5;
     resize: vertical;

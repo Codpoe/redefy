@@ -3,7 +3,7 @@ import Button from '../button/index';
 import { DatePickerState } from './DatePicker';
 import bem from '../utils/bem';
 
-const b = bem('x-date-picker__year-panel');
+const b = bem('rdf-date-picker__year-panel');
 
 export interface YearPanelProps {
   valueStr: string;

@@ -16,7 +16,7 @@ import '../../es/input/index.css';
 import '../../es/input-number/index.css';
 import '../../es/switch/index.css';
 
-x-rc 的`Form`组件设计比较简单，没有过多的封装。
+redefy 的`Form`组件设计比较简单，没有过多的封装。
 
 可能你会有这样的疑问：表单的封装程度低会降低组件的易用性吧？
 在编码实践过程中，我见过一些封装程度很高的表单组件，看到这么个庞然大物，我内心是拒绝的。
@@ -28,7 +28,7 @@ x-rc 的`Form`组件设计比较简单，没有过多的封装。
 ## 引入
 
 ```jsx
-import { Form } from 'x-rc';
+import { Form } from 'redefy';
 ```
 
 ## 演示
@@ -542,12 +542,12 @@ Form.Item 表单项内部可以放任意子组件，但如果想实现表单校�
 1. 使用`Form`组件暴露出的`toBeField`方法封装自定义的表单项组件；
 2. 表单项组件内，根据自己的需求调用`props.fieldContext`上的`onChange`或`onBlur`方法；
 
-x-rc 的`Checkbox`, `Radio`, `Input`等组件内部都已支持表单校验功能，以`Checkbox`组件为例：
+redefy 的`Checkbox`, `Radio`, `Input`等组件内部都已支持表单校验功能，以`Checkbox`组件为例：
 
 ```jsx {3,9,13}
 // CheckboxGroup.tsx
 
-import { toBeField } from 'x-rc';
+import { toBeField } from 'redefy';
 
 class CheckboxGroup extends React.Component {
   // 数据改变的事件回调

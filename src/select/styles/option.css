@@ -1,4 +1,4 @@
-.x-select-option {
+.rdf-select-option {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
     color: var(--primary-color);
   }
 
-  &:not(.x-select-option--disabled) {
+  &:not(.rdf-select-option--disabled) {
     &:hover {
       background: color-mod(var(--primary-color) tint(85%));
     }

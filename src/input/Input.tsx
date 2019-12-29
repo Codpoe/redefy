@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 
-const b = bem('x-input');
+const b = bem('rdf-input');
 
 const HIDDEN_TEXTAREA_STYLE = `
   position: absolute !important;
@@ -109,7 +109,7 @@ class InnerInput extends React.Component<InputProps, InputState> {
   inputRef = React.createRef<HTMLInputElement | HTMLTextAreaElement>();
 
   hiddenTextarea: HTMLTextAreaElement | null = document.querySelector(
-    '#x-hidden-textarea'
+    '#rdf-hidden-textarea'
   );
 
   componentDidMount() {
@@ -204,7 +204,7 @@ class InnerInput extends React.Component<InputProps, InputState> {
 
     if (!this.hiddenTextarea) {
       this.hiddenTextarea = document.createElement('textarea');
-      this.hiddenTextarea.setAttribute('id', 'x-hidden-textarea');
+      this.hiddenTextarea.setAttribute('id', 'rdf-hidden-textarea');
       document.body.appendChild(this.hiddenTextarea);
     }
 
@@ -281,7 +281,7 @@ class InnerInput extends React.Component<InputProps, InputState> {
     let suffixCls = '';
 
     if (type === 'textarea') {
-      cls = cx(className, b(), 'x-textarea', {
+      cls = cx(className, b(), 'rdf-textarea', {
         [b(['focused'])]: focused,
         [b(['disabled'])]: disabled,
       });

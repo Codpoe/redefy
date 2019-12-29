@@ -3,7 +3,7 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import Content, { PopContentPosition } from './Content';
 
-const b = bem('x-pop');
+const b = bem('rdf-pop');
 
 export interface PopProps {
   content?: any;
@@ -58,7 +58,7 @@ export class Pop extends React.Component<PopProps, PopState> {
 
   isHovered: boolean = false;
 
-  popRoot: HTMLElement | null = document.getElementById('x-pop-root');
+  popRoot: HTMLElement | null = document.getElementById('rdf-pop-root');
 
   triggerRef = React.createRef<HTMLDivElement>();
 

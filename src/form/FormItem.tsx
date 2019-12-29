@@ -4,7 +4,7 @@ import bem from '../utils/bem';
 import { FormContext, FormItemContext, FormItemContextValue } from './context';
 import { FormValidator } from './Form';
 
-const b = bem('x-form-item');
+const b = bem('rdf-form-item');
 
 export interface FormItemProps {
   label?: React.ReactNode;

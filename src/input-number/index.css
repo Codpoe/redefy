@@ -1,15 +1,15 @@
 @import '../button/index.css';
 @import '../input/index.css';
 
-.x-input-number {
+.rdf-input-number {
   display: inline-flex;
   width: 100px;
 
-  &__fix {
+  & &__fix {
     padding: 6px;
   }
 
-  & .x-input__content {
+  & .rdf-input__content {
     text-align: center;
     -moz-appearance: textfield;
   }

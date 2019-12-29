@@ -1,6 +1,6 @@
 {
-  "name": "my-view",
-  "version": "0.0.1",
+  "name": "redefy",
+  "version": "1.0.0-alpha.0",
   "description": "react components for myself",
   "main": "es/index.js",
   "module": "es/index.js",

@@ -5,7 +5,7 @@ import Pop from '../pop/index';
 import bem from '../utils/bem';
 import { IconChevronDown, IconX } from '../icon/index';
 
-const b = bem('x-base-select');
+const b = bem('rdf-base-select');
 
 export interface BaseSelectProps extends Omit<InputProps, 'fieldContext'> {
   [key: string]: any;

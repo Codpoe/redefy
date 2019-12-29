@@ -1,4 +1,4 @@
-.x-tab-item {
+.rdf-tab-item {
   position: relative;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@
   }
 
   &--active {
-    .x-tab-item__indicator {
+    .rdf-tab-item__indicator {
       opacity: 1;
     }
   }

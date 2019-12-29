@@ -1,4 +1,4 @@
-.x-checkbox {
+.rdf-checkbox {
   display: inline-flex;
   align-items: center;
   height: 32px;
@@ -69,13 +69,13 @@
   }
 
   &:hover:not(&--disabled) {
-    & .x-checkbox__indicator {
+    & .rdf-checkbox__indicator {
       border-color: var(--primary-color);
     }
   }
 }
 
-.x-checkbox--checked .x-checkbox {
+.rdf-checkbox--checked .rdf-checkbox {
   &__indicator {
     border-color: var(--primary-color);
     background: var(--primary-color);
@@ -101,7 +101,7 @@
 /**
  * disabled
  */
-.x-checkbox--disabled {
+.rdf-checkbox--disabled {
   opacity: .5;
   cursor: not-allowed;
 }

@@ -1,7 +1,7 @@
-.x-select__content {
+.rdf-select__content {
   width: 200px;
 
-  & .x-pop__content-inner {
+  & .rdf-pop__content-inner {
     padding: 0;
     overflow: hidden;
   }

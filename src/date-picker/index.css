@@ -2,11 +2,11 @@
 @import '../base-select/index.css';
 @import '../button/index.css';
 
-.x-date-picker {
+.rdf-date-picker {
   &__content {
     width: 236px;
 
-    .x-pop__content-inner {
+    .rdf-pop__content-inner {
       padding: 0 0 4px;
     }
   }
@@ -30,7 +30,7 @@
   }
 }
 
-.x-date-picker-header {
+.rdf-date-picker-header {
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
@@ -61,7 +61,7 @@
   }
 }
 
-.x-date-picker__date-panel {
+.rdf-date-picker__date-panel {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -81,8 +81,8 @@
   }
 }
 
-.x-date-picker__month-panel,
-.x-date-picker__year-panel {
+.rdf-date-picker__month-panel,
+.rdf-date-picker__year-panel {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

@@ -4,7 +4,7 @@ import Radio, { RadioProps } from './Radio';
 import { toBeField, FieldProps } from '../form/index';
 import bem from '../utils/bem';
 
-const b = bem('x-radio-group');
+const b = bem('rdf-radio-group');
 
 export interface RadioGroupProps extends FieldProps {
   value?: any;

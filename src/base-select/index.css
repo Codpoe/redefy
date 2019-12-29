@@ -1,6 +1,6 @@
 @import '../common/color.css';
 
-.x-base-select__indicator {
+.rdf-base-select__indicator {
   transition: all 0.2s;
 
   &--active {
@@ -8,7 +8,7 @@
   }
 }
 
-.x-base-select__loader-wrapper {
+.rdf-base-select__loader-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import { IconCheck } from '../icon/index';
 
-const b = bem('x-select-option');
+const b = bem('rdf-select-option');
 
 export interface OptionProps {
   [key: string]: any;

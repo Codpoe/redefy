@@ -4,7 +4,7 @@ import { DatePickerState } from './DatePicker';
 import bem from '../utils/bem';
 import { format } from '../utils/date-utils';
 
-const b = bem('x-date-picker__month-panel');
+const b = bem('rdf-date-picker__month-panel');
 
 export interface MonthPanelProps {
   valueStr: string;

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import bem from '../utils/bem';
 import { toBeField, FieldProps } from '../form/index';
 
-const b = bem('x-switch');
+const b = bem('rdf-switch');
 
 export interface SwitchProps extends FieldProps {
   checked?: boolean;
