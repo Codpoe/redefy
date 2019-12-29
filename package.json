@@ -1,11 +1,12 @@
 {
   "name": "redefy",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "description": "react components for myself",
-  "main": "es/index.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
     "src",
+    "lib",
     "es"
   ],
   "keywords": [
