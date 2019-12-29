@@ -16,7 +16,6 @@ export interface ButtonProps {
   loading?: boolean;
   href?: string;
   target?: '_self' | '_blank';
-  loaderColor?: string;
   onClick?: React.EventHandler<React.SyntheticEvent>;
   className?: string;
   style?: React.CSSProperties;
@@ -24,7 +23,7 @@ export interface ButtonProps {
 
 const b = bem('rdf-button');
 export class Button extends React.Component<ButtonProps> {
-  static defaultProps = {
+  static defaultProps: ButtonProps = {
     type: 'default',
     size: 'normal',
     flat: false,
@@ -35,7 +34,6 @@ export class Button extends React.Component<ButtonProps> {
     block: false,
     disabled: false,
     loading: false,
-    loaderColor: 'white',
     href: '',
     target: '_blank',
     onClick: () => {},
