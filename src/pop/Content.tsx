@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
-import { throttle } from 'lodash-es';
+import throttle from 'lodash/throttle';
 import bem from '../utils/bem';
 import { isFixed, getRect, getPagePosition } from '../utils/dom';
 

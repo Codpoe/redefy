@@ -1,6 +1,6 @@
 {
   "name": "redefy",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "react components for myself",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -36,7 +36,7 @@
     "@babel/runtime": "^7.3.4",
     "@reach/router": "^1.2.1",
     "classnames": "^2.2.6",
-    "lodash-es": "^4.17.14",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react-transition-group": "^4.3.0",
     "tslib": "^1.10.0"
@@ -59,7 +59,7 @@
     "@toolman/icon-builder": "^3.0.0",
     "@types/classnames": "^2.2.8",
     "@types/jest": "^24.0.13",
-    "@types/lodash-es": "^4.17.3",
+    "@types/lodash": "^4.14.149",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-transition-group": "^2.9.2",
