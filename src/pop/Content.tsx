@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
 import throttle from 'lodash/throttle';
+import { isBrowser } from '../utils/vars';
 import bem from '../utils/bem';
 import { isFixed, getRect, getPagePosition } from '../utils/dom';
 
@@ -56,7 +57,7 @@ export default class Content extends React.Component<
     positionStyle: {},
   };
 
-  popRoot = document.getElementById('rdf-pop-root');
+  popRoot = isBrowser ? document.getElementById('rdf-pop-root') : null;
 
   isTriggerFixed?: boolean = undefined;
 
@@ -220,6 +221,10 @@ export default class Content extends React.Component<
       style,
     } = this.props;
     const { positionReady, positionStyle } = this.state;
+
+    if (!isBrowser) {
+      return null;
+    }
 
     return ReactDOM.createPortal(
       <CSSTransition

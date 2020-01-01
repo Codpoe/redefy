@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { isBrowser } from '../utils/vars';
 import bem from '../utils/bem';
 import Content, { PopContentPosition } from './Content';
 
@@ -58,14 +59,16 @@ export class Pop extends React.Component<PopProps, PopState> {
 
   isHovered: boolean = false;
 
-  popRoot: HTMLElement | null = document.getElementById('rdf-pop-root');
+  popRoot: HTMLElement | null = isBrowser
+    ? document.getElementById('rdf-pop-root')
+    : null;
 
   triggerRef = React.createRef<HTMLDivElement>();
 
   updateTimer?: number = undefined;
 
   componentDidUpdate() {
-    if (this.props.trigger !== 'click') {
+    if (this.props.trigger !== 'click' || !isBrowser) {
       return;
     }
 
@@ -77,7 +80,7 @@ export class Pop extends React.Component<PopProps, PopState> {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleBodyClick);
+    isBrowser && document.removeEventListener('click', this.handleBodyClick);
   }
 
   handleTriggerClick = () => {
