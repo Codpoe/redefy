@@ -1,0 +1,177 @@
+---
+title: Drawer 抽屉
+---
+
+import Drawer, { openDrawer, closeDrawer } from '../../es/drawer/index';
+import Button from '../../es/button/index';
+import Radio from '../../es/radio/index';
+import '../../es/drawer/index.css';
+import '../../es/button/index.css';
+import '../../es/radio/index.css';
+
+## 引入
+
+```jsx
+import { Drawer } from 'redefy';
+```
+
+## 演示
+
+export const Content = () => {
+  React.useEffect(() => {
+    console.log('did mount');
+  }, []);
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        minWidth: '300px',
+        height: '100%',
+        minHeight: '300px',
+        fontSize: '40px',
+      }}
+    >
+      Hello World
+    </div>
+  )
+};
+
+### 简单示例
+
+通过`visible: boolean`和`onVisibleChange: (visible: boolean) => void`去控制 Drawer 的显示。
+
+```jsx
+export function Demo1() {
+  const [visible, changeVisible] = React.useState(false);
+  return (
+    <>
+      <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+      <Drawer visible={visible} onVisibleChange={changeVisible}>
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+```
+
+export function Demo1() {
+  const [visible, changeVisible] = React.useState(false);
+  return (
+    <>
+      <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+      <Drawer visible={visible} onVisibleChange={changeVisible}>
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+
+<Demo1 />
+
+### Position 位置
+
+`position: 'top' | 'right' | 'bottom' | 'left'`，默认为`top`。
+
+```jsx {14}
+export function Demo2() {
+  const [visible, changeVisible] = React.useState(false);
+  const [position, changePosition] = React.useState('top');
+  return (
+    <>
+      <Radio.Group value={position} onChange={changePosition}>
+        <Radio value="top">top</Radio>
+        <Radio value="right">right</Radio>
+        <Radio value="bottom">bottom</Radio>
+        <Radio value="left">left</Radio>
+      </Radio.Group>
+      <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+      <Drawer
+        position={position}
+        visible={visible}
+        onVisibleChange={changeVisible}
+      >
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+```
+
+export function Demo2() {
+  const [visible, changeVisible] = React.useState(false);
+  const [position, changePosition] = React.useState('top');
+  return (
+    <>
+      <Radio.Group value={position} onChange={changePosition}>
+        <Radio value="top">top</Radio>
+        <Radio value="right">right</Radio>
+        <Radio value="bottom">bottom</Radio>
+        <Radio value="left">left</Radio>
+      </Radio.Group>
+      <br />
+      <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+      <Drawer
+        position={position}
+        visible={visible}
+        onVisibleChange={changeVisible}
+      >
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+
+<Demo2 />
+
+### openDrawer, closeDrawer
+
+为方便使用，提供了`Drawer.toggle(id: string, visible?: boolean)`静态方法，不再需要写繁琐的`visible`和`onVisibleChange`了。
+
+```jsx {4}
+export function Demo3() {
+  return (
+    <>
+      <Button onClick={() => Drawer.toggle('unique-id')}>
+        Toggle Drawer
+      </Button>
+      <Drawer id="unique-id">
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+```
+
+export function Demo3() {
+  return (
+    <>
+      <Button onClick={() => Drawer.toggle('unique-id')}>
+        Toggle Drawer
+      </Button>
+      <Drawer id="unique-id">
+        <Content />
+      </Drawer>
+    </>
+  );
+}
+
+<Demo3 />
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| visible | `boolean` | - | 是否显示 |
+| defaultVisible | `boolean` | `false` | 是否默认显示 |
+| position | `top`,`right`,`bottom`,`left` | `top` | 位置 |
+| mask | `boolean` | `true` | 是否显示蒙层 |
+| maskClosable | `boolean` | `true` | 点击蒙层是否可以关闭抽屉 |
+| disabled | `boolean` | `false` | 禁用 |
+| onVisibleChange | `(visible: boolean) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
