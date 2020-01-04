@@ -2,6 +2,7 @@ export * from './base-select/index';
 export * from './button/index';
 export * from './checkbox/index';
 export * from './date-picker/index';
+export * from './drawer/index';
 export * from './form/index';
 export * from './icon/index';
 export * from './input/index';
