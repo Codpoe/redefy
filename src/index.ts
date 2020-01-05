@@ -7,6 +7,7 @@ export * from './form/index';
 export * from './icon/index';
 export * from './input/index';
 export * from './input-number/index';
+export * from './loader/index';
 export * from './paginator/index';
 export * from './pop/index';
 export * from './pop-dialog/index';

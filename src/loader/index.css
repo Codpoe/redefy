@@ -1,0 +1,85 @@
+@import '../common/color.css';
+
+.rdf-loader {
+  display: inline-flex;
+  align-items: center;
+
+  &--primary {
+    color: var(--primary-color);
+  }
+
+  &--success {
+    color: var(--success-color);
+  }
+
+  &--warning {
+    color: var(--warning-color);
+  }
+
+  &--error {
+    color: var(--error-color);
+  }
+
+  &--vertical {
+    flex-direction: column;
+
+    .rdf-loader__label {
+      margin: 10px 0 0;
+    }
+  }
+
+  &__label {
+    margin-left: 10px;
+    font-size: .8em;
+    line-height: 1;
+  }
+
+  &__svg {
+    animation: rdf-loader-anim-rotate 5.2s linear infinite;
+  }
+
+  &__path {
+    stroke-dasharray: 67px;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: rdf-loader-anim-dash 1.3s ease-in-out infinite;
+  }
+}
+
+@keyframes rdf-loader-anim-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(270deg);
+  }
+
+  50% {
+    transform: rotate(540deg);
+  }
+
+  75% {
+    transform: rotate(810deg);
+  }
+
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+@keyframes rdf-loader-anim-dash {
+  0% {
+    stroke-dashoffset: 67px;
+  }
+  
+  50% {
+    stroke-dashoffset: 16px;
+    transform: rotate(90deg);
+  }
+
+  100% {
+    stroke-dashoffset: 67px;
+    transform: rotate(360deg);
+  }
+}

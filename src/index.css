@@ -6,6 +6,7 @@
 @import './form/index.css';
 @import './input/index.css';
 @import './input-number/index.css';
+@import './loader/index.css';
 @import './paginator/index.css';
 @import './pop/index.css';
 @import './pop-dialog/index.css';
