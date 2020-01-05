@@ -18,7 +18,7 @@
   }
 
   &__indicator-line {
-    width: 20px;
+    width: calc(100% - 32px);
     height: 2px;
     border-radius: 1px;
     background-color: var(--primary-color);
@@ -32,5 +32,9 @@
 
   &--stretch {
     flex: 1;
+
+    .rdf-tab-item__indicator-line {
+      width: 100%;
+    }
   }
 }

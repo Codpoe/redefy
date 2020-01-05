@@ -49,6 +49,7 @@ const Item: React.FC<ItemProps> = props => {
         text
         size="large"
         type={active ? 'primary' : 'default'}
+        block={stretch}
         onClick={handleClick}
       >
         {label}
