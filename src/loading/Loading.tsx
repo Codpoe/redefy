@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
+import Wrap from './Wrap';
 import bem from '../utils/bem';
 
-const b = bem('rdf-loader');
+const b = bem('rdf-loading');
 
-export interface LoaderProps extends React.SVGAttributes<SVGElement> {
-  loading?: boolean;
+export interface LoadingProps extends React.SVGAttributes<SVGElement> {
   color?: string;
   colorType?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   size?: string | number;
@@ -15,7 +15,11 @@ export interface LoaderProps extends React.SVGAttributes<SVGElement> {
   style?: React.CSSProperties;
 }
 
-export const Loader: React.FC<LoaderProps> = props => {
+interface LoadingComponent extends React.FC<LoadingProps> {
+  Wrap: typeof Wrap;
+}
+
+export const Loading: LoadingComponent = props => {
   const {
     color = 'currentColor',
     colorType = 'default',
@@ -26,13 +30,14 @@ export const Loader: React.FC<LoaderProps> = props => {
     style,
     ...restProps
   } = props;
-  const cls = cx(b(), className, {
+
+  const cls = cx(b(''), className, {
     [b('', colorType)]: colorType !== 'default',
     [b('', 'vertical')]: vertical,
   });
 
   return (
-    <div className={cls}>
+    <div className={cls} style={style}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className={b('svg')}
@@ -44,14 +49,16 @@ export const Loader: React.FC<LoaderProps> = props => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{ verticalAlign: 'middle', ...style }}
+        style={{ verticalAlign: 'middle' }}
         {...restProps}
       >
         <circle className={b('path')} cx="12" cy="12" r="11" />
       </svg>
-      <span className={b('label')}>{label}</span>
+      {label && <span className={b('label')}>{label}</span>}
     </div>
   );
 };
 
-export default Loader;
+Loading.Wrap = Wrap;
+
+export default Loading;

@@ -1,36 +1,11 @@
-@import '../common/color.css';
-
-.rdf-loader {
+.rdf-loading {
   display: inline-flex;
+  justify-content: center;
   align-items: center;
-
-  &--primary {
-    color: var(--primary-color);
-  }
-
-  &--success {
-    color: var(--success-color);
-  }
-
-  &--warning {
-    color: var(--warning-color);
-  }
-
-  &--error {
-    color: var(--error-color);
-  }
-
-  &--vertical {
-    flex-direction: column;
-
-    .rdf-loader__label {
-      margin: 10px 0 0;
-    }
-  }
 
   &__label {
     margin-left: 10px;
-    font-size: .8em;
+    font-size: .7em;
     line-height: 1;
   }
 
@@ -43,6 +18,30 @@
     stroke-dashoffset: 0;
     transform-origin: center;
     animation: rdf-loader-anim-dash 1.3s ease-in-out infinite;
+  }
+
+  &--primary {
+    color: var(--primary-color);
+  }
+  
+  &--success {
+    color: var(--success-color);
+  }
+  
+  &--warning {
+    color: var(--warning-color);
+  }
+  
+  &--error {
+    color: var(--error-color);
+  }
+  
+  &--vertical {
+    flex-direction: column;
+  
+    .rdf-loading__label {
+      margin: 10px 0 0;
+    }
   }
 }
 
