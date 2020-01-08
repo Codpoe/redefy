@@ -1,0 +1,32 @@
+---
+title: Toast 提示
+---
+
+import Toast from '../../es/toast/index';
+import Button from '../../es/button/index';
+import '../../es/toast/index.css';
+import '../../es/button/index.css';
+
+## 引入
+
+
+```jsx
+import { Toast } from 'redefy';
+```
+
+## 演示
+
+### 简单示例
+
+export function Demo1() {
+  return (
+    <>
+      <Button onClick={() => Toast.info('Info')}>Info</Button>{' '}
+      <Button onClick={() => Toast.success('Success')}>Success</Button>{' '}
+      <Button onClick={() => Toast.warning('Warning')}>Warning</Button>{' '}
+      <Button onClick={() => Toast.error('Error')}>Error</Button>
+    </>
+  );
+}
+
+<Demo1 />

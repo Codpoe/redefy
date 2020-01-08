@@ -13,10 +13,10 @@ import {
 const b = bem('rdf-toast');
 
 const ICONS = {
-  info: <IconInfo className={cx(b('icon'), b('icon', 'info'))} />,
-  success: <IconCheckCircle className={cx(b('icon'), b('icon', 'success'))} />,
-  warning: <IconAlertCircle className={cx(b('icon'), b('icon', 'warning'))} />,
-  error: <IconXCircle className={cx(b('icon'), b('icon', 'error'))} />,
+  info: <IconInfo className={b('icon')} />,
+  success: <IconCheckCircle className={b('icon')} />,
+  warning: <IconAlertCircle className={b('icon')} />,
+  error: <IconXCircle className={b('icon')} />,
 };
 
 const TOAST_ROOT_ID = 'rdf-toast-root';
@@ -86,6 +86,8 @@ export default class Toast extends React.Component<ToastProps, ToastState> {
     const { type = 'info', content, className, style } = this.props;
     const { visible } = this.state;
 
+    const cls = cx(b(), [b('', type)], className);
+
     return ReactDOM.createPortal(
       <CSSTransition
         classNames="rdf-toast-anim-"
@@ -96,7 +98,7 @@ export default class Toast extends React.Component<ToastProps, ToastState> {
         onEntered={this.handleEntered}
         onExited={this.handleExited}
       >
-        <div className={cx(className, b())} style={style}>
+        <div className={cls} style={style}>
           <div className={b('content')}>
             {ICONS[type]}
             {content}

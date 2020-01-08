@@ -20,7 +20,9 @@
   &__content {
     display: inline-flex;
     align-items: center;
+    max-width: 80vw;
     padding: 6px 12px;
+    border: 1px solid transparent;
     border-radius: 6px;
     background: white;
     box-shadow: 0 0 8px rgba(0, 0, 0, .15);
@@ -31,21 +33,46 @@
   }
 
   &__icon {
+    flex-shrink: 0;
     margin-right: 10px;
+  }
 
-    &--info {
+  &--info .rdf-toast {
+    &__content {
+      border-color: var(--primary-lightest);
+    }
+
+    &__icon {
       color: var(--primary-color);
     }
+  }
 
-    &--success {
+  &--success .rdf-toast {
+    &__content {
+      border-color: var(--success-lightest);
+    }
+
+    &__icon {
       color: var(--success-color);
     }
+  }
 
-    &--warning {
-      color: var(--warning-color);
+  &--warning .rdf-toast {
+    &__content {
+      border-color: var(--warning-lightest);
     }
 
-    &--error {
+    &__icon {
+      color: var(--warning-color);
+    }
+  }
+
+  &--error .rdf-toast {
+    &__content {
+      border-color: var(--error-lightest);
+    }
+
+    &__icon {
       color: var(--error-color);
     }
   }
