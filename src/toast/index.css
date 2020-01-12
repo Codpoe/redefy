@@ -39,7 +39,7 @@
 
   &--info .rdf-toast {
     &__content {
-      border-color: var(--primary-lightest);
+      border-color: var(--primary-color);
     }
 
     &__icon {
@@ -49,7 +49,7 @@
 
   &--success .rdf-toast {
     &__content {
-      border-color: var(--success-lightest);
+      border-color: var(--success-color);
     }
 
     &__icon {
@@ -59,7 +59,7 @@
 
   &--warning .rdf-toast {
     &__content {
-      border-color: var(--warning-lightest);
+      border-color: var(--warning-color);
     }
 
     &__icon {
@@ -69,7 +69,7 @@
 
   &--error .rdf-toast {
     &__content {
-      border-color: var(--error-lightest);
+      border-color: var(--error-color);
     }
 
     &__icon {
