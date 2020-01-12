@@ -1,5 +1,12 @@
 type ScrollElement = HTMLElement | Window;
 
+interface Margin {
+  marginTop?: number;
+  marginRight?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+}
+
 export function isFixed(element: HTMLElement) {
   while (
     element &&
@@ -71,4 +78,34 @@ export function getPagePosition(element: HTMLElement) {
     left: rect.left + left,
     right: rect.right + left,
   };
+}
+
+export function isXVisible(element: HTMLElement, margin?: Margin) {
+  const { width } = getRect(window);
+  const { left, right } = getRect(element);
+  const { marginLeft = 0, marginRight = 0 } = margin || {};
+  const windowLeft = -marginLeft;
+  const windowRight = width + marginRight;
+
+  return (
+    (left > windowLeft && left < windowRight) ||
+    (right > windowLeft && right < windowRight)
+  );
+}
+
+export function isYVisible(element: HTMLElement, margin?: Margin) {
+  const { height } = getRect(window);
+  const { top, bottom } = getRect(element);
+  const { marginTop = 0, marginBottom = 0 } = margin || {};
+  const windowTop = -marginTop;
+  const windowBottom = height + marginBottom;
+
+  return (
+    (top > windowTop && top < windowBottom) ||
+    (bottom > windowTop && bottom < windowBottom)
+  );
+}
+
+export function isVisible(element: HTMLElement, margin?: Margin) {
+  return isXVisible(element, margin) && isYVisible(element, margin);
 }

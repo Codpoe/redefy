@@ -1,0 +1,83 @@
+---
+title: List 列表
+---
+
+import List from '../../es/list/index';
+import '../../es/list/index.css';
+
+用于展示长列表，当滚动到底部时会触发加载事件。
+
+## 引入
+
+```jsx
+import { List } from "redefy";
+```
+
+export function Item(props) {
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e1e1e1',
+        lineHeight: '50px',
+        textAlign: 'center',
+      }}
+    >{props.children}</div>
+  )
+}
+
+## 演示
+
+### 简单示例
+
+```jsx
+export function Demo1() {
+  const [loading, changeLoading] = React.useState(false);
+  const [finished, changeFinished] = React.useState(false);
+  const [length, changeLength] = React.useState(0);
+  const onLoad = () => {
+    changeLoading(true);
+    setTimeout(() => {
+      const l = length + 4;
+      changeLength(l);
+      changeLoading(false);
+      if (l >= 8) {
+        changeFinished(true);
+      }
+    }, 2000);
+  }
+
+  return (
+    <List loading={loading} finished={finished} onLoad={onLoad}>
+      {Array.from({ length }, (_, index) => (
+        <Item key={index}>{index}</Item>
+      ))}
+    </List>
+  );
+}
+```
+
+export function Demo1() {
+  const [loading, changeLoading] = React.useState(false);
+  const [finished, changeFinished] = React.useState(false);
+  const [length, changeLength] = React.useState(0);
+  const onLoad = () => {
+    changeLoading(true);
+    setTimeout(() => {
+      const l = length + 4;
+      changeLength(l);
+      changeLoading(false);
+      if (l >= 8) {
+        changeFinished(true);
+      }
+    }, 2000);
+  }
+  return (
+    <List loading={loading} finished={finished} onLoad={onLoad}>
+      {Array.from({ length }, (_, index) => (
+        <Item key={index}>{index}</Item>
+      ))}
+    </List>
+  );
+}
+
+<Demo1 />
