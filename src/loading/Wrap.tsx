@@ -13,7 +13,7 @@ export interface LoadingWrapProps extends Omit<LoadingProps, 'mask'> {
   style?: React.CSSProperties;
 }
 
-export const LoadingWrap: React.FC<LoadingWrapProps> = props => {
+const LoadingWrap: React.FC<LoadingWrapProps> = props => {
   const {
     loading = false,
     mask = true,
