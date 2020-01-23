@@ -1,8 +1,14 @@
-import * as Toast from './show';
+import { default as ToastComponent } from './Toast';
+import { show, info, success, warning, error } from './fns';
 
-export * from './show';
+const Toast = {
+  show,
+  info,
+  success,
+  warning,
+  error,
+};
+
 export * from './Toast';
-
-export { Toast };
-
+export { ToastComponent, Toast };
 export default Toast;
