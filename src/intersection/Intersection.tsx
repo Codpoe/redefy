@@ -8,8 +8,8 @@ export interface IntersectionProps {
   root: IntersectionObserverInit['root'];
   rootMargin: IntersectionObserverInit['rootMargin'];
   threshold: IntersectionObserverInit['threshold'];
-  onEnter: (entry: IntersectionObserverEntry) => void;
-  onLeave: (entry: IntersectionObserverEntry) => void;
+  onEnter?: (entry: IntersectionObserverEntry) => void;
+  onLeave?: (entry: IntersectionObserverEntry) => void;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -39,9 +39,9 @@ export const Intersection: React.FC<IntersectionProps> = props => {
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting) {
-          onEnter(entries[0]);
+          onEnter && onEnter(entries[0]);
         } else {
-          onLeave(entries[0]);
+          onLeave && onLeave(entries[0]);
         }
       },
       { root, rootMargin, threshold }
