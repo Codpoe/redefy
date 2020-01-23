@@ -1,0 +1,135 @@
+---
+name: Tab 标签页
+route: /tab
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Tab from './index';
+import './index.css';
+
+## 演示
+
+### items
+
+<Playground>
+  {() => {
+    const items = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'smartisan', label: 'Smartisan' },
+      { value: 'samsung', label: 'Samsung' },
+    ];
+    return (
+      <Tab items={items} defaultActive="apple" />
+    );
+  }}
+</Playground>
+
+### Tab.Item 声明式
+
+<Playground>
+  <Tab defaultActive="apple">
+    <Tab.Item value="apple" label="Apple">
+      This is Apple.
+    </Tab.Item>
+    <Tab.Item value="smartisan" label="Smartisan">
+      This is Smartisan.
+    </Tab.Item>
+    <Tab.Item value="samsung" label="Samsung">
+      This is Samsung.
+    </Tab.Item>
+  </Tab>
+</Playground>
+
+### stretch 铺满
+
+<Playground>
+  {() => {
+    const items = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'smartisan', label: 'Smartisan' },
+      { value: 'samsung', label: 'Samsung' },
+    ];
+    return (
+      <Tab
+        items={items}
+        defaultActive="apple"
+        stretch
+      />
+    );
+  }}
+</Playground>
+
+### 自定义指示器
+
+<Playground>
+  {() => {
+    const items = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'smartisan', label: 'Smartisan' },
+      { value: 'samsung', label: 'Samsung' },
+    ];
+    return (
+      <Tab
+        items={items}
+        defaultActive="apple"
+        indicator={<div style={{ marginBottom: '-10px' }}>👆</div>}
+      />
+    );
+  }}
+</Playground>
+
+indicator 指示器也可以接收一个函数`(value: any) => React.ReactNode`，自定义程度更高。
+
+<Playground>
+  {() => {
+    const items = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'smartisan', label: 'Smartisan' },
+      { value: 'samsung', label: 'Samsung' },
+    ];
+    const indicators = {
+      apple: '👆',
+      smartisan: '👉',
+      samsung: '👈'
+    };
+    return (
+      <Tab
+        items={items}
+        defaultActive="apple"
+        indicator={
+          value => <div style={{ marginBottom: '-10px' }}>{indicators[value]}</div>
+        }
+      />
+    );
+  }}
+</Playground>
+
+## API
+
+### Tab Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| items | `ItemProps[]` | - | 项 |
+| active | `any` | - | 选中的项值 |
+| defaultActive | `any` | - | 默认选中的项值 |
+| indicator | `React.ReactNode`, `(value: any) => React.ReactNode` | - | 指示器 |
+| stretch | `boolean` | - | 是否铺满 |
+| onActiveChange | `(value: any, item: ItemProps) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
+
+### Tab.Item Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| label | `React.ReactNode` | - | 标签 |
+| value | `any` | - | 值 |
+| indicator | `React.ReactNode` | - | 指示器 |
+| active | `boolean` | - | 是否选中 |
+| stretch | `boolean` | - | 是否铺满 |
+| disabled | `boolean` | - | 是否禁用 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
+

@@ -1,0 +1,65 @@
+---
+name: List 列表
+route: /list
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import List from './index';
+import './index.css';
+
+用于展示长列表，当滚动到底部时会触发加载事件。
+
+
+export function Item(props) {
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e1e1e1',
+        lineHeight: '50px',
+        textAlign: 'center',
+      }}
+    >{props.children}</div>
+  )
+}
+
+## 演示
+
+### 简单示例 
+
+<Playground>
+  {() => {
+    const [loading, changeLoading] = React.useState(false);
+    const [finished, changeFinished] = React.useState(false);
+    const [length, changeLength] = React.useState(0);
+    const onLoad = () => {
+      changeLoading(true);
+      setTimeout(() => {
+        const l = length + 4;
+        changeLength(l);
+        changeLoading(false);
+        if (l >= 8) {
+          changeFinished(true);
+        }
+      }, 2000);
+    }
+    return (
+      <List loading={loading} finished={finished} onLoad={onLoad}>
+        {Array.from({ length }, (_, index) => (
+          <div
+            key={index}
+            style={{
+              borderBottom: '1px solid #e1e1e1',
+              lineHeight: '50px',
+              textAlign: 'center',
+            }}
+          >
+            {index}
+          </div>
+        ))}
+      </List>
+    );
+  }}
+</Playground>
+
+## API

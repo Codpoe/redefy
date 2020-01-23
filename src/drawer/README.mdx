@@ -1,0 +1,131 @@
+---
+name: Drawer 抽屉
+route: /drawer
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Drawer from './index';
+import Button from '../button/index';
+import Radio from '../radio/index';
+import './index.css';
+import '../button/index.css';
+import '../radio/index.css';
+
+## 演示
+
+### 简单示例
+
+通过`visible: boolean`和`onVisibleChange: (visible: boolean) => void`去控制 Drawer 的显示。
+
+<Playground>
+  {() => {
+    const [visible, changeVisible] = React.useState(false);
+    return (
+      <>
+        <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+        <Drawer visible={visible} onVisibleChange={changeVisible}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              minWidth: '300px',
+              height: '100%',
+              minHeight: '300px',
+              fontSize: '40px',
+            }}
+          >
+            Hello World
+          </div>
+        </Drawer>
+      </>
+    );
+  }}
+</Playground>
+
+### Position 位置
+
+`position: 'top' | 'right' | 'bottom' | 'left'`，默认为`top`。
+
+<Playground>
+  {() => {
+    const [visible, changeVisible] = React.useState(false);
+    const [position, changePosition] = React.useState('top');
+    return (
+      <>
+        <Radio.Group value={position} onChange={changePosition}>
+          <Radio value="top">top</Radio>
+          <Radio value="right">right</Radio>
+          <Radio value="bottom">bottom</Radio>
+          <Radio value="left">left</Radio>
+        </Radio.Group>
+        <br />
+        <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
+        <Drawer
+          position={position}
+          visible={visible}
+          onVisibleChange={changeVisible}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              minWidth: '300px',
+              height: '100%',
+              minHeight: '300px',
+              fontSize: '40px',
+            }}
+          >
+            Hello World
+          </div>
+        </Drawer>
+      </>
+    );
+  }}
+</Playground>
+
+### Drawer.toggle
+
+为方便使用，提供了`Drawer.toggle(id: string, visible?: boolean)`静态方法，不再需要写繁琐的`visible`和`onVisibleChange`了。
+
+<Playground>
+  <Button onClick={() => Drawer.toggle('unique-id')}>
+    Toggle Drawer
+  </Button>
+  <Drawer id="unique-id">
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        minWidth: '300px',
+        height: '100%',
+        minHeight: '300px',
+        fontSize: '40px',
+      }}
+    >
+      Hello World
+    </div>
+  </Drawer>
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| visible | `boolean` | - | 是否显示 |
+| defaultVisible | `boolean` | `false` | 是否默认显示 |
+| position | `top`,`right`,`bottom`,`left` | `top` | 位置 |
+| mask | `boolean` | `true` | 是否显示蒙层 |
+| maskClosable | `boolean` | `true` | 点击蒙层是否可以关闭抽屉 |
+| disabled | `boolean` | `false` | 禁用 |
+| onVisibleChange | `(visible: boolean) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

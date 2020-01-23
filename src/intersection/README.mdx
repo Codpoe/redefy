@@ -1,0 +1,74 @@
+---
+name: Intersection 交叉
+route: /intersection
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Intersection from './index';
+import './index.css';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  {() => {
+    const [text, setText] = React.useState('');
+    const Item = props => (
+      <div style={{ lineHeight: '50px', textAlign: 'center' }}>
+        {props.children}
+      </div>
+    );
+    return (
+      <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            backgroundColor: 'rgba(128,178,255,.5)',
+            lineHeight: '30px',
+            textAlign: 'center',
+            color: '#5079d9',
+          }}
+        >
+          {text}
+        </div>
+        <div style={{ height: '150px', overflow: 'scroll' }}>
+          <Item>0</Item>
+          <Item>1</Item>
+          <Item>2</Item>
+          <Item>3</Item>
+          <Item>4</Item>
+          <Item>5</Item>
+          <Intersection
+            style={{ display: 'block', width: '100%', height: '1px', backgroundColor: 'red' }}
+            onEnter={() => setText('Enter')}
+            onLeave={() => setText('Leave')}
+          />
+          <Item>6</Item>
+          <Item>7</Item>
+          <Item>8</Item>
+          <Item>9</Item>
+          <Item>10</Item>
+        </div>
+      </div>
+    );
+  }}
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| root | `IntersectionObserverInit['root']` | - | 根元素 |
+| rootMargin | `IntersectionObserverInit['rootMargin']` | - | 边界 |
+| threshold | `IntersectionObserverInit['threshold']` | - | 阈值 |
+| onEnter | `(entry: IntersectionObserverEntry) => void` | - | 进入视口的回调 |
+| onLeave | `(entry: IntersectionObserverEntry) => void` | - | 离开视口的回调 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

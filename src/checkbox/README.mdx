@@ -1,0 +1,77 @@
+---
+name: Checkbox 复选框
+route: /checkbox
+menu: 表单组件
+---
+
+import { Playground } from 'docz';
+import Checkbox from './index';
+import './index.css';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  {() => {
+    const [checked, changeChecked] = React.useState(false);
+    return (
+      <>
+        <Checkbox checked={checked} onChange={changeChecked}>
+          Apple
+        </Checkbox>
+        <div>{String(checked)}</div>
+      </>
+    );
+  }}
+</Playground>
+
+### 组
+
+<Playground>
+  {() => {
+    const [value, changeValue] = React.useState([]);
+    return (
+      <>
+        <Checkbox.Group value={value} onChange={changeValue}>
+          <Checkbox value={['apple', 'smartisan', 'oneplus']}>All</Checkbox>
+          <Checkbox value="apple">Apple</Checkbox>
+          <Checkbox value="smartisan">Smartisan</Checkbox>
+          <Checkbox value="oneplus">OnePlus</Checkbox>
+        </Checkbox.Group>
+        <div>[{value.join(', ')}]</div>
+      </>
+    );
+  }}
+</Playground>
+
+### 禁用
+
+<Playground>
+  <Checkbox checked disabled>Disabled</Checkbox>
+</Playground>
+
+## API
+
+### Checkbox Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| checked | `boolean` | - | 是否选中 |
+| defaultChecked | `boolean` | `false` | 是否默认选中 |
+| value | `any` | - | 值 |
+| disabled | `boolean` | `false` | 禁用 |
+| onChange | `(checked: boolean, target: CheckboxProps) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
+
+### Checkbox.Group Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| value | `any[]` | - | 值数组 |
+| defaultValue | `any[]` | `[]` | 默认的值数组 |
+| disabled | `boolean` | `false` | 禁用 |
+| onChange | `(value: any[], target: CheckboxGroupProps) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

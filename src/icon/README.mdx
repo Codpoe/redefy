@@ -1,0 +1,69 @@
+---
+name: Icon 图标
+route: /icon
+menu: 基础组件
+---
+
+import { Playground } from 'docz';
+import * as Icon from './index';
+
+基于 [feathericons](https://feathericons.com/) 的 SVG 文件生成 React 组件。
+
+## 引入
+
+所有图标组件都以 `Icon` 开头。
+
+```jsx
+// 导入所有图标
+import * as Icon from 'redefy/es/icon/index';
+
+// 导入单个图标（推荐）
+import { IconGitHub } from 'redefy';
+```
+
+## 演示
+
+### 简单示例
+
+<Icon.IconGitHub />
+
+### 全部图标
+
+<div
+  style={{
+    borderTop: '1px solid #dadde1',
+    borderLeft: '1px solid #dadde1',
+  }}
+>
+  {Object.keys(Icon).map(name => {
+    const C = Icon[name];
+    return (
+      <div
+        key={name}
+        style={{
+          display: 'inline-flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '33.2%',
+          padding: '15px 0',
+          borderRight: '1px solid #dadde1',
+          borderBottom: '1px solid #dadde1',
+        }}
+      >
+        <C />
+        <div style={{ marginTop: '10px' }}>{name.slice(4)}</div>
+      </div>
+    );
+  })}
+</div>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| color | `string` | | 颜色。可选 |
+| size | `string`, `number` | | 尺寸。可选 |
+| className | `string` | | 类名 |
+| style | `React.CSSProperties` | | 样式 |

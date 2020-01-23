@@ -1,0 +1,67 @@
+---
+name: Switch 切换器
+route: /switch
+menu: 表单组件
+---
+
+import { Playground } from 'docz';
+import Switch from './index';
+import { IconCheckCircle, IconXCircle } from '../icon/index';
+import './index.css';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  {() => {
+    const [checked, changeChecked] = React.useState(false);
+    return (
+      <>
+        <Switch checked={checked} onChange={changeChecked} />
+        <div>{String(checked)}</div>
+      </>
+    );
+  }}
+</Playground>
+
+### children
+
+<Playground>
+  {() => {
+    const [checked, changeChecked] = React.useState(false);
+    return (
+      <>
+        <Switch checked={checked} onChange={changeChecked}>
+          {['Y', 'N']}
+        </Switch>
+        <br />
+        <Switch checked={checked} onChange={changeChecked}>
+          <IconCheckCircle />
+          <IconXCircle />
+        </Switch>
+      </>
+    );
+  }}
+</Playground>
+
+### 禁用
+
+disabled: `boolean`
+
+<Playground>
+  <Switch checked disabled />
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| checked | `boolean` | - | 是否选中 |
+| defaultChecked | `boolean` | `false` | 是否默认选中 |
+| disabled | `boolean` | `false` | 禁用 |
+| onChange | `(checked: boolean, target: SwitchProps) => void` | - | 变更事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
