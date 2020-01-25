@@ -10,7 +10,7 @@ export interface SelectProps {
   [key: string]: any;
   value?: any | any[];
   defaultValue?: any | any[];
-  data: OptionProps[];
+  items: OptionProps[];
   placeholder?: string;
   onChange?: (value: SelectProps['value']) => void;
   className?: string;
@@ -92,10 +92,10 @@ export class Select extends React.Component<SelectProps, SelectState> {
   };
 
   getOptionsAndLabels() {
-    const { data } = this.props;
+    const { items } = this.props;
     const labels: string[] = [];
 
-    const options = data.reduce((res, item) => {
+    const options = items.reduce((res, item) => {
       const selected = this.isSelected(item.value);
 
       if (selected) {

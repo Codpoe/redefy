@@ -8,7 +8,7 @@
     cursor: pointer;
   }
 
-  &--closable {
+  &--closable.rdf-button {
     padding-right: 0;
   }
 

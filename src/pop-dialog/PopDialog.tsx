@@ -1,15 +1,27 @@
 import React from 'react';
 import Pop, { PopProps } from '../pop/index';
 import Button, { ButtonProps } from '../button/index';
-import * as Icon from '../icon/index';
+import {
+  IconInfo,
+  IconCheckCircle,
+  IconAlertCircle,
+  IconXCircle,
+} from '../icon/index';
 import bem from '../utils/bem';
 
 const b = bem('rdf-pop-dialog');
 
-type IconName = keyof typeof Icon;
+const ICONS = {
+  info: <IconInfo className={b('icon')} />,
+  success: <IconCheckCircle className={b('icon')} />,
+  warning: <IconAlertCircle className={b('icon')} />,
+  error: <IconXCircle className={b('icon')} />,
+};
+
+export type PopDialogType = 'info' | 'success' | 'warning' | 'error';
 
 export interface PopDialogProps extends PopProps {
-  icon?: IconName;
+  type?: PopDialogType;
   okType?: ButtonProps['type'];
   okText?: string;
   cancelText?: string;
@@ -23,10 +35,10 @@ export interface PopDialogState {
 
 export class PopDialog extends React.Component<PopDialogProps, PopDialogState> {
   static defaultProps: PopDialogProps = {
+    type: 'info',
     trigger: 'click',
     position: 'top-center',
     withArrow: true,
-    icon: 'IconAlertCircle',
     okType: 'primary',
     okText: '确定',
     cancelText: '取消',
@@ -55,13 +67,12 @@ export class PopDialog extends React.Component<PopDialogProps, PopDialogState> {
   };
 
   renderContent() {
-    const { icon, content, okType, okText, cancelText } = this.props;
-    const IconNode = Icon[icon as IconName];
+    const { type, content, okType, okText, cancelText } = this.props;
 
     return (
       <>
         <div className={b('content-wrap')}>
-          <IconNode className={b('icon')} />
+          {ICONS[type as PopDialogType]}
           <div className={b('content')}>{content}</div>
           <div className={b('actions')}>
             <Button size="small" onClick={this.handleCancel}>
