@@ -108,9 +108,10 @@ class InnerInput extends React.Component<InputProps, InputState> {
 
   inputRef = React.createRef<HTMLInputElement | HTMLTextAreaElement>();
 
-  hiddenTextarea: HTMLTextAreaElement | null = document.querySelector(
-    '#rdf-hidden-textarea'
-  );
+  hiddenTextarea: HTMLTextAreaElement | null =
+    typeof window !== 'undefined'
+      ? document.querySelector('#rdf-hidden-textarea')
+      : null;
 
   componentDidMount() {
     this.resize();
@@ -201,6 +202,10 @@ class InnerInput extends React.Component<InputProps, InputState> {
       lineHeight,
       styleStr,
     } = this.getNodeStyle(element);
+
+    if (typeof window === 'undefined') {
+      return { height: 0 };
+    }
 
     if (!this.hiddenTextarea) {
       this.hiddenTextarea = document.createElement('textarea');
