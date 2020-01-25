@@ -16,61 +16,64 @@ const b = bem('rdf-paginator');
 
 export interface PaginatorProps {
   total: number;
-  current?: number;
-  defaultCurrent?: number;
+  page?: number;
+  defaultPage?: number;
+  pageSize: number;
   quickJump?: boolean;
-  onChange?: (current: number) => void;
+  onChange?: (page: number) => void;
   className?: string;
   style?: React.CSSProperties;
 }
 
 export interface PaginatorState {
-  current: number;
+  totalPages: number;
+  page: number;
   hoverMore: '' | 'left' | 'right';
   form: {
     input: any;
   };
 }
 
-export interface PaginatorChangeParams {
-  total: number;
-  current: number;
-}
-
 export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   static defaultProps: Partial<PaginatorProps> = {
-    defaultCurrent: 1,
+    defaultPage: 1,
   };
 
   static getDerivedStateFromProps(
     props: PaginatorProps
   ): Partial<PaginatorState> | null {
-    if ('current' in props) {
-      return { current: props.current };
+    const { total, pageSize, page } = props;
+    const totalPages = Math.ceil(total / pageSize);
+
+    if ('page' in props) {
+      return { totalPages, page };
     }
-    return null;
+
+    return { totalPages };
   }
 
   state: PaginatorState = {
-    current: ('current' in this.props
-      ? this.props.current
-      : this.props.defaultCurrent) as number,
+    totalPages: Math.ceil(this.props.total / this.props.pageSize),
+    page: ('page' in this.props
+      ? this.props.page
+      : this.props.defaultPage) as number,
     hoverMore: '',
     form: { input: '' },
   };
 
-  handleChange(current: number) {
-    const { total, onChange } = this.props;
+  handleChange(page: number) {
+    const { onChange } = this.props;
+    const { totalPages } = this.state;
 
-    current = Math.max(1, current);
-    current = Math.min(total, current);
+    page = Math.max(1, page);
+    page = Math.min(totalPages, page);
 
-    if (!('current' in this.props)) {
-      this.setState({ current });
+    if (!('page' in this.props)) {
+      this.setState({ page });
     }
 
     if (onChange) {
-      onChange(current);
+      onChange(page);
     }
   }
 
@@ -85,7 +88,7 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
 
   handleClick = (ev: React.SyntheticEvent) => {
     const { index } = (ev.target as any).dataset;
-    const { current, hoverMore } = this.state;
+    const { page, hoverMore } = this.state;
 
     if (index) {
       this.handleChange(+index);
@@ -93,21 +96,20 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
     }
 
     if (hoverMore === 'left') {
-      this.handleChange(current - 5);
+      this.handleChange(page - 5);
     } else if (hoverMore === 'right') {
-      this.handleChange(current + 5);
+      this.handleChange(page + 5);
     }
   };
 
   handlePrevNextClick = (ev: React.SyntheticEvent) => {
     const { type } = (ev.currentTarget as any).dataset;
-    const { total } = this.props;
-    const { current } = this.state;
+    const { totalPages, page } = this.state;
 
     if (type === 'prev') {
-      this.handleChange(Math.max(1, current - 1));
+      this.handleChange(Math.max(1, page - 1));
     } else {
-      this.handleChange(Math.min(total, current + 1));
+      this.handleChange(Math.min(totalPages, page + 1));
     }
   };
 
@@ -132,12 +134,12 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   };
 
   renderItem(index: number) {
-    const { current } = this.state;
+    const { page } = this.state;
     let otherProps: Partial<ButtonProps> = {
       text: true,
     };
 
-    if (index === current) {
+    if (index === page) {
       otherProps = {
         type: 'primary',
       };
@@ -180,9 +182,8 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   }
 
   renderPrevNext(type: 'prev' | 'next') {
-    const { total } = this.props;
-    const { current } = this.state;
-    const disabled = type === 'prev' ? current === 1 : current === total;
+    const { totalPages, page } = this.state;
+    const disabled = type === 'prev' ? page === 1 : page === totalPages;
 
     return (
       <Button
@@ -198,11 +199,10 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   }
 
   renderItems() {
-    const { total } = this.props;
-    const { current } = this.state;
+    const { totalPages, page } = this.state;
 
-    if (total <= 7) {
-      return Array.from({ length: total }, (item, index) => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, index) => {
         return this.renderItem(index + 1);
       });
     }
@@ -213,23 +213,23 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
     let leftMore: React.ReactNode;
     let rightMore: React.ReactNode;
     let startIndex = 1;
-    let endIndex = total;
+    let endIndex = totalPages;
 
-    if (current - 3 <= 1) {
+    if (page - 3 <= 1) {
       startIndex = 1;
       endIndex = 5;
     } else {
-      startIndex = current - 1;
+      startIndex = page - 1;
       first = this.renderItem(1);
       leftMore = this.renderMore('left');
     }
 
-    if (current + 3 >= total) {
-      startIndex = total - 4;
-      endIndex = total;
+    if (page + 3 >= totalPages) {
+      startIndex = totalPages - 4;
+      endIndex = totalPages;
     } else {
-      endIndex = Math.max(current + 1, 5);
-      last = this.renderItem(total);
+      endIndex = Math.max(page + 1, 5);
+      last = this.renderItem(totalPages);
       rightMore = this.renderMore('right');
     }
 
@@ -250,8 +250,7 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   }
 
   renderJumper() {
-    const { total } = this.props;
-    const { form } = this.state;
+    const { totalPages, form } = this.state;
 
     return (
       <Form
@@ -265,8 +264,8 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
 
               value = parseInt(value, 10);
 
-              if (value < 1 || value > total) {
-                return `1 ~ ${total}`;
+              if (value < 1 || value > totalPages) {
+                return `1 ~ ${totalPages}`;
               }
             },
           },
