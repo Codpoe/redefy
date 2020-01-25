@@ -1,0 +1,44 @@
+---
+name: PopDialog 气泡对话
+route: /pop-dialog
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import PopDialog from './index';
+import Button from '../button/index';
+import './index.css';
+import '../button/index.css';
+
+## 演示
+
+<Playground>
+  <PopDialog
+    type="warning"
+    okType="error"
+    content="Are you sure to delete this item?"
+  >
+    <Button>Delete</Button>
+  </PopDialog>
+</Playground>
+
+## API
+
+### Props
+
+继承 `PopProps`
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| type | `PopDialogType` | `info` | 类型 |
+| okType | `ButtonProps['type']` | `primary` | 确认按钮的类型 |
+| okText | `string` | `确定` | 确认按钮的文案 |
+| cancelText | `string` | `取消` | 取消按钮的文案 |
+| onOk | `React.EventHandler<React.SyntheticEvent>` | - | 确认事件 |
+| onCancel | `React.EventHandler<React.SyntheticEvent>` | - | 取消事件 |
+
+### PopDialogType
+
+```jsx
+type PopDialogType = 'info' | 'success' | 'warning' | 'error';
+```

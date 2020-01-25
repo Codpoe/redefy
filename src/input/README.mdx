@@ -1,0 +1,144 @@
+---
+name: Input 输入框
+route: /input
+menu: 表单组件
+---
+
+import { Playground } from "docz";
+import Input from './index';
+import Button from '../button/index';
+import Pop from '../pop/index';
+import { IconSearch } from '../icon/index';
+import './index.css';
+import '../button/index.css';
+import '../pop/index.css';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input placeholder="Input something..." />
+  </div>
+</Playground>
+
+### 半圆
+
+`round`: `boolean`
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input placeholder="Input something..." round />
+  </div>
+</Playground>
+
+### 尺寸
+
+`size`: `large` | `small` | `normal`
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input placeholder="Input something..." size="large" />
+    <br />
+    <Input placeholder="Input something..." size="normal" />
+    <br />
+    <Input placeholder="Input something..." size="small" />
+  </div>
+</Playground>
+
+### 前后缀
+
+`suffix`, `prefix`
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input placeholder="Input something..." prefix="https://" />
+    <br />
+    <Input placeholder="Input something..." suffix=".com" />
+    <br />
+    <Input
+      placeholder="Input something..."
+      suffix={
+        <Button pure type="primary">
+          Copy
+        </Button>
+      }
+    />
+    <br />
+    <Input
+      placeholder="Input something..."
+      prefix={
+        <Button pure type="primary">
+          <IconSearch />
+        </Button>
+      }
+    />
+  </div>
+</Playground>
+
+### 禁用
+
+`disabled`: `boolean`
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input placeholder="Input something..." disabled />
+  </div>
+</Playground>
+
+### 只读
+
+`readOnly`: `boolean`
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Input
+      defaultValue="This is readonly"
+      placeholder="Input something..."
+      readOnly
+    />
+  </div>
+</Playground>
+
+### 带弹窗
+
+<Playground>
+  <div style={{ maxWidth: '200px', padding: '15px' }}>
+    <Pop trigger="focus" content="This is pop content" withArrow>
+      <Input placeholder="Input something..." />
+    </Pop>
+  </div>
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| type | `text`, `textarea`, `password`, `number` | `text` | 类型 |
+| name | `string` | - | 名 |
+| value | `any` | - | 值 |
+| defaultValue | `any` | - | 默认值 |
+| placeholder | `string` | - | 占位文案 |
+| size | `normal`, `large`, `small` | `normal` | 尺寸 |
+| round | `boolean` | `false` | 是否半圆 |
+| prefix | `React.ReactNode` | - | 前缀 |
+| suffix | `React.ReactNode` | - | 后缀 |
+| noPadding | `boolean` | `false` | 无左右内边距 |
+| autoFocus | `boolean` | `false` | 自动聚焦 |
+| focused | `boolean` | `false` | 手动聚焦(样式) |
+| defaultFocused | `boolean` | `false` | 默认手动聚焦 |
+| readOnly | `boolean` | `false` | 是否只读 |
+| disabled | `boolean` | `false` | 是否禁用 |
+| autoResize | `boolean`, `{ minRows?: number; maxRows?: number }` | - | 自动调整尺寸（仅支持 textarea） |
+| onChange | `(value: InputProps['value'], target: InputProps) => void` | - | 输入事件 |
+| onFocus | `(ev: React.SyntheticEvent) => void` | - | 聚焦事件 |
+| onBlur | `(ev: React.SyntheticEvent) => void` | - | 失焦事件 |
+| onMouseEnter | `(ev: React.SyntheticEvent) => void` | - | 鼠标进入事件 |
+| onMouseLeave | `(ev: React.SyntheticEvent) => void` | - | 鼠标离开事件 |
+| onPrefixClick | `(ev: React.SyntheticEvent) => void` | - | 前缀点击事件 |
+| onSuffixClick | `(ev: React.SyntheticEvent) => void` | - | 后缀点击事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

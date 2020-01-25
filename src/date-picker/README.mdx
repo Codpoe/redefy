@@ -1,0 +1,34 @@
+---
+name: DatePicker 日期选择器
+route: /date-picker
+menu: 表单组件
+---
+
+import { Playground } from "docz";
+import DatePicker from './index';
+import './index.css';
+
+## 演示
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    const handleChange = React.useCallback(date => {
+      console.log(date);
+      setValue(date);
+    }, [value]);
+    return <DatePicker value={value} onChange={handleChange} />;
+  }}
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| value | `string | number | Date` | - | 值 |
+| placeholder | `string` | - | 占位文案 |
+| onChange | `(value: DatePickerProps['value']) => void` | - | 变化事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

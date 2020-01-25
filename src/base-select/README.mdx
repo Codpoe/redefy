@@ -1,0 +1,57 @@
+---
+name: BaseSelect 基础下拉选择
+route: /base-select
+menu: 表单组件
+---
+
+import { Playground } from "docz";
+import BaseSelect from './index';
+import './index.css';
+
+## 演示
+
+<Playground>
+  {() => {
+    const [visible, changeVisible] = React.useState(false);
+    const [value, changeValue] = React.useState('');
+    const handleChange = React.useCallback(
+      visible => {
+        if (visible) {
+          setTimeout(() => {
+            changeValue('r u ok?');
+          }, 1000);
+        }
+        changeVisible(visible);
+      },
+      [changeVisible]
+    );
+    return (
+      <BaseSelect
+        value={value}
+        visible={visible}
+        onChange={handleChange}
+        onClear={() => changeValue('')}
+      >
+        <div style={{ background: '#fff', padding: '4px 6px' }}>
+          永远相信美好的事情即将发生
+        </div>
+      </BaseSelect>
+    );
+  }}
+</Playground>
+
+## API
+
+### Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| value | `any` | - | 值 |
+| icon | `React.ReactNode` | - | 图标 |
+| visible | `boolean` | `false` | 是否可见 |
+| onChange | `(visible: boolean) => void` | - | 可见性事件 |
+| onClear | `() => void` | - | 清除内容事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
+| contentClassName | `string` | - | 弹窗的类名 |
+| contentStyle | `React.CSSProperties` | - | 弹窗的样式 |

@@ -1,0 +1,86 @@
+---
+name: InputNumber 数字输入框
+route: /input-number
+menu: 表单组件
+---
+
+import { Playground } from "docz";
+import InputNumber from './index';
+import './index.css';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  <InputNumber defaultValue={18} />
+</Playground>
+
+### 半圆
+
+`round`: `boolean`
+
+<Playground>
+  <InputNumber defaultValue={18} round />
+</Playground>
+
+### 可编辑
+
+`editable`: `boolean`
+
+<Playground>
+  <InputNumber defaultValue={18} editable={false} />
+</Playground>
+
+### 只读
+
+`readOnly`: `boolean`
+
+<Playground>
+  <InputNumber defaultValue={18} readOnly />
+</Playground>
+
+### 禁用
+
+`disabled`: `boolean`
+
+<Playground>
+  <InputNumber defaultValue={18} disabled />
+</Playground>
+
+### 步长
+
+`step`: `number`
+
+<Playground>
+  <InputNumber defaultValue={18} step={0.1} />
+</Playground>
+
+### 最大值 / 最小值
+
+`min`: `number`
+`max`: `number`
+
+<Playground>
+  <InputNumber defaultValue={18} min={10} max={20} />
+</Playground>
+
+## API
+
+## Props
+
+输入框的部分 props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| name | `string` | - | 名 |
+| value | `any` | - | 值 |
+| defaultValue | `any` | - | 默认值 |
+| placeholder | `string` | - | 占位文案 |
+| size | `normal`, `large`, `small` | `normal` | 尺寸 |
+| round | `boolean` | `false` | 是否半圆 |
+| autoFocus | `boolean` | `false` | 自动聚焦 |
+| readOnly | `boolean` | `false` | 是否只读 |
+| disabled | `boolean` | `false` | 是否禁用 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

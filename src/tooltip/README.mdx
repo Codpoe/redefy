@@ -1,0 +1,61 @@
+---
+name: Tooltip 气泡提示
+route: /tooltip
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Tooltip from './index';
+import Button from '../button/index';
+import PopShowcase from '../pop/for-readme/pop-showcase/index';
+import './index.css';
+import '../button/index.css';
+
+## 演示
+
+<Playground>
+  <PopShowcase>
+    <Tooltip content="Wow!" position="top-left">
+      <Button>TL</Button>
+    </Tooltip>
+    <Tooltip content="Wow!">
+      <Button>Top</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="top-right">
+      <Button>TR</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="left-top">
+      <Button>LT</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="left-center">
+      <Button>Left</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="left-bottom">
+      <Button>LB</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="right-top">
+      <Button>RT</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="right-center">
+      <Button>Right</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="right-bottom">
+      <Button>RB</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="bottom-left">
+      <Button>BL</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="bottom-center">
+      <Button>Bottom</Button>
+    </Tooltip>
+    <Tooltip content="Wow!" position="bottom-right">
+      <Button>BR</Button>
+    </Tooltip>
+  </PopShowcase>
+</Playground>
+
+## API
+
+### Props
+
+继承 `PopProps`，默认 `delay` 为 `[300, 150]`。

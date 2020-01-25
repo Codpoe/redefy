@@ -1,0 +1,68 @@
+---
+name: PopMenu 气泡菜单
+route: /pop-menu
+menu: 交互组件
+---
+
+import { Playground } from "docz";
+import PopMenu from './index';
+import Button from '../button/index';
+import { IconChevronDown } from '../icon/index';
+import './index.css';
+import '../button/index.css';
+
+## 演示
+
+<Playground>
+  {() => {
+    const items = [
+      {
+        label: 'Phone',
+        items: [
+          { label: 'Apple', href: '//www.apple.com' },
+          { label: 'Smartisan', href: '//www.smartisan.com' },
+          { label: 'OnePlus', href: '//www.oneplus.com' },
+        ],
+      },
+      {
+        label: 'Phone',
+        items: [
+          { label: 'Apple', href: '//www.apple.com' },
+          { label: 'Smartisan', href: '//www.smartisan.com' },
+          { label: 'OnePlus', href: '//www.oneplus.com' },
+        ],
+      },
+    ];
+    return (
+      <PopMenu items={items} onClick={item => console.log(item)}>
+        <Button>
+          PopMenu{' '}<IconChevronDown />
+        </Button>
+      </PopMenu>
+    );
+  }}
+</Playground>
+
+## API
+
+### Props
+
+继承 `PopProps`
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| items | `PopMenuItemProps[]` | `[]` | 菜单项 |
+
+### PopMenuItemProps
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| value | `any` | - | 值 |
+| items | `PopMenuItemProps[]` | - | 子菜单项 |
+| label | `React.ReactNode` | - | 菜单名。必须 |
+| href | `string` | - | 链接 |
+| target | `_self`, `_blank` | `_blank` | 链接打开方式 |
+| disabled | `boolean` | - | 是否禁用 |
+| onClick | `(item: PopMenuItemProps, ev: React.SyntheticEvent) => void` | - | 点击事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |

@@ -1,0 +1,93 @@
+---
+name: Pop 气泡
+route: /pop
+menu: 交互组件
+---
+
+import { Playground } from "docz";
+import Pop from './index';
+import Button from '../button/index';
+import PopShowcase from './for-readme/pop-showcase/index';
+import './index.css';
+import '../button/index.css';
+
+## 演示
+
+<Playground>
+  <PopShowcase>
+    <Pop content="Wow! Awesome!" position="top-left" withArrow>
+      <Button>TL</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="top-center" withArrow>
+      <Button>Top</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="top-right" withArrow>
+      <Button>TR</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="left-top" withArrow>
+      <Button>LT</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="left-center" withArrow>
+      <Button>Left</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="left-bottom" withArrow>
+      <Button>LB</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="right-top" withArrow>
+      <Button>RT</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="right-center" withArrow>
+      <Button>Right</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="right-bottom" withArrow>
+      <Button>RB</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" withArrow>
+      <Button>BL</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="bottom-center" withArrow>
+      <Button>Bottom</Button>
+    </Pop>
+    <Pop content="Wow! Awesome!" position="bottom-right" withArrow>
+      <Button>BR</Button>
+    </Pop>
+  </PopShowcase>
+</Playground>
+
+## API
+
+###  Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| visible | `boolean` | - | 是否可见 |
+| defaultVisible | `boolean` | `false` | 是否默认可见 |
+| content | `any` | - | 气泡内容 |
+| trigger | `hover`, `click`, `focus` | `hover` | 触发时机 |
+| position | `PopContentPosition` | `bottom-left` | 气泡位置 |
+| delay | `number`, `number[]` | `150` | 延迟时长 |
+| disabled | `boolean` | `false` | 是否禁用 |
+| withArrow | `boolean` | `false` | 是否带小箭头 |
+| onChange | `(visible: boolean) => void` | - | 可见性事件 |
+| className | `string` | - | 类名 |
+| style | `React.CSSProperties` | - | 样式 |
+| contentClassName | `string` | - | 类名 |
+| contentStyle | `React.CSSProperties` | - | 样式 |
+
+### PopContentPosition
+
+```ts
+type PopContentPosition =
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'left-top'
+  | 'left-center'
+  | 'left-bottom'
+  | 'right-top'
+  | 'right-center'
+  | 'right-bottom';
+```
