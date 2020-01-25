@@ -43,20 +43,20 @@
     padding: 0 12px;
   }
 
-  &__year,
-  &__month {
+  & &__year,
+  & &__month {
     padding-left: 0;
     padding-right: 0;
     font-size: 16px;
     font-weight: 500;
   }
 
-  &__month {
+  & &__month {
     margin-left: 10px;
   }
 
-  &__prev,
-  &__next {
+  & &__prev,
+  & &__next {
     font-size: 18px;
   }
 }
@@ -75,8 +75,8 @@
     color: var(--text-lighter);
   }
 
-  &__day--prev,
-  &__day--next {
+  & &__day--prev,
+  & &__day--next {
     color: var(--text-lighter);
   }
 }

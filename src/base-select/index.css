@@ -1,4 +1,6 @@
 @import '../common/color.css';
+@import '../input/index.css';
+@import '../pop/index.css';
 
 .rdf-base-select__indicator {
   transition: all 0.2s;
