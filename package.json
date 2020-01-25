@@ -31,7 +31,8 @@
     "build:doc": "docz build",
     "start:doc": "docz build && docz serve",
     "test": "jest --coverage",
-    "release": "release-it"
+    "release": "release-it",
+    "release:beta": "release-it --preRelease=beta"
   },
   "dependencies": {
     "classnames": "^2.2.6",
