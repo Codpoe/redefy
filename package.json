@@ -31,7 +31,7 @@
     "build:doc": "docz build",
     "start:doc": "docz build && docz serve",
     "test": "jest --coverage",
-    "prepublishOnly": "npm run build"
+    "release": "release-it"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -70,6 +70,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.8.6",
+    "release-it": "^12.4.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.7.3"
   },
