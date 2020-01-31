@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "module": "ESNext",
+    "module": "CommonJS",
     "lib": ["ESNext", "DOM"],
     "jsx": "react",
     "outDir": "es",
@@ -10,6 +10,11 @@
     "strict": true,
     "esModuleInterop": true,
     "importHelpers": true,
+    "downlevelIteration": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./definitions"
+    ]
   },
   "include": [
     "src"
