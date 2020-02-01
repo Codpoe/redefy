@@ -100,6 +100,10 @@ export class Tab extends React.Component<TabProps, TabState> {
     const { className, style } = this.props;
     const items = this.renderItems();
 
+    if (!items) {
+      return null;
+    }
+
     return (
       <div className={cx(className, b())} style={style}>
         <div className={b('labels')}>{items}</div>
