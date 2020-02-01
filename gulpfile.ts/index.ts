@@ -16,7 +16,7 @@ function compileDir(dir: 'es' | 'lib') {
 
   return tsProject
     .src()
-    .pipe(collectDeps({ cache: dir === 'lib' }))
+    .pipe(collectDeps())
     .pipe(tsProject())
     .pipe(gulp.dest(dir));
 }
@@ -35,19 +35,26 @@ export function compileCJS() {
 
 export const compileScript = gulp.series(compileESM, compileCJS);
 
-export function compileStyle() {
+export function copyStyle() {
   return merge2(
     gulp.src('src/**/*.less'),
     gulp.src('dist/deps-map.json').pipe(genStyleEntry())
   )
     .pipe(gulp.dest('es'))
-    .pipe(gulp.dest('lib'))
+    .pipe(gulp.dest('lib'));
+}
+
+export function compileStyle() {
+  return gulp
+    .src('es/**/*.less')
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('es'))
     .pipe(gulp.dest('lib'));
 }
+
+export const buildStyle = gulp.series(copyStyle, compileStyle);
 
 const build = gulp.series(clean, compileScript, compileStyle);
 

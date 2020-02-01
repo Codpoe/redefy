@@ -27,7 +27,7 @@
     "clean": "gulp clean",
     "build:esm": "gulp compileESM",
     "build:cjs": "gulp compileCJS",
-    "build:style": "gulp compileStyle",
+    "build:style": "gulp buildStyle",
     "build:icons": "node scripts/build-icons.js",
     "build:doc": "docz build",
     "start:doc": "docz build && docz serve",
