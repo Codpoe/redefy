@@ -5,35 +5,60 @@ import autoprefixer from 'gulp-autoprefixer';
 import cleanCss from 'gulp-clean-css';
 import del from 'del';
 import merge2 from 'merge2';
-import collectDeps from './collect-deps';
+import collectComponentDeps from './collect-component-deps';
+import genScriptEntry from './gen-script-entry';
 import genStyleEntry from './gen-style-entry';
+import removeStyleImports from './remove-style-imports';
 
-function compileDir(dir: 'es' | 'lib') {
-  const tsProject = ts.createProject(
+type OutputDir = 'es' | 'lib';
+
+function getTsProject(dir?: OutputDir) {
+  return ts.createProject(
     'tsconfig.json',
     dir === 'es' ? { module: 'ESNext' } : undefined
   );
+}
 
-  return tsProject
-    .src()
-    .pipe(collectDeps())
-    .pipe(tsProject())
-    .pipe(gulp.dest(dir));
+function compileScript(dir: OutputDir) {
+  const srcGlob = `${dir}/**/*.{ts,tsx}`;
+
+  return gulp
+    .src(srcGlob)
+    .pipe(removeStyleImports())
+    .pipe(getTsProject(dir)())
+    .pipe(gulp.dest(dir))
+    .on('end', () => del([srcGlob, `!${dir}/**/*.d.ts`]));
 }
 
 export function clean() {
   return del(['es/**', 'lib/**', 'dist/**']);
 }
 
+export function collectDeps() {
+  return getTsProject()
+    .src()
+    .pipe(collectComponentDeps())
+    .pipe(gulp.dest('dist'));
+}
+
+export function copyScript() {
+  return merge2(
+    getTsProject().src(),
+    gulp.src('dist/deps-map.json').pipe(genScriptEntry())
+  )
+    .pipe(gulp.dest('es'))
+    .pipe(gulp.dest('lib'));
+}
+
 export function compileESM() {
-  return compileDir('es');
+  return compileScript('es');
 }
 
 export function compileCJS() {
-  return compileDir('lib');
+  return compileScript('lib');
 }
 
-export const compileScript = gulp.series(compileESM, compileCJS);
+export const buildScript = gulp.series(copyScript, compileESM, compileCJS);
 
 export function copyStyle() {
   return merge2(
@@ -56,6 +81,6 @@ export function compileStyle() {
 
 export const buildStyle = gulp.series(copyStyle, compileStyle);
 
-const build = gulp.series(clean, compileScript, compileStyle);
+const build = gulp.series(clean, collectDeps, buildScript, buildStyle);
 
 export default build;

@@ -1,6 +1,7 @@
 import path from 'path';
 
 export const ROOT = process.cwd();
+export const PKG_PATH = path.join(ROOT, 'package.json');
 export const SRC_PATH = path.join(ROOT, 'src');
 export const ES_PATH = path.join(ROOT, 'es');
 export const LIB_PATH = path.join(ROOT, 'lib');

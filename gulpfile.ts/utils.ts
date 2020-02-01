@@ -2,10 +2,13 @@ import fs from 'fs-extra';
 import path from 'path';
 import {
   ROOT,
+  PKG_PATH,
   SRC_PATH,
   IS_NOT_COMPONENT_DIRS,
   SCRIPT_EXTS,
 } from './constants';
+
+let pkg: Record<string, any>;
 
 export function fillExt(filePath: string): string {
   if (/\.tsx?$/.test(filePath)) {
@@ -65,4 +68,17 @@ export function getComponentName(filePath: string): string {
   }
 
   return getComponentName(dirname);
+}
+
+export function removeStyleImport(code: string) {
+  return code.replace(/import\s+('|").+?\.less('|");?\n?/g, '');
+}
+
+export function getPkg(): Record<string, any>;
+export function getPkg(key: string): any;
+export function getPkg(key?: string): any {
+  if (!pkg) {
+    pkg = fs.readJsonSync(PKG_PATH);
+  }
+  return key ? pkg[key] : pkg;
 }
