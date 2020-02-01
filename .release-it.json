@@ -2,8 +2,5 @@
   "git": {
     "tagName": "v${version}",
     "commitMessage": "chore: release v${version}"
-  },
-  "hooks": {
-    "before:release": "npm run build"
   }
 }
