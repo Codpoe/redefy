@@ -8,7 +8,7 @@ export default {
     showDarkModeSwitch: false,
     styles: {
       root: {
-        fontSize: 1,
+        fontSize: 2,
       },
       inlineCode: {
         margin: '0 2px',

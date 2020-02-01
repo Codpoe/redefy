@@ -4,5 +4,68 @@ route: /quick-start
 menu: 开发指南
 ---
 
-This is a link to [another document.](doc3.md)
-This is a link to an [external page.](http://www.example.com)
+## 安装
+
+```shell
+# 使用 yarn
+yarn add redefy
+
+# 使用 npm
+npm i redefy -S
+```
+
+## 引入
+
+最简单舒心的方式是先在项目的入口文件中引入全部组件的样式：
+
+```js
+import 'redefy/es/index.css';
+```
+
+然后就可以在项目任意地方引入组件了：
+
+```js
+import { Button } from 'redefy';
+```
+
+> 注意：`redefy` 默认支持基于 ES module 的 tree shaking，对于 js 部分，直接引入`import { Button } from 'redefy'`也会有按需加载的效果。
+
+## 按需引入
+
+如果比较在意应用体积，对于 css 部分也要按需引入的话，可以这样写：
+
+```js
+import { Button } from 'redefy';
+import 'redefy/es/button/style'; // 或者 antd/es/button/style/raw 加载 less 源文件
+```
+
+按上面这个写法，如果要引入 n 个组件就得写 2n 条 import 语句，实在太累。如果你使用了 babel，那么可以用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 来进行自动按需加载：
+
+```shell
+# 安装插件
+yarn add babel-plugin-import -D
+```
+
+```json
+// babel 配置
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "redefy",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
+  ]
+}
+```
+
+```js
+// 直接引入组件 js 即可，babel-plugin-import 会帮忙转换
+import { Button } from 'redefy';
+      ↓ ↓ ↓ ↓ ↓ ↓
+import Button from 'redefy/es/button';
+import 'redefy/es/button/style';
+```
