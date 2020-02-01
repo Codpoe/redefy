@@ -84,7 +84,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.8.6",
-    "release-it": "^12.4.3",
+    "release-it": "12.5.0-next.3",
     "through2": "^3.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.6.2",
