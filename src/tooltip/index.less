@@ -1,0 +1,15 @@
+@import '../styles/base.less';
+
+.rdf-tooltip__content {
+  @bg-color: rgba(0,0,0,.75);
+
+  & .rdf-pop__content-inner {
+    background-color: @bg-color;
+    color: #fff;
+  }
+
+  & .rdf-pop__content-arrow {
+    border-right-color: @bg-color;
+    border-bottom-color: @bg-color;
+  }
+}

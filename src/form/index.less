@@ -1,0 +1,85 @@
+@import '../styles/base.less';
+
+@min-height: 32px;
+
+.rdf-form-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 16px;
+    line-height: 1;
+    font-size: 14px;
+    color: @text-color;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    min-height: @min-height;
+  }
+  
+  &__message {
+    position: absolute;
+    top: calc(100% - 4px);
+    left: 0;
+    padding-top: 4px;
+    line-height: 1;
+    font-size: 12px;
+    color: @error-color;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s;
+  }
+}
+
+.rdf-form--label-left .rdf-form-item {
+  &__label {
+    justify-content: flex-start;
+  }
+}
+
+.rdf-form--label-top .rdf-form-item {
+  flex-direction: column;
+
+  &__label {
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+
+  &__content {
+    align-self: stretch;
+  }
+}
+
+.rdf-form-item--invalid {
+  & .rdf-input {
+    border-color: @error-color;
+
+    &:hover:not(.rdf-input--disabled) {
+      border-color: @error-color;
+    }
+
+    &--focused {
+      border-color: @error-color;
+      box-shadow: 0 0 8px -2px @error-color;
+    }
+  }
+
+  & .rdf-form-item__message {
+    transform: translateY(4px);
+    opacity: 1;
+    visibility: visible;
+  }
+}

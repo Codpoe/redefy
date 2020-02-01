@@ -1,0 +1,54 @@
+@import '../styles/base.less';
+
+.rdf-tab {
+  &__labels {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  &__content {
+    margin-top: 10px;
+  }
+}
+
+.rdf-tab-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .2s;
+  }
+
+  &__indicator-line {
+    width: calc(100% - 32px);
+    height: 2px;
+    border-radius: 1px;
+    background-color: @primary-color;
+  }
+
+  &--active {
+    .rdf-tab-item__indicator {
+      opacity: 1;
+    }
+  }
+
+  &--stretch {
+    flex: 1;
+
+    .rdf-tab-item__indicator-line {
+      width: 100%;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import Checkbox from './Checkbox';
 import CheckboxGroup from './CheckboxGroup';
+import './index.less';
 
 Checkbox.Group = CheckboxGroup;
 

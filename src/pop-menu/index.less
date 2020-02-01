@@ -1,0 +1,53 @@
+@import '../styles/base.less';
+
+.rdf-pop-menu {
+  &__menu {
+    min-width: 160px;
+
+    & .rdf-pop__content-inner {
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__group {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px 6px;
+    font-size: 12px;
+    color: @text-lighter;
+  }
+}
+
+.rdf-pop-menu-item {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: @text-color;
+  text-decoration: none;
+  transition: all .2s;
+  cursor: pointer;
+
+  &:not(.rdf-pop-menu-item--disabled) {
+    &:hover {
+      background: tint(@primary-color, 85%);
+    }
+
+    &:active {
+      background: tint(@primary-color, 75%)
+    }
+  }
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  & + .rdf-pop-menu__group {
+    border-top: 1px solid @border-lightest;
+  }
+}
+

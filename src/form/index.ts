@@ -1,5 +1,6 @@
 import Form from './Form';
 import FormItem from './FormItem';
+import './index.less';
 
 Form.Item = FormItem;
 

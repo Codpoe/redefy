@@ -12,12 +12,6 @@ import Input from '../input/index';
 import InputNumber from '../input-number/index';
 import Switch from '../switch/index';
 import { IconUser, IconLock, IconSmile, IconMeh, IconFrown, IconDollarSign, IconHeart, IconThumbsUp } from '../icon/index';
-import './index.css';
-import '../checkbox/index.css';
-import '../radio/index.css';
-import '../input/index.css';
-import '../input-number/index.css';
-import '../switch/index.css';
 
 redefy 的`Form`组件设计比较简单，没有过多的封装。
 
@@ -211,9 +205,9 @@ redefy 的`Form`组件设计比较简单，没有过多的封装。
             value={value.habits}
             onChange={handleChange}
           >
-            <Checkbox value="study">study</Checkbox>
-            <Checkbox value="play">play</Checkbox>
-            <Checkbox value="eat">sleep</Checkbox>
+            <Checkbox value="study">Study</Checkbox>
+            <Checkbox value="play">Play</Checkbox>
+            <Checkbox value="eat">Sleep</Checkbox>
           </Checkbox.Group>
         </Form.Item>
         <Form.Item

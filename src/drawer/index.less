@@ -1,0 +1,87 @@
+.anim(@x; @y) {
+  &.rdf-drawer-anim {
+    &--enter-active,
+    &--enter-done,
+    &--exit {
+      .rdf-drawer__content {
+        transform: translate(@x, @y);
+      }
+      
+      .rdf-drawer__mask {
+        opacity: 1;
+      }
+    }
+  
+    &--exit-active {
+      .rdf-drawer__content {
+        transform: translate(0, 0);
+      }
+  
+      .rdf-drawer__mask {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.rdf-drawer {
+  position: fixed;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .15);
+  z-index: 4999;
+
+  &__content {
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .15);
+    transition: all .3s;
+  }
+
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+    transition: all .3s;
+  }
+
+  &--top {
+    .rdf-drawer__content {
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .anim(0; 100%);
+  }
+
+  &--right {
+    .rdf-drawer__content {
+      left: 100%;
+      top: 0;
+      height: 100%;
+    }
+    .anim(-100%; 0);
+  }
+
+  &--bottom {
+    .rdf-drawer__content {
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+    .anim(0; -100%);
+  }
+
+  &--left {
+    .rdf-drawer__content {
+      right: 100%;
+      top: 0;
+      height: 100%;
+    }
+    .anim(100%; 0);
+  }
+}

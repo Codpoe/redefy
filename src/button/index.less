@@ -1,0 +1,211 @@
+@import '../styles/base.less';
+
+.colors(@bg-color: transparent;
+  @bg-hover: transparent;
+  @bg-active: transparent;
+  @border-color: @border-color;
+  @border-hover: @primary-light;
+  @border-active: @primary-dark;
+  @text-color: @text-color;
+  @text-hover: @primary-light;
+  @text-active: @primary-dark;
+) {
+  background: @bg-color;
+  border-color: @border-color;
+  color: @text-color;
+
+  &:hover:not(.rdf-button--disabled) {
+    background: @bg-hover;
+    border-color: @border-hover;
+    color: @text-hover;
+    text-decoration: none;
+  }
+
+  &:active:not(.rdf-button--disabled) {
+    background: @bg-active;
+    border-color: @border-active;
+    color: @text-active;
+  }
+}
+
+.flat-colors(@text-color: @text-color) {
+  .colors(tint(@text-color, 85%); tint(@text-color, 75%); tint(@text-color, 65%); tint(@text-color, 85%); tint(@text-color, 75%); tint(@text-color, 65%); @text-color; @text-color; @text-color);
+}
+
+.text-colors(@text-color: @text-color; @text-hover: @primary-light; @text-active: @primary-dark) {
+  .colors(transparent; transparent; transparent; transparent; transparent; transparent; @text-color; @text-hover; @text-active);
+}
+
+.rdf-button {
+  @min-height: 32px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: @min-height;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  outline: none;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  .colors();
+
+  &--primary {
+    .colors(
+      @primary-color; @primary-light; @primary-dark; @primary-color;
+        @primary-light; @primary-dark; #fff; #fff; #fff
+    );
+  }
+
+  &--success {
+    .colors(
+      @success-color; @success-light; @success-dark; @success-color;
+        @success-light; @success-dark; #fff; #fff; #fff
+    );
+  }
+
+  &--warning {
+    .colors(
+      @warning-color; @warning-light; @warning-dark; @warning-color;
+        @warning-light; @warning-dark; #fff; #fff; #fff
+    );
+  }
+
+  &--error {
+    .colors(
+      @error-color; @error-light; @error-dark; @error-color;
+        @error-light; @error-dark; #fff; #fff; #fff
+    );
+  }
+
+  &--flat {
+    .colors(tint(@text-color, 90%); tint(@text-color, 80%); tint(@text-color, 70%); tint(@text-color, 90%); tint(@text-color, 80%); tint(@text-color, 70%); @text-color; @text-color; @text-color);
+
+    &.rdf-button {
+      &--primary {
+        .flat-colors(@primary-color);
+      }
+
+      &--success {
+        .flat-colors(@success-color);
+      }
+
+      &--warning {
+        .flat-colors(@warning-color);
+      }
+
+      &--error {
+        .flat-colors(@error-color);
+      }
+    }
+  }
+
+  &--text {
+    .text-colors();
+
+    &.rdf-button {
+      &--primary {
+        .text-colors(@primary-color, @primary-light,  @primary-dark)
+      }
+
+      &--success {
+        .text-colors(@success-color, @success-light,  @success-dark)
+      }
+
+      &--warning {
+        .text-colors(@warning-color, @warning-light,  @warning-dark)
+      }
+
+      &--error {
+        .text-colors(@error-color, @error-light,  @error-dark)
+      }
+
+      &--pure {
+        min-height: auto;
+        padding: 0;
+      }
+    }
+  }
+
+  &--large {
+    @min-height: 38px;
+    min-height: @min-height;
+    padding: 8px 16px;
+
+    &.rdf-button {
+      &--round {
+        border-radius: @min-height / 2;
+      }
+
+      &--full-round {
+        width: @min-height;
+      }
+    }
+  }
+
+  &--small {
+    @min-height: 24px;
+    min-height: @min-height;
+    padding: 2px 8px;
+    font-size: 12px;
+
+    &.rdf-button {
+      &--round {
+        border-radius: @min-height / 2;
+      }
+
+      &--full-round {
+        width: @min-height;
+      }
+    }
+  }
+
+  &--round {
+    border-radius: @min-height / 2;
+  }
+
+  &--full-round {
+    width: @min-height;
+    border-radius: 50%;
+    padding: 0;
+  }
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.rdf-button-group {
+  display: inline-flex;
+
+  .rdf-button {
+    &:hover {
+      z-index: 1;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

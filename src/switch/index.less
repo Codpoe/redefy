@@ -1,0 +1,66 @@
+@import '../styles/base.less';
+
+.rdf-switch {
+  @width: 36px;
+  @height: 20px;
+  @indicator-size: 16px;
+  @gap-width: (@height - @indicator-size) / 2;
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: @width;
+  height: @height;
+  border-radius: @height / 2;
+  background-color: @border-color;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all .2s;
+
+  &__indicator {
+    content: '';
+    position: absolute;
+    top: @gap-width;
+    left: @gap-width;
+    width: @indicator-size;
+    height: @indicator-size;
+    border-radius: 100%;
+    background: #fff;
+    will-change: left;
+    transition: all .3s;
+  }
+
+  &__check-child,
+  &__uncheck-child {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    user-select: none;
+  }
+
+  &__check-child {
+    margin-right: @indicator-size + @gap-width;
+  }
+
+  &__uncheck-child {
+    margin-left: @indicator-size + @gap-width;
+  }
+
+  &--checked {
+    justify-content: flex-start;
+    background-color: @primary-color;
+    border-color: @primary-color;
+    box-shadow: 0 0 8px -1px @primary-color;
+
+    .rdf-switch__indicator {
+      left: calc(100% - @indicator-size - @gap-width);
+    }
+  }
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}

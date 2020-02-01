@@ -101,8 +101,7 @@ export class Drawer extends React.Component<DrawerProps> {
 
     const { position, mask, className, style, children } = this.props;
     const { visible } = this.state;
-    const cls = cx(b(), className);
-    const contentCls = cx(b('content'), [b('content', position as Position)]);
+    const cls = cx(b(), className, b('', position as Position));
 
     let drawerRoot = document.getElementById('rdf-drawer-root');
 
@@ -122,7 +121,7 @@ export class Drawer extends React.Component<DrawerProps> {
       >
         <div className={cls} style={style}>
           {mask && <div className={b('mask')} onClick={this.handleMaskClick} />}
-          <div className={contentCls}>{children}</div>
+          <div className={b('content')}>{children}</div>
         </div>
       </CSSTransition>,
       drawerRoot

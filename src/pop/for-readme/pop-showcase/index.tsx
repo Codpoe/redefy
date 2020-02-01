@@ -1,6 +1,6 @@
 import React from 'react';
 import bem from '../../../utils/bem';
-import './style.css';
+import './style.less';
 
 const b = bem('demo-pop-showcase');
 

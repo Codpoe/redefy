@@ -1,0 +1,132 @@
+@import '../styles/base.less';
+
+.rdf-input {
+  @height: 32px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  height: @height;
+  background: #fff3;
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  transition: all .2s;
+
+  &:hover:not(&--disabled) {
+    border-color: @primary-color;
+  }
+
+  &--focused {
+    border-color: @primary-color;
+    box-shadow: 0 0 8px -2px @primary-color;
+  }
+
+  &--large {
+    @height: 38px;
+    height: @height;
+
+    &.rdf-input--round {
+      border-radius: @height / 2;
+    }
+  }
+
+  &--small {
+    @height: 24px;
+    height: @height;
+    font-size: 12px;
+
+    &.rdf-input--round {
+      border-radius: @height / 2;
+    }
+  }
+
+  &--round {
+    border-radius: @height / 2;
+  }
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+
+    .rdf-input__content {
+      cursor: not-allowed;
+    }
+  }
+
+  &__content {
+    position: relative;
+    outline: none;
+    border: none;
+    min-width: 0;
+    flex: 1;
+    padding: 0 10px;
+    background: transparent;
+    font-size: inherit;
+    line-height: inherit;
+    color: @text-color;
+
+    &--has-prefix {
+      padding-left: 0;
+    }
+
+    &--has-suffix {
+      padding-right: 0;
+    }
+  
+    &::placeholder {
+      font-size: inherit;
+      color: @text-lighter;
+    }
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
+    }
+  
+    &:-webkit-autofill {
+      transition: background 5000s ease-in;
+    }
+  
+    &:-moz-ui-invalid {
+      box-shadow: none;
+    }
+  }
+
+  &__prefix,
+  &__suffix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    font-size: inherit;
+    line-height: inherit;
+    color: @text-light;
+
+    &--no-padding {
+      padding: 0;
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+}
+
+/*
+ * textarea
+ */
+.rdf-textarea {
+  height: auto;
+
+  & .rdf-input__content {
+    padding: 4px 10px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+}
+

@@ -1,0 +1,53 @@
+@import '../styles/base.less';
+
+.rdf-select__content {
+  width: 200px;
+
+  & .rdf-pop__content-inner {
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+.rdf-select-option {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: @text-color;
+  transition: all .2s;
+  cursor: pointer;
+
+  &__item {
+    flex: 1;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__icon {
+    font-size: 16px;
+    color: @primary-color;
+  }
+
+  &:not(.rdf-select-option--disabled) {
+    &:hover {
+      background: tint(@primary-color, 85%);
+    }
+
+    &:active {
+      background: tint(@primary-color, 75%);
+    }
+  }
+
+  &--selected {
+    font-weight: 700;
+    color: @primary-color;
+  }
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}

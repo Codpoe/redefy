@@ -14,7 +14,7 @@ export default {
         margin: '0 2px',
         padding: '2px 6px',
         borderRadius: '3px',
-        backgroundColor: '#eceff2',
+        backgroundColor: '#ececec',
       },
     },
   },

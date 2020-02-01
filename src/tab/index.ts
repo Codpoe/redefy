@@ -1,5 +1,6 @@
 import Tab from './Tab';
 import Item from './Item';
+import './index.less';
 
 Tab.Item = Item;
 

@@ -1,0 +1,96 @@
+@import '../styles/base.less';
+
+.rdf-date-picker {
+  &__content {
+    width: 236px;
+
+    .rdf-pop__content-inner {
+      padding: 0 0 4px;
+    }
+  }
+
+  &__panels-wrap {
+    height: 224px;
+    overflow: hidden;
+  }
+
+  &__panels {
+    transition: all .2s;
+  }
+
+  &__panel {
+    opacity: 0;
+    transition: all .2s;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}
+
+.rdf-date-picker-header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid @border-lightest;
+
+  &__content {
+    margin-right: auto;
+    padding: 0 12px;
+  }
+
+  & &__year,
+  & &__month {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  & &__month {
+    margin-left: 10px;
+  }
+
+  & &__prev,
+  & &__next {
+    font-size: 18px;
+  }
+}
+
+.rdf-date-picker__date-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  height: 224px;
+
+  &__week {
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: @text-lighter;
+  }
+
+  & &__day--prev,
+  & &__day--next {
+    color: @text-lighter;
+  }
+}
+
+.rdf-date-picker__month-panel,
+.rdf-date-picker__year-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+  height: 224px;
+
+  &__item {
+    flex: 0 1 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
