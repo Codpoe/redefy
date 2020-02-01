@@ -5,6 +5,5 @@
   },
   "hooks": {
     "before:release": "npm run build"
-  },
-  "disableMetrics": true
+  }
 }
