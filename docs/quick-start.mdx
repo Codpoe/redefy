@@ -69,3 +69,33 @@ import { Button } from 'redefy';
 import Button from 'redefy/es/button';
 import 'redefy/es/button/style';
 ```
+
+## CDN 引入
+
+如果只是想写点简单的 demo，那使用`redefy`最简单的方式是在 html 文件中引入 CDN 链接，
+然后可以通过全局变量`redefy`获取到所有组件：
+
+```html
+<!-- 样式文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/redefy@1.0.0/dist/redefy.css">
+
+<!-- react -->
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+<!-- redefy -->
+<script src="https://cdn.jsdelivr.net/npm/redefy@1.0.0/dist/redefy.min.js"></script>
+
+<div id="root"></div>
+
+<script>
+  // 渲染一个 Button
+  ReactDOM.render(
+    React.createElement(redefy.Button, null, 'Hello, world!'),
+    document.getElementById('root')
+  );
+
+  // 弹出一个 Toast
+  redefy.Toast.info('infooo');
+</script>
+```
