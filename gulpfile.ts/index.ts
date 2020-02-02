@@ -81,7 +81,7 @@ export async function compileUMD() {
       rollupTypescript({ module: 'ESNext', skipLibCheck: true }),
       rollupCommonjs(),
       rollupResolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
-      rollupReplace({ 'process.env.NODE_ENV': 'production' }),
+      rollupReplace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
     ],
     external: Object.keys(getPkg('peerDependencies')),
   });
