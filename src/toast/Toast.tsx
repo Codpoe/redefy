@@ -2,22 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import Notice from '../notice/index';
 import bem from '../utils/bem';
-import {
-  IconInfo,
-  IconCheckCircle,
-  IconAlertCircle,
-  IconXCircle,
-} from '../icon/index';
 
 const b = bem('rdf-toast');
-
-const ICONS = {
-  info: <IconInfo className={b('icon')} />,
-  success: <IconCheckCircle className={b('icon')} />,
-  warning: <IconAlertCircle className={b('icon')} />,
-  error: <IconXCircle className={b('icon')} />,
-};
 
 const TOAST_ROOT_ID = 'rdf-toast-root';
 
@@ -99,10 +87,9 @@ export default class Toast extends React.Component<ToastProps, ToastState> {
         onExited={this.handleExited}
       >
         <div className={cls} style={style}>
-          <div className={b('content')}>
-            {ICONS[type]}
+          <Notice className={b('content')} type={type} inline>
             {content}
-          </div>
+          </Notice>
         </div>
       </CSSTransition>,
       this.getToastRoot()

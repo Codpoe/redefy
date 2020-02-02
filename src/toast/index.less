@@ -9,72 +9,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80vw;
+  pointer-events: none;
 }
 
 .rdf-toast {
   padding-bottom: 20px;
-  pointer-events: none;
   opacity: 0;
   transition: all .3s ease-out;
 
   &__content {
-    display: inline-flex;
-    align-items: center;
-    max-width: 80vw;
-    padding: 6px 12px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    background: white;
     box-shadow: 0 0 8px rgba(0, 0, 0, .15);
-    font-size: 14px;
-    line-height: 22px;
-    color: @text-color;
     transition: all .3s ease-in;
-  }
-
-  &__icon {
-    flex-shrink: 0;
-    margin-right: 10px;
-  }
-
-  &--info .rdf-toast {
-    &__content {
-      border-color: @primary-color;
-    }
-
-    &__icon {
-      color: @primary-color;
-    }
-  }
-
-  &--success .rdf-toast {
-    &__content {
-      border-color: @success-color;
-    }
-
-    &__icon {
-      color: @success-color;
-    }
-  }
-
-  &--warning .rdf-toast {
-    &__content {
-      border-color: @warning-color;
-    }
-
-    &__icon {
-      color: @warning-color;
-    }
-  }
-
-  &--error .rdf-toast {
-    &__content {
-      border-color: @error-color;
-    }
-
-    &__icon {
-      color: @error-color;
-    }
   }
 }
 
@@ -91,7 +37,7 @@
   }
 
   &--exit {
-    max-height: 70px;
+    max-height: 80px;
     opacity: 1;
 
     .rdf-toast__content {
