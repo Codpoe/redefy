@@ -11,7 +11,8 @@ import * as rollup from 'rollup';
 import rollupCommonjs from '@rollup/plugin-commonjs';
 import rollupResolve from '@rollup/plugin-node-resolve';
 import rollupTypescript from '@rollup/plugin-typescript';
-import collectComponentDeps from './collect-component-deps';
+import rollupReplace from '@rollup/plugin-replace';
+import collectDeps from './collect-deps';
 import genScriptEntry from './gen-script-entry';
 import genStyleEntry from './gen-style-entry';
 import removeStyleImports from './remove-style-imports';
@@ -45,10 +46,11 @@ export function clean() {
   return del(['es/**', 'lib/**', 'dist/**']);
 }
 
-export function collectDeps() {
+export function prepare() {
+  process.env.NODE_ENV = 'production';
   return getTsProject()
     .src()
-    .pipe(collectComponentDeps())
+    .pipe(collectDeps())
     .pipe(gulp.dest('dist'));
 }
 
@@ -79,6 +81,7 @@ export async function compileUMD() {
       rollupTypescript({ module: 'ESNext', skipLibCheck: true }),
       rollupCommonjs(),
       rollupResolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
+      rollupReplace({ 'process.env.NODE_ENV': 'production' }),
     ],
     external: Object.keys(getPkg('peerDependencies')),
   });
@@ -139,6 +142,6 @@ export function compileStyle() {
 
 export const buildStyle = gulp.series(copyStyle, compileStyle);
 
-const build = gulp.series(clean, collectDeps, buildScript, buildStyle);
+const build = gulp.series(clean, prepare, buildScript, buildStyle);
 
 export default build;
