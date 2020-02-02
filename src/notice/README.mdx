@@ -1,0 +1,27 @@
+---
+name: Notice 提示
+route: /notice
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Notice from './index';
+
+## 演示
+
+<Playground>
+  <div style={{ padding: '10px' }}>
+    <Notice type="info">Hello World!</Notice><br />
+    <Notice type="success">Hello World!</Notice><br />
+    <Notice type="warning">Hello World!</Notice><br />
+    <Notice type="error">Hello World!</Notice><br />
+    <Notice type="info" inline>Hello World!</Notice>{' '}
+    <Notice type="success" inline>Hello World!</Notice>{' '}
+    <Notice type="warning" inline>Hello World!</Notice>{' '}
+    <Notice type="error" inline>Hello World!</Notice>
+  </div>
+</Playground>
+
+## API
+
+### Props

@@ -1,0 +1,60 @@
+@import '../styles/base.less';
+
+.rdf-notice {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  line-height: 24px;
+  color: @text-color;
+
+  &__icon {
+    flex-shrink: 0;
+    margin-right: 12px;
+    font-size: 16px;
+  }
+
+  &--inline {
+    display: inline-flex;
+  }
+
+  &--info {
+    background: tint(@primary-color, 92%);
+    border-color: @primary-color;
+
+    .rdf-notice__icon {
+      color: @primary-dark;
+    }
+  }
+
+  &--success {
+    background: tint(@success-color, 92%);
+    border-color: @success-color;
+
+    .rdf-notice__icon {
+      color: @success-dark;
+    }
+  }
+
+  &--warning {
+    background: tint(@warning-color, 92%);
+    border-color: @warning-color;
+
+    .rdf-notice__icon {
+      color: @warning-dark;
+    }
+  }
+
+  &--error {
+    background: tint(@error-color, 92%);
+    border-color: @error-color;
+
+    .rdf-notice__icon {
+      color: @error-dark;
+    }
+  }
+}
