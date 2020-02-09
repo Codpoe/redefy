@@ -29,11 +29,18 @@
 }
 
 .flat-colors(@text-color: @text-color) {
-  .colors(tint(@text-color, 85%); tint(@text-color, 75%); tint(@text-color, 65%); tint(@text-color, 85%); tint(@text-color, 75%); tint(@text-color, 65%); @text-color; @text-color; @text-color);
+  .colors(
+    tint(@text-color, 85%) ; tint(@text-color, 75%) ; tint(@text-color, 65%) ;
+      tint(@text-color, 85%) ; tint(@text-color, 75%) ; tint(@text-color, 65%) ;
+      @text-color; @text-color; @text-color
+  );
 }
 
 .text-colors(@text-color: @text-color; @text-hover: @primary-light; @text-active: @primary-dark) {
-  .colors(transparent; transparent; transparent; transparent; transparent; transparent; @text-color; @text-hover; @text-active);
+  .colors(
+    transparent; transparent; transparent; transparent; transparent;
+      transparent; @text-color; @text-hover; @text-active
+  );
 }
 
 .rdf-button {
@@ -44,8 +51,8 @@
   justify-content: center;
   align-items: center;
   min-height: @min-height;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 16px;
+  border-radius: 2px;
   border-width: 1px;
   border-style: solid;
   outline: none;
@@ -81,13 +88,17 @@
 
   &--error {
     .colors(
-      @error-color; @error-light; @error-dark; @error-color;
-        @error-light; @error-dark; #fff; #fff; #fff
+      @error-color; @error-light; @error-dark; @error-color; @error-light;
+        @error-dark; #fff; #fff; #fff
     );
   }
 
   &--flat {
-    .colors(tint(@text-color, 90%); tint(@text-color, 80%); tint(@text-color, 70%); tint(@text-color, 90%); tint(@text-color, 80%); tint(@text-color, 70%); @text-color; @text-color; @text-color);
+    .colors(
+      tint(@text-color, 90%) ; tint(@text-color, 80%) ; tint(@text-color, 70%) ;
+        tint(@text-color, 90%) ; tint(@text-color, 80%) ; tint(@text-color, 70%)
+        ; @text-color; @text-color; @text-color
+    );
 
     &.rdf-button {
       &--primary {
@@ -113,19 +124,19 @@
 
     &.rdf-button {
       &--primary {
-        .text-colors(@primary-color, @primary-light,  @primary-dark)
+        .text-colors(@primary-color, @primary-light, @primary-dark);
       }
 
       &--success {
-        .text-colors(@success-color, @success-light,  @success-dark)
+        .text-colors(@success-color, @success-light, @success-dark);
       }
 
       &--warning {
-        .text-colors(@warning-color, @warning-light,  @warning-dark)
+        .text-colors(@warning-color, @warning-light, @warning-dark);
       }
 
       &--error {
-        .text-colors(@error-color, @error-light,  @error-dark)
+        .text-colors(@error-color, @error-light, @error-dark);
       }
 
       &--pure {
@@ -138,7 +149,7 @@
   &--large {
     @min-height: 38px;
     min-height: @min-height;
-    padding: 8px 16px;
+    padding: 8px 24px;
 
     &.rdf-button {
       &--round {
