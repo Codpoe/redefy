@@ -1,0 +1,108 @@
+@import '../styles/base.less';
+
+#rdf-dialog-root {
+  position: fixed;
+  z-index: 7999;
+}
+
+.rdf-dialog {
+  &__mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(55, 55, 55, 0.6);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+
+  &__wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+  }
+
+  &__content {
+    position: relative;
+    width: 520px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+    color: @text-color;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.3s ease-out;
+  }
+
+  &__header {
+    padding: 14px 32px 14px 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__body {
+    min-height: 50px;
+    padding: 8px 16px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 14px 16px;
+
+    .rdf-button + .rdf-button {
+      margin-left: 10px;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 18px;
+    color: @text-light;
+  }
+}
+
+.rdf-dialog-anim {
+  &--enter-active,
+  &--enter-done,
+  &--exit {
+    .rdf-dialog__mask {
+      opacity: 1;
+    }
+
+    .rdf-dialog__content {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.15s;
+    }
+  }
+
+  &--exit-active {
+    .rdf-dialog__mask {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .rdf-dialog__wrap {
+      pointer-events: none;
+    }
+
+    .rdf-dialog__content {
+      opacity: 0;
+      transform: translateY(-50px);
+      transition-delay: 0s;
+    }
+  }
+}

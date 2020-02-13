@@ -1,0 +1,33 @@
+---
+name: Dialog 对话框
+route: /dialog
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Dialog from './index';
+import Button from '../button/index';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  {() => {
+    const [visible, setVisible] = React.useState(false);
+    return (
+      <div>
+        <Button onClick={() => setVisible(true)}>打开对话框</Button>
+        <Dialog
+          visible={visible}
+          onVisibleChange={setVisible}
+          header="提示"
+          onOk={() => setVisible(false)}
+        >
+          <div>对话框内容</div>
+          <div>对话框内容</div>
+        </Dialog>
+      </div>
+    );
+  }}
+</Playground>
