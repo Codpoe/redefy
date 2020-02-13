@@ -1,5 +1,6 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, RefObject } from 'react';
 import { getScroll } from './dom';
+import { isBrowser } from './vars';
 
 interface Position {
   top: number;
@@ -14,7 +15,7 @@ interface EffectParams {
 type Effect = (params: EffectParams) => void;
 
 interface Options {
-  element?: HTMLElement | Window;
+  element?: HTMLElement | Window | RefObject<HTMLElement>;
   wait?: number;
 }
 
@@ -24,24 +25,37 @@ export default function useScroll(
   options?: Options
 ) {
   // for ssr
-  if (typeof window === 'undefined') {
+  if (!isBrowser) {
     return;
   }
 
-  const { element, wait } = options || {};
-  const positionRef = useRef(getScroll(element));
-
-  let timer: any = null;
-
-  const callback = () => {
-    const position = getScroll(element);
-
-    effect({ position, prevPosition: positionRef.current });
-    positionRef.current = position;
-    timer = null;
-  };
+  const positionRef = useRef<Position>({ top: 0, left: 0 });
 
   useLayoutEffect(() => {
+    const { element, wait } = options || {};
+    let timer: any = null;
+    let el: HTMLElement | Window | null | undefined;
+
+    if (element instanceof HTMLElement || element === window) {
+      el = element;
+    } else if (element) {
+      el = (element as RefObject<HTMLElement>).current;
+    }
+
+    if (!el) {
+      return;
+    }
+
+    positionRef.current = getScroll(el);
+
+    const callback = () => {
+      const position = getScroll(el as NonNullable<typeof el>);
+
+      effect({ position, prevPosition: positionRef.current });
+      positionRef.current = position;
+      timer = null;
+    };
+
     const handleScroll = () => {
       if (wait) {
         if (timer === null) {
@@ -52,8 +66,12 @@ export default function useScroll(
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    el.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () =>
+      (el as NonNullable<typeof el>).removeEventListener(
+        'scroll',
+        handleScroll
+      );
   }, deps);
 }
