@@ -9,7 +9,7 @@ import bem from '../utils/bem';
 const b = bem('rdf-dialog');
 
 export interface DialogProps
-  extends Omit<DialogWrapProps, 'onClose' | 'onMousePositionChange'>,
+  extends Omit<DialogWrapProps, 'onClose'>,
     Omit<DialogContentProps, 'onClose'> {
   visible?: boolean;
   mask?: boolean;
@@ -27,6 +27,7 @@ export const Dialog: React.FC<DialogProps> & {
     visible,
     mask,
     maskClosable,
+    keyClosable,
     onVisibleChange,
     className,
     style,
@@ -57,7 +58,11 @@ export const Dialog: React.FC<DialogProps> & {
     >
       <div className={cx(b(), className)} style={style}>
         {mask && <div className={b('mask')} />}
-        <DialogWrap maskClosable={maskClosable} onClose={handleClose}>
+        <DialogWrap
+          maskClosable={maskClosable}
+          keyClosable={keyClosable}
+          onClose={handleClose}
+        >
           <DialogContent
             {...restProps}
             onClose={handleClose}
@@ -75,6 +80,7 @@ Dialog.defaultProps = {
   visible: false,
   mask: true,
   maskClosable: true,
+  keyClosable: true,
 };
 
 export default Dialog;
