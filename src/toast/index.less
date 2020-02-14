@@ -16,24 +16,24 @@
 .rdf-toast {
   padding-bottom: 20px;
   opacity: 0;
-  transition: all .3s ease-out;
+  transition: all 0.24s ease-out;
 
   &__content {
-    box-shadow: 0 0 8px rgba(0, 0, 0, .15);
-    transition: all .3s ease-in;
+    box-shadow: 0 1px 8px 0 rgba(200, 201, 204, 0.5);
+    transition: all 0.24s ease-in;
   }
 }
 
 .rdf-toast-anim {
   &--enter {
     opacity: 0;
-    transform: translate3d(0,-100%,0);
+    transform: translate3d(0, -100%, 0);
   }
 
   &--enter-active,
   &--enter-done {
     opacity: 1;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 
   &--exit {
@@ -41,7 +41,7 @@
     opacity: 1;
 
     .rdf-toast__content {
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -51,7 +51,7 @@
     opacity: 0;
 
     .rdf-toast__content {
-      transform: translate3d(0,-100%,0);
+      transform: translate3d(0, -100%, 0);
     }
   }
 }
