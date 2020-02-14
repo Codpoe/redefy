@@ -23,7 +23,7 @@
     border: 1px solid @border-color;
     border-radius: 2px;
     overflow: hidden;
-    transition: all .4s, border-color .2s;
+    transition: all 0.4s, border-color 0.2s;
   }
 
   &__line {
@@ -37,7 +37,7 @@
     overflow: hidden;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -47,12 +47,12 @@
       border-radius: 1px;
       transform: scaleY(0);
       transform-origin: top;
-      transition: all .1s;
-      transition-delay: .1s;
+      transition: all 0.1s;
+      transition-delay: 0.1s;
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 1px;
@@ -62,7 +62,7 @@
       border-radius: 1px;
       transform: scaleX(0);
       transform-origin: left;
-      transition: all .1s;
+      transition: all 0.1s;
     }
   }
 
@@ -104,7 +104,7 @@
  * disabled
  */
 .rdf-checkbox--disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

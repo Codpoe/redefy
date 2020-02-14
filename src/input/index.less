@@ -12,11 +12,11 @@
   height: @height;
   background: #fff3;
   border: 1px solid @border-color;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 14px;
   line-height: 20px;
   overflow: hidden;
-  transition: all .2s;
+  transition: all 0.24s;
 
   &:hover:not(&--disabled) {
     border-color: @primary-color;
@@ -51,7 +51,7 @@
   }
 
   &--disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
 
     .rdf-input__content {
@@ -78,7 +78,7 @@
     &--has-suffix {
       padding-right: 0;
     }
-  
+
     &::placeholder {
       font-size: inherit;
       color: @text-lighter;
@@ -87,11 +87,11 @@
     &:placeholder-shown {
       text-overflow: ellipsis;
     }
-  
+
     &:-webkit-autofill {
       transition: background 5000s ease-in;
     }
-  
+
     &:-moz-ui-invalid {
       box-shadow: none;
     }
@@ -129,4 +129,3 @@
     resize: vertical;
   }
 }
-
