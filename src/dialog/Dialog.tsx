@@ -5,6 +5,7 @@ import cx from 'classnames';
 import DialogWrap, { DialogWrapProps } from './Wrap';
 import DialogContent, { DialogContentProps } from './Content';
 import bem from '../utils/bem';
+import { isBrowser } from '../utils/vars';
 
 const b = bem('rdf-dialog');
 
@@ -23,6 +24,10 @@ export interface DialogProps
 export const Dialog: React.FC<DialogProps> & {
   dialogRoot?: HTMLElement;
 } = props => {
+  if (!isBrowser) {
+    return null;
+  }
+
   const {
     visible,
     mask,
