@@ -14,14 +14,14 @@
   border-color: @border-color;
   color: @text-color;
 
-  &:hover:not(.rdf-button--disabled) {
+  &:hover:not([data-disabled='true']) {
     background: @bg-hover;
     border-color: @border-hover;
     color: @text-hover;
     text-decoration: none;
   }
 
-  &:active:not(.rdf-button--disabled) {
+  &:active:not([data-disabled='true']) {
     background: @bg-active;
     border-color: @border-active;
     color: @text-active;
@@ -50,6 +50,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
   min-height: @min-height;
   padding: 6px 16px;
   border-radius: 3px;
@@ -64,6 +65,23 @@
   transition: all 0.24s ease-out;
 
   .colors();
+
+  &__content {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.24s ease-out;
+  }
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.24s ease-out;
+  }
 
   &--primary {
     .colors(
@@ -198,6 +216,14 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  &--loading {
+    cursor: not-allowed;
+
+    .rdf-button__content {
+      opacity: 0.2;
+    }
+  }
 }
 
 .rdf-button-group {
@@ -218,5 +244,17 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+  }
+}
+
+.rdf-button-loading-anim {
+  &--enter-active,
+  &--enter-done,
+  &--exit {
+    opacity: 1;
+  }
+
+  &--exit-active {
+    opacity: 0;
   }
 }

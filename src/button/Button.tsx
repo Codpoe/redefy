@@ -1,6 +1,9 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
+import Loading from '../loading/index';
 import bem from '../utils/bem';
+import { noop } from '../utils/vars';
 
 export interface ButtonProps {
   [key: string]: any;
@@ -36,7 +39,7 @@ export class Button extends React.Component<ButtonProps> {
     loading: false,
     href: '',
     target: '_blank',
-    onClick: () => {},
+    onClick: noop,
   };
 
   render() {
@@ -82,8 +85,18 @@ export class Button extends React.Component<ButtonProps> {
         disabled={disabled}
         onClick={onClick}
         {...restProps}
+        {...((disabled || loading) && { 'data-disabled': true, onClick: noop })}
       >
-        {children}
+        <span className={b('content')}>{children}</span>
+        <CSSTransition
+          classNames="rdf-button-loading-anim-"
+          in={loading}
+          timeout={{ exit: 240 }}
+          mountOnEnter
+          unmountOnExit
+        >
+          <Loading className={b('loading')} />
+        </CSSTransition>
       </NodeName>
     );
   }
