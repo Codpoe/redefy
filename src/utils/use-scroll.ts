@@ -32,7 +32,7 @@ export default function useScroll(
   const positionRef = useRef<Position>({ top: 0, left: 0 });
 
   useLayoutEffect(() => {
-    const { element, wait } = options || {};
+    const { element = window, wait } = options || {};
     let timer: any = null;
     let el: HTMLElement | Window | null | undefined;
 

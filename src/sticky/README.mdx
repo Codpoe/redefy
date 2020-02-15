@@ -1,0 +1,31 @@
+---
+name: Sticky 粘性
+route: /sticky
+menu: 交互组件
+---
+
+import { Playground } from 'docz';
+import Sticky from './index';
+import Button from '../button/index';
+
+## 演示
+
+<Playground>
+  <div>
+    <Sticky>
+      <Button type="primary">Sticky</Button>
+    </Sticky>
+    <div style={{ height: '200px' }} />
+    <Sticky top={100} style={{ marginLeft: '200px' }}>
+      <Button type="primary">Sticky</Button>
+    </Sticky>
+    <div style={{ height: '300px' }} />
+    <Sticky bottom={100} style={{ marginLeft: '400px' }}>
+      <Button type="primary">Sticky</Button>
+    </Sticky>
+  </div>
+</Playground>
+
+##
+
+<div style={{ height: '2000px' }} />
