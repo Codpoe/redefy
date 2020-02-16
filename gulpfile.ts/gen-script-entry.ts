@@ -56,7 +56,7 @@ export default function() {
     const depsMap: Record<string, string[]> = JSON.parse(
       file.contents.toString()
     );
-    const names = Object.keys(depsMap);
+    const names = Object.keys(depsMap).filter(name => name !== 'flat-deps');
 
     // generate style/index.ts, style/raw.ts
     names.forEach(name => {
