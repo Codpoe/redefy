@@ -35,6 +35,7 @@ const LoadingWrap: React.FC<LoadingWrapProps> = props => {
         classNames="rdf-loading-wrap-anim-"
         in={loading}
         timeout={200}
+        appear
         mountOnEnter
         unmountOnExit
       >

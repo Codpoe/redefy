@@ -231,6 +231,7 @@ export default class Content extends React.Component<
         classNames="rdf-pop-anim-"
         in={visible && positionReady}
         timeout={{ exit: 320 }}
+        appear
         mountOnEnter
         unmountOnExit
         onEntered={this.handleEntered}

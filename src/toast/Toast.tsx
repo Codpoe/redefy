@@ -81,6 +81,7 @@ export default class Toast extends React.Component<ToastProps, ToastState> {
         classNames="rdf-toast-anim-"
         in={visible}
         timeout={{ exit: 1000 }}
+        appear
         mountOnEnter
         unmountOnExit
         onEntered={this.handleEntered}

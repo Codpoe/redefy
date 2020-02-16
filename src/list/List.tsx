@@ -125,6 +125,7 @@ export class List extends React.Component<ListProps> {
           classNames="rdf-list-footer-anim-"
           in={!finished || Boolean(finishedLabel)}
           timeout={0}
+          appear
           mountOnEnter
           unmountOnExit
         >

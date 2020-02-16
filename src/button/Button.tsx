@@ -92,6 +92,7 @@ export class Button extends React.Component<ButtonProps> {
           classNames="rdf-button-loading-anim-"
           in={loading}
           timeout={{ exit: 240 }}
+          appear
           mountOnEnter
           unmountOnExit
         >

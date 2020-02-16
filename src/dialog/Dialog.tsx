@@ -58,6 +58,7 @@ export const Dialog: React.FC<DialogProps> & {
       classNames="rdf-dialog-anim-"
       in={visible}
       timeout={{ exit: 500 }}
+      appear
       mountOnEnter
       unmountOnExit
     >
