@@ -18,10 +18,12 @@ import Radio from '../radio/index';
 <Playground>
   {() => {
     const [visible, changeVisible] = React.useState(false);
+    const el = React.useRef(null);
     return (
       <>
         <Button onClick={() => changeVisible(!visible)}>Toggle Drawer</Button>
-        <Drawer visible={visible} onVisibleChange={changeVisible}>
+        <div ref={el}></div>
+        <Drawer root={el.current} visible={visible} onVisibleChange={changeVisible}>
           <div
             style={{
               display: 'flex',
@@ -123,6 +125,7 @@ import Radio from '../radio/index';
 | mask | `boolean` | `true` | 是否显示蒙层 |
 | maskClosable | `boolean` | `true` | 点击蒙层是否可以关闭抽屉 |
 | disabled | `boolean` | `false` | 禁用 |
+| root | `Element`, `null` | - | 挂载容器 |
 | onVisibleChange | `(visible: boolean) => void` | - | 变更事件 |
 | className | `string` | - | 类名 |
 | style | `React.CSSProperties` | - | 样式 |

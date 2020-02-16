@@ -19,6 +19,7 @@ export interface DrawerProps {
   mask?: boolean;
   maskClosable?: boolean;
   disabled?: boolean;
+  root?: Element | null;
   onVisibleChange?: (visible: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
@@ -99,11 +100,11 @@ export class Drawer extends React.Component<DrawerProps> {
       return null;
     }
 
-    const { position, mask, className, style, children } = this.props;
+    const { position, mask, root, className, style, children } = this.props;
     const { visible } = this.state;
     const cls = cx(b(), className, b('', position as Position));
 
-    let drawerRoot = document.getElementById('rdf-drawer-root');
+    let drawerRoot = root || document.getElementById('rdf-drawer-root');
 
     if (!drawerRoot) {
       drawerRoot = document.createElement('div');
