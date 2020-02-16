@@ -117,6 +117,7 @@ export class Drawer extends React.Component<DrawerProps> {
         classNames="rdf-drawer-anim-"
         in={visible}
         timeout={{ exit: 300 }}
+        appear
         mountOnEnter
         unmountOnExit
       >
