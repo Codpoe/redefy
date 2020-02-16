@@ -7,7 +7,7 @@
 
   &__label {
     margin-left: 10px;
-    font-size: .7em;
+    font-size: 0.7em;
     line-height: 1;
   }
 
@@ -25,22 +25,22 @@
   &--primary {
     color: @primary-color;
   }
-  
+
   &--success {
     color: @success-color;
   }
-  
+
   &--warning {
     color: @warning-color;
   }
-  
+
   &--error {
     color: @error-color;
   }
-  
+
   &--vertical {
     flex-direction: column;
-  
+
     .rdf-loading__label {
       margin: 10px 0 0;
     }
@@ -73,7 +73,7 @@
   0% {
     stroke-dashoffset: 67px;
   }
-  
+
   50% {
     stroke-dashoffset: 16px;
     transform: rotate(90deg);
@@ -87,7 +87,6 @@
 
 .rdf-loading-wrap {
   position: relative;
-  display: flex;
 
   &__content {
     position: relative;
@@ -107,11 +106,11 @@
     font-size: 20px;
     opacity: 0;
     z-index: 1;
-    transition: all .2s;
+    transition: all 0.2s;
   }
 
   &--mask .rdf-loading-wrap__loading {
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -126,4 +125,3 @@
     opacity: 0;
   }
 }
-
