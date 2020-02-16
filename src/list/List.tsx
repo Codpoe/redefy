@@ -30,7 +30,6 @@ export class List extends React.Component<ListProps> {
     error: false,
     immediateCheck: true,
     offset: 300,
-    loadingLabel: '加载中...',
   };
 
   observer?: IntersectionObserver;
