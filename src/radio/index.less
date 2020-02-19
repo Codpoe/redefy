@@ -9,15 +9,15 @@
   &__indicator {
     box-sizing: border-box;
     position: relative;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border: 1px solid @border-color;
     border-radius: 50%;
-    transition: all .2s;
+    transition: all 0.2s;
     overflow: hidden;
-  
+
     &::before {
-      content: "";
+      content: '';
       box-sizing: border-box;
       position: absolute;
       top: -1px;
@@ -26,7 +26,7 @@
       height: calc(100% + 2px);
       border-radius: 50%;
       border: 0 solid @border-color;
-      transition: all .3s;
+      transition: all 0.3s;
     }
   }
 
@@ -53,19 +53,18 @@
 .rdf-radio--checked {
   & .rdf-radio__indicator {
     border-color: @primary-color;
-    box-shadow: 0 0 8px -1.5px @primary-color;
 
     &::before {
-      border-width: 9px;
+      border-width: 8px;
       border-color: @primary-color;
-      transform: scale(.6);
+      transform: scale(0.6);
       will-change: border-width;
     }
   }
 }
 
 .rdf-radio--disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

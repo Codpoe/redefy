@@ -17,7 +17,7 @@
   font-size: 12px;
   vertical-align: middle;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 
   &__indicator {
     content: '';
@@ -29,7 +29,7 @@
     border-radius: 100%;
     background: #fff;
     will-change: left;
-    transition: all .3s;
+    transition: all 0.3s;
   }
 
   &__check-child,
@@ -52,7 +52,6 @@
     justify-content: flex-start;
     background-color: @primary-color;
     border-color: @primary-color;
-    box-shadow: 0 0 8px -1px @primary-color;
 
     .rdf-switch__indicator {
       left: calc(100% - @indicator-size - @gap-width);
@@ -60,7 +59,7 @@
   }
 
   &--disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 }

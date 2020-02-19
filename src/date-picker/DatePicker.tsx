@@ -70,6 +70,21 @@ export class DatePicker extends React.Component<
     date: DatePanel,
   };
 
+  findButtonElement(element: HTMLElement) {
+    while (
+      element &&
+      element.tagName !== 'HTML' &&
+      element.tagName !== 'BODY'
+    ) {
+      if (element.tagName === 'BUTTON') {
+        return element;
+      }
+      element = element.parentElement as HTMLElement;
+    }
+
+    return null;
+  }
+
   handleVisibleChange = (visible: boolean) => {
     const newState: Partial<DatePickerState> = {
       visible,
@@ -141,8 +156,9 @@ export class DatePicker extends React.Component<
     this.setState({ currentPanel: panel });
   };
 
-  handleItemClick = (ev: any, panel: string) => {
-    const { value } = ev.target.dataset;
+  handleItemClick = (ev: React.SyntheticEvent, panel: string) => {
+    const btnElement = this.findButtonElement(ev.target as HTMLElement);
+    const { value } = btnElement?.dataset || {};
 
     if (!value) {
       return;
