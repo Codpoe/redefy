@@ -11,6 +11,7 @@ import {
   IconChevronsRight,
   IconMoreHorizontal,
 } from '../icon/index';
+import { findNearestElement } from '../utils/dom';
 
 const b = bem('rdf-paginator');
 
@@ -87,7 +88,8 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
   };
 
   handleClick = (ev: React.SyntheticEvent) => {
-    const { index } = (ev.target as any).dataset;
+    const btnElement = findNearestElement(ev.target as HTMLElement, 'button');
+    const { index } = btnElement?.dataset || {};
     const { page, hoverMore } = this.state;
 
     if (index) {
@@ -142,6 +144,7 @@ export class Paginator extends React.Component<PaginatorProps, PaginatorState> {
     if (index === page) {
       otherProps = {
         type: 'primary',
+        flat: true,
       };
     }
 

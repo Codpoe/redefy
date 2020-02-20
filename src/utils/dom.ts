@@ -109,3 +109,17 @@ export function isYVisible(element: HTMLElement, margin?: Margin) {
 export function isVisible(element: HTMLElement, margin?: Margin) {
   return isXVisible(element, margin) && isYVisible(element, margin);
 }
+
+export function findNearestElement(
+  element: HTMLElement,
+  targetTagName: keyof HTMLElementTagNameMap
+) {
+  while (element && element.tagName !== 'HTML' && element.tagName !== 'BODY') {
+    if (element.tagName.toLowerCase() === targetTagName) {
+      return element;
+    }
+    element = element.parentElement as HTMLElement;
+  }
+
+  return null;
+}

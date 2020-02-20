@@ -8,6 +8,7 @@ import MonthPanel from './MonthPanel';
 import YearPanel from './YearPanel';
 import bem from '../utils/bem';
 import { format, parseDate } from '../utils/date-utils';
+import { findNearestElement } from '../utils/dom';
 
 const b = bem('rdf-date-picker');
 const panelHeight = 224;
@@ -69,21 +70,6 @@ export class DatePicker extends React.Component<
     month: MonthPanel,
     date: DatePanel,
   };
-
-  findButtonElement(element: HTMLElement) {
-    while (
-      element &&
-      element.tagName !== 'HTML' &&
-      element.tagName !== 'BODY'
-    ) {
-      if (element.tagName === 'BUTTON') {
-        return element;
-      }
-      element = element.parentElement as HTMLElement;
-    }
-
-    return null;
-  }
 
   handleVisibleChange = (visible: boolean) => {
     const newState: Partial<DatePickerState> = {
@@ -157,7 +143,7 @@ export class DatePicker extends React.Component<
   };
 
   handleItemClick = (ev: React.SyntheticEvent, panel: string) => {
-    const btnElement = this.findButtonElement(ev.target as HTMLElement);
+    const btnElement = findNearestElement(ev.target as HTMLElement, 'button');
     const { value } = btnElement?.dataset || {};
 
     if (!value) {
