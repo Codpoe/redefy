@@ -48,6 +48,10 @@ export class Tab extends React.Component<TabProps, TabState> {
   handleItemClick: ItemProps['onClick'] = item => {
     const { onActiveChange } = this.props;
 
+    if (item.menuItems) {
+      return;
+    }
+
     if (!('active' in this.props)) {
       this.setState({ active: item.value });
     }

@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
-import Button from '../button/index';
+import Button, { ButtonProps } from '../button/index';
 import bem from '../utils/bem';
 
 const b = bem('rdf-tab-item');
 
-export interface ItemProps {
+export interface ItemProps extends Omit<ButtonProps, 'onClic'> {
   [key: string]: any;
   label: React.ReactNode;
   indicator?: React.ReactNode;
@@ -50,6 +50,7 @@ const Item: React.FC<ItemProps> = props => {
         size="large"
         type={active ? 'primary' : 'default'}
         block={stretch}
+        disabled={disabled}
         onClick={handleClick}
       >
         {label}

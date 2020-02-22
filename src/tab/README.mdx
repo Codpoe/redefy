@@ -14,9 +14,23 @@ import Tab from './index';
 <Playground>
   {() => {
     const items = [
-      { value: 'apple', label: 'Apple' },
-      { value: 'smartisan', label: 'Smartisan' },
-      { value: 'samsung', label: 'Samsung' },
+      {
+        value: 'apple',
+        label: 'Apple',
+      },
+      {
+        value: 'smartisan',
+        label: 'Smartisan',
+      },
+      {
+        value: 'samsung',
+        label: 'Samsung',
+        menuItems: [
+          { value: 'apple', label: 'Apple' },
+          { value: 'smartisan', label: 'Smartisan' },
+          { value: 'samsung', label: 'Samsung' },
+        ],
+      },
     ];
     return (
       <Tab items={items} defaultActive="apple" />
