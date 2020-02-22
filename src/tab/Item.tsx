@@ -5,7 +5,20 @@ import bem from '../utils/bem';
 
 const b = bem('rdf-tab-item');
 
-export interface ItemProps extends Omit<ButtonProps, 'onClic'> {
+type ButtonPropsForItem = Pick<
+  ButtonProps,
+  | 'loading'
+  | 'href'
+  | 'target'
+  | 'menuItems'
+  | 'menuTrigger'
+  | 'menuPosition'
+  | 'menuDisabled'
+  | 'menuDelay'
+  | 'onMenuClick'
+>;
+
+export interface ItemProps extends ButtonPropsForItem {
   [key: string]: any;
   label: React.ReactNode;
   indicator?: React.ReactNode;
