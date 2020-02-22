@@ -92,7 +92,7 @@ import Tab from './index';
   }}
 </Playground>
 
-indicator 指示器也可以接收一个函数`(value: any) => React.ReactNode`，自定义程度更高。
+indicator 指示器也可以接收一个函数`(item: ItemProps) => React.ReactNode`，自定义程度更高。
 
 <Playground>
   {() => {
@@ -110,9 +110,10 @@ indicator 指示器也可以接收一个函数`(value: any) => React.ReactNode`�
       <Tab
         items={items}
         defaultActive="apple"
-        indicator={
-          value => <div style={{ marginBottom: '-10px' }}>{indicators[value]}</div>
-        }
+        indicator={item => {
+          console.log(item);
+          return <div style={{ marginBottom: '-10px' }}>{indicators[item.value]}</div>
+        }}
       />
     );
   }}
@@ -127,9 +128,9 @@ indicator 指示器也可以接收一个函数`(value: any) => React.ReactNode`�
 | items | `ItemProps[]` | - | 项 |
 | active | `any` | - | 选中的项值 |
 | defaultActive | `any` | - | 默认选中的项值 |
-| indicator | `React.ReactNode`, `(value: any) => React.ReactNode` | - | 指示器 |
+| indicator | `React.ReactNode`, `(item: ItemProps) => React.ReactNode` | - | 指示器 |
 | stretch | `boolean` | - | 是否铺满 |
-| onActiveChange | `(value: any, item: ItemProps) => void` | - | 变更事件 |
+| onActiveChange | `(item: ItemProps) => void` | - | 变更事件 |
 | className | `string` | - | 类名 |
 | style | `React.CSSProperties` | - | 样式 |
 

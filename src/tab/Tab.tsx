@@ -5,7 +5,7 @@ import Item, { ItemProps } from './Item';
 
 const b = bem('rdf-tab');
 
-type Indicator = React.ReactNode | ((value: any) => React.ReactNode);
+type Indicator = React.ReactNode | ((item: ItemProps) => React.ReactNode);
 
 export interface TabProps {
   items?: ItemProps[];
@@ -14,7 +14,7 @@ export interface TabProps {
   indicator?: Indicator;
   stretch?: boolean;
   vertical?: boolean;
-  onActiveChange?: (activeValue: ItemProps['value'], item: ItemProps) => void;
+  onActiveChange?: (item: ItemProps) => void;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -38,9 +38,9 @@ export class Tab extends React.Component<TabProps, TabState> {
       'active' in this.props ? this.props.active : this.props.defaultActive,
   };
 
-  getIndicator(indicator: Indicator, value: any): React.ReactNode {
+  getIndicator(indicator: Indicator, item: ItemProps): React.ReactNode {
     if (typeof indicator === 'function') {
-      return indicator(value);
+      return indicator(item);
     }
     return indicator;
   }
@@ -57,7 +57,7 @@ export class Tab extends React.Component<TabProps, TabState> {
     }
 
     if (onActiveChange) {
-      onActiveChange(item.value, item);
+      onActiveChange(item);
     }
   };
 
@@ -74,7 +74,7 @@ export class Tab extends React.Component<TabProps, TabState> {
             key={value}
             active={value === active}
             stretch={stretch}
-            indicator={this.getIndicator(itemIndicator || indicator, value)}
+            indicator={this.getIndicator(itemIndicator || indicator, item)}
             onClick={this.handleItemClick}
           />
         );
@@ -93,7 +93,7 @@ export class Tab extends React.Component<TabProps, TabState> {
           key={value}
           active={value === active}
           stretch={stretch}
-          indicator={this.getIndicator(itemIndicator || indicator, value)}
+          indicator={this.getIndicator(itemIndicator || indicator, item.props)}
           onClick={this.handleItemClick}
         />
       );
