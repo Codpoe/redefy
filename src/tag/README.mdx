@@ -23,28 +23,13 @@ import Tag from './index';
         <Tag round onClick={handleClick} onClose={handleClose}>
           npm
         </Tag>
-        <Tag
-          type="primary"
-          round
-          onClick={handleClick}
-          onClose={handleClose}
-        >
+        <Tag type="primary" round onClick={handleClick} onClose={handleClose}>
           GitHub
         </Tag>
-        <Tag
-          type="success"
-          round
-          onClick={handleClick}
-          onClose={handleClose}
-        >
+        <Tag type="success" onClick={handleClick} onClose={handleClose}>
           GitHub
         </Tag>
-        <Tag
-          type="warning"
-          round
-          onClick={handleClick}
-          onClose={handleClose}
-        >
+        <Tag type="warning" round onClick={handleClick} onClose={handleClose}>
           GitHub
         </Tag>
         <Tag type="error" round onClick={handleClick} onClose={handleClose}>
@@ -68,13 +53,13 @@ import Tag from './index';
 
 ### Props
 
-| 参数 | 类型 | 默认值 | 说明 |
-|-----|------|-------|-----|
-| type | `TagTypes` | - | 类型 |
-| round | `boolean` | - | 半圆 |
-| href | `string` | - | 链接 |
-| target | `_self`, `_blank` | - | 链接打开类型 |
-| onClick | `() => void` | - | 点击事件 |
-| onClose | `() => void` | - | 关闭事件 |
-| className | `string` | - | 类名 |
-| style | `React.CSSProperties` | - | 样式 |
+| 参数      | 类型                  | 默认值 | 说明         |
+| --------- | --------------------- | ------ | ------------ |
+| type      | `TagTypes`            | -      | 类型         |
+| round     | `boolean`             | -      | 半圆         |
+| href      | `string`              | -      | 链接         |
+| target    | `_self`, `_blank`     | -      | 链接打开类型 |
+| onClick   | `() => void`          | -      | 点击事件     |
+| onClose   | `() => void`          | -      | 关闭事件     |
+| className | `string`              | -      | 类名         |
+| style     | `React.CSSProperties` | -      | 样式         |

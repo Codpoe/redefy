@@ -1,26 +1,27 @@
 import React from 'react';
 import cx from 'classnames';
 import bem from '../utils/bem';
-import Button from '../button/index';
+import Button, { ButtonProps } from '../button/index';
 import { IconX } from '../icon/index';
 
 const b = bem('rdf-tag');
 
 type TagTypes = 'default' | 'primary' | 'success' | 'warning' | 'error';
 
-export interface TagProps {
+export interface TagProps extends ButtonProps {
   [key: string]: any;
   type?: TagTypes;
-  round?: boolean;
-  href?: string;
-  target?: '_self' | '_blank';
-  onClick?: () => void;
+  withBorder?: boolean;
   onClose?: () => void;
   className?: string;
   style?: React.CSSProperties;
 }
 
 export class Tag extends React.Component<TagProps> {
+  static defaultProps: Partial<TagProps> = {
+    withBorder: true,
+  };
+
   handleClose = (ev: React.SyntheticEvent) => {
     const { onClose } = this.props;
     ev.stopPropagation();
@@ -36,7 +37,7 @@ export class Tag extends React.Component<TagProps> {
   render() {
     const {
       type,
-      round,
+      withBorder,
       className,
       style,
       children,
@@ -47,6 +48,7 @@ export class Tag extends React.Component<TagProps> {
 
     const cls = cx(className, b(), {
       [b('', type as TagTypes)]: type,
+      [b('', 'with-border')]: withBorder,
       [b('', 'clickable')]: onClick,
       [b('', 'closable')]: onClose,
     });
@@ -58,7 +60,6 @@ export class Tag extends React.Component<TagProps> {
         flat
         size="small"
         type={type}
-        round={round}
         {...restProps}
       >
         <span className={b('content')} onClick={onClick}>

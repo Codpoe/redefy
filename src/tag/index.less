@@ -1,6 +1,8 @@
 @import '../styles/base.less';
 
 .rdf-tag {
+  min-height: 20px;
+  padding: 0 6px;
   cursor: default;
 
   &--clickable {
@@ -11,21 +13,21 @@
     padding-right: 0;
   }
 
-  &.rdf-button {
+  &--with-border.rdf-button {
     border-color: currentColor;
 
-    &:hover:not(.rdf-button--disabled) {
+    &:hover:not([data-disabled='true']) {
       border-color: currentColor;
     }
 
-    &:active:not(.rdf-button--disabled) {
+    &:active:not([data-disabled='true']) {
       border-color: currentColor;
     }
   }
 
   &__close {
-    padding: 3px 6px;
-    transition: all .2s;
+    padding: 3px;
+    transition: all 0.2s;
     cursor: pointer;
 
     &:hover {
