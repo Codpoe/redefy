@@ -74,6 +74,11 @@
     transition: opacity 0.24s ease-out;
   }
 
+  &__arrow-icon {
+    margin-left: 4px;
+    transition: transform 0.24s ease-out;
+  }
+
   &__loading {
     position: absolute;
     top: 50%;
@@ -222,6 +227,12 @@
 
     .rdf-button__content {
       opacity: 0.2;
+    }
+  }
+
+  &--menu-visible {
+    .rdf-button__arrow-icon {
+      transform: rotate(180deg);
     }
   }
 }
