@@ -1,7 +1,6 @@
 import through2 from 'through2';
 import Vinyl from 'vinyl';
 import { Transform } from 'stream';
-import { getPkg } from './utils';
 
 function generateComponentStyleEntry(
   this: Transform,
@@ -33,16 +32,15 @@ function generateComponentStyleEntry(
 }
 
 function generatePackageEntry(this: Transform, names: string[]) {
-  const exports = names
+  const exportStr = names
     .filter(name => name !== 'flat-deps')
     .map(name => `export * from './${name}/index';`)
     .join('\n');
-  const versionExport = `export const version = '${getPkg('version')}';`;
 
   this.push(
     new Vinyl({
       path: 'index.ts',
-      contents: Buffer.from(`${exports}\n${versionExport}`),
+      contents: Buffer.from(exportStr),
     })
   );
 }
