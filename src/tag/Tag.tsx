@@ -60,9 +60,10 @@ export class Tag extends React.Component<TagProps> {
         flat
         size="small"
         type={type}
+        {...(!onClose && { onClick })}
         {...restProps}
       >
-        <span className={b('content')} onClick={onClick}>
+        <span className={b('content')} {...(onClose && { onClick })}>
           {children}
         </span>
         {onClose && <IconX className={b('close')} onClick={this.handleClose} />}
