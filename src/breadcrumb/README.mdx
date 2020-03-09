@@ -1,0 +1,64 @@
+---
+name: Breadcrumb 面包屑
+route: /breadcrumb
+menu: 导航组件
+---
+
+import { Playground } from 'docz';
+import Breadcrumb from './index';
+import { IconChevronRight } from '../icon';
+
+## 演示
+
+### 简单示例
+
+<Playground>
+  <Breadcrumb onClick={item => console.log(item)}>
+    <Breadcrumb.Item href="/">首页</Breadcrumb.Item>
+    <Breadcrumb.Item>应用列表</Breadcrumb.Item>
+    <Breadcrumb.Item>应用详情</Breadcrumb.Item>
+  </Breadcrumb>
+</Playground>
+
+### items
+
+<Playground>
+  <Breadcrumb
+    items={[
+      { children: '首页' },
+      { children: '应用列表' },
+      { children: '应用详情' },
+    ]}
+    onClick={item => console.log(item)}
+  />
+</Playground>
+
+### 自定义 separator
+
+<Playground>
+  <Breadcrumb separator={<IconChevronRight />}>
+    <Breadcrumb.Item href="/">首页</Breadcrumb.Item>
+    <Breadcrumb.Item>应用列表</Breadcrumb.Item>
+    <Breadcrumb.Item>应用详情</Breadcrumb.Item>
+  </Breadcrumb>
+</Playground>
+
+## API
+
+### BreadcrumbProps
+
+| 参数      | 类型                                  | 默认值 | 说明     |
+| --------- | ------------------------------------- | ------ | -------- |
+| items     | `BreadcrumbItemProps[]`               | -      | 条项     |
+| separator | `React.ReactNode`                     | -      | 分隔符   |
+| onClick   | `(item: BreadcrumbItemProps) => void` | -      | 点击回调 |
+| className | `string`                              | -      | 类名     |
+| style     | `React.CSSProperties`                 | -      | 样式     |
+
+### BreadcrumbItemProps
+
+| 参数      | 类型                                  | 默认值 | 说明     |
+| --------- | ------------------------------------- | ------ | -------- |
+| href     | `string`                               | -      | 条项     |
+| className | `string`                              | -      | 类名     |
+| style     | `React.CSSProperties`                 | -      | 样式     |
