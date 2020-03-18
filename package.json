@@ -20,6 +20,12 @@
     "lib",
     "es"
   ],
+  "sideEffects": [
+    "lib/**/style/*",
+    "es/**/style/*",
+    "*.css",
+    "*.less"
+  ],
   "scripts": {
     "bootstrap": "yarn || npm i",
     "dev": "sh ./scripts/dev.sh",
