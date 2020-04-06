@@ -22,6 +22,8 @@ export interface SelectProps {
 export interface SelectState {
   value: any | any[];
   visible: boolean;
+  keySelectable: boolean;
+  keySelectedIndex: number;
 }
 
 export class Select extends React.Component<SelectProps, SelectState> {
@@ -35,7 +37,13 @@ export class Select extends React.Component<SelectProps, SelectState> {
   state: SelectState = {
     value: 'value' in this.props ? this.props.value : this.props.defaultValue,
     visible: false,
+    keySelectable: true,
+    keySelectedIndex: -1,
   };
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
 
   isSelected = (optionValue: any) => {
     const { value } = this.state;
@@ -59,6 +67,13 @@ export class Select extends React.Component<SelectProps, SelectState> {
 
   handleVisibleChange = (visible: boolean) => {
     this.setState({ visible });
+
+    if (visible) {
+      window.addEventListener('keydown', this.handleKeyDown);
+    } else {
+      this.setState({ keySelectedIndex: -1 });
+      window.removeEventListener('keydown', this.handleKeyDown);
+    }
   };
 
   handleClear = () => {
@@ -68,6 +83,55 @@ export class Select extends React.Component<SelectProps, SelectState> {
       this.proxyChange([]);
     } else {
       this.proxyChange('');
+    }
+  };
+
+  handleMouseEnter = () => {
+    this.setState({
+      keySelectable: false,
+      keySelectedIndex: -1,
+    });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({
+      keySelectable: true,
+    });
+  };
+
+  handleKeyDown = (ev: KeyboardEvent) => {
+    const { key, keyCode } = ev;
+    const { items } = this.props;
+    const { keySelectable, keySelectedIndex } = this.state;
+
+    if (!items.length || !keySelectable) {
+      return;
+    }
+
+    ev.preventDefault();
+
+    if (key === 'ArrowUp' || keyCode === 38) {
+      if (keySelectedIndex > 0) {
+        this.setState({
+          keySelectedIndex: keySelectedIndex - 1,
+        });
+      }
+      return;
+    }
+
+    if (key === 'ArrowDown' || keyCode === 40) {
+      if (keySelectedIndex < items.length - 1) {
+        this.setState({
+          keySelectedIndex: keySelectedIndex + 1,
+        });
+      }
+      return;
+    }
+
+    if (key === 'enter' || keyCode === 13) {
+      if (keySelectedIndex >= 0) {
+        this.handleOptionClick(items[keySelectedIndex].value);
+      }
     }
   };
 
@@ -85,7 +149,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
       }
     } else {
       value = optionValue;
-      this.setState({ visible: false });
+      this.handleVisibleChange(false);
     }
 
     this.proxyChange(value);
@@ -93,9 +157,10 @@ export class Select extends React.Component<SelectProps, SelectState> {
 
   getOptionsAndLabels() {
     const { items } = this.props;
+    const { keySelectedIndex } = this.state;
     const labels: string[] = [];
 
-    const options = items.reduce((res, item) => {
+    const options = items.reduce((res, item, index) => {
       const selected = this.isSelected(item.value);
 
       if (selected) {
@@ -107,6 +172,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
           {...item}
           key={item.value}
           selected={selected}
+          preSelected={index === keySelectedIndex}
           onClick={
             item.disabled ? undefined : () => this.handleOptionClick(item.value)
           }
@@ -144,7 +210,12 @@ export class Select extends React.Component<SelectProps, SelectState> {
         onChange={this.handleVisibleChange}
         onClear={this.handleClear}
       >
-        {options}
+        <div
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          {options}
+        </div>
       </BaseSelect>
     );
   }

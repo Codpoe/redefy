@@ -11,6 +11,7 @@ export interface OptionProps {
   label: React.ReactNode;
   text?: string;
   selected?: boolean;
+  preSelected?: boolean;
   disabled?: boolean;
   onClick?: (value: any) => void;
   className?: string;
@@ -22,6 +23,7 @@ const Option: React.FC<OptionProps> = props => {
     value,
     label,
     selected,
+    preSelected,
     disabled,
     onClick,
     className,
@@ -30,6 +32,7 @@ const Option: React.FC<OptionProps> = props => {
   } = props;
   const cls = cx(b(), className, {
     [b('', 'selected')]: selected,
+    [b('', 'pre-selected')]: preSelected,
     [b('', 'disabled')]: disabled,
   });
 

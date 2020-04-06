@@ -17,7 +17,7 @@
   padding: 6px 12px;
   font-size: 14px;
   color: @text-color;
-  transition: all .2s;
+  transition: all 0.2s;
   cursor: pointer;
 
   &__item {
@@ -32,7 +32,8 @@
   }
 
   &:not(.rdf-select-option--disabled) {
-    &:hover {
+    &:hover,
+    &.rdf-select-option--pre-selected {
       background: tint(@primary-color, 85%);
     }
 
@@ -47,7 +48,7 @@
   }
 
   &--disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 }

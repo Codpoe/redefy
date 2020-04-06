@@ -4,17 +4,42 @@ route: /select
 menu: 表单组件
 ---
 
-import { Playground } from "docz";
+import { Playground } from 'docz';
 import Select from './index';
 
 ## 演示
 
+### 简单示例
+
 <Playground>
   {() => {
     const [value, setValue] = React.useState('');
-    const changeValue = React.useCallback(value => {
-      setValue(value);
-    }, [setValue]);
+    const changeValue = React.useCallback(
+      value => {
+        setValue(value);
+      },
+      [setValue]
+    );
+    const items = [
+      { value: 'apple', label: 'Apple' },
+      { value: 'smartisan', label: 'Smartisan', text: 'ByteDance' },
+      { value: 'oneplus', label: 'OnePlus' },
+    ];
+    return <Select items={items} value={value} onChange={changeValue} />;
+  }}
+</Playground>
+
+### 多选
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState([]);
+    const changeValue = React.useCallback(
+      value => {
+        setValue(value);
+      },
+      [setValue]
+    );
     const items = [
       { value: 'apple', label: 'Apple' },
       { value: 'smartisan', label: 'Smartisan', text: 'ByteDance' },
@@ -28,27 +53,27 @@ import Select from './index';
 
 ### Props
 
-| 参数 | 类型 | 默认值 | 说明 |
-|-----|------|-------|-----|
-| value | `any` | - | 值 |
-| defaultValue | `any` | - | 默认值 |
-| items | `OptionProps[]` | - | 可选项 |
-| placeholder | `string` | - | 占位文案 |
-| onChange | `(value: SelectProps['value']) => void` | - | 变化回调 |
-| className | `string` | - | 类名 |
-| style | `React.CSSProperties` | - | 样式 |
-| contentClassName | `string` | - | 类名 |
-| contentStyle | `React.CSSProperties` | - | 样式 |
+| 参数             | 类型                                    | 默认值 | 说明     |
+| ---------------- | --------------------------------------- | ------ | -------- |
+| value            | `any`                                   | -      | 值       |
+| defaultValue     | `any`                                   | -      | 默认值   |
+| items            | `OptionProps[]`                         | -      | 可选项   |
+| placeholder      | `string`                                | -      | 占位文案 |
+| onChange         | `(value: SelectProps['value']) => void` | -      | 变化回调 |
+| className        | `string`                                | -      | 类名     |
+| style            | `React.CSSProperties`                   | -      | 样式     |
+| contentClassName | `string`                                | -      | 类名     |
+| contentStyle     | `React.CSSProperties`                   | -      | 样式     |
 
 ### OptionProps
 
-| 参数 | 类型 | 默认值 | 说明 |
-|-----|------|-------|-----|
-| value | `any` | - | 值 |
-| label | `React.ReactNode` | - | 可选项文案。必须 |
-| text | `string` | - | 输入框里的可选项文案。注意跟`label`的区别，当`label`不是字符串时，需要补上`text`用于在输入框的显示 |
-| selected | `boolean` | - | 是否选中 |
-| disabled | `boolean` | - | 是否禁用 |
-| onClick | `(value: any) => void` | - | 点击事件 |
-| className | `string` | - | 类名 |
-| style | `React.CSSProperties` | - | 样式 |
+| 参数      | 类型                   | 默认值 | 说明                                                                                               |
+| --------- | ---------------------- | ------ | -------------------------------------------------------------------------------------------------- |
+| value     | `any`                  | -      | 值                                                                                                 |
+| label     | `React.ReactNode`      | -      | 可选项文案。必须                                                                                   |
+| text      | `string`               | -      | 输入框里的可选项文案。注意跟`label`的区别，当`label`不是字符串时，需要补上`text`用于在输入框的显示 |
+| selected  | `boolean`              | -      | 是否选中                                                                                           |
+| disabled  | `boolean`              | -      | 是否禁用                                                                                           |
+| onClick   | `(value: any) => void` | -      | 点击事件                                                                                           |
+| className | `string`               | -      | 类名                                                                                               |
+| style     | `React.CSSProperties`  | -      | 样式                                                                                               |
