@@ -40,10 +40,10 @@ export class Pop extends React.Component<PopProps, PopState> {
   static getDerivedStateFromProps(props: PopProps) {
     const { visible, delay } = props;
     const state: PopState = {
-      delays: Array.isArray(delay) ? delay : [delay, delay],
+      delays: Array.isArray(delay) ? delay : [delay, 250],
     };
 
-    if (typeof visible !== 'undefined') {
+    if ('visible' in props) {
       state.visible = visible;
     }
 
@@ -52,9 +52,7 @@ export class Pop extends React.Component<PopProps, PopState> {
 
   state: PopState = {
     visible:
-      typeof this.props.visible !== 'undefined'
-        ? this.props.visible
-        : this.props.defaultVisible,
+      'visible' in this.props ? this.props.visible : this.props.defaultVisible,
   };
 
   isHovered: boolean = false;
@@ -84,7 +82,7 @@ export class Pop extends React.Component<PopProps, PopState> {
   }
 
   handleTriggerClick = () => {
-    this.updateVisible(!this.state.visible, true);
+    this.updateVisible(!this.state.visible);
   };
 
   handleBodyClick = () => {
@@ -124,12 +122,19 @@ export class Pop extends React.Component<PopProps, PopState> {
     const { trigger, disabled, onChange } = this.props;
     const delays = this.state.delays as (number | undefined)[];
 
-    if (disabled || (!force && !visible && this.isHovered)) {
+    if (disabled) {
       return;
     }
 
     const update = () => {
-      if (typeof this.props.visible === 'undefined') {
+      if (
+        (trigger === 'hover' && visible && !this.isHovered) ||
+        (!visible && this.isHovered)
+      ) {
+        return;
+      }
+
+      if (!('visible' in this.props)) {
         this.setState({ visible });
       }
       if (onChange) {
@@ -137,7 +142,7 @@ export class Pop extends React.Component<PopProps, PopState> {
       }
     };
 
-    if (trigger === 'hover') {
+    if (trigger === 'hover' && !force) {
       clearTimeout(this.updateTimer);
       this.updateTimer = setTimeout(
         update,

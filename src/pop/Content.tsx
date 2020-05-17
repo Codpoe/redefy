@@ -230,7 +230,7 @@ export default class Content extends React.Component<
       <CSSTransition
         classNames="rdf-pop-anim-"
         in={visible && positionReady}
-        timeout={{ exit: 320 }}
+        timeout={{ exit: 200 }}
         appear
         mountOnEnter
         unmountOnExit
