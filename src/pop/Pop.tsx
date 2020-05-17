@@ -128,8 +128,8 @@ export class Pop extends React.Component<PopProps, PopState> {
 
     const update = () => {
       if (
-        (trigger === 'hover' && visible && !this.isHovered) ||
-        (!visible && this.isHovered)
+        trigger === 'hover' &&
+        ((visible && !this.isHovered) || (!visible && this.isHovered))
       ) {
         return;
       }
