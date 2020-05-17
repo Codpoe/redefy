@@ -30,6 +30,7 @@ export const Sticky: React.FC<StickyProps> = props => {
   const [fixedPosition, setFixedPosition] = useState<FixedPosition>();
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [left, setLeft] = useState<number>();
 
   const check = useCallback(
     (scrollTop?: number) => {
@@ -40,9 +41,11 @@ export const Sticky: React.FC<StickyProps> = props => {
       const width = el.current.offsetWidth;
       const height = el.current.offsetHeight;
       const { height: viewportHeight } = getRect(window);
-      const { top: topToViewport, bottom: bottomToViewport } = getRect(
-        el.current
-      );
+      const {
+        top: topToViewport,
+        bottom: bottomToViewport,
+        left: leftToViewport,
+      } = getRect(el.current);
       let fixedPosition: FixedPosition;
 
       if (typeof bottom === 'undefined') {
@@ -55,6 +58,7 @@ export const Sticky: React.FC<StickyProps> = props => {
 
       setWidth(width);
       setHeight(height);
+      setLeft(leftToViewport);
       setFixedPosition(fixedPosition);
 
       if (onScroll) {
@@ -87,7 +91,7 @@ export const Sticky: React.FC<StickyProps> = props => {
   }, [fixedPosition, width, height]);
 
   const contentStyle = useMemo(() => {
-    const styles: CSSProperties = { ...style, width };
+    const styles: CSSProperties = { ...style, left, width };
 
     if (typeof bottom === 'undefined') {
       styles.top = top;
@@ -96,7 +100,7 @@ export const Sticky: React.FC<StickyProps> = props => {
     }
 
     return styles;
-  }, [style, top, bottom, width]);
+  }, [style, top, bottom, width, fixedPosition]);
 
   const cls = cx(className, b(), {
     [b('', 'fixed')]: fixedPosition,
