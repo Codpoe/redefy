@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import cx from 'classnames';
 import Item, { BreadcrumbItemProps } from './Item';
+import { IconChevronRight } from '../icon';
 import bem from '../utils/bem';
 
 const b = bem('rdf-breadcrumb');
@@ -56,7 +57,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> & {
 };
 
 Breadcrumb.defaultProps = {
-  separator: '/',
+  separator: <IconChevronRight />,
 };
 
 Breadcrumb.Item = Item;
